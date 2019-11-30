@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>JLS IMPORT</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only small (click)="search()">
+        <ion-icon name="search" class="searchButtonColor"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides class="slidePagers" pager>
+    <ion-slide class="slidePhoto">
+      <img  src="http://www.jlsimport.fr/themes/leo_exist/img/modules/leosliderlayer/slider%202.jpg" />
+
+    </ion-slide>
+
+    <ion-slide class="slidePhoto">
+      <img  src="http://www.jlsimport.fr/themes/leo_exist/img/modules/leosliderlayer/slider3.jpg" />
+    </ion-slide>
+
+    <ion-slide class="slidePhoto">
+      <img  src="http://www.jlsimport.fr/themes/leo_exist/img/modules/leosliderlayer/870x522  slider 1.jpg" />
+    </ion-slide>
+  </ion-slides>
+  <div class="buttonZone">
+    <ion-row class="buttonRow" text-center>
+      <ion-col col-3>
+        <button ion-button  class="bestSaleColor" icon-only (click)="displaynewProductPage()">
+          <ion-icon name='thumbs-up'></ion-icon>
+        </button>
+        <p>Meilleur vente</p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button  class="promotionColor" icon-only (click)="displaynewProductPage()">
+          <ion-icon name='star'></ion-icon>
+        </button>
+        <p>Promotion</p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button class="nouveauteColor" icon-only (click)="displaynewProductPage()">
+          <ion-icon name='flag'></ion-icon>
+        </button>
+        <p>Nouveauté</p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button class="categoryColor" icon-only (click) = "displayCategoryListPage()" >
+          <ion-icon name='pricetag'></ion-icon>
+        </button>
+        <p>Catégories</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="buttonRow" text-center>
+      <ion-col col-3>
+        <button ion-button class="myListColor" icon-only>
+          <ion-icon name='list'></ion-icon>
+        </button>
+        <p>Mes lists</p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button class="xxxColor" icon-only>
+          <ion-icon name='trash'></ion-icon>
+        </button>
+        <p>Popularité</p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button class="linkColor" icon-only>
+          <ion-icon name='link'></ion-icon>
+        </button>
+        <p>Evénements</p>
+      </ion-col>
+      <ion-col col-3>
+        <button ion-button class="avisColor" icon-only>
+          <ion-icon name='paper'></ion-icon>
+        </button>
+        <p>Avis</p>
+      </ion-col>
+    </ion-row>
+    <!-- loading in the page icon-->
+    <!--<ion-spinner icon="dots" class="spinner-dark"></ion-spinner>-->
+  </div>
+
+</ion-content>
