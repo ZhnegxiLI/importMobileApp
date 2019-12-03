@@ -13,6 +13,7 @@ import { NotificationPage } from '../pages/notification/notification';
 import { LoginPage } from '../pages/login/login';
 import { IonicStorageModule } from '@ionic/storage'
 import {SearchPage} from '../pages/search/search'
+import {ReadOrderListPage } from '../pages/read-order-list/read-order-list'
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -35,7 +36,8 @@ import { ComponentsModule } from '../components/components.module';
     LoginPage,
     NewproductPage,
     SearchPage,
-    CategoryListPage
+    CategoryListPage,
+    ReadOrderListPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { ComponentsModule } from '../components/components.module';
     LoginPage,
     NewproductPage,
     SearchPage,
-    CategoryListPage
+    CategoryListPage,
+    ReadOrderListPage
   ],
   providers: [
     StatusBar,
