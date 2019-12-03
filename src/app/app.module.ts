@@ -21,6 +21,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { NewproductPage } from '../pages/newproduct/newproduct'
 import { CategoryListPage } from '../pages/category-list/category-list'
 import {SubCategoryListPage} from '../pages/sub-category-list/sub-category-list';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {SubCategoryListPage} from '../pages/sub-category-list/sub-category-list'
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true'
     }),

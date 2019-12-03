@@ -7,7 +7,7 @@ import { CartPage } from './cart';
     CartPage,
   ],
   imports: [
-    IonicPageModule.forChild(CartPage),
+    IonicPageModule.forChild(CartPage)
   ],
 })
 export class CartPageModule {}

@@ -1,3 +1,27 @@
 page-cart {
-
+    .footerComponent {
+        display: flex;
+        align-items: center;
+    }
+    .align-text-middle {
+        display: flex;
+        align-items: center;
+    }
+    .productCard{
+        border-bottom: 0.5px solid;
+        border-color: darkgrey;
+        background-color: white;
+    }
+    .productTitleFont{
+        font-size: 1.2rem;
+        margin: 0px;
+    }
+    .descriptionFont{
+        font-size: 1rem;
+        margin: 2px 0px;
+    }
+    .colStyle{
+        padding: 5px 5px 0px 5px;
+    }
+   
 }
