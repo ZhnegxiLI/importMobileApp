@@ -1,29 +1,25 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 /**
- * Generated class for the ChatPage page.
+ * Generated class for the TestPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-//@IonicPage()
+
+@IonicPage()
 @Component({
-  selector: 'page-cart',
-  templateUrl: 'cart.html',
+  selector: 'page-test',
+  templateUrl: 'test.html',
 })
-export class CartPage {
+export class TestPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CartPage');
-  }
-
-    onUpdate(data) {
-    console.log(data);
+    console.log('ionViewDidLoad TestPage');
   }
 
 }
