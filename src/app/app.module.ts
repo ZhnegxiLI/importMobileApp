@@ -20,7 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { NewproductPage } from '../pages/newproduct/newproduct'
 import { CategoryListPage } from '../pages/category-list/category-list'
-
+import {SubCategoryListPage} from '../pages/sub-category-list/sub-category-list';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { CategoryListPage } from '../pages/category-list/category-list'
     LoginPage,
     NewproductPage,
     SearchPage,
-    CategoryListPage
+    CategoryListPage,
+    SubCategoryListPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,8 @@ import { CategoryListPage } from '../pages/category-list/category-list'
     LoginPage,
     NewproductPage,
     SearchPage,
-    CategoryListPage
+    CategoryListPage,
+    SubCategoryListPage
   ],
   providers: [
     StatusBar,
