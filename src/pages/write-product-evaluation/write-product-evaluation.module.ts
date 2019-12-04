@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ProductDetailPage } from './product-detail';
+import { WriteProductEvaluationPage } from './write-product-evaluation';
 import { StarRatingModule } from 'ionic3-star-rating';
 
 @NgModule({
   declarations: [
-    ProductDetailPage,
+    WriteProductEvaluationPage,
   ],
   imports: [
     StarRatingModule,
-    IonicPageModule.forChild(ProductDetailPage),
+    IonicPageModule.forChild(WriteProductEvaluationPage),
   ],
 })
-export class ProductDetailPageModule {}
+export class ProductEvaluationListPageModule {}

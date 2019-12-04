@@ -23,8 +23,8 @@ import { CategoryListPage } from '../pages/category-list/category-list'
 import {SubCategoryListPage} from '../pages/sub-category-list/sub-category-list';
 import { ComponentsModule } from '../components/components.module';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
-
-
+import {WriteProductEvaluationPage} from '../pages/write-product-evaluation/write-product-evaluation'
+import { StarRatingModule } from 'ionic3-star-rating';
 @NgModule({
   declarations: [
     MyApp,
@@ -39,9 +39,11 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
     SearchPage,
     CategoryListPage,
     SubCategoryListPage,
-    ProductDetailPage 
+    ProductDetailPage,
+    WriteProductEvaluationPage
   ],
   imports: [
+    StarRatingModule,
     BrowserModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp,{
@@ -64,7 +66,8 @@ import { ProductDetailPage } from '../pages/product-detail/product-detail';
     SearchPage,
     CategoryListPage,
     SubCategoryListPage,
-    ProductDetailPage 
+    ProductDetailPage,
+    WriteProductEvaluationPage
   ],
   providers: [
     StatusBar,

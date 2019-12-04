@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Product Detail</ion-title>
+    <ion-title>CHAUFFAGE MAX 2000W</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,40 +15,65 @@
 
 <ion-content>
   <img class="productDetailImg" src="assets/imgs/productDetailImg.png"/>
-  <ion-list style="border-style: none">
-    <ion-item >
+  
+    
     <ion-buttons style="width: 100%;margin-bottom: 5px;padding-right: 16px;" color='light'>
+      <ion-row>
+        <ion-col col-4>
       <button class="productDetailImgNavButton" (click)="favorite()" ion-button clear>
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-icon style="font-size:-webkit-xxx-large;" *ngIf="isFavorite" isActive="true" name="bookmark" ></ion-icon>
-              <ion-icon style="font-size:-webkit-xxx-large;" *ngIf="!isFavorite" isActive="false" name="bookmark" ></ion-icon>
+              <ion-icon style="font-size:-webkit-xxx-large;" isActive="{{isFavorite}}" name="bookmark" ></ion-icon>
             </ion-col>
           </ion-row>
-          <ion-row *ngIf="!isFavorite"><ion-col>收藏</ion-col></ion-row>
-          <ion-row *ngIf="isFavorite"><ion-col>已收藏</ion-col></ion-row>
+          <ion-row *ngIf="!isFavorite"><ion-col>Facorite</ion-col></ion-row>
+          <ion-row *ngIf="isFavorite"><ion-col>Facorité</ion-col></ion-row>
         </ion-grid>
       </button>
+    </ion-col>
+    <ion-col col-4>
       <button class="productDetailImgNavButton" ion-button clear>
         <ion-grid>
             <ion-row>
               <ion-col><ion-icon style="font-size:-webkit-xxx-large;" name="cart"></ion-icon></ion-col>
             </ion-row>
-            <ion-row><ion-col>添加</ion-col></ion-row>
+            <ion-row><ion-col>Cart</ion-col></ion-row>
           </ion-grid>
       </button>
-      <button class="productDetailImgNavButton" ion-button clear>
+    </ion-col>
+    <ion-col col-4>
+      <button class="productDetailImgNavButton" (click)="writeEvaluation()" ion-button clear>
         <ion-grid>
             <ion-row>
               <ion-col><ion-icon style="font-size:-webkit-xxx-large;" name="create"></ion-icon></ion-col>
             </ion-row>
-            <ion-row><ion-col>点评</ion-col></ion-row>
+            <ion-row><ion-col>Avis</ion-col></ion-row>
           </ion-grid>
       </button>
+    </ion-col>
+    </ion-row>
     </ion-buttons>
+    <ion-list style="border-style: none">
+        <ion-item >
     <p style="font-size: unset;color:#222;">Référence : 947628</p>
     </ion-item>
+    <a ion-item >
+      <ion-row align-items-center>
+        <ion-col col-2><ion-icon color="primary" style="font-size:xx-large;" name="chatboxes"></ion-icon> </ion-col>
+        <ion-col col-6><ionic3-star-rating #rating
+          activeIcon = "ios-star"
+          defaultIcon = "ios-star-outline"
+          activeColor = "#488aff" 
+          defaultColor = "#f4f4f4"
+          readonly="true"
+          rating="4"
+          fontSize = "24px">
+        </ionic3-star-rating></ion-col>
+        <ion-col col-2>(3 avis)</ion-col>
+      </ion-row>
+      
+      </a>
     <ion-item>
         Quantité par colis : 1
     </ion-item>

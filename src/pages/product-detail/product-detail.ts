@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {WriteProductEvaluationPage} from '../write-product-evaluation/write-product-evaluation'
+
 
 
 /**
@@ -21,6 +23,10 @@ export class ProductDetailPage {
 
   favorite(){
     this.isFavorite = !this.isFavorite;
+  }
+
+  writeEvaluation(){
+    this.navCtrl.push(WriteProductEvaluationPage);
   }
 
   ionViewDidLoad() {
