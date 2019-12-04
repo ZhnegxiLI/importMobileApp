@@ -5,7 +5,8 @@ import { HomePage } from '../home/home';
 import { CartPage } from '../cart/cart';
 import { myAccountPage } from '../myAccount/myAccount';
 import { NotificationPage } from '../notification/notification'; 
-import { ReadOrderListPage } from '../read-order-list/read-order-list'
+import { ReadOrderListPage } from '../read-order-list/read-order-list';
+
 
 @Component({
   templateUrl: 'tabs.html'

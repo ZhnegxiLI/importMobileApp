@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ReadOrderDetailsPage } from '../read-order-details/read-order-details'
 
 /**
  * Generated class for the ReadOrderListPage page.
@@ -20,6 +21,9 @@ export class ReadOrderListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReadOrderListPage');
+  }
+  commandeDetail(){
+    this.navCtrl.push(ReadOrderDetailsPage);
   }
 
 }
