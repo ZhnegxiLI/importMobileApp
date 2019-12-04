@@ -1,0 +1,44 @@
+page-product-detail {
+    .productDetailImg{
+        width: 100%;
+    }
+
+    .content{
+        background: #ffffff!important;
+    }
+
+    .productDetailImgNavButton{
+        height: 100%;
+    }
+
+    .list-ios>.item-block:first-child {
+        border-top: none;
+    }
+    .list-ios>.item-block:last-child {
+        border-bottom: none;
+    }
+    .list-md>.item-block:first-child {
+        border-top: none;
+    }
+    .list-md>.item-block:last-child {
+        border-bottom: none;
+    }
+    .iconText{
+        margin-bottom: 5px!important;
+    }
+    .iconCol{
+        padding-bottom: 0px!important;;
+    }
+    ion-list{
+        .label-md{
+            margin:0px!important;
+        }
+        .label-ios{
+            margin:0px!important;
+        }
+        .nombreAvis{
+            margin-right: 5px;
+        }
+    }
+ 
+}

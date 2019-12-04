@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ProductDetailPage } from '../product-detail/product-detail';
 
 /**
- * Generated class for the NewproductPage page.
+ * Generated class for the ProductEvaluationListPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,20 +10,16 @@ import { ProductDetailPage } from '../product-detail/product-detail';
 
 @IonicPage()
 @Component({
-  selector: 'page-newproduct',
-  templateUrl: 'newproduct.html',
+  selector: 'write-page-product-evaluation',
+  templateUrl: 'write-product-evaluation.html',
 })
-export class NewproductPage {
+export class WriteProductEvaluationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewproductPage');
-  }
-
-  productDetail(){
-    this.navCtrl.push(ProductDetailPage);
+    console.log('ionViewDidLoad ProductEvaluationListPage');
   }
 
 }
