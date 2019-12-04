@@ -1,0 +1,71 @@
+<!--
+  Generated template for the ProductDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Product Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <img class="productDetailImg" src="assets/imgs/productDetailImg.png"/>
+  <ion-list style="border-style: none">
+    <ion-item >
+    <ion-buttons style="width: 100%;margin-bottom: 5px;padding-right: 16px;" color='light'>
+      <button class="productDetailImgNavButton" (click)="favorite()" ion-button clear>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon style="font-size:-webkit-xxx-large;" *ngIf="isFavorite" isActive="true" name="bookmark" ></ion-icon>
+              <ion-icon style="font-size:-webkit-xxx-large;" *ngIf="!isFavorite" isActive="false" name="bookmark" ></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!isFavorite"><ion-col>收藏</ion-col></ion-row>
+          <ion-row *ngIf="isFavorite"><ion-col>已收藏</ion-col></ion-row>
+        </ion-grid>
+      </button>
+      <button class="productDetailImgNavButton" ion-button clear>
+        <ion-grid>
+            <ion-row>
+              <ion-col><ion-icon style="font-size:-webkit-xxx-large;" name="cart"></ion-icon></ion-col>
+            </ion-row>
+            <ion-row><ion-col>添加</ion-col></ion-row>
+          </ion-grid>
+      </button>
+      <button class="productDetailImgNavButton" ion-button clear>
+        <ion-grid>
+            <ion-row>
+              <ion-col><ion-icon style="font-size:-webkit-xxx-large;" name="create"></ion-icon></ion-col>
+            </ion-row>
+            <ion-row><ion-col>点评</ion-col></ion-row>
+          </ion-grid>
+      </button>
+    </ion-buttons>
+    <p style="font-size: unset;color:#222;">Référence : 947628</p>
+    </ion-item>
+    <ion-item>
+        Quantité par colis : 1
+    </ion-item>
+    <ion-item>
+      Couleur :Blanc
+    </ion-item>
+    <ion-item>Taille : 56.5×42cm</ion-item>
+    <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>3 niveaux de puissances</ion-col>
+          </ion-row>
+          <ion-row><ion-col>2 interruptoires(froid /chaud)</ion-col></ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>Matière : en métal</ion-item>
+    <ion-item></ion-item>
+</ion-list>
+  
+</ion-content>

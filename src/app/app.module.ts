@@ -22,6 +22,8 @@ import { NewproductPage } from '../pages/newproduct/newproduct'
 import { CategoryListPage } from '../pages/category-list/category-list'
 import {SubCategoryListPage} from '../pages/sub-category-list/sub-category-list';
 import { ComponentsModule } from '../components/components.module';
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ComponentsModule } from '../components/components.module';
     NewproductPage,
     SearchPage,
     CategoryListPage,
-    SubCategoryListPage
+    SubCategoryListPage,
+    ProductDetailPage 
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { ComponentsModule } from '../components/components.module';
     NewproductPage,
     SearchPage,
     CategoryListPage,
-    SubCategoryListPage
+    SubCategoryListPage,
+    ProductDetailPage 
   ],
   providers: [
     StatusBar,

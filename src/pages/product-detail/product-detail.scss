@@ -1,0 +1,27 @@
+page-product-detail {
+    .productDetailImg{
+        width: 100%;
+    }
+
+    .content{
+        background: #ffffff!important;
+    }
+
+    .productDetailImgNavButton{
+        width: 33%;
+        height: 100%;
+    }
+
+    .list-ios>.item-block:first-child {
+        border-top: none;
+    }
+    .list-ios>.item-block:last-child {
+        border-bottom: none;
+    }
+    .list-md>.item-block:first-child {
+        border-top: none;
+    }
+    .list-md>.item-block:last-child {
+        border-bottom: none;
+    }
+}
