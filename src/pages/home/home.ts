@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {NewproductPage} from '../newproduct/newproduct';
 import {SearchPage} from '../search/search'
 import { CategoryListPage} from '../category-list/category-list'
+import {ProductEvaluationListPage} from '../product-evaluation-list/product-evaluation-list'
 
 @Component({
   selector: 'page-home',
@@ -23,6 +24,10 @@ export class HomePage {
 
   displayCategoryListPage(){
     this.navCtrl.push(CategoryListPage);
+  }
+
+  displayAvis(){
+    this.navCtrl.push(ProductEvaluationListPage, {global:true});
   }
 
 }

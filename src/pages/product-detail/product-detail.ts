@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {WriteProductEvaluationPage} from '../write-product-evaluation/write-product-evaluation'
+import {ProductEvaluationListPage} from '../product-evaluation-list/product-evaluation-list'
 
 
 
@@ -31,6 +32,10 @@ export class ProductDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductDetailPage');
+  }
+
+  displayAvis(){
+    this.navCtrl.push(ProductEvaluationListPage, {global:false});
   }
 
 }

@@ -14,11 +14,12 @@
 
 
 <ion-content>
+<<<<<<< HEAD
   <img class="productDetailImg" src="assets/imgs/productDetailImg.png" />
   <div class="buttonZone">
     <ion-row class="buttonRow" text-center>
       <ion-col col-4 class="iconCol">
-        <button ion-button class="bestSaleColor" icon-only>
+        <button ion-button class="bestSaleColor" icon-only (click)="favorite()">
           <ion-icon name='bookmark'></ion-icon>
         </button>
         <p class="iconText">Favorite</p>
@@ -51,7 +52,7 @@
               defaultColor="#f4f4f4" readonly="true" rating="4" fontSize="24px">
             </ionic3-star-rating>
           </ion-col>
-          <ion-col col-4><span float-right class="nombreAvis">(3 avis)</span> </ion-col>
+          <ion-col col-4><span float-right class="nombreAvis" (click)="displayAvis()">(3 avis)</span> </ion-col>
         </ion-row>
     </button>
     <ion-item>
