@@ -13,6 +13,7 @@ import { NotificationPage } from '../pages/notification/notification';
 import { LoginPage } from '../pages/login/login';
 import { IonicStorageModule } from '@ionic/storage'
 import {SearchPage} from '../pages/search/search'
+import { ProductEvaluationListPage } from '../pages/product-evaluation-list/product-evaluation-list';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -40,7 +41,8 @@ import { StarRatingModule } from 'ionic3-star-rating';
     CategoryListPage,
     SubCategoryListPage,
     ProductDetailPage,
-    WriteProductEvaluationPage
+    WriteProductEvaluationPage,
+    ProductEvaluationListPage
   ],
   imports: [
     StarRatingModule,
@@ -67,7 +69,8 @@ import { StarRatingModule } from 'ionic3-star-rating';
     CategoryListPage,
     SubCategoryListPage,
     ProductDetailPage,
-    WriteProductEvaluationPage
+    WriteProductEvaluationPage,
+    ProductEvaluationListPage
   ],
   providers: [
     StatusBar,

@@ -14,9 +14,8 @@
 
 
 <ion-content>
-  <img class="productDetailImg" src="assets/imgs/productDetailImg.png"/>
-  
-    
+    <img class="productDetailImg" src="assets/imgs/productDetailImg.png"/>
+
     <ion-buttons style="width: 100%;margin-bottom: 5px;padding-right: 16px;" color='light'>
       <ion-row>
         <ion-col col-4>
@@ -55,17 +54,19 @@
     </ion-row>
     </ion-buttons>
     <ion-list style="border-style: none">
-        <ion-item >
+    <ion-item >
+    <strong style="font-size: unset;color:#222;margin-bottom: 5px;">CHAUFFAGE MAX 2000W</strong>
     <p style="font-size: unset;color:#222;">Référence : 947628</p>
+    
     </ion-item>
-    <a ion-item >
+    <a ion-item (click)="displayAvis()">
       <ion-row align-items-center>
         <ion-col col-2><ion-icon color="primary" style="font-size:xx-large;" name="chatboxes"></ion-icon> </ion-col>
         <ion-col col-6><ionic3-star-rating #rating
           activeIcon = "ios-star"
           defaultIcon = "ios-star-outline"
           activeColor = "#488aff" 
-          defaultColor = "#f4f4f4"
+          defaultColor = "cadetblue"
           readonly="true"
           rating="4"
           fontSize = "24px">

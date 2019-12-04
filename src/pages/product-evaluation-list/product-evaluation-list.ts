@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+
 /**
  * Generated class for the ProductEvaluationListPage page.
  *
@@ -10,12 +11,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-write-product-evaluation',
-  templateUrl: 'write-product-evaluation.html',
+  selector: 'page-product-evaluation-list',
+  templateUrl: 'product-evaluation-list.html',
 })
-export class WriteProductEvaluationPage {
-
+export class ProductEvaluationListPage {
+  global : boolean;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.global = navParams.get('global');
   }
 
   ionViewDidLoad() {
