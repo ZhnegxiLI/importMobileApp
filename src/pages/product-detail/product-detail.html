@@ -14,84 +14,64 @@
 
 
 <ion-content>
-    <img class="productDetailImg" src="assets/imgs/productDetailImg.png"/>
-
-    <ion-buttons style="width: 100%;margin-bottom: 5px;padding-right: 16px;" color='light'>
-      <ion-row>
-        <ion-col col-4>
-      <button class="productDetailImgNavButton" (click)="favorite()" ion-button clear>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-icon style="font-size:-webkit-xxx-large;" isActive="{{isFavorite}}" name="bookmark" ></ion-icon>
-            </ion-col>
-          </ion-row>
-          <ion-row *ngIf="!isFavorite"><ion-col>Facorite</ion-col></ion-row>
-          <ion-row *ngIf="isFavorite"><ion-col>Facorité</ion-col></ion-row>
-        </ion-grid>
-      </button>
-    </ion-col>
-    <ion-col col-4>
-      <button class="productDetailImgNavButton" ion-button clear>
-        <ion-grid>
-            <ion-row>
-              <ion-col><ion-icon style="font-size:-webkit-xxx-large;" name="cart"></ion-icon></ion-col>
-            </ion-row>
-            <ion-row><ion-col>Cart</ion-col></ion-row>
-          </ion-grid>
-      </button>
-    </ion-col>
-    <ion-col col-4>
-      <button class="productDetailImgNavButton" (click)="writeEvaluation()" ion-button clear>
-        <ion-grid>
-            <ion-row>
-              <ion-col><ion-icon style="font-size:-webkit-xxx-large;" name="create"></ion-icon></ion-col>
-            </ion-row>
-            <ion-row><ion-col>Avis</ion-col></ion-row>
-          </ion-grid>
-      </button>
-    </ion-col>
+  <img class="productDetailImg" src="assets/imgs/productDetailImg.png" />
+  <div class="buttonZone">
+    <ion-row class="buttonRow" text-center>
+      <ion-col col-4 class="iconCol">
+        <button ion-button class="bestSaleColor" icon-only (click)="favorite()">
+          <ion-icon name='bookmark'></ion-icon>
+        </button>
+        <p class="iconText">Favorite</p>
+      </ion-col>
+      <ion-col col-4 class="iconCol">
+        <button ion-button class="promotionColor" icon-only >
+          <ion-icon name='cart'></ion-icon>
+        </button>
+        <p class="iconText">Cart</p>
+      </ion-col>
+      <ion-col col-4 class="iconCol">
+        <button ion-button class="nouveauteColor" icon-only (click)="writeEvaluation()">
+          <ion-icon name='create'></ion-icon>
+        </button>
+        <p class="iconText">Avis</p>
+      </ion-col>
     </ion-row>
-    </ion-buttons>
-    <ion-list style="border-style: none">
-    <ion-item >
-    <strong style="font-size: unset;color:#222;margin-bottom: 5px;">CHAUFFAGE MAX 2000W</strong>
-    <p style="font-size: unset;color:#222;">Référence : 947628</p>
-    
-    </ion-item>
-    <a ion-item (click)="displayAvis()">
-      <ion-row align-items-center>
-        <ion-col col-2><ion-icon color="primary" style="font-size:xx-large;" name="chatboxes"></ion-icon> </ion-col>
-        <ion-col col-6><ionic3-star-rating #rating
-          activeIcon = "ios-star"
-          defaultIcon = "ios-star-outline"
-          activeColor = "#488aff" 
-          defaultColor = "cadetblue"
-          readonly="true"
-          rating="4"
-          fontSize = "24px">
-        </ionic3-star-rating></ion-col>
-        <ion-col col-2>(3 avis)</ion-col>
-      </ion-row>
-      
-      </a>
+  </div>
+  <ion-list>
     <ion-item>
-        Quantité par colis : 1
+      <p style="font-size: unset;color:#222;">Référence : 947628</p>
+    </ion-item>
+    <button ion-item (click)="displayAvis()"> 
+      <ion-row align-items-center>
+          <ion-col col-2>
+            <ion-icon color="primary" style="font-size:xx-large;" name="chatboxes"></ion-icon>
+          </ion-col>
+          <ion-col col-6>
+            <ionic3-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#534d7a"
+              defaultColor="cadetblue" readonly="true" rating="4" fontSize="24px">
+            </ionic3-star-rating>
+          </ion-col>
+          <ion-col col-4><span float-right class="nombreAvis" (click)="displayAvis()">(3 avis)</span> </ion-col>
+        </ion-row>
+    </button>
+    <ion-item>
+      Quantité par colis : 1
     </ion-item>
     <ion-item>
       Couleur :Blanc
     </ion-item>
     <ion-item>Taille : 56.5×42cm</ion-item>
     <ion-item>
-        <ion-grid>
-          <ion-row>
-            <ion-col>3 niveaux de puissances</ion-col>
-          </ion-row>
-          <ion-row><ion-col>2 interruptoires(froid /chaud)</ion-col></ion-row>
-        </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col>3 niveaux de puissances</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>2 interruptoires(froid /chaud)</ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
     <ion-item>Matière : en métal</ion-item>
     <ion-item></ion-item>
-</ion-list>
-  
+  </ion-list>
 </ion-content>

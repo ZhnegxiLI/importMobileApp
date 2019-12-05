@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
 import { HomePage } from '../home/home';
-import { DiscoveryPage } from '../discovery/discovery';
+// import { DiscoveryPage } from '../discovery/discovery';
 import { CartPage } from '../cart/cart';
 import { myAccountPage } from '../myAccount/myAccount';
 import { NotificationPage } from '../notification/notification'; 
+import { ReadOrderListPage } from '../read-order-list/read-order-list';
+
 
 @Component({
   templateUrl: 'tabs.html'
@@ -12,7 +14,7 @@ import { NotificationPage } from '../notification/notification';
 export class TabsPage {
 
   tabHome = HomePage;
-  tabDiscovery = DiscoveryPage;
+  tabDiscovery = ReadOrderListPage;
   tabCart = CartPage;
   tabNotification = NotificationPage;
   tabMyAccount = myAccountPage;

@@ -39,9 +39,9 @@
         <span> Mes commandes </span>
         <a class="viewAll" href="#"> view all</a>
       </ion-list-header>
-      <button ion-item>Commandes unpayées</button>
-      <button ion-item>Commandes en cours</button>
-      <button ion-item>Commandes arrivées</button>
+      <button ion-item (click)="readCommandList()">Commandes unpayées</button>
+      <button ion-item (click)="readCommandList()">Commandes en cours</button>
+      <button ion-item (click)="readCommandList()">Commandes arrivées</button>
     </ion-list>
 
     <ion-list>
@@ -57,6 +57,11 @@
         <ion-icon class="iconStyle" name="information-circle" item-start></ion-icon>
         A Propos de Nous
       </button>
+    </ion-list>
+    <ion-list>
+        <button ion-button full color="danger" text-center (click)="logout()">
+            Déconnexion
+        </button>
     </ion-list>
 
   </div>

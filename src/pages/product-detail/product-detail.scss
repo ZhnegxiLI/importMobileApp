@@ -23,4 +23,21 @@ page-product-detail {
     .list-md>.item-block:last-child {
         border-bottom: none;
     }
+    .iconText{
+        margin-bottom: 5px!important;
+    }
+    .iconCol{
+        padding-bottom: 0px!important;;
+    }
+    ion-list{
+        .label-md{
+            margin:0px!important;
+        }
+        .label-ios{
+            margin:0px!important;
+        }
+        .nombreAvis{
+            margin-right: 5px;
+        }
+    }
 }

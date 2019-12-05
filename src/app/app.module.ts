@@ -11,18 +11,22 @@ import { CartPage } from '../pages/cart/cart';
 import { myAccountPage } from '../pages/myAccount/myAccount';
 import { NotificationPage } from '../pages/notification/notification';
 import { LoginPage } from '../pages/login/login';
-import { IonicStorageModule } from '@ionic/storage'
-import {SearchPage} from '../pages/search/search'
-import { ProductEvaluationListPage } from '../pages/product-evaluation-list/product-evaluation-list';
 
+import { IonicStorageModule } from '@ionic/storage';
+import {SearchPage} from '../pages/search/search';
+import {ReadOrderListPage } from '../pages/read-order-list/read-order-list';
+import {SubCategoryListPage } from '../pages/sub-category-list/sub-category-list';
+import { ReadOrderDetailsPage } from '../pages/read-order-details/read-order-details'
+
+import { ProductEvaluationListPage } from '../pages/product-evaluation-list/product-evaluation-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { NewproductPage } from '../pages/newproduct/newproduct'
-import { CategoryListPage } from '../pages/category-list/category-list'
-import {SubCategoryListPage} from '../pages/sub-category-list/sub-category-list';
+import { CategoryListPage } from '../pages/category-list/category-list';
 import { ComponentsModule } from '../components/components.module';
+
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import {WriteProductEvaluationPage} from '../pages/write-product-evaluation/write-product-evaluation'
 import { StarRatingModule } from 'ionic3-star-rating';
@@ -40,7 +44,9 @@ import { ContactUsPage } from '../pages/contact-us/contact-us';
     NewproductPage,
     SearchPage,
     CategoryListPage,
+    ReadOrderListPage,
     SubCategoryListPage,
+    ReadOrderDetailsPage,
     ProductDetailPage,
     WriteProductEvaluationPage,
     ProductEvaluationListPage,
@@ -69,7 +75,9 @@ import { ContactUsPage } from '../pages/contact-us/contact-us';
     NewproductPage,
     SearchPage,
     CategoryListPage,
+    ReadOrderListPage,
     SubCategoryListPage,
+    ReadOrderDetailsPage,
     ProductDetailPage,
     WriteProductEvaluationPage,
     ProductEvaluationListPage,

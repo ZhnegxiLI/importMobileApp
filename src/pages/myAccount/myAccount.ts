@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { LoginPage } from '../login/login'
 import { from } from 'rxjs/observable/from';
 import { Storage } from '@ionic/storage';
+import { ReadOrderListPage } from '../read-order-list/read-order-list';
 /**
  * Generated class for the MorePage page.
  *
@@ -28,6 +29,9 @@ export class myAccountPage {
 
   showModal() {
     let modal = this.modalCtrl.create(LoginPage);
+    modal.onDidDismiss(()=>{
+        this.loadUserPage();
+    });
     modal.present();
   }
 
@@ -51,5 +55,12 @@ export class myAccountPage {
         this.logined = false;
       }
     });
+  }
+  logout(){
+    this.storage.remove('UserId');
+    this.loadUserPage();
+  }
+  readCommandList(){
+    this.navCtrl.push(ReadOrderListPage);
   }
 }
