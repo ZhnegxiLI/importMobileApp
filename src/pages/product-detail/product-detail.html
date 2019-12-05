@@ -15,29 +15,32 @@
 
 <ion-content>
   <img class="productDetailImg" src="assets/imgs/productDetailImg.png" />
+  <div class="surjet"></div>
+  <p class="surjetText">CHAUFFAGE MAX 2000W</p>
   <div class="buttonZone">
     <ion-row class="buttonRow" text-center>
-      <ion-col col-4 class="iconCol">
-        <button ion-button class="bestSaleColor" icon-only (click)="favorite()">
-          <ion-icon name='bookmark'></ion-icon>
+      <ion-col col-4 class="iconCol" (click)="favorite()">
+        <button ion-button  icon-only >
+          <ion-icon isActive="{{isFavorite}}" name='bookmark'></ion-icon>
         </button>
         <p class="iconText">Favorite</p>
       </ion-col>
       <ion-col col-4 class="iconCol">
-        <button ion-button class="promotionColor" icon-only >
+        <button ion-button icon-only >
           <ion-icon name='cart'></ion-icon>
         </button>
         <p class="iconText">Cart</p>
       </ion-col>
       <ion-col col-4 class="iconCol">
-        <button ion-button class="nouveauteColor" icon-only (click)="writeEvaluation()">
+        <button ion-button icon-only (click)="writeEvaluation()">
           <ion-icon name='create'></ion-icon>
         </button>
         <p class="iconText">Avis</p>
       </ion-col>
     </ion-row>
   </div>
-  <ion-list>
+
+  <ion-list style="position: relative; bottom: 20px;">
     <ion-item>
       <p style="font-size: unset;color:#222;">Référence : 947628</p>
     </ion-item>

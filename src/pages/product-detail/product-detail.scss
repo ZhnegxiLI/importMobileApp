@@ -3,12 +3,27 @@ page-product-detail {
         width: 100%;
     }
 
+    .buttonZone{
+        position: relative;
+        bottom: 30px;
+    }
     .content{
         background: #ffffff!important;
     }
 
+    .iconButton{
+        font-size:-webkit-xxx-large;
+    }
+
+    .iconText{
+        font-size: small;
+    }
+
     .productDetailImgNavButton{
         height: 100%;
+        width: 28vw;
+        margin: 0px;
+        padding: 0px;   
     }
 
     .list-ios>.item-block:first-child {
@@ -39,5 +54,23 @@ page-product-detail {
         .nombreAvis{
             margin-right: 5px;
         }
+    }
+
+    .surjet{
+        position: relative;
+        bottom: 32px;
+        height: 30px;
+        color: #ffffff;
+        opacity: 0.3;
+        background-color: rgb(0, 0, 0);
+    }
+
+    .surjetText{
+        position: relative;
+        height: 20px;
+        bottom: 60px;
+        margin: 0;
+        color: #ffffff;
+        font-size: medium;
     }
 }

@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login'
 import { from } from 'rxjs/observable/from';
 import { Storage } from '@ionic/storage';
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
+import {AboutUsPage} from '../about-us/about-us'; 
 /**
  * Generated class for the MorePage page.
  *
@@ -41,6 +42,10 @@ export class myAccountPage {
 
   contactUs(){
     this.navCtrl.push(ContactUsPage);
+  }
+
+  aboutUs(){
+    this.navCtrl.push(AboutUsPage);
   }
 
   loadUserPage() {
