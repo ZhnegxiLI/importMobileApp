@@ -26,6 +26,7 @@ import { ComponentsModule } from '../components/components.module';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
 import {WriteProductEvaluationPage} from '../pages/write-product-evaluation/write-product-evaluation'
 import { StarRatingModule } from 'ionic3-star-rating';
+import { ContactUsPage } from '../pages/contact-us/contact-us';
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +43,8 @@ import { StarRatingModule } from 'ionic3-star-rating';
     SubCategoryListPage,
     ProductDetailPage,
     WriteProductEvaluationPage,
-    ProductEvaluationListPage
+    ProductEvaluationListPage,
+    ContactUsPage
   ],
   imports: [
     StarRatingModule,
@@ -70,7 +72,8 @@ import { StarRatingModule } from 'ionic3-star-rating';
     SubCategoryListPage,
     ProductDetailPage,
     WriteProductEvaluationPage,
-    ProductEvaluationListPage
+    ProductEvaluationListPage,
+    ContactUsPage
   ],
   providers: [
     StatusBar,

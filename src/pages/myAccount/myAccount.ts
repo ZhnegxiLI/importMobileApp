@@ -1,3 +1,4 @@
+import { ContactUsPage } from './../contact-us/contact-us';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoginPage } from '../login/login'
@@ -32,6 +33,10 @@ export class myAccountPage {
 
   ionViewDidEnter() {
     this.loadUserPage();
+  }
+
+  contactUs(){
+    this.navCtrl.push(ContactUsPage);
   }
 
   loadUserPage() {
