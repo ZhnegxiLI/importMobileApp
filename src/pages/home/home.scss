@@ -7,14 +7,18 @@ page-home {
     }
     .content{
         background: #ffffff!important;
+        height: 100%;
     }
     .buttonRow{
         margin: 10px 15px;
     }
     .buttonZone{
-       /*  position: absolute; 
-        bottom: 2%; */
-        margin-top: 20%;
+        position: fixed; 
+        bottom: 0; 
+        margin: auto;
+        left: 0;
+        right: 0;
+        //margin-top: 20%;
     }
     .searchButtonColor{
         color:  #000;
