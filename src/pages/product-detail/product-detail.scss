@@ -1,12 +1,9 @@
 page-product-detail {
     .productDetailImg{
         width: 100%;
+        height: 100%;
     }
 
-    .buttonZone{
-        position: relative;
-        bottom: 30px;
-    }
     .content{
         background: #ffffff!important;
     }
@@ -58,8 +55,8 @@ page-product-detail {
 
     .surjet{
         position: relative;
-        bottom: 32px;
-        height: 30px;
+        bottom: 14%;
+        height: 13%;
         color: #ffffff;
         opacity: 0.3;
         background-color: rgb(0, 0, 0);
@@ -67,10 +64,13 @@ page-product-detail {
 
     .surjetText{
         position: relative;
-        height: 20px;
-        bottom: 60px;
+        bottom: 24%;
+        height: 10%;
         margin: 0;
         color: #ffffff;
         font-size: medium;
+    }
+    .buttonRow{
+        margin-top: 5px;
     }
 }

@@ -14,3 +14,13 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.ios ion-tab ion-footer .toolbar:last-child {
+    padding-bottom: $toolbar-ios-padding!important;
+    min-height: $toolbar-ios-height!important;
+  }
+
+  ion-tabs {
+    ion-footer ion-toolbar:last-child {
+      padding-bottom: 0;
+    }
+  }

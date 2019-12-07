@@ -1,4 +1,10 @@
 page-cart {
+
+    .ios ion-tab ion-footer .toolbar:last-child {
+        padding-bottom: $toolbar-ios-padding!important;
+        min-height: $toolbar-ios-height!important;
+      }
+
     .footerComponent {
         display: flex;
         align-items: center;
@@ -23,5 +29,6 @@ page-cart {
     .colStyle{
         padding: 5px 5px 0px 5px;
     }
-   
+
 }
+
