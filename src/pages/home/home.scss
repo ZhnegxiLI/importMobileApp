@@ -12,13 +12,13 @@ page-home {
     .buttonRow{
         margin: 10px 15px;
     }
+    .myButton{
+        height: 7vh;
+        width: 7vh;
+    }
+    
     .buttonZone{
-        position: fixed; 
-        bottom: 0; 
-        margin: auto;
-        left: 0;
-        right: 0;
-        //margin-top: 20%;
+        margin-top: 20%;
     }
     .searchButtonColor{
         color:  #000;
@@ -53,7 +53,7 @@ page-home {
     }
     .xxxColor{
         color: #fff;
-    background-color: mediumpurple;
+        background-color: mediumpurple;
     }
 }
 
