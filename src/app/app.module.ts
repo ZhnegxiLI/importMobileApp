@@ -32,6 +32,17 @@ import {WriteProductEvaluationPage} from '../pages/write-product-evaluation/writ
 import { StarRatingModule } from 'ionic3-star-rating';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { AboutUsPage } from '../pages/about-us/about-us';
+
+
+import { HttpClientModule,HttpClient} from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+export function createTranslateLoader(http: HttpClient) {
+  //此出的路径需要和第二步新建的文件夹保持一致
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     MyApp,
@@ -58,8 +69,16 @@ import { AboutUsPage } from '../pages/about-us/about-us';
     StarRatingModule,
     BrowserModule,
     ComponentsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true'
+    }),
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+      }
     }),
     HttpModule,
     IonicStorageModule.forRoot()

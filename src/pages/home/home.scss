@@ -1,4 +1,9 @@
 page-home {
+
+    .scroll-content {
+        overflow-y: auto !important;
+    }
+    
     .slidePhoto{
         height: 75%;
     }

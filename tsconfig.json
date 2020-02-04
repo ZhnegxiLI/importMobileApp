@@ -4,6 +4,12 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@app/env": [
+        "env/env.dev"
+      ]
+    },
     "lib": [
       "dom",
       "es2015"
