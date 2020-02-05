@@ -1,0 +1,20 @@
+{
+    "Ok" : "Ok",
+    "en":"English",
+    "fr":"Français",
+    "cn":"中文",
+    "HOME": {
+        "TITLE": "首页",
+        "LANG": "切换语言",
+        "TIPS": "多语言切换案例"
+    },
+    "TABS": {
+        "HOME": "首页",
+        "ABOUT": "关于",
+        "CONTACT": "联系人"
+    },
+    "translation":{
+        "Title":"Traduction",
+        "InnerTitle":"选择你的语言"
+    }
+}

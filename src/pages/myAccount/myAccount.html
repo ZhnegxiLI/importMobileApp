@@ -45,6 +45,12 @@
     </ion-list>
 
     <ion-list>
+
+      <button ion-item (click)="translation()">
+        <ion-icon class="iconStyle" name="globe-outline" item-start></ion-icon>
+        {{'translation.Title' | translate}}
+      </button>
+
       <button ion-item>
         <ion-icon class="iconStyle" name="at" item-start></ion-icon>
         Donnez-Nous Votre Avis

@@ -5,6 +5,7 @@ import { timeout, catchError, mergeMap } from 'rxjs/operators'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { ENV } from '@app/env';
+import { Events } from 'ionic-angular';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
@@ -14,7 +15,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class RestProvider {
   constructor(public http: Http, 
-    public storage: Storage
+    public storage: Storage,
+    public event : Events
    ) {
    
   }
@@ -112,6 +114,7 @@ export class RestProvider {
    * @memberof RestProvider
    */
   Login(User):Observable<any>{
+    this.event.publish('user:created');
     return this.postUrlReturnWithOutAuth(this.apiUrlLogin, User);
   }
   /**

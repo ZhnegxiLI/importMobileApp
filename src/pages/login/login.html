@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content >
-  <ion-list>
+  <ion-list style="margin-bottom: 10px;">
     <ion-item>
       <ion-label floating>Adresse e-mail</ion-label>
       <ion-input type="text" [(ngModel)]="mobile"></ion-input>
@@ -27,10 +27,11 @@
       <ion-input type="password" [(ngModel)] = "password"></ion-input>
     </ion-item>
   </ion-list>
+  <a style="margin-left:10px;text-decoration: underline;">Oubilier votre password?</a>
   <div padding>
     <button ion-button color = "primary" block (click)="login()" >Me connecter</button>
   </div>
   <div padding text-center>
-      <button ion-button color = "primary" outline >Créer votre compte</button>
+      <button ion-button color = "primary" outline (click)="registre()">Créer votre compte</button>
     </div>
 </ion-content>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ToastController, ModalController } from 'ionic-angular';
 import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
 import { from } from 'rxjs/observable/from';
-import {Storage } from '@ionic/storage'
+import {Storage } from '@ionic/storage';
+import {RegistrePage} from '../registre/registre'
 
 
 @Component({
@@ -22,7 +23,8 @@ export class LoginPage extends BaseUI {
     public loadingCtrl: LoadingController,
     public rest: RestProvider,
     public toastCtrl: ToastController ,
-    public storage: Storage) {
+    public storage: Storage,
+    public modalCtrl : ModalController) {
     super();
   }
 
@@ -31,7 +33,17 @@ export class LoginPage extends BaseUI {
   }
 
   login() {
-    var loading = super.showLoading(this.loadingCtrl, "En cours de connecter");
+    this.rest.Login(this.mobile).subscribe(
+          f => {
+        
+            
+          },
+        error => {
+          this.errorMessage = <any>error;
+         // loading.dismiss();
+          super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre connexion de réseau"); // 添加多种错误代码检测
+        });
+    //var loading = super.showLoading(this.loadingCtrl, "En cours de connecter");
     // this.rest.Login(this.mobile, this.password)
     //   .subscribe(
     //     f => {
@@ -51,6 +63,15 @@ export class LoginPage extends BaseUI {
     //     loading.dismiss();
     //     super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre connexion de réseau"); // 添加多种错误代码检测
     //   });
+  }
+
+  registre(){
+
+    let modal = this.modalCtrl.create(RegistrePage);
+    modal.onDidDismiss(()=>{
+       
+    });
+    modal.present();
   }
 
   dismiss() {

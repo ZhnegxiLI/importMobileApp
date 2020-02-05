@@ -10,7 +10,7 @@
   </ion-col>
 
   <ion-col col-2> 
-      <input [(ngModel)]="buyNumber" (input)="onInput($event)" (click)="onMyInput($event)" [disabled]='disabled' #input >
+      <input [(ngModel)]="buyNumber" type="tel" pattern="[0-9]*" (input)="onInput($event)" (click)="onMyInput($event)" [disabled]='disabled' #input >
   </ion-col>
 
   <ion-col col-2 text-right>

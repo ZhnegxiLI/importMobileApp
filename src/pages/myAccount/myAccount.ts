@@ -6,12 +6,7 @@ import { from } from 'rxjs/observable/from';
 import { Storage } from '@ionic/storage';
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
 import {AboutUsPage} from '../about-us/about-us'; 
-/**
- * Generated class for the MorePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {TranslationPage} from '../translation/translation'
 
 @Component({
   selector: 'page-myAccount',
@@ -51,8 +46,8 @@ export class myAccountPage {
   loadUserPage() {
     this.storage.get('UserId').then((val) => {
       if (val!=null) {
-        this.notLogin = false;
-        this.logined = true;
+        this.notLogin = true;
+        this.logined = false;
       }
 
       else {
@@ -67,5 +62,13 @@ export class myAccountPage {
   }
   readCommandList(){
     this.navCtrl.push(ReadOrderListPage);
+  }
+  
+  translation(){
+    let modal = this.modalCtrl.create(TranslationPage);
+    modal.onDidDismiss(()=>{
+       
+    });
+    modal.present();
   }
 }

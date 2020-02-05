@@ -11,6 +11,7 @@ import { CartPage } from '../pages/cart/cart';
 import { myAccountPage } from '../pages/myAccount/myAccount';
 import { NotificationPage } from '../pages/notification/notification';
 import { LoginPage } from '../pages/login/login';
+import { RegistrePage } from '../pages/registre/registre'
 
 import { IonicStorageModule } from '@ionic/storage';
 import {SearchPage} from '../pages/search/search';
@@ -32,11 +33,12 @@ import {WriteProductEvaluationPage} from '../pages/write-product-evaluation/writ
 import { StarRatingModule } from 'ionic3-star-rating';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { AboutUsPage } from '../pages/about-us/about-us';
-
+import {TranslationPage} from '../pages/translation/translation'
 
 import { HttpClientModule,HttpClient} from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { UtilsProvider } from '../providers/utils/utils';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -46,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     MyApp,
+    RegistrePage,
     DiscoveryPage,
     CartPage,
     HomePage,
@@ -63,7 +66,8 @@ export function createTranslateLoader(http: HttpClient) {
     WriteProductEvaluationPage,
     ProductEvaluationListPage,
     ContactUsPage,
-    AboutUsPage 
+    AboutUsPage,
+    TranslationPage 
   ],
   imports: [
     StarRatingModule,
@@ -86,6 +90,7 @@ export function createTranslateLoader(http: HttpClient) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    RegistrePage,
     DiscoveryPage,
     CartPage,
     HomePage,
@@ -103,13 +108,15 @@ export function createTranslateLoader(http: HttpClient) {
     WriteProductEvaluationPage,
     ProductEvaluationListPage,
     ContactUsPage,
-    AboutUsPage 
+    AboutUsPage,
+    TranslationPage 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RestProvider
+    RestProvider,
+    UtilsProvider
   ]
 })
 export class AppModule { }
