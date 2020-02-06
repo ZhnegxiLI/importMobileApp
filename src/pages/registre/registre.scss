@@ -1,3 +1,21 @@
 page-registre {
+    .inputBorder{
+        border: solid 1px gray;
+        border-radius: 5px;
+        margin-top: 5px;
+        padding-left: 5px;
+    }
+    .list-ios .item-block .item-inner{
+        border: 0px;
+    }
+    .list-md .item-block .item-inner{
+        border: 0px;
+    }
+    ion-label{
+        color: gray;
+    }
 
+    input:focus {
+       color: #534d7a;
+    }
 }

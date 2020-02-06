@@ -67,11 +67,7 @@ export class LoginPage extends BaseUI {
 
   registre(){
 
-    let modal = this.modalCtrl.create(RegistrePage);
-    modal.onDidDismiss(()=>{
-       
-    });
-    modal.present();
+  this.navCtrl.push(RegistrePage);
   }
 
   dismiss() {

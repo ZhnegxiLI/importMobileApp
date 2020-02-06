@@ -13,6 +13,36 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding style="background-color: white!important;">
+  <ion-list style="margin-bottom: 10px;" lines="none">
+    <form [formGroup]="registreForm">
+    <ion-item style="border:0px"  mode="ios">
+      <ion-label stacked>Adresse e-mail</ion-label>
+      <ion-input type="text"  class="inputBorder" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
+      <ion-label stacked>Mot de passe</ion-label>
+      <ion-input type="password" class="inputBorder" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
+      <ion-label stacked>Confirmer Mot de passe</ion-label>
+      <ion-input type="password" class="inputBorder" formControlName="confirmPassword"></ion-input>
+    </ion-item>
+    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
+      <ion-label stacked>Number</ion-label>
+      <ion-input type="tel" class="inputBorder" formControlName="tel"></ion-input>
+    </ion-item>
+    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
+      <ion-label stacked>siret</ion-label>
+      <ion-input type="text" class="inputBorder" formControlName="siret"></ion-input>
+    </ion-item>
+    <div hidden></div>
+    </form>
+  </ion-list>
+  <div padding>
+    <button ion-button color = "primary" block>Enregistrer</button>
+  </div>
+  <div padding text-center>
+      <button ion-button color = "primary" outline (click)="registre()">Déjà un compte? Login</button>
+    </div>
 </ion-content>

@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { CartPage } from '../cart/cart';
 import { myAccountPage } from '../myAccount/myAccount';
 import { NotificationPage } from '../notification/notification'; 
+import { RegistrePage} from '../registre/registre';
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
 
 
