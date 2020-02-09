@@ -46,13 +46,13 @@ export class myAccountPage {
   loadUserPage() {
     this.storage.get('UserId').then((val) => {
       if (val!=null) {
-        this.notLogin = true;
-        this.logined = false;
+        this.notLogin = false;
+        this.logined = true;
       }
 
       else {
-        this.notLogin = true;
-        this.logined = false;
+        this.notLogin = false;
+        this.logined = true;
       }
     });
   }

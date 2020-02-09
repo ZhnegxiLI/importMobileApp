@@ -16,5 +16,8 @@
     "translation":{
         "Title":"切换语言",
         "InnerTitle":"选择你的语言"
+    },
+    "myAccount":{
+        "ViewAll":"观看全部"
     }
 }
