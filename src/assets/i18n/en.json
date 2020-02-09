@@ -3,6 +3,9 @@
     "en":"English",
     "fr":"Français",
     "cn":"中文",
+    "success":"Success",
+    "refuse":"Refuse",
+    "preparing":"Preparing",
     "HOME": {
         "TITLE": "首页",
         "LANG": "切换语言",
@@ -14,7 +17,37 @@
         "CONTACT": "联系人"
     },
     "translation":{
-        "Title":"Translation",
-        "InnerTitle":"选择你的语言"
+        "Title":"Languages",
+        "InnerTitle":"Choose your language"
+    },
+    "myAccount":{
+        "Title":"My account",
+        "ViewAll":"View all",
+        "MyOrder":"My orders",
+        "UnpaidOrder":"Unpaid orders",
+        "PrepareOrder":"Preparing orders",
+        "OrderArrived":"Arrived orders",
+        "Feedbacks":"Give us your feedbacks",
+        "ContactUs":"Contact us",
+        "AboutUs":"About us",
+        "SignOut":"Sign out",
+        "SignIn":"Please sign in for more information",
+        "SignInOrRegister":"Sign in/Register"
+    },
+    "signin":{
+        "Email":"E-mail",
+        "Password":"Password",
+        "ForgetPassword":"Forgot your password?",
+        "SignIn":"Sign in",
+        "Register":"Register",
+        "Return":"Return"
+    },
+    "readorderlist":{
+        "Commande":"Commande",
+        "CommandeNmber":"Commande",
+        "PurchasingDate":"Purchasing date",
+        "Total":"Total",
+        "Address":"Address",
+        "Detail":"Detail"
     }
 }

@@ -51,8 +51,8 @@ export class myAccountPage {
       }
 
       else {
-        this.notLogin = false;
-        this.logined = true;
+        this.notLogin = true;
+        this.logined = false;
       }
     });
   }

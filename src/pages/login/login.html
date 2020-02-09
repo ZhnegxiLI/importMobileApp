@@ -6,10 +6,10 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>Login</ion-title>
+    <ion-title text-center>{{'signin.SignIn' | translate}}</ion-title>
     <ion-buttons>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Retour</span>
+        <span ion-text color="primary" showWhen="ios">{{'signin.Return' | translate}}</span>
         <ion-icon name="md-close" showWhen="android"></ion-icon>
       </button>
     </ion-buttons>
@@ -19,19 +19,19 @@
 <ion-content >
   <ion-list style="margin-bottom: 10px;">
     <ion-item>
-      <ion-label floating>Adresse e-mail</ion-label>
+      <ion-label floating>{{'signin.Email' | translate}}</ion-label>
       <ion-input type="text" [(ngModel)]="mobile"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Mot de passe</ion-label>
+      <ion-label floating>{{'signin.Password' | translate}}</ion-label>
       <ion-input type="password" [(ngModel)] = "password"></ion-input>
     </ion-item>
   </ion-list>
-  <a style="margin-left:10px;text-decoration: underline;">Oubilier votre password?</a>
+  <a style="margin-left:10px;text-decoration: underline;">{{'signin.ForgetPassword' | translate}}</a>
   <div padding>
-    <button ion-button color = "primary" block (click)="login()" >Me connecter</button>
+    <button ion-button color = "primary" block (click)="login()" >{{'signin.SignIn' | translate}}</button>
   </div>
   <div padding text-center>
-      <button ion-button color = "primary" outline (click)="registre()">Créer votre compte</button>
+      <button ion-button color = "primary" outline (click)="registre()">{{'signin.Register' | translate}}</button>
     </div>
 </ion-content>

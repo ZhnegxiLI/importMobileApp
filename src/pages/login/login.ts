@@ -33,16 +33,18 @@ export class LoginPage extends BaseUI {
   }
 
   login() {
-    this.rest.Login(this.mobile).subscribe(
-          f => {
+    this.viewCtrl.dismiss();
+    this.storage.set('UserId', '1');
+    // this.rest.Login(this.mobile).subscribe(
+    //       f => {
         
             
-          },
-        error => {
-          this.errorMessage = <any>error;
-         // loading.dismiss();
-          super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre connexion de réseau"); // 添加多种错误代码检测
-        });
+    //       },
+    //     error => {
+    //       this.errorMessage = <any>error;
+    //      // loading.dismiss();
+    //       super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre connexion de réseau"); // 添加多种错误代码检测
+    //     });
     //var loading = super.showLoading(this.loadingCtrl, "En cours de connecter");
     // this.rest.Login(this.mobile, this.password)
     //   .subscribe(
