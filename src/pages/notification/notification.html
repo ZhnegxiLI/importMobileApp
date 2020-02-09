@@ -25,8 +25,8 @@
           <form [formGroup]="slideOneForm">
 
               <ion-item>
-                  <ion-label floating>First Name</ion-label>
-                  <ion-input formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
+                  <ion-label stacked>First Name</ion-label>
+                  <ion-input style="border: 1px solid;border-radius: 5px; padding-left: 5px; margin-top: 5px;" formControlName="firstName" type="text" [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"></ion-input>
               </ion-item>
 
               <ion-item *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
@@ -34,8 +34,8 @@
               </ion-item>
 
               <ion-item>
-                  <ion-label floating>Last Name</ion-label>
-                  <ion-input formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
+                  <ion-label stacked>Last Name</ion-label>
+                  <ion-input style="border: 1px solid ; border-radius: 5px; padding-left: 5px; margin-top: 5px;" formControlName="lastName" type="text" [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
               </ion-item>
 
               <ion-item *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
@@ -43,8 +43,8 @@
               </ion-item>
 
               <ion-item>
-                  <ion-label floating>Age</ion-label>
-                  <ion-input formControlName="age" type="number" [class.invalid]="!slideOneForm.controls.age.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
+                  <ion-label stacked>Age</ion-label>
+                  <ion-input style="border: 1px solid; border-radius: 5px; padding-left: 5px; margin-top: 5px;" formControlName="age" type="number" [class.invalid]="!slideOneForm.controls.age.valid && (slideOneForm.controls.age.dirty || submitAttempt)"></ion-input>
               </ion-item>
 
               <ion-item *ngIf="!slideOneForm.controls.age.valid  && (slideOneForm.controls.age.dirty || submitAttempt)">
