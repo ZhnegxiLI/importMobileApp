@@ -12,37 +12,122 @@
 
 </ion-header>
 
+<ion-content>
+  <ion-list>
+    <form [formGroup]="basicInfoForm">
+      <ion-item>
+        <ion-label stacked>{{'signin.Email' | translate}} <span class="requiredLabel"> *</span></ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
 
-<ion-content padding style="background-color: white!important;">
-  <ion-list style="margin-bottom: 10px;" lines="none">
-    <form [formGroup]="registreForm">
-    <ion-item style="border:0px"  mode="ios">
-      <ion-label stacked>Adresse e-mail</ion-label>
-      <ion-input type="text"  class="inputBorder" formControlName="email"></ion-input>
-    </ion-item>
-    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
-      <ion-label stacked>Mot de passe</ion-label>
-      <ion-input type="password" class="inputBorder" formControlName="password"></ion-input>
-    </ion-item>
-    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
-      <ion-label stacked>Confirmer Mot de passe</ion-label>
-      <ion-input type="password" class="inputBorder" formControlName="confirmPassword"></ion-input>
-    </ion-item>
-    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
-      <ion-label stacked>Number</ion-label>
-      <ion-input type="tel" class="inputBorder" formControlName="tel"></ion-input>
-    </ion-item>
-    <ion-item style="border:0px; margin-top: 8px;" mode="ios">
-      <ion-label stacked>siret</ion-label>
-      <ion-input type="text" class="inputBorder" formControlName="siret"></ion-input>
-    </ion-item>
-    <div hidden></div>
+      <ion-item no-lines
+        *ngIf="!basicInfoForm.controls.email.valid  && (basicInfoForm.controls.email.dirty || submitAttempt)">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'signin.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
+        <ion-input type="password" formControlName="password" ></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!basicInfoForm.controls.password.valid  && (basicInfoForm.controls.password.dirty || submitAttempt)">
+        <p>Your password is not valid. A valid password should:</p>
+        <ul style="margin-bottom: 0px;">
+          <li>
+            <p>At least 8 caraters</p>
+          </li>
+          <li>
+            <p>At least 1 number</p>
+          </li>
+          <li>
+            <p>At least 1 letter minuscule</p>
+          </li>
+          <li>
+            <p>At least 1 letter majuscule</p>
+          </li>
+        </ul>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>{{'signin.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
+        <ion-input type="password" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines *ngIf="confirmPassword()">
+        <p>Your password is not the same.</p>
+      </ion-item>
+    </form>
+  </ion-list>
+  <h4 margin-left>Information d'entreprise</h4>
+  <ion-list>
+    <form [formGroup]="entrepriseForm">
+      <ion-item>
+        <ion-label stacked>Nom d'entreprise <span class="requiredLabel"> *</span></ion-label>
+        <ion-input type="text" formControlName="entrepriseName"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!entrepriseForm.controls.entrepriseName.valid  && (entrepriseForm.controls.entrepriseName.dirty || submitAttempt)">
+        <p>Entreprise name cannot be empty</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Numéro de SIRET <span class="requiredLabel"> *</span></ion-label>
+        <ion-input type="number" pattern="\\d*" formControlName="siret"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!entrepriseForm.controls.siret.valid  && (entrepriseForm.controls.siret.dirty || submitAttempt)">
+        <p>siret cannot be empty</p>
+      </ion-item>
+    </form>
+  </ion-list>
+  <h4 margin-left>Adresse<span class="requiredLabel"> *</span></h4>
+  <ion-list style="margin-bottom: 0px;">
+    <form [formGroup]="addressForm">
+      <ion-item>
+        <ion-input placeholder="Address Line 1" formControlName="firstLineAddress"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!addressForm.controls.firstLineAddress.valid  && (addressForm.controls.firstLineAddress.dirty || submitAttempt)">
+        <p>Main address cannot be empty</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Address Line 2" formControlName="secondLineAddress"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="City" formControlName="city"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!addressForm.controls.city.valid  && (addressForm.controls.city.dirty || submitAttempt)">
+        <p>city cannot be empty</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Pays" formControlName="country"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!addressForm.controls.country.valid  && (addressForm.controls.country.dirty || submitAttempt)">
+        <p>country cannot be empty</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Zip Code" type="number" pattern="\\d*" formControlName="zipCode"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines
+        *ngIf="!addressForm.controls.zipCode.valid  && (addressForm.controls.zipCode.dirty || submitAttempt)">
+        <p>zipCode cannot be empty</p>
+      </ion-item>
     </form>
   </ion-list>
   <div padding>
-    <button ion-button color = "primary" block>Enregistrer</button>
+    <button ion-button color="primary" block (click)="registre()">Registrer</button>
   </div>
-  <div padding text-center>
-      <button ion-button color = "primary" outline (click)="registre()">Déjà un compte? Login</button>
-    </div>
 </ion-content>

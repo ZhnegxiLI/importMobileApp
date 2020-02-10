@@ -17,7 +17,7 @@ export class TabsPage {
   tabHome = HomePage;
   tabDiscovery = ReadOrderListPage;
   tabCart = CartPage;
-  tabNotification = NotificationPage;
+  tabNotification = RegistrePage;
   tabMyAccount = myAccountPage;
 
   constructor() {
