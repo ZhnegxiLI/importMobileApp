@@ -42,7 +42,15 @@ export class RegistrePage {
   confirmPassword(){
    let password = this.basicInfoForm.get('password').value;
    let confirmPassword = this.basicInfoForm.get('confirmPassword').value;
-
    return password!==confirmPassword;
   }
+  registre(){
+    if (this.basicInfoForm.valid&&this.entrepriseForm.valid&&this.addressForm.valid) {
+      console.log('all is ok');
+    } else {
+      console.log('some information is not valide')
+      // validate all form fields
+    }
+  }
+
 }

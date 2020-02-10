@@ -22,7 +22,7 @@
 
       <ion-item no-lines
         *ngIf="!basicInfoForm.controls.email.valid  && (basicInfoForm.controls.email.dirty || submitAttempt)">
-        <p>Please enter a valid email.</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>Please enter a valid email.</p>
       </ion-item>
 
       <ion-item>
@@ -56,11 +56,11 @@
       </ion-item>
 
       <ion-item no-lines *ngIf="confirmPassword()">
-        <p>Your password is not the same.</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle; margin-right:2px ;"></ion-icon>Your password is not the same.</p>
       </ion-item>
     </form>
   </ion-list>
-  <h4 margin-left>Information d'entreprise</h4>
+  <h4 margin-left>Information d'entreprise<span class="requiredLabel"> *</span></h4>
   <ion-list>
     <form [formGroup]="entrepriseForm">
       <ion-item>
@@ -70,7 +70,7 @@
 
       <ion-item no-lines
         *ngIf="!entrepriseForm.controls.entrepriseName.valid  && (entrepriseForm.controls.entrepriseName.dirty || submitAttempt)">
-        <p>Entreprise name cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>Entreprise name cannot be empty</p>
       </ion-item>
 
       <ion-item>
@@ -80,7 +80,7 @@
 
       <ion-item no-lines
         *ngIf="!entrepriseForm.controls.siret.valid  && (entrepriseForm.controls.siret.dirty || submitAttempt)">
-        <p>siret cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>siret cannot be empty</p>
       </ion-item>
     </form>
   </ion-list>
@@ -93,7 +93,7 @@
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.firstLineAddress.valid  && (addressForm.controls.firstLineAddress.dirty || submitAttempt)">
-        <p>Main address cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>Main address cannot be empty</p>
       </ion-item>
 
       <ion-item>
@@ -105,7 +105,7 @@
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.city.valid  && (addressForm.controls.city.dirty || submitAttempt)">
-        <p>city cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>city cannot be empty</p>
       </ion-item>
 
       <ion-item>
@@ -114,7 +114,7 @@
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.country.valid  && (addressForm.controls.country.dirty || submitAttempt)">
-        <p>country cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>country cannot be empty</p>
       </ion-item>
 
       <ion-item>
@@ -123,7 +123,7 @@
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.zipCode.valid  && (addressForm.controls.zipCode.dirty || submitAttempt)">
-        <p>zipCode cannot be empty</p>
+      <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon> zipCode cannot be empty</p>
       </ion-item>
     </form>
   </ion-list>
