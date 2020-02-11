@@ -4,7 +4,7 @@ import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
 import { from } from 'rxjs/observable/from';
 import {Storage } from '@ionic/storage';
-import {RegistrePage} from '../registre/registre'
+import {RegistrePage} from '../registre/registre';
 
 
 @Component({

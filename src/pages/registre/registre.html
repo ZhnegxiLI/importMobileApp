@@ -125,9 +125,13 @@
         *ngIf="!addressForm.controls.zipCode.valid  && (addressForm.controls.zipCode.dirty || submitAttempt)">
       <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon> zipCode cannot be empty</p>
       </ion-item>
+      <ion-item>
+        <ion-label>Utilisant le même address pour livrason</ion-label>
+        <ion-checkbox formControlName="useSameAddress"></ion-checkbox>
+      </ion-item>
     </form>
   </ion-list>
   <div padding>
-    <button ion-button color="primary" block (click)="registre()">Registrer</button>
+    <button ion-button color="primary" block (click)="testRegistre()" [disabled]='addressForm.invalid||entrepriseForm.invalid||basicInfoForm.invalid||confirmPassword()'>Registrer</button> 
   </div>
 </ion-content>

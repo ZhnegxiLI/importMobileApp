@@ -13,6 +13,8 @@ import { NotificationPage } from '../pages/notification/notification';
 import { LoginPage } from '../pages/login/login';
 import { RegistrePage } from '../pages/registre/registre'
 
+import { Network } from '@ionic-native/network';
+
 import { IonicStorageModule } from '@ionic/storage';
 import {SearchPage} from '../pages/search/search';
 import {ReadOrderListPage } from '../pages/read-order-list/read-order-list';
@@ -26,6 +28,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { NewproductPage } from '../pages/newproduct/newproduct'
 import { CategoryListPage } from '../pages/category-list/category-list';
+import {RegistreSuccedPage} from '../pages/registre-succed/registre-succed'
+
+
 import { ComponentsModule } from '../components/components.module';
 
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
@@ -67,7 +72,8 @@ export function createTranslateLoader(http: HttpClient) {
     ProductEvaluationListPage,
     ContactUsPage,
     AboutUsPage,
-    TranslationPage 
+    TranslationPage ,
+    RegistreSuccedPage
   ],
   imports: [
     StarRatingModule,
@@ -109,14 +115,16 @@ export function createTranslateLoader(http: HttpClient) {
     ProductEvaluationListPage,
     ContactUsPage,
     AboutUsPage,
-    TranslationPage 
+    TranslationPage ,
+    RegistreSuccedPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider,
-    UtilsProvider
+    UtilsProvider,
+    Network
   ]
 })
 export class AppModule { }

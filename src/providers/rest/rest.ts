@@ -49,6 +49,18 @@ export class RestProvider {
   * With auth services 
   */
 
+  private apiUrlRegistre = this.host + "api/Account/Register"
+
+
+  Registre(RegistrerInfo:object):Observable<any>{
+    return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
+  }
+
+
+
+
+
+
  SaveUserPermission(UserPermissionParam:object):Observable<any>{
   return this.postUrlReturn(this.apiUrlSaveUserPermission, UserPermissionParam);
   }

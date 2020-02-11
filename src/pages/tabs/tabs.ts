@@ -5,7 +5,7 @@ import { HomePage } from '../home/home';
 import { CartPage } from '../cart/cart';
 import { myAccountPage } from '../myAccount/myAccount';
 import { NotificationPage } from '../notification/notification'; 
-import { RegistrePage} from '../registre/registre';
+import {RegistreSuccedPage} from '../registre-succed/registre-succed'
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
 
 
@@ -17,7 +17,7 @@ export class TabsPage {
   tabHome = HomePage;
   tabDiscovery = ReadOrderListPage;
   tabCart = CartPage;
-  tabNotification = RegistrePage;
+  tabNotification = RegistreSuccedPage;
   tabMyAccount = myAccountPage;
 
   constructor() {
