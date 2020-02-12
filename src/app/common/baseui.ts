@@ -18,7 +18,7 @@ export abstract class BaseUI{
     protected showToast(toastCtrl: ToastController, message: string):Toast{
         let toast = toastCtrl.create({
             message:message,
-            duration : 5000,
+            duration : 3000,
             position:'bottom'
         });
         toast.present();

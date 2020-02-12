@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
 import {AboutUsPage} from '../about-us/about-us'; 
 import {TranslationPage} from '../translation/translation'
+import { UtilsProvider } from '../../providers/utils/utils'; 
 
 @Component({
   selector: 'page-myAccount',
@@ -20,7 +21,8 @@ export class myAccountPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public storage: Storage) {
+    public storage: Storage,
+    public utils :UtilsProvider) {
   }
 
   showModal() {
@@ -31,8 +33,8 @@ export class myAccountPage {
     modal.present();
   }
 
-  ionViewDidEnter() {
-    this.loadUserPage();
+  async ionViewDidEnter() {
+   await this.loadUserPage();
   }
 
   contactUs(){
@@ -43,21 +45,22 @@ export class myAccountPage {
     this.navCtrl.push(AboutUsPage);
   }
 
-  loadUserPage() {
-    this.storage.get('UserId').then((val) => {
-      if (val!=null) {
-        this.notLogin = false;
-        this.logined = true;
-      }
+  async loadUserPage() {
 
-      else {
-        this.notLogin = true;
-        this.logined = false;
-      }
-    });
+    var userId = await this.utils.getKey('userId');
+    var token = await this.utils.getKey('token');
+    if(userId ==null || token == null){
+      this.notLogin = true;
+      this.logined = false;
+    }
+    else {
+      this.notLogin = false;
+      this.logined = true;
+    }
   }
   logout(){
-    this.storage.remove('UserId');
+    this.storage.remove('userId');
+    this.storage.remove('token');
     this.loadUserPage();
   }
   readCommandList(){

@@ -22,7 +22,7 @@ export class RestProvider {
   }
   private host = ENV.SERVER_API_URL;
 
-  private apiUrlLogin = this.host + "api/Auth/Login"; 
+ // private apiUrlLogin = this.host + "api/Auth/Login"; 
 
   
   private apiUrlGetCargoByName = this.host + 'api/cargo/GetCargo';
@@ -50,12 +50,14 @@ export class RestProvider {
   */
 
   private apiUrlRegistre = this.host + "api/Account/Register"
-
+  private apiUrlLogin = this.host + "api/Auth/Login"
 
   Registre(RegistrerInfo:object):Observable<any>{
     return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
   }
-
+  Login(LoginInfo:object):Observable<any>{
+    return this.postUrlReturnWithOutAuth(this.apiUrlLogin, LoginInfo);
+  }
 
 
 
@@ -125,10 +127,10 @@ export class RestProvider {
    * @returns {Observable<any>}
    * @memberof RestProvider
    */
-  Login(User):Observable<any>{
-    this.event.publish('user:created');
-    return this.postUrlReturnWithOutAuth(this.apiUrlLogin, User);
-  }
+  // Login(User):Observable<any>{
+  //   this.event.publish('user:created');
+  //   return this.postUrlReturnWithOutAuth(this.apiUrlLogin, User);
+  // }
   /**
    * Without auth
    * Get userlist for the login page 

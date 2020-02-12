@@ -5,7 +5,8 @@ import { RestProvider } from '../../providers/rest/rest';
 import { from } from 'rxjs/observable/from';
 import {Storage } from '@ionic/storage';
 import {RegistrePage} from '../registre/registre';
-
+import { Network } from '@ionic-native/network';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-login',
@@ -13,8 +14,8 @@ import {RegistrePage} from '../registre/registre';
 })
 export class LoginPage extends BaseUI {
 
-  mobile: any;
-  password: any;
+  email: string;
+  password: string;
   errorMessage: any;
 
   constructor(public navCtrl: NavController,
@@ -24,7 +25,8 @@ export class LoginPage extends BaseUI {
     public rest: RestProvider,
     public toastCtrl: ToastController ,
     public storage: Storage,
-    public modalCtrl : ModalController) {
+    public modalCtrl : ModalController,
+    public network: Network) {
     super();
   }
 
@@ -33,38 +35,42 @@ export class LoginPage extends BaseUI {
   }
 
   login() {
-    this.viewCtrl.dismiss();
-    this.storage.set('UserId', '1');
-    // this.rest.Login(this.mobile).subscribe(
-    //       f => {
-        
-            
-    //       },
-    //     error => {
-    //       this.errorMessage = <any>error;
-    //      // loading.dismiss();
-    //       super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre connexion de réseau"); // 添加多种错误代码检测
-    //     });
-    //var loading = super.showLoading(this.loadingCtrl, "En cours de connecter");
-    // this.rest.Login(this.mobile, this.password)
-    //   .subscribe(
-    //     f => {
-    //       if (f["Status"] == "OK") {
-    //         //添加token处理
-    //         this.storage.set('UserId', f['UserId']);
-    //         loading.dismiss();
-    //         this.dismiss();
-    //       }
-    //       else {
-    //         loading.dismiss();
-    //         super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre login et mot de passe"); //f["StatusContent"], todo: 后端api需返回错误状态 
-    //       }
-    //     },
-    //   error => {
-    //     this.errorMessage = <any>error;
-    //     loading.dismiss();
-    //     super.showToast(this.toastCtrl, "Echec de connection, veuillez vérifier votre connexion de réseau"); // 添加多种错误代码检测
-    //   });
+   // this.viewCtrl.dismiss();
+ 
+    if (this.network.type != 'none') {
+      var loading = this.showLoading(this.loadingCtrl,"En cours..."); // todo: 翻译
+      var LoginInfo = {
+        Email: this.email,
+        Password: this.password 
+      }
+
+  
+     // this.navCtrl.parent.select(0); // 跳转tabs
+      this.rest.Login(LoginInfo) // 填写url的参数
+        .subscribe(
+          f => {
+            if (f.Success&&f.Data!=null&&f.Data.Token!=null&&f.Data.UserId!=null&&f.Data.UserId>0) {
+              this.showToast(this.toastCtrl,"Login successfully"); // 翻译
+              /* 重整成一个object */
+              this.storage.set('email',this.email);
+              this.storage.set('token',f.Data.Token);
+              this.storage.set('userId',f.Data.UserId); 
+
+              this.viewCtrl.dismiss();
+             
+            } else {
+              super.showToast(this.toastCtrl, f.Msg);
+            }
+            loading.dismiss();
+          },
+          error => {
+            super.showToast(this.toastCtrl, error.Msg);
+            loading.dismiss();
+          });
+    }
+    else {
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+    }
   }
 
   registre(){

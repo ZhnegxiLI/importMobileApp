@@ -93,7 +93,6 @@ export class RegistrePage extends BaseUI{
       }
       else {
         super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
-        
       }
 
     } else {
