@@ -77,7 +77,7 @@ export class RegistrePage extends BaseUI{
         UseSameAddress: this.addressForm.value['useSameAddress'], 
       }
       if (this.network.type != 'none') {
-        this.showLoading(this.loadingCtrl,"En cours...")
+        var loading = this.showLoading(this.loadingCtrl,"En cours...")
         this.rest.Registre(registreInfo) // 填写url的参数
           .subscribe(
             f => {
@@ -86,9 +86,11 @@ export class RegistrePage extends BaseUI{
               } else {
                 super.showToast(this.toastCtrl, f.Msg);
               }
+              loading.dismiss();
             },
             error => {
               super.showToast(this.toastCtrl, error.Msg);
+              loading.dismiss();
             });
       }
       else {
