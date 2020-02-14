@@ -50,5 +50,33 @@
         "Total":"总金额",
         "Address":"地址",
         "Detail":"观看订单详情"
+    },
+    "registre":{
+        "Registre":"注册",
+        "Title":"注册",
+        "Email":"邮箱",
+        "Warming_PleaseEntreCorrectEmail":"请输入正确邮箱格式",
+        "Password":"密码",
+        "Warming_PasswordsMustMatch":"两次输入密码必须相同",
+        "CompanyInformation":"公司信息",
+        "CompanyName":"公司名称",
+        "Warming_CompanyNameCannotEmpty":"公司名称必须填写",
+        "Siret":"SIRET号",
+        "Warming_SiretCannotBeEmpty":"SIRET号必须填写",
+        "Address":"地址",
+        "AddressLine1":"主要地址",
+        "Warming_MainAddressCannotBeEmpty":"主要地址必须填写",
+        "AddressLine2":"补充地址",
+        "City":"城市",
+        "Warming_CityCannotBeEmpty":"城市必须填写",
+        "Country":"国家",
+        "Warming_CountryCannotBeEmpty":"国家必须填写",
+        "ZipCode":"邮编",
+        "Warming_ZipCodeCannotBeEmpty":"邮编必须填写",
+        "Warming_AtLeast8Characters":"至少八个字符",
+        "Warming_AtLeast1Number":"至少含有一个数字",
+        "Warming_AtLeast1Letter":"至少含有一个字母",
+        "UseTheSameAddressAsTheShippingAddress":"使用此地址作为收货地址"
+        
     }
 }

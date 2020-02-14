@@ -50,5 +50,32 @@
         "Total":"Montant",
         "Address":"Adresse",
         "Detail":"Détails"
+    },
+    "registre":{
+        "Registre":"Enregistrer",
+        "Title":"Inscription",
+        "Email":"E-mail",
+        "Warming_PleaseEntreCorrectEmail":"Adresse e-mail non valide.",
+        "Password":"Mot de passe",
+        "Warming_PasswordsMustMatch":"Les mots de passe ne correspondent pas",
+        "CompanyInformation":"Informations sur la société",
+        "CompanyName":"Nom de la société",
+        "Warming_CompanyNameCannotEmpty":"Nom de la société est obligatoire",
+        "Siret":"SIRET",
+        "Warming_SiretCannotBeEmpty":"SIRET est obligatoire",
+        "Address":"Adresse",
+        "AddressLine1":"Adresse 1",
+        "Warming_MainAddressCannotBeEmpty":"Adresse est obligatoire",
+        "AddressLine2":"Complémentaires",
+        "City":"Ville",
+        "Warming_CityCannotBeEmpty":"Ville est obligatoire",
+        "Country":"Pays",
+        "Warming_CountryCannotBeEmpty":"Pays est obligatoire",
+        "ZipCode":"Code postal",
+        "Warming_ZipCodeCannotBeEmpty":"Code postal est obligatoire",
+        "Warming_AtLeast8Characters":"Les mots de passe doivent au moins avoir 8 caractères.",
+        "Warming_AtLeast1Number":"Au moins 1 chiffre",
+        "Warming_AtLeast1Letter":"Au moins 1 minuscule",
+        "UseTheSameAddressAsTheShippingAddress":"Utilisant cette adresse comme adresse de livraison"
     }
 }

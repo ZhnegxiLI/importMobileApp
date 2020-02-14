@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>registre</ion-title>
+    <ion-title>{{'registre.Title' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,122 +16,122 @@
   <ion-list>
     <form [formGroup]="basicInfoForm">
       <ion-item>
-        <ion-label stacked>{{'signin.Email' | translate}} <span class="requiredLabel"> *</span></ion-label>
+        <ion-label stacked>{{'registre.Email' | translate}} <span class="requiredLabel"> *</span></ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!basicInfoForm.controls.email.valid  && (basicInfoForm.controls.email.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>Please enter a valid email.</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_PleaseEntreCorrectEmail' | translate}}</p>
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>{{'signin.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
+        <ion-label stacked>{{'registre.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
         <ion-input type="password" formControlName="password" ></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!basicInfoForm.controls.password.valid  && (basicInfoForm.controls.password.dirty || submitAttempt)">
-        <p>Your password is not valid. A valid password should:</p>
+        <p>{{'registre.Warming_PasswordsMustMatch' | translate}}</p>
         <ul style="margin-bottom: 0px;">
           <li>
-            <p>At least 8 caraters</p>
+            <p>{{'registre.Warming_AtLeast8Characters' | translate}}</p>
           </li>
           <li>
-            <p>At least 1 number</p>
+            <p>{{'registre.Warming_AtLeast1Number' | translate}}</p>
           </li>
           <li>
-            <p>At least 1 letter minuscule</p>
+            <p>{{'registre.Warming_AtLeast1Letter' | translate}}</p>
           </li>
-          <li>
-            <p>At least 1 letter majuscule</p>
-          </li>
+          
         </ul>
 
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>{{'signin.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
+        <ion-label stacked>{{'registre.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
         <ion-input type="password" formControlName="confirmPassword"></ion-input>
       </ion-item>
 
       <ion-item no-lines *ngIf="confirmPassword()">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle; margin-right:2px ;"></ion-icon>Your password is not the same.</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle; margin-right:2px ;"></ion-icon>{{'registre.Warming_PasswordsMustMatch' | translate}}</p>
       </ion-item>
     </form>
   </ion-list>
-  <h4 margin-left>Information d'entreprise<span class="requiredLabel"> *</span></h4>
+  <h4 margin-left>{{'registre.CompanyInformation' | translate}}<span class="requiredLabel"> *</span></h4>
   <ion-list>
     <form [formGroup]="entrepriseForm">
       <ion-item>
-        <ion-label stacked>Nom d'entreprise <span class="requiredLabel"> *</span></ion-label>
+        <ion-label stacked>{{'registre.CompanyName' | translate}} <span class="requiredLabel"> *</span></ion-label>
         <ion-input type="text" formControlName="entrepriseName"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!entrepriseForm.controls.entrepriseName.valid  && (entrepriseForm.controls.entrepriseName.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>Entreprise name cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_CompanyNameCannotEmpty' | translate}}</p>
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Numéro de SIRET <span class="requiredLabel"> *</span></ion-label>
+        <ion-label stacked>{{'registre.Siret' | translate}} <span class="requiredLabel"> *</span></ion-label>
         <ion-input type="number" pattern="\\d*" formControlName="siret"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!entrepriseForm.controls.siret.valid  && (entrepriseForm.controls.siret.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>siret cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_SiretCannotBeEmpty' | translate}}</p>
       </ion-item>
     </form>
   </ion-list>
-  <h4 margin-left>Adresse<span class="requiredLabel"> *</span></h4>
+  <h4 margin-left>{{'registre.Address' | translate}}<span class="requiredLabel"> *</span></h4>
   <ion-list style="margin-bottom: 0px;">
     <form [formGroup]="addressForm">
       <ion-item>
-        <ion-input placeholder="Address Line 1" formControlName="firstLineAddress"></ion-input>
+        <ion-input placeholder="{{'registre.AddressLine1' | translate}}" formControlName="firstLineAddress"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.firstLineAddress.valid  && (addressForm.controls.firstLineAddress.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>Main address cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_MainAddressCannotBeEmpty' | translate}}</p>
       </ion-item>
 
       <ion-item>
-        <ion-input placeholder="Address Line 2" formControlName="secondLineAddress"></ion-input>
+        "AddressLine1":"主要地址",
+        <ion-input placeholder="{{'registre.AddressLine2' | translate}}" formControlName="secondLineAddress"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input placeholder="City" formControlName="city"></ion-input>
+        <ion-input placeholder="{{'registre.City' | translate}}" formControlName="city"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.city.valid  && (addressForm.controls.city.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>city cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_CityCannotBeEmpty' | translate}}</p>
       </ion-item>
 
       <ion-item>
-        <ion-input placeholder="Pays" formControlName="country"></ion-input>
+        <ion-input placeholder="{{'registre.Country' | translate}}" formControlName="country"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.country.valid  && (addressForm.controls.country.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>country cannot be empty</p>
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_CountryCannotBeEmpty' | translate}}</p>
       </ion-item>
 
       <ion-item>
-        <ion-input placeholder="Zip Code" type="number" pattern="\\d*" formControlName="zipCode"></ion-input>
+        <ion-input placeholder="{{'registre.ZipCode' | translate}}" type="number" pattern="\\d*" formControlName="zipCode"></ion-input>
       </ion-item>
 
       <ion-item no-lines
         *ngIf="!addressForm.controls.zipCode.valid  && (addressForm.controls.zipCode.dirty || submitAttempt)">
-      <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon> zipCode cannot be empty</p>
+      <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon> {{'registre.Warming_ZipCodeCannotBeEmpty' | translate}}</p>
       </ion-item>
       <ion-item>
-        <ion-label>Utilisant le même address pour livrason</ion-label>
+        <ion-label>{{'registre.UseTheSameAddressAsTheShippingAddress' | translate}}</ion-label>
         <ion-checkbox formControlName="useSameAddress"></ion-checkbox>
       </ion-item>
     </form>
   </ion-list>
   <div padding>
-    <button ion-button color="primary" block (click)="registre()" [disabled]='addressForm.invalid||entrepriseForm.invalid||basicInfoForm.invalid||confirmPassword()'>Registrer</button> 
+    <button ion-button color="primary" block (click)="registre()" [disabled]='addressForm.invalid||entrepriseForm.invalid||basicInfoForm.invalid||confirmPassword()'>{{'registre.Registre' | translate}}
+    </button> 
   </div>
 </ion-content>
