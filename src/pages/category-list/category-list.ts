@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import {SubCategoryListPage} from '../sub-category-list/sub-category-list';
-
-/**
- * Generated class for the CategoryListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { RestProvider } from '../../providers/rest/rest';
+import { BaseUI } from '../../app/common/baseui';
+import { Network } from '@ionic-native/network';
 
 @Component({
   selector: 'page-category-list',
   templateUrl: 'category-list.html',
 })
-export class CategoryListPage {
+export class CategoryListPage extends BaseUI{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  categoryList:any[];
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public rest:RestProvider,
+    public network:Network,
+    public loadingCtrl:LoadingController,
+    public toastCtrl:ToastController) {
+    super();
   }
 
   secondMenu(pageName : string){
@@ -24,7 +26,25 @@ export class CategoryListPage {
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoryListPage');
+    if (this.network.type != 'none') {
+      this.rest.GetProductMainCategory() // 填写url的参数
+        .subscribe(
+          f => {
+            if (f.Success&&f.Data!=null) {
+                this.categoryList = f.Data;
+            } else {
+              super.showToast(this.toastCtrl, f.Msg);
+            }
+          },
+          error => {
+            super.showToast(this.toastCtrl, error.Msg);
+          });
+    }
+    else {
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+    }
+
+  
   }
 
 }

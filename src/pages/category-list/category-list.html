@@ -14,26 +14,8 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      VAISSELLES (159)
-    </button>  
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      CADEAU (28)
-    </button>  
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      DECORATION (105)
-    </button>  
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      BAZAR (513)
-    </button>  
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      ARTICLES DE MENAGE (46)
-    </button>  
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      FLEURS ARTIFICIELLES (213)
-    </button>  
-    <button ion-item (click) = "secondMenu('VAISSELLES')">
-      MEILLEUR VENTE DU MOIS (1)
-    </button>  
+    <button ion-item *ngFor="let item of categoryList" (click) = "secondMenu(item.SubProductCategoryViewModel.ReferenceId)">
+        {{item.SubProductCategoryViewModel.Label}}({{item.TotalCount}})
+    </button>   
   </ion-list>
 </ion-content>

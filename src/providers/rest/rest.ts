@@ -1,11 +1,13 @@
 
-import { Injectable  } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { timeout, catchError, mergeMap } from 'rxjs/operators'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { ENV } from '@app/env';
 import { Events } from 'ionic-angular';
+import { UtilsProvider } from '../../providers/utils/utils';
+import { TranslateService } from '@ngx-translate/core';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
@@ -14,17 +16,19 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class RestProvider {
-  constructor(public http: Http, 
+  constructor(public http: Http,
     public storage: Storage,
-    public event : Events
-   ) {
-   
+    public event: Events,
+    public utils: UtilsProvider,
+    public translate: TranslateService
+  ) {
+
   }
   private host = ENV.SERVER_API_URL;
 
- // private apiUrlLogin = this.host + "api/Auth/Login"; 
+  // private apiUrlLogin = this.host + "api/Auth/Login"; 
 
-  
+
   private apiUrlGetCargoByName = this.host + 'api/cargo/GetCargo';
   private apiUrlGetOrdersByUserId = this.host + 'api/SalesOrder/GetSalesOrderByUserId';
   private apiUrlGetSalesOrderCategoriesByUserId = this.host + 'api/SalesOrder/GetSalesOrderCategoriesByUserId';
@@ -32,7 +36,7 @@ export class RestProvider {
   private apiUrlGetSalesOrderByOrderId = this.host + "api/SalesOrder/GetSalesOrderByOrderId";
   private apiUrlInsertSalesOrderByOrderId = this.host + "api/SalesOrder/InsertSalesOrderByOrderId";
   private apiUrlgetUserList = this.host + "api/Auth/getUserList";
- 
+
   private apiUrlUpdateSalesOrderStatut = this.host + "api/SalesOrder/UpdateSalesOrderStatut";
   private apiUrlCheckAvailabilityOfToken = this.host + "api/Auth/CheckAvailabilityOfToken";
   private apiUrlGetSalesOrderValidationContent = this.host + 'api/SalesOrder/GetSalesOrderValidationContent';
@@ -40,8 +44,8 @@ export class RestProvider {
   private apiUrlGetSalesOrderValidationList = this.host + 'api/SalesOrder/GetSalesOrderValidationList';
   private apiUrlGetUnitList = this.host + 'api/cargo/GetUnitList';
 
-  private apiUrlGetPermissionList= this.host + 'api/Permission/GetPermissionList';
-  private apiUrlGetUserPermissionById= this.host + 'api/Permission/GetUserPermissionById';
+  private apiUrlGetPermissionList = this.host + 'api/Permission/GetPermissionList';
+  private apiUrlGetUserPermissionById = this.host + 'api/Permission/GetUserPermissionById';
   private apiUrlSaveUserPermission = this.host + 'api/Permission/SaveUserPermission';
 
   private apiUrlAdvancedSalesOrderSearch = this.host + "api/SalesOrder/AdvancedSalesOrderSearch";
@@ -49,74 +53,85 @@ export class RestProvider {
   * With auth services 
   */
 
-  private apiUrlRegistre = this.host + "api/Account/Register"
-  private apiUrlLogin = this.host + "api/Auth/Login"
+  private apiUrlRegistre = this.host + "api/Account/Register";
+  private apiUrlLogin = this.host + "api/Auth/Login";
+  private apiUrlGetProductMainCategory = this.host + "api/Product/GetProductMainCategory";
+  private apiUrlGetProductSecondCategory = this.host + "api/Product/GetProductSecondCategory";
 
-  Registre(RegistrerInfo:object):Observable<any>{
+  Registre(RegistrerInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
   }
-  Login(LoginInfo:object):Observable<any>{
+  Login(LoginInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlLogin, LoginInfo);
   }
-
-
-
-
-
- SaveUserPermission(UserPermissionParam:object):Observable<any>{
-  return this.postUrlReturn(this.apiUrlSaveUserPermission, UserPermissionParam);
+  GetProductMainCategory(): Observable<any> {
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductMainCategory + "?Lang=" + lang);
   }
-  GetCargoByName(limit:number):Observable<any>{
-      return this.getUrlReturn(this.apiUrlGetCargoByName+"?limit="+limit);
+  GetProductSecondCategory(MainCategoryReferenceId: number): Observable<any> {
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductMainCategory + "?MainCategoryReferenceId=" + MainCategoryReferenceId + "&Lang=" + lang);
   }
 
-  GetPermissionList():Observable<any>{
+
+
+
+
+
+  SaveUserPermission(UserPermissionParam: object): Observable<any> {
+    return this.postUrlReturn(this.apiUrlSaveUserPermission, UserPermissionParam);
+  }
+  GetCargoByName(limit: number): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetCargoByName + "?limit=" + limit);
+  }
+
+  GetPermissionList(): Observable<any> {
     return this.getUrlReturn(this.apiUrlGetPermissionList);
   }
-  GetUserPermissionById(userId:string):Observable<any>{
-    return this.getUrlReturn(this.apiUrlGetUserPermissionById+'?userId='+userId);
+  GetUserPermissionById(userId: string): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetUserPermissionById + '?userId=' + userId);
   }
 
-  GetSalesOrderValidationList(categoryId:number,type:string):Observable<any>{
-    return this.postUrlReturn(this.apiUrlGetSalesOrderValidationList,{categoryId:categoryId,type:type});
+  GetSalesOrderValidationList(categoryId: number, type: string): Observable<any> {
+    return this.postUrlReturn(this.apiUrlGetSalesOrderValidationList, { categoryId: categoryId, type: type });
   }
 
-  AdvancedSalesOrderSearch(criteria:object):Observable<any>{
-    return this.postUrlReturn(this.apiUrlAdvancedSalesOrderSearch,criteria);
+  AdvancedSalesOrderSearch(criteria: object): Observable<any> {
+    return this.postUrlReturn(this.apiUrlAdvancedSalesOrderSearch, criteria);
   }
 
-  GetUnitList():Observable<any>{
+  GetUnitList(): Observable<any> {
     return this.getUrlReturn(this.apiUrlGetUnitList);
   }
 
-  GetSalesOrderValidationContent(orderId:string):Observable<any>{
-    return this.getUrlReturn(this.apiUrlGetSalesOrderValidationContent+"?orderId="+orderId);
+  GetSalesOrderValidationContent(orderId: string): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetSalesOrderValidationContent + "?orderId=" + orderId);
   }
 
-  GetOrdersByUserId(userId:string, categoryId: string, type: string, step:number, begin:number ):Observable<any>{
-    return this.getUrlReturn(this.apiUrlGetOrdersByUserId+"?userId="+userId+"&categoryId="+categoryId+"&type="+type+"&step="+step + "&begin="+begin);
+  GetOrdersByUserId(userId: string, categoryId: string, type: string, step: number, begin: number): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetOrdersByUserId + "?userId=" + userId + "&categoryId=" + categoryId + "&type=" + type + "&step=" + step + "&begin=" + begin);
   }
 
-  GetSalesOrderCategoriesByUserId(userId:string, type : string):Observable<any>{
-    return this.getUrlReturn(this.apiUrlGetSalesOrderCategoriesByUserId+"?userId="+userId+"&type="+ type);
+  GetSalesOrderCategoriesByUserId(userId: string, type: string): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetSalesOrderCategoriesByUserId + "?userId=" + userId + "&type=" + type);
   }
 
-  GetDeptByName(limit:number):Observable<any>{
-    return this.getUrlReturn(this.apiUrlGetDeptByName+"?limit="+limit);
+  GetDeptByName(limit: number): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetDeptByName + "?limit=" + limit);
   }
 
-  GetSalesOrderByOrderId(orderId : string):Observable<any>{
-    return this.getUrlReturn(this. apiUrlGetSalesOrderByOrderId+"?orderId="+orderId);
+  GetSalesOrderByOrderId(orderId: string): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetSalesOrderByOrderId + "?orderId=" + orderId);
   }
 
-  InsertSalesOrderByOrderId(orderInfo, products:Array<any>):Observable<any>{
-    return this.postUrlReturn(this.apiUrlInsertSalesOrderByOrderId, {orderInfo:orderInfo,products:products});
+  InsertSalesOrderByOrderId(orderInfo, products: Array<any>): Observable<any> {
+    return this.postUrlReturn(this.apiUrlInsertSalesOrderByOrderId, { orderInfo: orderInfo, products: products });
   }
-  UpdateSalesOrderStatut(userId,orderId, applicationContent, statusCode):Observable<any>{
-    return this.postUrlReturn(this.apiUrlUpdateSalesOrderStatut, {userId:userId,applicationContent:applicationContent,orderId:orderId,statutCode:statusCode});
+  UpdateSalesOrderStatut(userId, orderId, applicationContent, statusCode): Observable<any> {
+    return this.postUrlReturn(this.apiUrlUpdateSalesOrderStatut, { userId: userId, applicationContent: applicationContent, orderId: orderId, statutCode: statusCode });
   }
 
-  GetCompanyName():Observable<any>{
+  GetCompanyName(): Observable<any> {
     return this.getUrlReturn(this.apiUrlGetCompanyName);
   }
 
@@ -137,80 +152,84 @@ export class RestProvider {
    * @returns {Observable<any>}
    * @memberof RestProvider
    */
-  GetUserList():Observable<any>{
+  GetUserList(): Observable<any> {
     return this.getUrlReturnWithOutAuth(this.apiUrlgetUserList);
   }
 
-  CheckAvailabilityOfToken(token : string ):Observable<any> {
-    return this.getUrlReturn(this.apiUrlCheckAvailabilityOfToken+"?token="+token);
+  CheckAvailabilityOfToken(token: string): Observable<any> {
+    return this.getUrlReturn(this.apiUrlCheckAvailabilityOfToken + "?token=" + token);
   }
 
   // TODO: Login page remove all 
-  private getUrlReturnWithOutAuth(url: string): Observable<any> {
-      return this.http.get(url)
-      .pipe(
-        timeout(20000),
-  //       catchError(e => {
-  //         return of({'error':'timeout'});
-  //       })
-      )
-      .map(this.extractData)
-      .catch(this.handleError);
-    }
-  
- private getToken(): Observable<any> {
-  return Observable.fromPromise(this.storage.get('token').then(token => {
-    //maybe some processing logic like JSON.parse(token)
-    return token;
-  }));
- }
-    
-  private getUrlReturn(url: string): Observable<any> {
-    return this.getToken().pipe(
-      mergeMap(token => this.http.get(url,{headers: new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer '+ token
-      })})
+  private getUrlReturnWithOutAuth(url: string): Observable<any> {
+    return this.http.get(url)
       .pipe(
-        timeout(20000)
+        timeout(20000),
+        //       catchError(e => {
+        //         return of({'error':'timeout'});
+        //       })
       )
       .map(this.extractData)
-      .catch(this.handleError)
+      .catch(this.handleError);
+  }
+
+  private getToken(): Observable<any> {
+    return Observable.fromPromise(this.storage.get('token').then(token => {
+      //maybe some processing logic like JSON.parse(token)
+      return token;
+    }));
+  }
+
+  private getUrlReturn(url: string): Observable<any> {
+    return this.getToken().pipe(
+      mergeMap(token => this.http.get(url, {
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        })
+      })
+        .pipe(
+          timeout(20000)
+        )
+        .map(this.extractData)
+        .catch(this.handleError)
       )
     );
   }
 
-private postUrlReturn(url:string, body:any): Observable<any> {
-  return this.getToken().pipe(
-    mergeMap(token => this.http.post(url,body,{headers: new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer '+ token
-    })}).pipe(
-      timeout(20000),
-      // catchError(e => {
-      //   return of({
-      //     'Success': false,
-      //     'Msg':'访问超时，请检查网络连接',
-      //     'error':'timeout'});
-      // })
-    )
-    .map(this.extractData)
-    .catch(this.handleError)
-    )
-  );
-}
+  private postUrlReturn(url: string, body: any): Observable<any> {
+    return this.getToken().pipe(
+      mergeMap(token => this.http.post(url, body, {
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        })
+      }).pipe(
+        timeout(20000),
+        // catchError(e => {
+        //   return of({
+        //     'Success': false,
+        //     'Msg':'访问超时，请检查网络连接',
+        //     'error':'timeout'});
+        // })
+      )
+        .map(this.extractData)
+        .catch(this.handleError)
+      )
+    );
+  }
 
-private postUrlReturnWithOutAuth(url:string, body:any): Observable<any> {
-  return this.http.post(url, body)
-  .pipe(
-    timeout(20000),
-    // catchError(e => {
-    //   return of({'error':'timeout'});
-    // })
-  )
-  .map(this.extractData)
-  .catch(this.handleError);
-}
+  private postUrlReturnWithOutAuth(url: string, body: any): Observable<any> {
+    return this.http.post(url, body)
+      .pipe(
+        timeout(20000),
+        // catchError(e => {
+        //   return of({'error':'timeout'});
+        // })
+      )
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
 
   private extractData(res: Response) {
     let body = res.json();
@@ -229,14 +248,14 @@ private postUrlReturnWithOutAuth(url:string, body:any): Observable<any> {
     // }
     // console.error(errMsg);
     // return Observable.throw(errMsg);
-    if(error.name!=null &&error.name =="TimeoutError"){
-        //超时信息
-        return Observable.throw({Msg:"连接超时请检查网络连接",Success :false});
-      }
-      else{
-    
-    console.error(JSON.parse(error._body));
-    return Observable.throw(JSON.parse(error._body));
+    if (error.name != null && error.name == "TimeoutError") {
+      //超时信息
+      return Observable.throw({ Msg: "连接超时请检查网络连接", Success: false });
+    }
+    else {
+
+      console.error(JSON.parse(error._body));
+      return Observable.throw(JSON.parse(error._body));
+    }
   }
-}
 }

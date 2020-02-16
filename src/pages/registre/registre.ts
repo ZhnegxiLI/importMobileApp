@@ -7,7 +7,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { RegistreSuccedPage } from '../registre-succed/registre-succed';
 
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-registre',
   templateUrl: 'registre.html',
@@ -36,7 +36,8 @@ export class RegistrePage extends BaseUI{
 
     this.entrepriseForm = this.formBuilder.group({
       entrepriseName: ['',Validators.required],
-      siret:['',Validators.required]
+      siret:['',Validators.required],
+      phoneNumber : ['',Validators.required]
     });
 
     this.addressForm = this.formBuilder.group({
@@ -75,6 +76,7 @@ export class RegistrePage extends BaseUI{
         Country: this.addressForm.value['country'],
         ZipCode: this.addressForm.value['zipCode'], 
         UseSameAddress: this.addressForm.value['useSameAddress'], 
+        PhoneNumber : this.entrepriseForm.value['phoneNumber']
       }
       if (this.network.type != 'none') {
         var loading = this.showLoading(this.loadingCtrl,"En cours...")

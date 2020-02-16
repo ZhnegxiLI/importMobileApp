@@ -80,6 +80,16 @@
         *ngIf="!entrepriseForm.controls.siret.valid  && (entrepriseForm.controls.siret.dirty || submitAttempt)">
         <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_SiretCannotBeEmpty' | translate}}</p>
       </ion-item>
+
+
+      <ion-item>
+        <ion-label stacked>{{'registre.phoneNumber' | translate}} <span class="requiredLabel"> *</span></ion-label>
+        <ion-input type="tel" formControlName="phoneNumber"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines *ngIf="!entrepriseForm.controls.phoneNumber.valid  && (entrepriseForm.controls.phoneNumber.dirty || submitAttempt)">
+        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_PhoneNumberCannotBeEmpty' | translate}}</p>
+      </ion-item>
     </form>
   </ion-list>
   <h4 margin-left>{{'registre.Address' | translate}}<span class="requiredLabel"> *</span></h4>
@@ -95,7 +105,6 @@
       </ion-item>
 
       <ion-item>
-        "AddressLine1":"主要地址",
         <ion-input placeholder="{{'registre.AddressLine2' | translate}}" formControlName="secondLineAddress"></ion-input>
       </ion-item>
       <ion-item>
