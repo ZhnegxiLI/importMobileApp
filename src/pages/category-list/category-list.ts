@@ -21,8 +21,8 @@ export class CategoryListPage extends BaseUI{
     super();
   }
 
-  secondMenu(pageName : string){
-    this.navCtrl.push(SubCategoryListPage, {pageName : pageName});
+  secondMenu(ReferenceId : number,RefereceLabel:string){
+    this.navCtrl.push(SubCategoryListPage, {ReferenceId : ReferenceId, RefereceLabel:RefereceLabel});
   }
   
   ionViewDidLoad() {
@@ -43,8 +43,6 @@ export class CategoryListPage extends BaseUI{
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
     }
-
-  
   }
 
 }
