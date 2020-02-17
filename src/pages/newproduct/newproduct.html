@@ -21,8 +21,8 @@
         <img  class="productImg"  src="assets/imgs/testProduct.jpg">
       </ion-avatar>
       <h2>{{item.Label}}</h2>
-      <p>Quantité par colis : {{item.QuantityPerBox}}</p>
-      <p>Quantité minimum : {{item.MinQuantity}}</p>
+      <p>{{'newproduct.QuantityEachBox' | translate}} : {{item.QuantityPerBox}}</p>
+      <p>{{'newproduct.QuantityMinimum' | translate}} : {{item.MinQuantity}}</p>
     </button>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

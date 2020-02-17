@@ -103,5 +103,12 @@
         "All":"Tous",
         "Somme":"Total",
         "Confirm":"Validé"
+    },
+    "newproduct":{
+        "QuantityEachBox":"Quantité/Colis",
+        "QuantityMinimum":"Quantité minimale d'achat"
+    },
+    "category-list":{
+        "Title":"Catégorie"
     }
 }

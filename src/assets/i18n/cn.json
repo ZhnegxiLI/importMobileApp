@@ -104,6 +104,13 @@
         "All":"全选",
         "Somme":"总共金额",
         "Confirm":"确定"
+    },
+    "newproduct":{
+        "QuantityEachBox":"件/箱",
+        "QuantityMinimum":"最少购买（件）"
+    },
+    "category-list":{
+        "Title":"类别"
     }
 
 }

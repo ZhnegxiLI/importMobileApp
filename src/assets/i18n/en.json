@@ -102,5 +102,12 @@
         "All":"All",
         "Somme":"Somme",
         "Confirm":"Confirm"
+    },
+    "newproduct":{
+        "QuantityEachBox":"Quantity/Box",
+        "QuantityMinimum":"Minimum purchase quantity"
+    },
+    "category-list":{
+        "Title":"Category"
     }
 }
