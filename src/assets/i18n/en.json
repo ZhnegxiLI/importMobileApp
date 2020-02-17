@@ -75,6 +75,32 @@
         "Warming_AtLeast8Characters":"At least 8 characters",
         "Warming_AtLeast1Number":"At least 1 number",
         "Warming_AtLeast1Letter":"At least 1 letter",
-        "UseTheSameAddressAsTheShippingAddress":"Use the same address as the shipping address"
+        "UseTheSameAddressAsTheShippingAddress":"Use the same address as the shipping address",
+        "phoneNumber":"Phone number"
+    },
+    "registre-succed":{
+        "Confirm":"Your account is well registered, we will send a confirmation email to {email}, please confirm your email address to complete your registration",
+        "Return":"Return to home page"
+    },
+    "contact-us":{
+        "Title":"Contact us",
+        "Submit":"Submit",
+        "OpinionAndAdvice":"Advice",
+        "GiveUsYourAdvice":"You can leave us your precious opinions here so that we can provide better services for you, you can also leave your email so that we can contact you, thank you.",
+        "Subject":"Subject",
+        "Message":"Message:",
+        "Opinion":"Opinion",
+        "Advice":"Advice",
+        "Cancel":"Cancel"
+    },
+    "cart":{
+        "Title":"My basket",
+        "Reference":"Reference",
+        "EachBox":"Quantity/Box",
+        "MinimumPurchase":"Minimum purchase",
+        "Quantity":"Amount",
+        "All":"All",
+        "Somme":"Somme",
+        "Confirm":"Confirm"
     }
 }
