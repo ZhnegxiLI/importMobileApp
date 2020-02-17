@@ -76,6 +76,32 @@
         "Warming_AtLeast8Characters":"Les mots de passe doivent au moins avoir 8 caractères.",
         "Warming_AtLeast1Number":"Au moins 1 chiffre",
         "Warming_AtLeast1Letter":"Au moins 1 minuscule",
-        "UseTheSameAddressAsTheShippingAddress":"Utilisant cette adresse comme adresse de livraison"
+        "UseTheSameAddressAsTheShippingAddress":"Utilisant cette adresse comme adresse de livraison",
+        "phoneNumber":"Numéro de téléphone"
+    },
+    "registre-succed":{
+        "Confirm":"Votre compte est bien enregistré, nous allons envoyer un mail de confirmation à {email}, veuiller confirmer votre address mail pour compléter votre enregistrement",
+        "Return":"Revenez sur page d'acceuille"
+    },
+    "contact-us":{
+        "Title":"Contactez-nous",
+        "Submit":"Enregistré",
+        "OpinionAndAdvice":"Avis et conseillé",
+        "GiveUsYourAdvice":"Vous pouvez nous laisser ici vos précieux avis afin que nous puissions vous offrir de meilleurs services, vous pouvez également laisser votre email afin que nous puissions vous contacter, merci.",
+        "Subject":"Titre",
+        "Message":"Message:",
+        "Opinion":"Avis",
+        "Advice":"Conseillé",
+        "Cancel":"Annulé"
+    },
+    "cart":{
+        "Title":"Panier",
+        "Reference":"Référence",
+        "EachBox":"Pièces/Colis",
+        "MinimumPurchase":"Minimum d'achat",
+        "Quantity":"Quantité",
+        "All":"Tous",
+        "Somme":"Total",
+        "Confirm":"Validé"
     }
 }

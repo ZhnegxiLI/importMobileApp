@@ -76,7 +76,34 @@
         "Warming_AtLeast8Characters":"至少八个字符",
         "Warming_AtLeast1Number":"至少含有一个数字",
         "Warming_AtLeast1Letter":"至少含有一个字母",
-        "UseTheSameAddressAsTheShippingAddress":"使用此地址作为收货地址"
+        "UseTheSameAddressAsTheShippingAddress":"使用此地址作为收货地址",
+        "phoneNumber":"手机号码"
         
+    },
+    "registre-succed":{
+        "Confirm":"您的帐户已成功注册，我们将向{email}发送确认电子邮件.请确认您的电子邮件地址以完成注册",
+        "Return":"返回至主页"
+    },
+    "contact-us":{
+        "Title":"联系我们",
+        "Submit":"提交",
+        "OpinionAndAdvice":"给我们的意见以及建议",
+        "GiveUsYourAdvice":"您可以在此给我们留下您珍贵的意见以便我们为您提供更好的服务，您也可以留下您的邮箱以便于我们与您联系，谢谢您。",
+        "Subject":"主题",
+        "Message":"信息:",
+        "Opinion":"意见",
+        "Advice":"建议",
+        "Cancel":"取消"
+    },
+    "cart":{
+        "Title":"购物车",
+        "Reference":"货物编码",
+        "EachBox":"件/箱",
+        "MinimumPurchase":"最少购买数量",
+        "Quantity":"总数",
+        "All":"全选",
+        "Somme":"总共金额",
+        "Confirm":"确定"
     }
+
 }

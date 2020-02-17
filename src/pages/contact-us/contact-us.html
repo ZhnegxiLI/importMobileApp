@@ -7,9 +7,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Contactez-Nous</ion-title>
+    <ion-title>{{'contact-us.Title' | translate}}</ion-title>
     <ion-buttons end>
-      <button ion-button>Submit</button>
+      <button ion-button>{{'contact-us.Submit' | translate}}</button>
     </ion-buttons>
   </ion-navbar>
 
@@ -19,7 +19,7 @@
 <ion-content>
   <ion-list no-lines>  
     <ion-item style="margin-bottom:25px;">
-      <h1>Avis Et Conseiller</h1>
+      <h1>{{'contact-us.OpinionAndAdvice' | translate}}</h1>
     </ion-item>
 
     <ion-item style="margin-bottom:25px;">
@@ -28,20 +28,20 @@
       readonly="true" 
       style="background-color:#9794a7;" 
       class="inputZoom"
-      value="      Nous vous proposons que vous nous donnez votre avis. Vous pouvez laisser votre email pour que nous vous contacter. Merci!"
+      value="{{'contact-us.GiveUsYourAdvice' | translate}}"
       ></ion-textarea>
     </ion-item>
 
     <ion-item style="margin-bottom:25px;">
-      <ion-label style="margin-bottom: 10px;font-size: 18px;" stacked>Title :</ion-label>
+      <ion-label style="margin-bottom: 10px;font-size: 18px;" stacked>{{'contact-us.Subject' | translate}}:</ion-label>
       <ion-select class="inputZoom">
-        <ion-option>Avis</ion-option>
-        <ion-option>Conseiller</ion-option>
+        <ion-option>{{'contact-us.Opinion' | translate}}</ion-option>
+        <ion-option>{{'contact-us.Advice' | translate}}</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label style="margin-bottom: 10px;font-size: 18px;" stacked>Message* :</ion-label>
+      <ion-label style="margin-bottom: 10px;font-size: 18px;" stacked>{{'contact-us.Message' | translate}}</ion-label>
       <ion-textarea rows="8" class="inputZoom"></ion-textarea>
     </ion-item>
 
