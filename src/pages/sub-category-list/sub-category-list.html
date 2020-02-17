@@ -6,7 +6,7 @@
 
   <ion-content>
     <ion-list >
-      <button ion-item *ngFor="let item of categoryList" (click) = "secondMenu(item.ReferenceId,item.Reference.Label)">
+      <button ion-item *ngFor="let item of categoryList" (click) = "productMenu(item.ReferenceId,item.Reference.Label)">
         {{item.Reference.Label}}({{item.TotalCount}})
     </button>   
     </ion-list>

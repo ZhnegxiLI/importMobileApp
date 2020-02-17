@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { RestProvider } from '../../providers/rest/rest';
 import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
+import { NewproductPage } from '../newproduct/newproduct';
 
 @IonicPage()
 @Component({
@@ -23,8 +24,10 @@ export class SubCategoryListPage extends BaseUI {
     this.MainReferenceId = this.navParams.get('ReferenceId');
     this.MainReferenceLabel = this.navParams.get('RefereceLabel');
     console.log('ionViewDidLoad SubCategoryListPage');
+    this.loadSecondProductCategory();
+  }
 
-
+  loadSecondProductCategory(){
     if (this.network.type != 'none') {
       this.rest.GetProductSecondCategory(this.MainReferenceId) // 填写url的参数
         .subscribe(
@@ -42,11 +45,10 @@ export class SubCategoryListPage extends BaseUI {
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
     }
-
   }
 
-  loadSecondProductCategory(MainReferenceId:number){
-    console.log(MainReferenceId);
+  productMenu(ReferenceId:number,RefereceLabel:string ){
+    this.navCtrl.push(NewproductPage, {ReferenceId : ReferenceId, RefereceLabel:RefereceLabel});
   }
 
 }

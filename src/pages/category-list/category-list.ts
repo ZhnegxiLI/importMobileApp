@@ -26,6 +26,10 @@ export class CategoryListPage extends BaseUI{
   }
   
   ionViewDidLoad() {
+   this.loadMainCategoryList();
+  }
+  
+  loadMainCategoryList(){
     if (this.network.type != 'none') {
       this.rest.GetProductMainCategory() // 填写url的参数
         .subscribe(

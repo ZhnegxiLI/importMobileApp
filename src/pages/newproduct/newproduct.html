@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Nouveaulté</ion-title>
+    <ion-title>{{SecondReferenceLabel}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,43 +15,20 @@
 
 <ion-content>
   <ion-list>
-
-    <button ion-item detail-none (click)="productDetail()">
+    <button ion-item detail-none (click)="productDetail()" *ngFor="let item of productList">
+      <p style="float: right; margin-top: 14px;">{{item.Price}} <span [hidden]="item.Price==null">€</span></p>
       <ion-avatar item-start>
-        <img  class="productImg" src=" http://www.jlsimport.fr/img/p/2/6/8/6/2686-thickbox_default.jpg">
+        <img  class="productImg"  src="assets/imgs/testProduct.jpg">
       </ion-avatar>
-      <h2>gaz briquet 250+50gr</h2>
-      <p>Quantité par colis : 48</p>
-    </button>
-    <button ion-item detail-none (click)="productDetail()">
-      <ion-avatar  item-start >
-        <img class="productImg" src=" http://www.jlsimport.fr/img/p/2/6/8/6/2686-thickbox_default.jpg">
-      </ion-avatar>
-      <h2>gaz briquet 250+50gr</h2>
-      <p>Quantité par colis : 48</p>
-    </button>
-    <button ion-item detail-none (click)="productDetail()">
-      <ion-avatar class="productImg" item-start large>
-        <img class="productImg" src=" http://www.jlsimport.fr/img/p/2/6/8/6/2686-thickbox_default.jpg">
-      </ion-avatar>
-      <h2>gaz briquet 250+50gr</h2>
-      <p>Quantité par colis : 48</p>
-    </button>
-
-    <button ion-item detail-none (click)="productDetail()">
-      <ion-avatar item-start>
-        <img class="productImg" src=" http://www.jlsimport.fr/img/p/2/6/8/6/2686-thickbox_default.jpg">
-      </ion-avatar>
-      <h2>gaz briquet 250+50gr</h2>
-      <p>Quantité par colis : 48</p>
-    </button>
-    <button ion-item detail-none (click)="productDetail()">
-        <p style="float: right; margin-top: 14px;">24$</p>
-      <ion-avatar item-start>
-        <img class="productImg" src=" http://www.jlsimport.fr/img/p/2/6/8/6/2686-thickbox_default.jpg">
-      </ion-avatar>
-      <h2>gaz briquet 250+50gr</h2>
-      <p >Quantité par colis : 48</p>
+      <h2>{{item.Label}}</h2>
+      <p>Quantité par colis : {{item.QuantityPerBox}}</p>
+      <p>Quantité minimum : {{item.MinQuantity}}</p>
     </button>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
