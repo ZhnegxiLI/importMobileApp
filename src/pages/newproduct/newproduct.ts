@@ -6,7 +6,7 @@ import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
 
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-newproduct',
   templateUrl: 'newproduct.html',
@@ -34,7 +34,7 @@ export class NewproductPage extends BaseUI{
   }
 
   productDetail(){
-    this.navCtrl.push(ProductDetailPage);
+    this.navCtrl.push('ProductDetailPage');
   }
 
   loadProductList(){

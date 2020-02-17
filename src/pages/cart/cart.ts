@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
-
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-cart',
   templateUrl: 'cart.html',

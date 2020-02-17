@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CategoryListPage } from './category-list';
-import {SubCategoryListPage} from '../sub-category-list/sub-category-list';
-import { from } from 'rxjs/observable/from';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -10,6 +9,7 @@ import { from } from 'rxjs/observable/from';
   ],
   imports: [
     IonicPageModule.forChild(CategoryListPage),
+    TranslateModule
   ],
 })
 export class CategoryListPageModule {}

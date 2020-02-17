@@ -3,7 +3,6 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
 import { ENV } from '@app/env';
 import { TranslateService } from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
@@ -14,7 +13,7 @@ import { UtilsProvider } from '../providers/utils/utils'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = 'TabsPage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public translate: TranslateService, public event :Events, public utils:UtilsProvider ) {
     platform.ready().then(async () => {

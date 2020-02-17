@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
 
+@IonicPage()
 @Component({
   selector: 'page-category-list',
   templateUrl: 'category-list.html',
@@ -22,7 +23,7 @@ export class CategoryListPage extends BaseUI{
   }
 
   secondMenu(ReferenceId : number,RefereceLabel:string){
-    this.navCtrl.push(SubCategoryListPage, {ReferenceId : ReferenceId, RefereceLabel:RefereceLabel});
+    this.navCtrl.push('SubCategoryListPage', {ReferenceId : ReferenceId, RefereceLabel:RefereceLabel});
   }
   
   ionViewDidLoad() {

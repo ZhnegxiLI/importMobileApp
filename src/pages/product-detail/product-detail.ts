@@ -35,7 +35,7 @@ export class ProductDetailPage {
   }
 
   displayAvis(){
-    this.navCtrl.push(ProductEvaluationListPage, {global:false});
+    this.navCtrl.push('ProductEvaluationListPage', {global:false});
   }
 
 }

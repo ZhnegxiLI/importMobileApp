@@ -23,7 +23,7 @@ export class RegistreSuccedPage {
   returnToAccueil(){
     // Set the tab to the first choice 
     //this.navCtrl.parent.select(0);
-    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.setRoot('TabsPage');
   }
 
 }

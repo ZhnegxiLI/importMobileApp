@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import {NewproductPage} from '../newproduct/newproduct';
 import {SearchPage} from '../search/search'
 import { CategoryListPage} from '../category-list/category-list'
@@ -7,7 +7,7 @@ import {ProductEvaluationListPage} from '../product-evaluation-list/product-eval
 import {TranslateService} from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
 
-
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -24,19 +24,19 @@ export class HomePage {
 
 
   displaynewProductPage(){
-    this.navCtrl.push(NewproductPage);
+    this.navCtrl.push('NewproductPage');
   }
 
   search(){
-    this.navCtrl.push(SearchPage);
+    this.navCtrl.push('SearchPage');
   }
 
   displayCategoryListPage(){
-    this.navCtrl.push(CategoryListPage);
+    this.navCtrl.push("CategoryListPage");
   }
 
   displayAvis(){
-    this.navCtrl.push(ProductEvaluationListPage, {global:true});
+    this.navCtrl.push('ProductEvaluationListPage', {global:true});
   }
 
 }

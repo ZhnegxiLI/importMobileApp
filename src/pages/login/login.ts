@@ -8,6 +8,7 @@ import {RegistrePage} from '../registre/registre';
 import { Network } from '@ionic-native/network';
 import { HomePage } from '../home/home';
 
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -75,7 +76,7 @@ export class LoginPage extends BaseUI {
 
   registre(){
 
-  this.navCtrl.push(RegistrePage);
+  this.navCtrl.push('RegistrePage');
   }
 
   dismiss() {

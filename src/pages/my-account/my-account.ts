@@ -2,18 +2,19 @@ import { ContactUsPage } from './../contact-us/contact-us';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoginPage } from '../login/login'
-import { from } from 'rxjs/observable/from';
 import { Storage } from '@ionic/storage';
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
 import {AboutUsPage} from '../about-us/about-us'; 
 import {TranslationPage} from '../translation/translation'
 import { UtilsProvider } from '../../providers/utils/utils'; 
 
+@IonicPage()
 @Component({
-  selector: 'page-myAccount',
-  templateUrl: 'myAccount.html',
+  selector: 'page-my-account',
+  templateUrl: 'my-account.html',
 })
-export class myAccountPage {
+export class MyAccountPage {
+
   public notLogin: boolean = true;
   public logined: boolean = false;
 
@@ -26,7 +27,7 @@ export class myAccountPage {
   }
 
   showModal() {
-    let modal = this.modalCtrl.create(LoginPage);
+    let modal = this.modalCtrl.create('LoginPage');
     modal.onDidDismiss(()=>{
         this.loadUserPage();
     });
@@ -38,11 +39,11 @@ export class myAccountPage {
   }
 
   contactUs(){
-    this.navCtrl.push(ContactUsPage);
+    this.navCtrl.push('ContactUsPage');
   }
 
   aboutUs(){
-    this.navCtrl.push(AboutUsPage);
+    this.navCtrl.push('AboutUsPage');
   }
 
   async loadUserPage() {
@@ -64,14 +65,15 @@ export class myAccountPage {
     this.loadUserPage();
   }
   readCommandList(){
-    this.navCtrl.push(ReadOrderListPage);
+    this.navCtrl.push('ReadOrderListPage');
   }
   
   translation(){
-    let modal = this.modalCtrl.create(TranslationPage);
+    let modal = this.modalCtrl.create('TranslationPage');
     modal.onDidDismiss(()=>{
        
     });
     modal.present();
   }
+
 }
