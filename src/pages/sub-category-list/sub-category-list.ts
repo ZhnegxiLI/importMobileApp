@@ -11,6 +11,7 @@ import { NewproductPage } from '../newproduct/newproduct';
   templateUrl: 'sub-category-list.html',
 })
 export class SubCategoryListPage extends BaseUI {
+  loading:boolean = true;
   MainReferenceLabel : string = "";
   MainReferenceId:number = 0;
   categoryList: any[]=[];
@@ -40,7 +41,8 @@ export class SubCategoryListPage extends BaseUI {
           },
           error => {
             super.showToast(this.toastCtrl, error.Msg);
-          });
+          },()=>this.loading=false
+          );
     }
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");

@@ -11,7 +11,7 @@ import { Network } from '@ionic-native/network';
   templateUrl: 'category-list.html',
 })
 export class CategoryListPage extends BaseUI{
-
+  private loading : boolean = true;
   categoryList:any[];
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -43,7 +43,9 @@ export class CategoryListPage extends BaseUI{
           },
           error => {
             super.showToast(this.toastCtrl, error.Msg);
-          });
+          },
+          ()=>this.loading=false);
+
     }
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
