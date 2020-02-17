@@ -70,7 +70,7 @@ export class RestProvider {
   }
   GetProductSecondCategory(MainCategoryReferenceId: number): Observable<any> {
     var lang = this.translate.defaultLang;
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductMainCategory + "?MainCategoryReferenceId=" + MainCategoryReferenceId + "&Lang=" + lang);
+    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductSecondCategory + "?MainCategoryReferenceId=" + MainCategoryReferenceId + "&Lang=" + lang);
   }
 
 

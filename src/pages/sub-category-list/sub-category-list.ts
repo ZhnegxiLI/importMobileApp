@@ -1,75 +1,52 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SubCategoryListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
+import { Network } from '@ionic-native/network';
+import { BaseUI } from '../../app/common/baseui';
 
 @IonicPage()
 @Component({
   selector: 'page-sub-category-list',
   templateUrl: 'sub-category-list.html',
 })
-export class SubCategoryListPage {
-  pageName : string;
-
-  subMenu = {
-    'VAISSELLES' : [
-      'Assiette',
-      'Verre',
-      'Bonbonniere' ,
-      'Boitre de conversation', 
-      'Mug' , 
-      'Ramequin' , 
-     ' Carafe',
-      'Pichet egouttoir a vaisselle', 
-      'Bol', 
-      'Saladier', 
-      'Bol', 
-      'Gobelet', 
-      'Dessous de plat', 
-      'Plateau' , 
-      'Planche a decouper', 
-      'Serviette papier', 
-      'Bouilloir', 
-      'Détergent' ,
-      'Coupe a fruit'
-    ],
-    'CADEAU' : [
-      '1',
-      '2'
-    ],
-    'DECORATION' : [
-      '1',
-      '2'
-    ],
-    'BAZAR' : [
-      '1',
-      '2'
-    ],
-    'ARTICLES DE MENAGE' : [
-      '1',
-      '2'
-    ],
-    'FLEURS ARTIFICIELLES' : [
-      '1',
-      '2'
-    ],
-    'MEILLEUR VENTE' : [
-      '1',
-      '2'
-    ]
-  }
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.pageName = navParams.get('pageName');
+export class SubCategoryListPage extends BaseUI {
+  MainReferenceLabel : string = "";
+  MainReferenceId:number = 0;
+  categoryList: any[]=[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rest:RestProvider,
+    public network:Network, public loadingCtrl:LoadingController,
+    public toastCtrl:ToastController) {
+      super();
   }
 
   ionViewDidLoad() {
+    this.MainReferenceId = this.navParams.get('ReferenceId');
+    this.MainReferenceLabel = this.navParams.get('RefereceLabel');
     console.log('ionViewDidLoad SubCategoryListPage');
+
+
+    if (this.network.type != 'none') {
+      this.rest.GetProductSecondCategory(this.MainReferenceId) // 填写url的参数
+        .subscribe(
+          f => {
+            if (f.Success&&f.Data!=null) {
+                this.categoryList = f.Data;
+            } else {
+              super.showToast(this.toastCtrl, f.Msg);
+            }
+          },
+          error => {
+            super.showToast(this.toastCtrl, error.Msg);
+          });
+    }
+    else {
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+    }
+
+  }
+
+  loadSecondProductCategory(MainReferenceId:number){
+    console.log(MainReferenceId);
   }
 
 }
