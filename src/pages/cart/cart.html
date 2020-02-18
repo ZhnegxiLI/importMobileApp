@@ -34,7 +34,7 @@
               <p class="descriptionFont">{{'cart.EachBox' | translate}}: {{item.QuantityPerBox}} </p>
               <p class="descriptionFont">{{'cart.MinimumPurchase' | translate}}:{{item.MinQuantity}}</p>
             </div>
-            <ion-meter float-right [buyNumber]="item.Quantity" maxQty='10' minQty='1' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
+            <ion-meter float-right [buyNumber]="item.Quantity" maxQty='100' minQty='0' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
             </ion-meter>
           </ion-col>
         </ion-row>
