@@ -16,11 +16,11 @@
 <ion-content>
 
   <ion-list>
-    <div class="productCard">
+    <div class="productCard" *ngFor="let item of cartProductList">
       <ion-grid class="colStyle">
         <ion-row class="colStyle">
           <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
+            <ion-checkbox [(ngModel)]="item.Selected" (ngModelChange)="itemCheckBoxChange(item)">
             </ion-checkbox>
           </ion-col>
           <ion-col col-3 class="colStyle">
@@ -28,151 +28,13 @@
           </ion-col>
           <ion-col col-8 class="colStyle">
             <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">{{'cart.Reference' | translate}}: 40673357</p>
-              <p class="descriptionFont">{{'cart.EachBox' | translate}}: 48</p>
-              <p class="descriptionFont">{{'cart.MinimumPurchase' | translate}}: 35</p>
+              <p style="float: right; margin-right: 4px;">{{item.Price}}<span *ngIf="item.Price!=null">€</span></p>
+              <h6 class="productTitleFont"> {{item.Label}} </h6>
+              <p class="descriptionFont">{{'cart.Reference' | translate}}: {{item.Code}} </p>
+              <p class="descriptionFont">{{'cart.EachBox' | translate}}: {{item.QuantityPerBox}} </p>
+              <p class="descriptionFont">{{'cart.MinimumPurchase' | translate}}:{{item.MinQuantity}}</p>
             </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
-            </ion-meter>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="productCard">
-      <ion-grid class="colStyle">
-        <ion-row class="colStyle">
-          <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
-            </ion-checkbox>
-          </ion-col>
-          <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-          </ion-col>
-          <ion-col col-8 class="colStyle">
-            <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Référence : 40673357</p>
-              <p class="descriptionFont">par colis : 48</p>
-            </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
-            </ion-meter>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="productCard">
-      <ion-grid class="colStyle">
-        <ion-row class="colStyle">
-          <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
-            </ion-checkbox>
-          </ion-col>
-          <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-          </ion-col>
-          <ion-col col-8 class="colStyle">
-            <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Référence : 40673357</p>
-              <p class="descriptionFont">par colis : 48</p>
-            </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
-            </ion-meter>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="productCard">
-      <ion-grid class="colStyle">
-        <ion-row class="colStyle">
-          <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
-            </ion-checkbox>
-          </ion-col>
-          <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-          </ion-col>
-          <ion-col col-8 class="colStyle">
-            <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Référence : 40673357</p>
-              <p class="descriptionFont">par colis : 48</p>
-            </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
-            </ion-meter>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="productCard">
-      <ion-grid class="colStyle">
-        <ion-row class="colStyle">
-          <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
-            </ion-checkbox>
-          </ion-col>
-          <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-          </ion-col>
-          <ion-col col-8 class="colStyle">
-            <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Référence : 40673357</p>
-              <p class="descriptionFont">par colis : 48</p>
-            </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
-            </ion-meter>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="productCard">
-      <ion-grid class="colStyle">
-        <ion-row class="colStyle">
-          <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
-            </ion-checkbox>
-          </ion-col>
-          <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-          </ion-col>
-          <ion-col col-8 class="colStyle">
-            <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Référence : 40673357</p>
-              <p class="descriptionFont">par colis : 48</p>
-            </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
-            </ion-meter>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div class="productCard">
-      <ion-grid class="colStyle">
-        <ion-row class="colStyle">
-          <ion-col col-1 class="align-text-middle colStyle">
-            <ion-checkbox>
-            </ion-checkbox>
-          </ion-col>
-          <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-          </ion-col>
-          <ion-col col-8 class="colStyle">
-            <div>
-              <p style="float: right; margin-right: 4px;">24$</p>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Référence : 40673357</p>
-              <p class="descriptionFont">par colis : 48</p>
-            </div>
-            <ion-meter float-right buyNumber='2' maxQty='10' minQty='1' goods="A001" (onUpdate)="onUpdate($event)">
+            <ion-meter float-right [buyNumber]="item.Quantity" maxQty='10' minQty='1' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
             </ion-meter>
           </ion-col>
         </ion-row>
@@ -183,12 +45,12 @@
 <ion-footer>
   <ion-toolbar>
     <div style="margin-left: 5px;" float-left class="footerComponent">
-      <ion-checkbox name="AllProduct">
+      <ion-checkbox name="AllProduct" [(ngModel)]="checkAllProduct" (ngModelChange)="AllCheckBoxChange()">
       </ion-checkbox>
       <ion-label style="margin-left: 3px;">{{'cart.All' | translate}}</ion-label>
     </div>
     <div float-right class="footerComponent">
-      <ion-label>{{'cart.Somme' | translate}}: 0€</ion-label>
+      <ion-label>{{'cart.Somme' | translate}}:{{CalculAccount()}}€</ion-label>
       <button ion-button round small (click)="valide()">{{'cart.Confirm' | translate}}</button>
     </div>
   </ion-toolbar>

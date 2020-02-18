@@ -4,7 +4,8 @@ import { ProductDetailPage } from '../product-detail/product-detail';
 import { RestProvider } from '../../providers/rest/rest';
 import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
-
+import { Storage } from '@ionic/storage';
+import { UtilsProvider } from '../../providers/utils/utils';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,7 @@ import { BaseUI } from '../../app/common/baseui';
   templateUrl: 'newproduct.html',
 })
 export class NewproductPage extends BaseUI{
+  loading:boolean = true;
   SecondReferenceId: number = 0;
   SecondReferenceLabel: string = '';
   productList : any[] = [];
@@ -22,14 +24,19 @@ export class NewproductPage extends BaseUI{
      public navParams: NavParams,
      public network: Network,
      public rest: RestProvider,
-     public toastCtrl: ToastController) {
+     public toastCtrl: ToastController,
+     public storage:Storage,
+     public utilis:UtilsProvider) {
     super();
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad NewproductPage');
+  }
+
+  ionViewDidEnter(){
     this.SecondReferenceId = this.navParams.get('ReferenceId');
     this.SecondReferenceLabel = this.navParams.get('RefereceLabel');
-    console.log('ionViewDidLoad NewproductPage');
     this.loadProductList();
   }
 
@@ -50,7 +57,8 @@ export class NewproductPage extends BaseUI{
           },
           error => {
             super.showToast(this.toastCtrl, error.Msg);
-          });
+          },
+          ()=>this.loading=false);
     }
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
@@ -83,6 +91,34 @@ export class NewproductPage extends BaseUI{
     else{
       super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! "); 
     }
-  }  
+  }
+  
+ async addInCart( event: Event,item:any ){
+    event.stopPropagation();
+    var cartProductList = JSON.parse(await this.utilis.getKey('cartProductList'));
+    if(cartProductList==null){
+      cartProductList = [];
+    }
+    var temp = cartProductList.find(p=>p.ReferenceId == item.ReferenceId);
+    if(temp==null){
+      if(item.Quantity==null){
+        item.Quantity = 0;
+      }
+      cartProductList.push(item);
+    }
+    cartProductList.forEach(p => {
+      if(p.ReferenceId == item.ReferenceId){
+        p.Quantity = p.Quantity + 1;
+      }
+      if(p.Selected ==null){
+        p.Selected = false;
+      }
+    });
+
+    
+    this.storage.set('cartProductList',JSON.stringify(cartProductList));
+
+    super.showToast(this.toastCtrl,'add successfully!')
+  }
 
 }

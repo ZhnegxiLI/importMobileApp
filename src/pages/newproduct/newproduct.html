@@ -14,16 +14,22 @@
 
 
 <ion-content>
+  <div *ngIf="loading" class="spinner">
+    <ion-spinner center></ion-spinner>
+    <p text-center font-size-small>Loading...</p>
+  </div>
   <ion-list>
-    <button ion-item detail-none (click)="productDetail()" *ngFor="let item of productList">
-      <p style="float: right; margin-top: 14px;">{{item.Price}} <span [hidden]="item.Price==null">€</span></p>
+    <ion-item ion-item detail-none (click)="productDetail()" *ngFor="let item of productList">
+      <p style="float: right; margin-top: 25px;">{{item.Price}} <span [hidden]="item.Price==null">€</span></p>
       <ion-avatar item-start>
         <img  class="productImg"  src="assets/imgs/testProduct.jpg">
       </ion-avatar>
-      <h2>{{item.Label}}</h2>
+      <h2 class="productLabelClass" [id]="item.ReferenceId">{{item.Label}}</h2>
       <p>{{'newproduct.QuantityEachBox' | translate}} : {{item.QuantityPerBox}}</p>
       <p>{{'newproduct.QuantityMinimum' | translate}} : {{item.MinQuantity}}</p>
-    </button>
+      <p>{{'newproduct.Reference' | translate}} : {{item.Code}}</p>
+      <button (click)="addInCart($event,item)">Add</button>
+    </ion-item>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content

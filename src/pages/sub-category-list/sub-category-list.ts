@@ -22,9 +22,12 @@ export class SubCategoryListPage extends BaseUI {
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad SubCategoryListPage');
+  }
+
+  ionViewDidEnter(){
     this.MainReferenceId = this.navParams.get('ReferenceId');
     this.MainReferenceLabel = this.navParams.get('RefereceLabel');
-    console.log('ionViewDidLoad SubCategoryListPage');
     this.loadSecondProductCategory();
   }
 
@@ -41,8 +44,7 @@ export class SubCategoryListPage extends BaseUI {
           },
           error => {
             super.showToast(this.toastCtrl, error.Msg);
-          },()=>this.loading=false
-          );
+          },()=>this.loading=false);
     }
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");

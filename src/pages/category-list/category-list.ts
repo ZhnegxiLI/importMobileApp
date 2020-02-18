@@ -11,7 +11,7 @@ import { Network } from '@ionic-native/network';
   templateUrl: 'category-list.html',
 })
 export class CategoryListPage extends BaseUI{
-  private loading : boolean = true;
+  public loading : boolean = true;
   categoryList:any[];
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -27,24 +27,27 @@ export class CategoryListPage extends BaseUI{
   }
   
   ionViewDidLoad() {
-   this.loadMainCategoryList();
-  }
   
+  }
+
+  ionViewDidEnter(){
+    this.loadMainCategoryList();
+  }
+  　　
   loadMainCategoryList(){
     if (this.network.type != 'none') {
       this.rest.GetProductMainCategory() // 填写url的参数
         .subscribe(
           f => {
             if (f.Success&&f.Data!=null) {
-                this.categoryList = f.Data;
+                this.categoryList =f.Data;
             } else {
               super.showToast(this.toastCtrl, f.Msg);
             }
           },
           error => {
             super.showToast(this.toastCtrl, error.Msg);
-          },
-          ()=>this.loading=false);
+          },()=>this.loading=false);
 
     }
     else {

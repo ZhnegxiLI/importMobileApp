@@ -3,12 +3,12 @@
     <ion-title>{{MainReferenceLabel}}</ion-title>
   </ion-navbar>
 </ion-header>  
-*
-  <div *ngIf="loading" class="spinner">
-    <ion-spinner center></ion-spinner>
-    <p text-center font-size-small>加载中</p>
-  </div>
+
   <ion-content>
+    <div *ngIf="loading" class="spinner">
+      <ion-spinner center></ion-spinner>
+      <p text-center font-size-small>Loading...</p>
+    </div>
     <ion-list >
       <button ion-item *ngFor="let item of categoryList" (click) = "productMenu(item.ReferenceId,item.Reference.Label)">
         {{item.Reference.Label}}({{item.TotalCount}})
