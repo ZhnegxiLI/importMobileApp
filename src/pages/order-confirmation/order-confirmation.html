@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>orderConfirmation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color: #fffffff7!important;">
+  <div style="background-color: white; padding: 8px;">
+    <h6>MA COMMANDE <span float-right class="articleNumber">1 article(s)</span></h6>
+    <ion-list style="margin-bottom: 0px;">
+      <ion-card class="productCard">
+        <ion-card-header style="padding: 8px 4px 0px;">
+          <h3 class="productTitle">GAZ BRIQUET 250+50GR</h3>
+        </ion-card-header>
+        <ion-card-content style="padding: 0px;">
+          <div>
+            <ion-row>
+              <ion-col col-4>
+                <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
+              </ion-col>
+              <ion-col col-8>
+                <div float-right style="margin-top: 5px;"> <span style="font-size: 20px;color: #534d7a; ">50 €</span>
+                </div>
+                <p class="descriptionFont">Réf : 40673357</p>
+                <p class="descriptionFont">Taille : 41*29.5*106cm</p>
+                <p class="descriptionFont">Matière : en Bois</p>
+                <p class="descriptionFont">Couleur :Blanc</p>
+                <p class="descriptionFont">x 3</p>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <div>
+        <p class="expenseFont">Total avant taxe:<span float-right>100€</span></p>
+        <p class="expenseFont">TVA:<span float-right>20€</span> </p>
+        <P class="expenseFont">Frais de livraison:<span float-right>20€</span></P>
+        <p class="totalCommande expenseFont" style="font-weight: bold;">Total de la commande:<span
+            float-right>140€</span></p>
+      </div>
+    </ion-list>
+  </div>
+  <div style="background-color: white; padding: 8px; margin-top: 30px;">
+    <h6><b>LIVRAISON/ FACTURATION</b> <a float-right class="articleNumber">Modifier</a></h6>
+    <ion-list style="margin-bottom: 0px;">
+      <ion-card class="productCard" style="width: 100%; border-bottom: 0px;">
+        <ion-card-header style="padding: 8px 4px 0px;">
+          <h3 class="productTitle">Adresse de livraison</h3>
+        </ion-card-header>
+        <ion-card-content style="padding: 0px;">
+          <p class="descriptionFont" style="margin-left: 5px; margin-top: 5px;">
+            Whengxi XI
+            <br>
+            58 rue du Goulet
+            <br>
+            93300 Aubervilliers
+            <br>
+            6546164656
+          </p>
+        </ion-card-content>
+      </ion-card>
+      <div text-center>
+        <button ion-button small color="primary" outline>Choisir une autre adresse</button>
+      </div>
+    </ion-list>
+  </div>
+
+  <div style="background-color: white; padding: 8px; margin-top: 30px; margin-bottom: 20px;">
+    <h6> <a float-right class="articleNumber">Modifier</a></h6>
+    <ion-list style="margin-bottom: 10px;">
+      <ion-card class="productCard" style="width: 100%; border-bottom: 0px;">
+        <ion-card-header style="padding: 8px 4px 0px;">
+          <h3 class="productTitle">Adresse de facturation</h3>
+        </ion-card-header>
+        <ion-card-content style="padding: 0px;">
+          <p class="descriptionFont" style="margin-left: 5px; margin-top: 5px;">
+            Whengxi XI
+            <br>
+            58 rue du Goulet
+            <br>
+            93300 Aubervilliers
+            <br>
+            6546164656
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="padding: 5px;">
+      <p class="expenseFont">Total:<span float-right>100€</span></p>
+      <p class="expenseFont">Frais de livraison:<span float-right>10€</span></p>
+      <div text-center>
+        <button ion-button small color="primary" style="width: 100%;">Finaliser la commande</button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
