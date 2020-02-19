@@ -26,7 +26,7 @@ export class IonMeterComponent implements OnChanges, OnInit {
   maxQty: number;//最大限制数
 
   @Input("minQty")
-  minQty: number = 1;//最小购买数，默认0
+  minQty: number = 0;//最小购买数，默认0
 
   disabled: boolean = false;//是否禁止输入，默认允许
   minus: boolean = true;//是否禁用减按钮
@@ -47,7 +47,7 @@ export class IonMeterComponent implements OnChanges, OnInit {
    */
   onInput(event) {
     event.stopPropagation();
-    this.buyNumber = this.buyNumber.replace(/[^0-9]/ig, "");
+    //this.buyNumber = this.buyNumber.replace(/[^0-9]/ig, "");
     this.input.nativeElement.value = this.buyNumber;
     if (this.maxQty && Number(this.buyNumber) >= this.maxQty) {
       this.add = true;
