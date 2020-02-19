@@ -25,4 +25,8 @@ page-order-confirmation {
     .expenseFont{
         font-size: 10px;
     }
+    .ios ion-tab ion-footer .toolbar:last-child {
+        padding-bottom: $toolbar-ios-padding!important;
+        min-height: $toolbar-ios-height!important;
+      }
 }
