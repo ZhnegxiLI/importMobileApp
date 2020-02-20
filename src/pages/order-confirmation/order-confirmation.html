@@ -9,11 +9,11 @@
 
 <ion-content padding style="background-color: #fffffff7!important;">
   <div style="background-color: white; padding: 8px;">
-    <h6>MA COMMANDE <span float-right class="articleNumber">1 article(s)</span></h6>
+    <h6>MA COMMANDE <span float-right class="articleNumber">{{orderProductList.length}} article(s)</span></h6>
     <ion-list style="margin-bottom: 0px;">
-      <ion-card class="productCard">
+      <ion-card class="productCard" *ngFor="let item of orderProductList">
         <ion-card-header style="padding: 8px 4px 0px;">
-          <h3 class="productTitle">GAZ BRIQUET 250+50GR</h3>
+          <h3 class="productTitle">{{item.Label}}</h3>
         </ion-card-header>
         <ion-card-content style="padding: 0px;">
           <div>
@@ -22,24 +22,24 @@
                 <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
               </ion-col>
               <ion-col col-8>
-                <div float-right style="margin-top: 5px;"> <span style="font-size: 20px;color: #534d7a; ">50 €</span>
+                <div float-right style="margin-top: 5px;"> <span style="font-size: 20px;color: #534d7a; ">{{item.Price*item.Quantity}} €</span>
                 </div>
-                <p class="descriptionFont">Réf : 40673357</p>
-                <p class="descriptionFont">Taille : 41*29.5*106cm</p>
-                <p class="descriptionFont">Matière : en Bois</p>
-                <p class="descriptionFont">Couleur :Blanc</p>
-                <p class="descriptionFont">x 3</p>
+                <p class="descriptionFont">Réf : {{item.Code}} </p>
+                <p class="descriptionFont">Min quantity : {{item.MinQuantity}} </p>
+                <p class="descriptionFont">Quantity per box : {{item.QuantityPerBox}}</p>
+                <p class="descriptionFont">Unit Price : {{item.Price}}</p>
+                <p class="descriptionFont">x {{item.Quantity}}</p>
               </ion-col>
             </ion-row>
           </div>
         </ion-card-content>
       </ion-card>
       <div>
-        <p class="expenseFont">Total avant taxe:<span float-right>100€</span></p>
+        <p class="expenseFont">Total avant taxe:<span float-right>{{calculTotalPrice()}}€</span></p>
         <p class="expenseFont">TVA:<span float-right>20€</span> </p>
         <P class="expenseFont">Frais de livraison:<span float-right>20€</span></P>
         <p class="totalCommande expenseFont" style="font-weight: bold;">Total de la commande:<span
-            float-right>140€</span></p>
+            float-right>{{calculTotalPrice()}}€</span></p>
       </div>
     </ion-list>
   </div>
@@ -50,16 +50,15 @@
         <ion-card-header style="padding: 8px 4px 0px;">
           <h3 class="productTitle">Adresse de livraison</h3>
         </ion-card-header>
-        <ion-card-content style="padding: 0px;">
-          <p class="descriptionFont" style="margin-left: 5px; margin-top: 5px;">
-            Whengxi XI
-            <br>
-            58 rue du Goulet
-            <br>
-            93300 Aubervilliers
-            <br>
-            6546164656
-          </p>
+        <ion-card-content style="padding: 0px;" *ngIf="defaultShippingAdress!=null">
+          <p class="descriptionFont">{{defaultShippingAdress.ContactFirstName}} <span> {{facturationAdress.ContactLastName}}</span>  </p>
+          <p class="descriptionFont">{{defaultShippingAdress.FirstLineAddress}}  </p>
+          <p class="descriptionFont">{{defaultShippingAdress.SecondLineAddress}}  </p>
+          <p class="descriptionFont">{{defaultShippingAdress.ZipCode}}    <span> {{ facturationAdress.City }} </span> </p>
+          <p class="descriptionFont">{{defaultShippingAdress.ContactTelephone}} </p>
+        </ion-card-content>
+        <ion-card-content style="padding: 0px;" *ngIf="defaultShippingAdress==null">
+          <p class="descriptionFont">No address available </p>
         </ion-card-content>
       </ion-card>
       <div text-center>
@@ -76,15 +75,11 @@
           <h3 class="productTitle">Adresse de facturation</h3>
         </ion-card-header>
         <ion-card-content style="padding: 0px;">
-          <p class="descriptionFont" style="margin-left: 5px; margin-top: 5px;">
-            Whengxi XI
-            <br>
-            58 rue du Goulet
-            <br>
-            93300 Aubervilliers
-            <br>
-            6546164656
-          </p>
+          <p class="descriptionFont">{{facturationAdress.ContactFirstName}} <span> {{facturationAdress.ContactLastName}}</span>  </p>
+          <p class="descriptionFont">{{facturationAdress.FirstLineAddress}}  </p>
+          <p class="descriptionFont">{{facturationAdress.SecondLineAddress}}  </p>
+          <p class="descriptionFont">{{facturationAdress.ZipCode}}    <span> {{ facturationAdress.City }} </span> </p>
+          <p class="descriptionFont">{{facturationAdress.ContactTelephone}} </p>
         </ion-card-content>
       </ion-card>
     </ion-list>
@@ -94,10 +89,10 @@
 <ion-footer>
   <ion-toolbar>
     <div style="padding: 5px;">
-      <p class="expenseFont">Total:<span float-right>100€</span></p>
+      <p class="expenseFont">Total:<span float-right style="font-weight: bold;">100€</span></p>
       <p class="expenseFont">Frais de livraison:<span float-right>10€</span></p>
       <div text-center>
-        <button ion-button small color="primary" style="width: 100%;">Finaliser la commande</button>
+        <button ion-button small color="primary" style="width: 100%;" (click)="validOrder()">Finaliser la commande</button>
       </div>
     </div>
   </ion-toolbar>

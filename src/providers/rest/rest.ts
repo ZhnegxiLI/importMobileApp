@@ -61,7 +61,12 @@ export class RestProvider {
 
   private apiUrlGetProductListBySecondCategory = this.host + "api/Product/GetProductListBySecondCategory";
   private apiUrlGetProductListBySecondCategoryWithAuth = this.host + "api/Product/GetProductListBySecondCategoryWithAuth";
+  private apiUrlGetProductInfoByReferenceIds = this.host + "api/Product/GetProductInfoByReferenceIds";
 
+  private apiUrlGetUserShippingAdress = this.host + "api/User/GetUserShippingAdress";
+  private apiUrlGetUserFacturationAdress = this.host + "api/User/GetUserFacturationAdress";
+
+  private apiUrlSaveOrder = this.host + "api/Order/SaveOrder";
 
   Registre(RegistrerInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
@@ -90,6 +95,26 @@ export class RestProvider {
       "?SecondCategoryReferenceId=" + SecondCategoryReferenceId + "&Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
   }
 
+  SaveOrder(References:any[] ,ShippingAdressId:number, FacturationAdressId:number, UserId:number): Observable<any> {
+   // TODO : change to with auth 
+    return this.postUrlReturnWithOutAuth(this.apiUrlSaveOrder, 
+      { References: References, ShippingAdressId: ShippingAdressId, FacturationAdressId:FacturationAdressId,
+        UserId:UserId});
+  }
+
+
+  GetUserFacturationAdress(UserId): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetUserFacturationAdress + "?UserId="+UserId);
+  }
+
+  GetUserShippingAdress(UserId): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetUserShippingAdress + "?UserId="+UserId);
+  }
+
+  GetProductInfoByReferenceIds(ReferenceIds): Observable<any> {
+    var lang = this.translate.defaultLang; // TODO : change to with auth 
+    return this.postUrlReturnWithOutAuth(this.apiUrlGetProductInfoByReferenceIds, { ReferenceIds: ReferenceIds, Lang: lang });
+  }
 
 
 
@@ -240,9 +265,6 @@ export class RestProvider {
     return this.http.post(url, body)
       .pipe(
         timeout(20000),
-        // catchError(e => {
-        //   return of({'error':'timeout'});
-        // })
       )
       .map(this.extractData)
       .catch(this.handleError);
