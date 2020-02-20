@@ -102,10 +102,11 @@ export class OrderConfirmationPage extends BaseUI {
       ReferenceId: p.ReferenceId,
       Quantity : p.Quantity
     }));
-    if(this.defaultShippingAdress!=null&&this.defaultShippingAdress!={}&& this.defaultShippingAdress["Id"]!=null){
-      var shippingAdressId = this.defaultShippingAdress["Id"];
-    }
     var shippingAdressId = 1;//todo remove
+    if(this.defaultShippingAdress!=null&&this.defaultShippingAdress!={}&& this.defaultShippingAdress["Id"]!=null){
+       shippingAdressId = this.defaultShippingAdress["Id"];
+    }
+  
     var facturationAdressId = this.facturationAdress["Id"];
     var UserId = Number.parseInt(await this.utils.getKey('userId'));
     if(productInfo.length>0&& shippingAdressId!=null){
