@@ -24,7 +24,18 @@ export class HomePage {
 
 
   displaynewProductPage(){
-    this.navCtrl.push('NewproductPage');
+    this.navCtrl.push('NewproductPage',
+    {
+      Title:'New products', // TODO: translate
+      PageType:'NewProduct'
+    });
+  }
+  displayBestSalesProductPage(){
+    this.navCtrl.push('NewproductPage',
+    {
+      Title:'Best sales products', // TODO: translate
+      PageType:'BestSalesProduct'
+    });
   }
 
   search(){

@@ -22,13 +22,16 @@
           </ion-col>
           <ion-col col-8 class="colStyle">
             <div>
-              <p style="float: right; margin-right: 4px;">{{item.Price}}<span *ngIf="item.Price!=null">€</span></p>
+              <p style="float: right; margin-right: 4px; margin-bottom: 0px;">{{item.Price}}<span *ngIf="item.Price!=null">€</span></p>
               <h6 class="productTitleFont"> {{item.Label}} </h6>
               <p class="descriptionFont">{{'cart.Reference' | translate}}: {{item.Code}} </p>
+              <button ion-button icon-only float-right  style="font-size:0.6em;" (click)="removeItem(item)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </button>
               <p class="descriptionFont">{{'cart.EachBox' | translate}}: {{item.QuantityPerBox}} </p>
               <p class="descriptionFont">{{'cart.MinimumPurchase' | translate}}:{{item.MinQuantity}}</p>
             </div>
-            <ion-meter float-right [buyNumber]="item.Quantity" maxQty='100' minQty='0' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
+            <ion-meter float-right [buyNumber]="item.Quantity" maxQty='10000' minQty='0' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
             </ion-meter>
           </ion-col>
         </ion-row>

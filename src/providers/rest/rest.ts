@@ -62,6 +62,8 @@ export class RestProvider {
   private apiUrlGetProductListBySecondCategory = this.host + "api/Product/GetProductListBySecondCategory";
   private apiUrlGetProductListBySecondCategoryWithAuth = this.host + "api/Product/GetProductListBySecondCategoryWithAuth";
   private apiUrlGetProductInfoByReferenceIds = this.host + "api/Product/GetProductInfoByReferenceIds";
+  private apiUrlGetProductListByPublishDate = this.host + "api/Product/GetProductListByPublishDate";
+  private apiUrlGetProductListBySalesPerformance = this.host + "api/Product/GetProductListBySalesPerformance";
 
   private apiUrlGetUserShippingAdress = this.host + "api/User/GetUserShippingAdress";
   private apiUrlGetUserFacturationAdress = this.host + "api/User/GetUserFacturationAdress";
@@ -82,6 +84,19 @@ export class RestProvider {
     var lang = this.translate.defaultLang;
     return this.getUrlReturnWithOutAuth(this.apiUrlGetProductSecondCategory + "?MainCategoryReferenceId=" + MainCategoryReferenceId + "&Lang=" + lang);
   }
+
+  GetProductListByPublishDate(Begin: number, Step:number): Observable<any> {
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductListByPublishDate + 
+       "?Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
+  }
+
+  GetProductListBySalesPerformance(Begin: number, Step:number): Observable<any> {
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductListBySalesPerformance + 
+       "?Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
+  }
+
 
   GetProductListBySecondCategory(SecondCategoryReferenceId: number, Begin: number, Step:number): Observable<any> {
     var lang = this.translate.defaultLang;

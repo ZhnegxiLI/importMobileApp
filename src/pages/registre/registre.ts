@@ -84,7 +84,7 @@ export class RegistrePage extends BaseUI{
           .subscribe(
             f => {
               if (f.Success) {
-                this.navCtrl.setRoot('RegistreSuccedPage');
+                this.navCtrl.setRoot('RegistreSuccedPage',{email:this.basicInfoForm.value['email']});
               } else {
                 super.showToast(this.toastCtrl, f.Msg);
               }

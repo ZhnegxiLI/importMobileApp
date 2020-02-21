@@ -18,7 +18,7 @@ export class RegistreSuccedPage {
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad RegistreSuccedPage');
-    this.email = await this.utils.getKey('email');
+    this.email = this.navParams.get('email'); //await this.utils.getKey('email');
   }
   returnToAccueil(){
     // Set the tab to the first choice 

@@ -77,6 +77,10 @@ export class CartPage extends BaseUI{
       });
     }
   }
+  removeItem(item){
+    this.cartProductList = this.cartProductList.filter(p=>p.ReferenceId != item.ReferenceId);
+    this.SaveCart();
+  }
 
   /* Utils methods */
   SaveCart(){

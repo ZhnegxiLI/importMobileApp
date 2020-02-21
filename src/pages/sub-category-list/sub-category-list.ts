@@ -52,7 +52,12 @@ export class SubCategoryListPage extends BaseUI {
   }
 
   productMenu(ReferenceId:number,RefereceLabel:string ){
-    this.navCtrl.push('NewproductPage', {ReferenceId : ReferenceId, RefereceLabel:RefereceLabel});
+    this.navCtrl.push('NewproductPage', 
+    {
+      ReferenceId : ReferenceId, 
+      Title:RefereceLabel,
+      PageType : 'BySecondCategory'
+    });
   }
 
 }

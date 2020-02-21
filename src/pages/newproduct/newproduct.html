@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{SecondReferenceLabel}}</ion-title>
+    <ion-title>{{Title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -25,10 +25,14 @@
         <img  class="productImg"  src="assets/imgs/testProduct.jpg">
       </ion-avatar>
       <h2 class="productLabelClass" [id]="item.ReferenceId">{{item.Label}}</h2>
+    
       <p>{{'newproduct.QuantityEachBox' | translate}} : {{item.QuantityPerBox}}</p>
       <p>{{'newproduct.QuantityMinimum' | translate}} : {{item.MinQuantity}}</p>
+      <button icon-only float-right  style="font-size:0.6em; padding: 1px 0px; background-color: white;" (click)="addInCart($event,item)">
+        <ion-icon name="cart"></ion-icon>
+      </button>
       <p>{{'newproduct.Reference' | translate}} : {{item.Code}}</p>
-      <button (click)="addInCart($event,item)">Add</button>
+  
     </ion-item>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
