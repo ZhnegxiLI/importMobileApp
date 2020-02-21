@@ -23,7 +23,8 @@ import { HttpClientModule,HttpClient} from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UtilsProvider } from '../providers/utils/utils';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatButtonModule, MatSelectModule,MatFormFieldModule,MatInputModule } from '@angular/material'
 
 export function createTranslateLoader(http: HttpClient) {
   //此出的路径需要和第二步新建的文件夹保持一致
@@ -40,6 +41,11 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     ComponentsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true'
     }),
