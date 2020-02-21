@@ -5,8 +5,6 @@ import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 
 import { DiscoveryPage } from '../pages/discovery/discovery';
-import { NotificationPage } from '../pages/notification/notification';
-
 
 import { Network } from '@ionic-native/network';
 
@@ -34,7 +32,6 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     DiscoveryPage,
-    NotificationPage,
   ],
   imports: [
     StarRatingModule,
@@ -63,7 +60,6 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     DiscoveryPage,
-    NotificationPage,
   ],
   providers: [
     StatusBar,
