@@ -1,17 +1,21 @@
-<ion-row>
-  <ion-col col-2 style="padding-left: 0px;">
-      <button ion-button [disabled]='minus || disabled' (click)="onMinus($event)" clear>
-          <ion-icon name="remove-circle" color="primary" ></ion-icon>
-      </button>
-  </ion-col>
-
-  <ion-col col-3 style=" padding-left:0px; padding-right:0px;"> 
-      <input [(ngModel)]="buyNumber" type="number" pattern="[0-9]*" (input)="onInput($event)" (click)="onMyInput($event)" [disabled]='disabled' #input >
-  </ion-col>
-
-  <ion-col col-2 text-right>
-       <button ion-button [disabled]='add || disabled' (click)="onAdd($event)" clear>
-          <ion-icon name="add-circle" color="primary"></ion-icon>
-      </button>
-  </ion-col>
-</ion-row>
+<ion-row >
+    <ion-col col-5 style="padding-left: 0px;">
+        <p>Quantiy</p>
+    </ion-col>
+  
+    <ion-col col-2>
+        <button ion-button [disabled]='minus || disabled' (click)="onMinus($event)" clear>
+            <ion-icon name="remove-circle" color="primary" ></ion-icon>
+        </button>
+    </ion-col>
+  
+    <ion-col col-3> 
+        <input [(ngModel)]="buyNumber" type="number" pattern="[0-9]*" (input)="onInput($event)" (click)="onMyInput($event)" [disabled]='disabled' #input >
+    </ion-col>
+  
+    <ion-col col-2 text-right>
+         <button ion-button [disabled]='add || disabled' (click)="onAdd($event)" clear>
+            <ion-icon name="add-circle" color="primary"></ion-icon>
+        </button>
+    </ion-col>
+  </ion-row>
