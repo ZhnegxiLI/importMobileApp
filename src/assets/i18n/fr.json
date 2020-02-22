@@ -77,7 +77,7 @@
         "Warming_AtLeast1Number":"Au moins 1 chiffre",
         "Warming_AtLeast1Letter":"Au moins 1 minuscule",
         "UseTheSameAddressAsTheShippingAddress":"Utilisant cette adresse comme adresse de livraison",
-        "phoneNumber":"Numéro de téléphone"
+        "PhoneNumber":"Numéro de téléphone"
     },
     "registre-succed":{
         "Confirm":"Votre compte est bien enregistré, nous allons envoyer un mail de confirmation à {email}, veuiller confirmer votre address mail pour compléter votre enregistrement",
@@ -102,13 +102,46 @@
         "Quantity":"Quantité",
         "All":"Tous",
         "Somme":"Total",
-        "Confirm":"Validé"
+        "Confirm":"Validé",
+        "YourCartIsEmpty":"Votre panier est vide!"
+
     },
     "newproduct":{
         "QuantityEachBox":"Quantité/Colis",
-        "QuantityMinimum":"Quantité minimale d'achat"
+        "QuantityMinimum":"Quantité minimale d'achat",
+        "Reference":"Référence"
     },
     "category-list":{
         "Title":"Catégorie"
+    },
+    "tabs":{
+        "Home":"Accueil",
+        "Discover":"Découvrir",
+        "Cart":"Panier",
+        "Notice":"Notice",
+        "Account":"Compte"
+    },
+    "order-confirmation":{
+        "Title":"Confirmation",
+        "MyOrder":"MA COMMANDE",
+        "Article":"Article(s)",
+        "Reference":"Référence",
+        "UnitPrice":"Prix unitaire",
+        "SommeBeforeTaxe":"Total avant Tax",
+        "TVA":"TVA",
+        "ShippingCost":"Frais de livraison",
+        "AmountOfOrder":"Total de la commande",
+        "ShippingAddressOrBilling":"LIVRAISON/FACTURATION",
+        "Edit":"Modifier",
+        "ShippingAddress":"Adresse de livraison",
+        "ChooseAnotherAddress":"Choisir une autre adresse",
+        "BillingAddress":"Adresse de facturation",
+        "Amount":"Total",
+        "FinalizeTheOrder":"Finaliser la commande",
+        "NoAddressAvailable":"Adresse invalide"
+    },
+    "OrderConfirmSucced":{
+        "Confirm":"Confirmer",
+        "Return":"Retourner"
     }
 }

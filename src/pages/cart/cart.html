@@ -39,7 +39,7 @@
   </ion-list>
   <div *ngIf="!checkProductListIsAvailable()">
    <img style="margin-top: 5px;" src="assets/imgs/empty_cart.png">
-   <h1 style="text-align: center; color: gray;">Votre panier est vide</h1>
+   <h1 style="text-align: center; color: gray;"> {{'cart.YourCartIsEmpty' | translate}}</h1>
   </div>
 </ion-content>
 <ion-footer>

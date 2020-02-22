@@ -77,7 +77,7 @@
         "Warming_AtLeast1Number":"至少含有一个数字",
         "Warming_AtLeast1Letter":"至少含有一个字母",
         "UseTheSameAddressAsTheShippingAddress":"使用此地址作为收货地址",
-        "phoneNumber":"手机号码"
+        "PhoneNumber":"手机号码"
         
     },
     "registre-succed":{
@@ -103,14 +103,46 @@
         "Quantity":"总数",
         "All":"全选",
         "Somme":"总共金额",
-        "Confirm":"确定"
+        "Confirm":"确定",
+        "YourCartIsEmpty":"您的购物车是空的哦!"
     },
     "newproduct":{
         "QuantityEachBox":"件/箱",
-        "QuantityMinimum":"最少购买（件）"
+        "QuantityMinimum":"最少购买（件）",
+        "Reference":"货物编码"
     },
     "category-list":{
         "Title":"类别"
-    }
+    },
+    "tabs":{
+        "Home":"主页",
+        "Discover":"发现",
+        "Cart":"购物车",
+        "Notice":"通知",
+        "Account":"我的账户"
+    },
+    "order-confirmation":{
+        "Title":"确认订单",
+        "MyOrder":"我的订单",
+        "Article":"件",
+        "Reference":"货物编码",
+        "UnitPrice":"单件价格",
+        "SommeBeforeTaxe":"税前价格",
+        "TVA":"TVA",
+        "ShippingCost":"运费",
+        "AmountOfOrder":"订单金额",
+        "ShippingAddressOrBilling":"运送地址/账单地址",
+        "Edit":"编辑",
+        "ShippingAddress":"运送地址",
+        "ChooseAnotherAddress":"选择另一个地址",
+        "BillingAddress":"账单地址",
+        "Amount":"总金额",
+        "FinalizeTheOrder":"完成我的订单",
+        "NoAddressAvailable":"无可用发货地址"
+     },
+     "OrderConfirmSucced":{
+         "Confirm":"确认",
+         "Return":"返回"
+     }
 
 }

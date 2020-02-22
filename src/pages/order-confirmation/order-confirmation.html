@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>orderConfirmation</ion-title>
+    <ion-title>{{'order-confirmation.Title' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +9,7 @@
 
 <ion-content padding style="background-color: #fffffff7!important;">
   <div style="background-color: white; padding: 8px;">
-    <h6>MA COMMANDE <span float-right class="articleNumber">{{orderProductList.length}} article(s)</span></h6>
+    <h6>{{'order-confirmation.MyOrder' | translate}}<span float-right class="articleNumber">{{orderProductList.length}} {{'order-confirmation.Article' | translate}}</span></h6>
     <ion-list style="margin-bottom: 0px;">
       <ion-card class="productCard" *ngFor="let item of orderProductList">
         <ion-card-header style="padding: 8px 4px 0px;">
@@ -24,10 +24,8 @@
               <ion-col col-8>
                 <div float-right style="margin-top: 5px;"> <span style="font-size: 20px;color: #534d7a; ">{{item.Price*item.Quantity}} €</span>
                 </div>
-                <p class="descriptionFont">Réf : {{item.Code}} </p>
-                <p class="descriptionFont">Min quantity : {{item.MinQuantity}} </p>
-                <p class="descriptionFont">Quantity per box : {{item.QuantityPerBox}}</p>
-                <p class="descriptionFont">Unit Price : {{item.Price}}</p>
+                <p class="descriptionFont">{{'order-confirmation.Reference' | translate}}: {{item.Code}} </p>
+                <p class="descriptionFont">{{'order-confirmation.UnitPrice' | translate}} : {{item.Price}} €</p>
                 <p class="descriptionFont">x {{item.Quantity}}</p>
               </ion-col>
             </ion-row>
@@ -35,20 +33,20 @@
         </ion-card-content>
       </ion-card>
       <div>
-        <p class="expenseFont">Total avant taxe:<span float-right>{{calculTotalPrice()}}€</span></p>
-        <p class="expenseFont">TVA:<span float-right>20€</span> </p>
-        <P class="expenseFont">Frais de livraison:<span float-right>20€</span></P>
-        <p class="totalCommande expenseFont" style="font-weight: bold;">Total de la commande:<span
+        <p class="expenseFont">{{'order-confirmation.SommeBeforeTaxe' | translate}}:<span float-right>{{calculTotalPrice()}}€</span></p>
+        <p class="expenseFont">{{'order-confirmation.TVA' | translate}}:<span float-right>20€</span> </p>
+        <P class="expenseFont">{{'order-confirmation.ShippingCost' | translate}}:<span float-right>20€</span></P>
+        <p class="totalCommande expenseFont" style="font-weight: bold;">{{'order-confirmation.AmountOfOrder' | translate}}:<span
             float-right>{{calculTotalPrice()}}€</span></p>
       </div>
     </ion-list>
   </div>
   <div style="background-color: white; padding: 8px; margin-top: 30px;">
-    <h6><b>LIVRAISON/ FACTURATION</b> <a float-right class="articleNumber">Modifier</a></h6>
+    <h6><b>{{'order-confirmation.ShippingAddressOrBilling' | translate}}</b> <a float-right class="articleNumber">{{'order-confirmation.Edit' | translate}}</a></h6>
     <ion-list style="margin-bottom: 0px;">
       <ion-card class="productCard" style="width: 100%; border-bottom: 0px;">
         <ion-card-header style="padding: 8px 4px 0px;">
-          <h3 class="productTitle">Adresse de livraison</h3>
+          <h3 class="productTitle">{{'order-confirmation.ShippingAddress' | translate}}</h3>
         </ion-card-header>
         <ion-card-content style="padding: 0px;" *ngIf="defaultShippingAdress!=null">
           <p class="descriptionFont">{{defaultShippingAdress.ContactFirstName}} <span> {{facturationAdress.ContactLastName}}</span>  </p>
@@ -58,21 +56,21 @@
           <p class="descriptionFont">{{defaultShippingAdress.ContactTelephone}} </p>
         </ion-card-content>
         <ion-card-content style="padding: 0px;" *ngIf="defaultShippingAdress==null">
-          <p class="descriptionFont">No address available </p>
+          <p class="descriptionFont">{{'order-confirmation.NoAddressAvailable' | translate}}</p>
         </ion-card-content>
       </ion-card>
       <div text-center>
-        <button ion-button small color="primary" outline>Choisir une autre adresse</button>
+        <button ion-button small color="primary" outline>{{'order-confirmation.ChooseAnotherAddress' | translate}}</button>
       </div>
     </ion-list>
   </div>
 
   <div style="background-color: white; padding: 8px; margin-top: 30px; margin-bottom: 20px;">
-    <h6> <a float-right class="articleNumber">Modifier</a></h6>
+    <h6> <a float-right class="articleNumber">{{'order-confirmation.Edit' | translate}}</a></h6>
     <ion-list style="margin-bottom: 10px;">
       <ion-card class="productCard" style="width: 100%; border-bottom: 0px;">
         <ion-card-header style="padding: 8px 4px 0px;">
-          <h3 class="productTitle">Adresse de facturation</h3>
+          <h3 class="productTitle">{{'order-confirmation.BillingAddress' | translate}}</h3>
         </ion-card-header>
         <ion-card-content style="padding: 0px;">
           <p class="descriptionFont">{{facturationAdress.ContactFirstName}} <span> {{facturationAdress.ContactLastName}}</span>  </p>
@@ -89,10 +87,10 @@
 <ion-footer>
   <ion-toolbar>
     <div style="padding: 5px;">
-      <p class="expenseFont">Total:<span float-right style="font-weight: bold;">100€</span></p>
-      <p class="expenseFont">Frais de livraison:<span float-right>10€</span></p>
+      <p class="expenseFont">{{'order-confirmation.Amount' | translate}}:<span float-right style="font-weight: bold;">100€</span></p>
+      <p class="expenseFont">{{'order-confirmation.ShippingCost' | translate}}:<span float-right>10€</span></p>
       <div text-center>
-        <button ion-button small color="primary" style="width: 100%;" (click)="validOrder()">Finaliser la commande</button>
+        <button ion-button small color="primary" style="width: 100%;" (click)="validOrder()">{{'order-confirmation.FinalizeTheOrder' | translate}}</button>
       </div>
     </div>
   </ion-toolbar>

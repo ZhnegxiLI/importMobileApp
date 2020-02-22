@@ -76,7 +76,7 @@
         "Warming_AtLeast1Number":"At least 1 number",
         "Warming_AtLeast1Letter":"At least 1 letter",
         "UseTheSameAddressAsTheShippingAddress":"Use the same address as the shipping address",
-        "phoneNumber":"Phone number"
+        "PhoneNumber":"Phone number"
     },
     "registre-succed":{
         "Confirm":"Your account is well registered, we will send a confirmation email to {email}, please confirm your email address to complete your registration",
@@ -101,13 +101,45 @@
         "Quantity":"Amount",
         "All":"All",
         "Somme":"Somme",
-        "Confirm":"Confirm"
+        "Confirm":"Confirm",
+        "YourCartIsEmpty":"Your cart is empty now!"
     },
     "newproduct":{
         "QuantityEachBox":"Quantity/Box",
-        "QuantityMinimum":"Minimum purchase quantity"
+        "QuantityMinimum":"Minimum purchase quantity",
+        "Reference":"Reference"
     },
     "category-list":{
         "Title":"Category"
+    },
+    "tabs":{
+        "Home":"Home",
+        "Discover":"Discover",
+        "Cart":"Cart",
+        "Notice":"Notice",
+        "Account":"Account"
+    },
+    "order-confirmation":{
+        "Title":"Order Confirmation",
+        "MyOrder":"MY ORDER",
+        "Article":"Article(s)",
+        "Reference":"Reference",
+        "UnitPrice":"Unit Price",
+        "SommeBeforeTaxe":"Somme before taxe",
+        "TVA":"TVA",
+        "ShippingCost":"Shipping cost",
+        "AmountOfOrder":"Amount",
+        "ShippingAddressOrBilling":"Shipping address/Billing address",
+        "Edit":"Edit",
+        "ShippingAddress":"Shipping address",
+        "ChooseAnotherAddress":"Choose another address",
+        "BillingAddress":"Billing address",
+        "Amount":"Amount",
+        "FinalizeTheOrder":"Finalize the order",
+        "NoAddressAvailable":"No address available"
+    },
+    "OrderConfirmSucced":{
+        "Confirm":"Confirm",
+        "Return":"Return"
     }
 }
