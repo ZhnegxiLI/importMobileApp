@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ToastController, ModalController, App } from 'ionic-angular';
 import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
 import { from } from 'rxjs/observable/from';
@@ -27,7 +27,8 @@ export class LoginPage extends BaseUI {
     public toastCtrl: ToastController ,
     public storage: Storage,
     public modalCtrl : ModalController,
-    public network: Network) {
+    public network: Network,
+    public appCtrl: App) {
     super();
   }
 
@@ -76,7 +77,9 @@ export class LoginPage extends BaseUI {
 
   registre(){
 
-  this.navCtrl.push('RegistrePage');
+   // this.appCtrl.getRootNavs()[0].push('RegistrePage');
+   this.viewCtrl.dismiss();
+  this.appCtrl.getRootNav().push('RegistrePage');
   }
 
   dismiss() {
