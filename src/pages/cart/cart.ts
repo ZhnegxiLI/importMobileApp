@@ -106,5 +106,8 @@ export class CartPage extends BaseUI{
     });
     return totalAccount;
   }
+  checkProductListIsAvailable(){
+    return this.cartProductList!=null && this.cartProductList.length>0;
+  }
 
 }

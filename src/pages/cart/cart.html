@@ -1,15 +1,14 @@
 <ion-header>
 
   <ion-navbar text-center>
-    <ion-title>{{'cart.Title' | translate}}</ion-title>
+    <ion-title>{{'cart.Title' | translate}}({{cartProductList.length}})</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
-  <ion-list>
+  <ion-list *ngIf="checkProductListIsAvailable()" >
     <div class="productCard" *ngFor="let item of cartProductList">
       <ion-grid class="colStyle">
         <ion-row class="colStyle">
@@ -38,17 +37,21 @@
       </ion-grid>
     </div>
   </ion-list>
+  <div *ngIf="!checkProductListIsAvailable()">
+   <img style="margin-top: 5px;" src="assets/imgs/empty_cart.png">
+   <h1 style="text-align: center; color: gray;">Votre panier est vide</h1>
+  </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <div style="margin-left: 5px;" float-left class="footerComponent">
-      <ion-checkbox name="AllProduct" [(ngModel)]="checkAllProduct" (ngModelChange)="AllCheckBoxChange()">
+      <ion-checkbox [disabled]="!checkProductListIsAvailable()" name="AllProduct" [(ngModel)]="checkAllProduct" (ngModelChange)="AllCheckBoxChange()">
       </ion-checkbox>
       <ion-label style="margin-left: 3px;">{{'cart.All' | translate}}</ion-label>
     </div>
     <div float-right class="footerComponent">
       <ion-label>{{'cart.Somme' | translate}}:{{CalculAccount()}}€</ion-label>
-      <button ion-button round small (click)="valideCart()">{{'cart.Confirm' | translate}}</button>
+      <button ion-button round small [disabled]="!checkProductListIsAvailable()" (click)="valideCart()">{{'cart.Confirm' | translate}}</button>
     </div>
   </ion-toolbar>
 </ion-footer>
