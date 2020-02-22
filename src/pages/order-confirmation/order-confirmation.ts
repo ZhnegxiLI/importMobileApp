@@ -128,6 +128,7 @@ export class OrderConfirmationPage extends BaseUI {
                   }
                 });
                 this.storage.set('cartProductList',JSON.stringify(newCartProductList));
+                this.navCtrl.setRoot('OrderConfirmationSucceessPage');
               } else {
                 super.showToast(this.toastCtrl, f.Msg);
               }
@@ -137,7 +138,6 @@ export class OrderConfirmationPage extends BaseUI {
             },
             ()=>{
               loading.dismiss();
-              this.navCtrl.pop();
             });
       }
       else {
