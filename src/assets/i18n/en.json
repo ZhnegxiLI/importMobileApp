@@ -6,16 +6,6 @@
     "success":"Success",
     "refuse":"Refuse",
     "preparing":"Preparing",
-    "HOME": {
-        "TITLE": "首页",
-        "LANG": "切换语言",
-        "TIPS": "多语言切换案例"
-    },
-    "TABS": {
-        "HOME": "首页",
-        "ABOUT": "关于",
-        "CONTACT": "联系人"
-    },
     "translation":{
         "Title":"Languages",
         "InnerTitle":"Choose your language"
@@ -141,5 +131,34 @@
     "OrderConfirmSucced":{
         "Confirm":"Confirm",
         "Return":"Return"
+    },
+    "read-order-details":{
+        "Title":"My Order",
+        "OrderNumber":"Order Number",
+        "DateOfPurchase":"Date of purchase",
+        "Status":"Status",
+        "ForEditYourOrder":"If you want to edit your order,",
+        "ContactOurCustomerService":"Please contact our custumer service",
+        "YourOrder":"YOUR ORDER",
+        "Referene":"Reference",
+        "Size":"Size",
+        "Material":"Material",
+        "Color":"Color",
+        "Quantity":"Quantity",
+        "ShippingAddress":"Shipping address",
+        "BillingAddress":"Billing address",
+        "SommeBeforeTaxe":"Amount before Taxe",
+        "TVA":"TVA",
+        "ShippingCost":"Shipping Cost",
+        "AmountOfOrder":"Amount"
+    },
+    "home":{
+        "Title":"Home",
+        "BestSellers":"Best sellers",
+        "Promotion":"Promotion",
+        "New":"New",
+        "Category":"Category",
+        "MyList":"My list",
+        "Advice":"Advice"
     }
 }

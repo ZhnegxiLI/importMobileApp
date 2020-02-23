@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>{{'HOME.TITLE' | translate}}</ion-title>
+    <ion-title text-center>{{'home.Title' | translate}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only small (click)="search()">
         <ion-icon name="search" class="searchButtonColor"></ion-icon>
@@ -31,25 +31,25 @@
         <button ion-button  class="bestSaleColor myButton" icon-only (click)="displayBestSalesProductPage()">
           <ion-icon name='thumbs-up'></ion-icon>
         </button>
-        <p>Meilleur vente</p>
+        <p>{{'home.BestSellers' | translate}}</p>
       </ion-col>
       <ion-col col-3>
         <button ion-button  class="promotionColor myButton" icon-only (click)="displaynewProductPage()">
           <ion-icon name='star'></ion-icon>
         </button>
-        <p>Promotion</p>
+        <p>{{'home.Promotion' | translate}}</p>
       </ion-col>
       <ion-col col-3>
         <button ion-button class="nouveauteColor myButton" icon-only (click)="displaynewProductPage()">
           <ion-icon name='flag'></ion-icon>
         </button>
-        <p>Nouveauté</p>
+        <p>{{'home.New' | translate}}</p>
       </ion-col>
       <ion-col col-3>
         <button ion-button class="categoryColor myButton" icon-only (click) = "displayCategoryListPage()" >
           <ion-icon name='pricetag'></ion-icon>
         </button>
-        <p>Catégories</p>
+        <p>{{'home.Category' | translate}}</p>
       </ion-col>
     </ion-row>
     <ion-row class="buttonRow" text-center>
@@ -57,7 +57,7 @@
         <button ion-button class="myListColor myButton" icon-only>
           <ion-icon name='list'></ion-icon>
         </button>
-        <p>Mes lists</p>
+        <p>{{'home.MyList' | translate}}</p>
       </ion-col>
       <ion-col col-3>
         <button ion-button class="xxxColor  myButton" icon-only>
@@ -75,7 +75,7 @@
         <button ion-button (click)="displayAvis()" class="avisColor  myButton" icon-only>
           <ion-icon name='paper'></ion-icon>
         </button>
-        <p>Avis</p>
+        <p>{{'home.Advice' | translate}}</p>
       </ion-col>
     </ion-row>
     <!-- loading in the page icon-->

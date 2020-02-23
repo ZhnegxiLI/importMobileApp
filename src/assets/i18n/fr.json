@@ -6,16 +6,6 @@
     "success":"Validé",
     "refuse":"Refusé",
     "preparing":"En cour de préparation",
-    "HOME": {
-        "TITLE": "首页",
-        "LANG": "切换语言",
-        "TIPS": "多语言切换案例"
-    },
-    "TABS": {
-        "HOME": "首页",
-        "ABOUT": "关于",
-        "CONTACT": "联系人"
-    },
     "translation":{
         "Title":"Langues",
         "InnerTitle":"Choisissez votre langue"
@@ -143,5 +133,34 @@
     "OrderConfirmSucced":{
         "Confirm":"Confirmer",
         "Return":"Retourner"
+    },
+    "read-order-details":{
+        "Title":"Ma Commande",
+        "OrderNumber":"Commande",
+        "DateOfPurchase":"Date d'achat",
+        "Status":"Statut",
+        "ForEditYourOrder":"Pour toutes modifications de votre commandes,",
+        "ContactOurCustomerService":"Contacter notre service cliet",
+        "YourOrder":"VOTRE COMMANDE",
+        "Referene":"Référence",
+        "Size":"Taille",
+        "Material":"Matière",
+        "Color":"Colour",
+        "Quantity":"Quantité",
+        "ShippingAddress":"Adresse de livraison",
+        "BillingAddress":"Adresse de facturation",
+        "SommeBeforeTaxe":"Total avant taxe",
+        "TVA":"TVA",
+        "ShippingCost":"Frais de livraison",
+        "AmountOfOrder":"Total"
+    },
+    "home":{
+        "Title":"Accueil",
+        "BestSellers":"Meilleure vente",
+        "Promotion":"Promotion",
+        "New":"Nouveauté",
+        "Category":"Catégories",
+        "MyList":"Mes listes",
+        "Advice":"Avis"
     }
 }

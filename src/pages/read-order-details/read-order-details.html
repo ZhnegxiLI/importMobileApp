@@ -7,24 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Mes commandes</ion-title>
+    <ion-title>{{'read-order-details.Title' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <h6>Commande n°2768674565</h6>
-  <p><b>Date d'achat:</b>04 dec. 2019</p>
-  <p><b>Statut:</b>Expédiée</p>
+  <h6>{{'read-order-details.OrderNumber' | translate}} n°2768674565</h6>
+  <p><b>{{'read-order-details.DateOfPurchase' | translate}}: </b>04 dec. 2019</p>
+  <p><b>{{'read-order-details.Status' | translate}}: </b>Expédiée</p>
   <br>
-  <p>Pour toute modification de commande,
+  <p>{{'read-order-details.ForEditYourOrder' | translate}}
     <br>
-    <a class="buttonLine">Contacter notre service client</a>
+    <a class="buttonLine">{{'read-order-details.ContactOurCustomerService' | translate}}</a>
   </p>
   <ion-list>
     <ion-card class="productCard">
       <ion-card-header>
-        <h3>VOTRE COMMANDE</h3>
+        <h3>{{'read-order-details.YourOrder' | translate}}</h3>
       </ion-card-header>
       <ion-card-content>
         <div>
@@ -34,12 +34,12 @@
             </ion-col>
             <ion-col col-8>
               <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Réf : 40673357</p>
-              <p class="descriptionFont">Taille : 41*29.5*106cm</p>
-              <p class="descriptionFont">Matière : en Bois</p>
-              <p class="descriptionFont">Couleur :Blanc</p>
+              <p class="descriptionFont">{{'read-order-details.Referene' | translate}}: 40673357</p>
+              <p class="descriptionFont">{{'read-order-details.Size' | translate}}: 41*29.5*106cm</p>
+              <p class="descriptionFont">{{'read-order-details.Material' | translate}}: en Bois</p>
+              <p class="descriptionFont">{{'read-order-details.Color' | translate}}: Blanc</p>
               <br>
-              <div>Quantité x2<p float-right class="sommeStyle">50$</p>
+              <div>{{'read-order-details.Quantity' | translate}} x2<p float-right class="sommeStyle">50$</p>
               </div>
 
             </ion-col>
@@ -114,7 +114,7 @@
   <ion-list>
       <ion-card class="productCard">
           <ion-card-header class="addressStyle">
-            <h3> <b>Addresse de livraison</b> </h3>
+            <h3> <b>{{'read-order-details.ShippingAddress' | translate}}</b> </h3>
           </ion-card-header>
           <ion-card-content>
               <p class="descriptionFont">
@@ -129,7 +129,7 @@
   <ion-list>
       <ion-card class="productCard">
           <ion-card-header class="addressStyle">
-            <h3><b>Addresse de facturation</b> </h3>
+            <h3><b>{{'read-order-details.BillingAddress' | translate}}</b> </h3>
           </ion-card-header>
           <ion-card-content>
               <p class="descriptionFont">
@@ -144,10 +144,10 @@
   <ion-list>
       <ion-card class="productCard">
           <ion-card-content>
-              <p class="expenseFont">Total avant taxe:<span float-right>100€</span></p>
-              <p class="expenseFont">TVA:<span float-right>20€</span> </p>
-              <P class="expenseFont">Frais de livraison:<span float-right>20€</span></P>
-              <p class="totalCommande expenseFont">Total de la commande:<span float-right>140€</span></p>
+              <p class="expenseFont">{{'read-order-details.SommeBeforeTaxe' | translate}}:<span float-right>100€</span></p>
+              <p class="expenseFont">{{'read-order-details.TVA' | translate}}:<span float-right>20€</span> </p>
+              <P class="expenseFont">{{'read-order-details.ShippingCost' | translate}}:<span float-right>20€</span></P>
+              <p class="totalCommande expenseFont">{{'read-order-details.AmountOfOrder' | translate}}:<span float-right>140€</span></p>
           </ion-card-content>
       </ion-card>
   </ion-list>
