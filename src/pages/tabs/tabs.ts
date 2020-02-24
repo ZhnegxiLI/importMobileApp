@@ -10,7 +10,7 @@ export class TabsPage {
   tabHome = 'HomePage';
   tabDiscovery = 'ReadOrderListPage';
   tabCart = 'CartPage';
-  tabNotification = 'NotificationPage';
+  tabNotification = 'AddAdressPage';
   tabMyAccount = 'MyAccountPage';
 
   constructor() {

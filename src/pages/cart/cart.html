@@ -1,7 +1,9 @@
 <ion-header>
 
   <ion-navbar text-center>
-    <ion-title>{{'cart.Title' | translate}}({{cartProductList.length}})</ion-title>
+    <ion-title>{{'cart.Title' | translate}}( 
+      <span *ngIf="cartProductList==null">0</span>
+      <span *ngIf="cartProductList!=null">{{cartProductList.length}}</span> )</ion-title>
   </ion-navbar>
 
 </ion-header>

@@ -96,6 +96,10 @@ export class OrderConfirmationPage extends BaseUI {
     return total;
   }
 
+  selectShippingAdress(){
+    this.navCtrl.push('SelectShippingAdressPage');
+  }
+
   async validOrder(){
     var productInfo =[];
     this.orderProductList.map(p=>productInfo.push({

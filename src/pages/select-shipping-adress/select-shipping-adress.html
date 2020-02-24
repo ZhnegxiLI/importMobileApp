@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Livraison</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <a (click)="addNewAddress()" float-right style="margin:10px 10px">Ajouter</a>
+<ion-list style="margin-top: 30px;">
+  <mat-radio-group class="example-radio-group">
+  <div class="productCard">
+    <ion-grid class="gridStyle" style="background-color: white;">
+      <ion-row class="colStyle">
+        <ion-col col-2 class="align-text-middle colStyle">
+          <mat-radio-button class="example-radio-button" style="color:#534d7a ;" color="primary" value="1">
+          </mat-radio-button>
+        </ion-col>
+        <ion-col col-10 class="colStyle">
+          <a float-right (click)="addNewAddress()">Modifier</a>
+            <p class="addressDetail">Li</p>
+            <p class="addressDetail">Zhengxi</p>
+            <p class="addressDetail">123 rue des nnix</p>
+            <p class="addressDetail">76800 Liri</p>
+            <p class="addressDetail">008912886</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="productCard">
+    <ion-grid class="gridStyle" style="background-color: white;">
+      <ion-row class="colStyle">
+        <ion-col col-2 class="align-text-middle colStyle">
+          <mat-radio-button class="example-radio-button" style="color:#534d7a ;" color="primary" value="2">
+          </mat-radio-button>
+        </ion-col>
+        <ion-col col-10 class="colStyle">
+            <p class="addressDetail">Li</p>
+            <p class="addressDetail">Zhengxi</p>
+            <p class="addressDetail">123 rue des nnix</p>
+            <p class="addressDetail">76800 Liri</p>
+            <p class="addressDetail">008912886</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</mat-radio-group>
+</ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div style="padding: 5px;">
+      <p class="addressDetail">Zhengxi Li</p>
+      <p class="addressDetail">123 rue des nnix</p>
+      <p class="addressDetail">76800 Liri</p>
+      <div text-center>
+        <button ion-button small color="primary" style="width: 100%;">Confirmer</button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

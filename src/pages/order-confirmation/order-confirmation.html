@@ -60,7 +60,7 @@
         </ion-card-content>
       </ion-card>
       <div text-center>
-        <button ion-button small color="primary" outline>{{'order-confirmation.ChooseAnotherAddress' | translate}}</button>
+        <button ion-button small color="primary" outline (click)="selectShippingAdress()">{{'order-confirmation.ChooseAnotherAddress' | translate}}</button>
       </div>
     </ion-list>
   </div>
