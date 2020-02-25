@@ -67,7 +67,8 @@ export class RestProvider {
 
   private apiUrlGetUserShippingAdress = this.host + "api/Adress/GetUserShippingAdress";
   private apiUrlGetUserFacturationAdress = this.host + "api/Adress/GetUserFacturationAdress";
-  private apiUrlCreateOrUpdateShippingAdress = this.host +"api/Adress/CreateOrUpdateShippingAdress";
+  private apiUrlGetUserDefaultShippingAdress = this.host + "api/Adress/GetUserDefaultShippingAdress";
+  private apiUrlCreateOrUpdateAdress = this.host +"api/Adress/CreateOrUpdateAdress";
 
   private apiUrlSaveOrder = this.host + "api/Order/SaveOrder";
 
@@ -123,12 +124,16 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlGetUserFacturationAdress + "?UserId="+UserId);
   }
 
+  GetUserDefaultShippingAdress(UserId): Observable<any> {
+    return this.getUrlReturn(this.apiUrlGetUserDefaultShippingAdress + "?UserId="+UserId);
+  }
+
   GetUserShippingAdress(UserId): Observable<any> {
     return this.getUrlReturn(this.apiUrlGetUserShippingAdress + "?UserId="+UserId);
   }
 
-  CreateOrUpdateShippingAdress(criteria): Observable<any> {
-    return this.postUrlReturnWithOutAuth(this.apiUrlCreateOrUpdateShippingAdress,criteria);
+  CreateOrUpdateAdress(criteria): Observable<any> {
+    return this.postUrlReturnWithOutAuth(this.apiUrlCreateOrUpdateAdress,criteria);
   }
 
 
@@ -136,6 +141,8 @@ export class RestProvider {
     var lang = this.translate.defaultLang; // TODO : change to with auth 
     return this.postUrlReturnWithOutAuth(this.apiUrlGetProductInfoByReferenceIds, { ReferenceIds: ReferenceIds, Lang: lang });
   }
+
+
 
 
 

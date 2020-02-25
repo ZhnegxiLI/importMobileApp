@@ -10,41 +10,47 @@
 <ion-content padding style="background-color: rgba(255, 255, 255, 0.97)!important;">
   <ion-card style="margin-left:0px; margin-right: 0px; width: 100%;">
     <ion-card-content>
-      <form class="example-form">
+      <form class="example-form" [formGroup]="adreeForm">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Entreprise" disabled value="Google">
+          <input required matInput placeholder="Entreprise" formControlName="EntrepriseName">
+          <mat-error *ngIf="f.EntrepriseName.errors">
+            EntrepriseName is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         <ion-row>
 
           <ion-col col-6>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Nom">
+              <input required matInput placeholder="Nom" formControlName="ContactFirstName">
             </mat-form-field>
           </ion-col>
           <ion-col col-6>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Prénom">
+              <input required matInput placeholder="Prénom" formControlName="ContactLastName">
             </mat-form-field>
           </ion-col>
         </ion-row>
 
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+          <textarea required matInput placeholder="Address" formControlName="FirstLineAddress"></textarea>
+          <mat-error *ngIf="f.FirstLineAddress.errors">
+            FirstLineAddress is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address 2"></textarea>
+          <textarea matInput placeholder="Address 2" formControlName="SecondLineAddress"></textarea>
         </mat-form-field>
 
         <ion-row>
           <ion-col col-4>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="City">
+              <input required matInput placeholder="City" formControlName="City">
             </mat-form-field>
           </ion-col>
 
           <ion-col col-4>
             <mat-form-field>
-              <mat-select placeholder="Paye">
+              <mat-select required placeholder="Paye" formControlName="Country">
                 <mat-option value=1>
                   France
                 </mat-option>
@@ -59,20 +65,23 @@
           </ion-col>
 
           <ion-col col-4>
-            <mat-form-field class="example-full-width">
-              <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+            <mat-form-field class="example-full-width" >
+              <input required matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="ZipCode">
             </mat-form-field>
           </ion-col>
         </ion-row>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" >
           <span matPrefix>+33 &nbsp;</span>
-          <input type="tel" matInput placeholder="Téléphone">
+          <input required type="tel" matInput placeholder="Téléphone" formControlName="ContactTelephone">
+          <mat-error *ngIf="f.ContactTelephone.errors">
+            ContactTelephone is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <span matPrefix>+33 &nbsp;</span>
-          <input type="tel" matInput placeholder="Fax">
+          <input type="tel" matInput placeholder="Fax" formControlName="ContactFax">
         </mat-form-field>
       </form>
     </ion-card-content>

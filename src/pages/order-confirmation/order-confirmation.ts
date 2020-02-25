@@ -20,6 +20,7 @@ export class OrderConfirmationPage extends BaseUI {
   shippingAdress : any[] = [];
   defaultShippingAdress: object;
 
+  test:any;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public utils: UtilsProvider,
@@ -31,9 +32,23 @@ export class OrderConfirmationPage extends BaseUI {
     super();
   }
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
     console.log('ionViewDidLoad OrderConfirmationPage');
- 
+    var selectedAdress = await this.utils.getKey('tempSelectedAdress');
+    if(selectedAdress!=null){
+      this.defaultShippingAdress = JSON.parse(selectedAdress);
+      this.storage.remove('tempSelectedAdress'); 
+    }
+    var facturationAdressChanged = await this.utils.getKey('tempFacturationAdress');
+    if(facturationAdressChanged!=null && facturationAdressChanged=='true'){
+      var UserId = await this.utils.getKey('userId');
+      this.rest.GetUserFacturationAdress(UserId).subscribe(f=>{
+        if(f.Success && f.Data != null){
+          this.facturationAdress = f.Data;
+        }
+      });
+      this.storage.remove('tempFacturationAdress');
+    }
   }
 
   async ionViewDidLoad() {
@@ -47,7 +62,7 @@ export class OrderConfirmationPage extends BaseUI {
     
       selectedReferences.map(p => selectedReferenceIds.push(p.ReferenceId));
   
-      Observable.forkJoin(this.rest.GetProductInfoByReferenceIds(selectedReferenceIds), this.rest.GetUserFacturationAdress(UserId), this.rest.GetUserShippingAdress(UserId))
+      Observable.forkJoin(this.rest.GetProductInfoByReferenceIds(selectedReferenceIds), this.rest.GetUserFacturationAdress(UserId), this.rest.GetUserDefaultShippingAdress(UserId))
         .subscribe(
           ([SelectedProductInfo, FacturationAdress, ShippingAdress]) => {
             if (SelectedProductInfo.Success && SelectedProductInfo.Data != null &&
@@ -57,10 +72,15 @@ export class OrderConfirmationPage extends BaseUI {
                 /* Bind the facturation adress data */
                 this.facturationAdress = FacturationAdress.Data;
                 /* Bind the shipping adress data */
-                this.shippingAdress = ShippingAdress.Data;
-                if(this.shippingAdress.length>0&&this.shippingAdress[0]!=null){
-                  this.defaultShippingAdress = this.shippingAdress[0];
+               
+                if(ShippingAdress.Data!=null){
+                  this.shippingAdress = ShippingAdress.Data;
+                  this.defaultShippingAdress = ShippingAdress.Data;
                 }
+               
+                // if(this.shippingAdress.length>0&&this.shippingAdress[0]!=null){//todo: change by default
+                //   this.defaultShippingAdress = this.shippingAdress[0];
+                // }
             }
           },
           error => {
@@ -74,6 +94,12 @@ export class OrderConfirmationPage extends BaseUI {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
     }
 
+  }
+  modifyFacturationAdress(facturationAdress){
+    this.navCtrl.push('AddAdressPage',{
+      type:'facturationAdress',
+      adress:facturationAdress
+    });
   }
 
   formatProductData(SelectedProductInfo, selectedReferences){
@@ -100,15 +126,21 @@ export class OrderConfirmationPage extends BaseUI {
     this.navCtrl.push('SelectShippingAdressPage');
   }
 
+  
+
   async validOrder(){
     var productInfo =[];
     this.orderProductList.map(p=>productInfo.push({
       ReferenceId: p.ReferenceId,
       Quantity : p.Quantity
     }));
-    var shippingAdressId = 1;//todo remove
+    var shippingAdressId;
     if(this.defaultShippingAdress!=null&&this.defaultShippingAdress!={}&& this.defaultShippingAdress["Id"]!=null){
        shippingAdressId = this.defaultShippingAdress["Id"];
+    }
+    if(shippingAdressId==null){
+      super.showToast(this.toastCtrl,'Please select a shipping adress');// TODO translate
+      return;
     }
   
     var facturationAdressId = this.facturationAdress["Id"];
@@ -144,7 +176,7 @@ export class OrderConfirmationPage extends BaseUI {
               loading.dismiss();
             });
       }
-      else {
+      else  {
         super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
       }
     }

@@ -42,17 +42,17 @@
     </ion-list>
   </div>
   <div style="background-color: white; padding: 8px; margin-top: 30px;">
-    <h6><b>{{'order-confirmation.ShippingAddressOrBilling' | translate}}</b> <a float-right class="articleNumber">{{'order-confirmation.Edit' | translate}}</a></h6>
+    <h6><b>{{'order-confirmation.ShippingAddressOrBilling' | translate}}</b></h6>
     <ion-list style="margin-bottom: 0px;">
       <ion-card class="productCard" style="width: 100%; border-bottom: 0px;">
         <ion-card-header style="padding: 8px 4px 0px;">
           <h3 class="productTitle">{{'order-confirmation.ShippingAddress' | translate}}</h3>
         </ion-card-header>
         <ion-card-content style="padding: 0px;" *ngIf="defaultShippingAdress!=null">
-          <p class="descriptionFont">{{defaultShippingAdress.ContactFirstName}} <span> {{facturationAdress.ContactLastName}}</span>  </p>
+          <p class="descriptionFont">{{defaultShippingAdress.ContactFirstName}} <span> {{defaultShippingAdress.ContactLastName}}</span>  </p>
           <p class="descriptionFont">{{defaultShippingAdress.FirstLineAddress}}  </p>
           <p class="descriptionFont">{{defaultShippingAdress.SecondLineAddress}}  </p>
-          <p class="descriptionFont">{{defaultShippingAdress.ZipCode}}    <span> {{ facturationAdress.City }} </span> </p>
+          <p class="descriptionFont">{{defaultShippingAdress.ZipCode}}    <span> {{ defaultShippingAdress.City }} </span> </p>
           <p class="descriptionFont">{{defaultShippingAdress.ContactTelephone}} </p>
         </ion-card-content>
         <ion-card-content style="padding: 0px;" *ngIf="defaultShippingAdress==null">
@@ -66,7 +66,7 @@
   </div>
 
   <div style="background-color: white; padding: 8px; margin-top: 30px; margin-bottom: 20px;">
-    <h6> <a float-right class="articleNumber">{{'order-confirmation.Edit' | translate}}</a></h6>
+    <h6> <a float-right class="articleNumber" (click)="modifyFacturationAdress(facturationAdress)">{{'order-confirmation.Edit' | translate}}</a></h6>
     <ion-list style="margin-bottom: 10px;">
       <ion-card class="productCard" style="width: 100%; border-bottom: 0px;">
         <ion-card-header style="padding: 8px 4px 0px;">
