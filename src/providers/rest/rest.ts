@@ -65,8 +65,9 @@ export class RestProvider {
   private apiUrlGetProductListByPublishDate = this.host + "api/Product/GetProductListByPublishDate";
   private apiUrlGetProductListBySalesPerformance = this.host + "api/Product/GetProductListBySalesPerformance";
 
-  private apiUrlGetUserShippingAdress = this.host + "api/User/GetUserShippingAdress";
-  private apiUrlGetUserFacturationAdress = this.host + "api/User/GetUserFacturationAdress";
+  private apiUrlGetUserShippingAdress = this.host + "api/Adress/GetUserShippingAdress";
+  private apiUrlGetUserFacturationAdress = this.host + "api/Adress/GetUserFacturationAdress";
+  private apiUrlCreateOrUpdateShippingAdress = this.host +"api/Adress/CreateOrUpdateShippingAdress";
 
   private apiUrlSaveOrder = this.host + "api/Order/SaveOrder";
 
@@ -125,6 +126,11 @@ export class RestProvider {
   GetUserShippingAdress(UserId): Observable<any> {
     return this.getUrlReturn(this.apiUrlGetUserShippingAdress + "?UserId="+UserId);
   }
+
+  CreateOrUpdateShippingAdress(criteria): Observable<any> {
+    return this.postUrlReturnWithOutAuth(this.apiUrlCreateOrUpdateShippingAdress,criteria);
+  }
+
 
   GetProductInfoByReferenceIds(ReferenceIds): Observable<any> {
     var lang = this.translate.defaultLang; // TODO : change to with auth 
