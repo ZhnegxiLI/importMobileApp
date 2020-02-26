@@ -19,6 +19,7 @@ import {ProductEvaluationListPage} from '../product-evaluation-list/product-eval
 })
 export class ProductDetailPage {
   isFavorite : boolean = false;
+  productId : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -27,15 +28,18 @@ export class ProductDetailPage {
   }
 
   writeEvaluation(){
-    this.navCtrl.push(WriteProductEvaluationPage);
+    this.navCtrl.push('WriteProductEvaluationPage',{
+      productId:this.productId
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductDetailPage');
+    this.productId = this.navParams.get('productId');
   }
 
   displayAvis(){
-    this.navCtrl.push('ProductEvaluationListPage', {global:false});
+    this.navCtrl.push('ProductEvaluationListPage', {type:"GetCommentByProductId",productId: this.productId});
   }
 
 }

@@ -19,7 +19,7 @@
     <p text-center font-size-small>Loading...</p>
   </div>
   <ion-list>
-    <ion-item ion-item detail-none (click)="productDetail()" *ngFor="let item of productList">
+    <ion-item ion-item detail-none (click)="productDetail(item)" *ngFor="let item of productList">
       <p style="float: right; margin-top: 25px;">{{item.Price}} <span [hidden]="item.Price==null">€</span></p>
       <ion-avatar item-start>
         <img  class="productImg"  src="assets/imgs/testProduct.jpg">

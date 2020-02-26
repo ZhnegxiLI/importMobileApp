@@ -42,8 +42,10 @@ export class NewproductPage extends BaseUI {
     this.loadProductList();
   }
 
-  productDetail() {
-    this.navCtrl.push('ProductDetailPage');
+  productDetail(product) {
+    this.navCtrl.push('ProductDetailPage',{
+      productId: product.ProductId
+    });
   }
 
   loadProductList() {
@@ -97,7 +99,7 @@ export class NewproductPage extends BaseUI {
       }
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");//TODO: translate
     }
   }
 

@@ -65,6 +65,10 @@ export class RestProvider {
   private apiUrlGetProductListByPublishDate = this.host + "api/Product/GetProductListByPublishDate";
   private apiUrlGetProductListBySalesPerformance = this.host + "api/Product/GetProductListBySalesPerformance";
 
+  private apiUrlSaveProductComment = this.host + "api/Product/SaveProductComment";
+  private apiUrlGetProductCommentListByProductId = this.host + "api/Product/GetProductCommentListByProductId";
+
+  
   private apiUrlGetUserShippingAdress = this.host + "api/Adress/GetUserShippingAdress";
   private apiUrlGetUserFacturationAdress = this.host + "api/Adress/GetUserFacturationAdress";
   private apiUrlGetUserDefaultShippingAdress = this.host + "api/Adress/GetUserDefaultShippingAdress";
@@ -110,6 +114,18 @@ export class RestProvider {
     var lang = this.translate.defaultLang;
     return this.getUrlReturn(this.apiUrlGetProductListBySecondCategoryWithAuth + 
       "?SecondCategoryReferenceId=" + SecondCategoryReferenceId + "&Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
+  }
+
+  SaveProductComment(criteria): Observable<any>{
+    // TODO : change to with auth 
+    return this.postUrlReturnWithOutAuth(this.apiUrlSaveProductComment, criteria);
+  }
+
+  GetProductCommentListByProductId(ProductId: number, Begin: number, Step:number): Observable<any>{
+    // TODO : change to with auth 
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturn(this.apiUrlGetProductCommentListByProductId + 
+      "?ProductId="+ProductId +"&Begin="+Begin+"&Step="+Step+"&Lang="+lang);
   }
 
   SaveOrder(References:any[] ,ShippingAdressId:number, FacturationAdressId:number, UserId:number): Observable<any> {
