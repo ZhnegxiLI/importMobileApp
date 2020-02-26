@@ -34,7 +34,7 @@
     <ion-list>
       <ion-list-header>
         <span> {{'myAccount.MyOrder' | translate}} </span>
-        <a class="viewAll" href="#">{{'myAccount.ViewAll' | translate}} </a>
+        <a class="viewAll" (click)="viewAllOrder()">{{'myAccount.ViewAll' | translate}} </a>
       </ion-list-header>
       <button ion-item (click)="readCommandList()">{{'myAccount.UnpaidOrder' | translate}}</button>
       <button ion-item (click)="readCommandList()">{{'myAccount.PrepareOrder' | translate}}</button>

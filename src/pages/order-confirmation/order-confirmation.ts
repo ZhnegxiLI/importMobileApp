@@ -31,14 +31,16 @@ export class OrderConfirmationPage extends BaseUI {
     public loadingCtrl: LoadingController) {
     super();
   }
-
+  ionViewWillEnter() {
+  }
   async ionViewDidEnter() {
     console.log('ionViewDidLoad OrderConfirmationPage');
-    var selectedAdress = await this.utils.getKey('tempSelectedAdress');
-    if(selectedAdress!=null){
-      this.defaultShippingAdress = JSON.parse(selectedAdress);
-      this.storage.remove('tempSelectedAdress'); 
-    }
+    this.defaultShippingAdress = this.navParams.get('tempSelectedAdress')|| null;
+    // var selectedAdress = await this.utils.getKey('tempSelectedAdress');
+    // if(selectedAdress!=null){
+    // //   this.defaultShippingAdress = JSON.parse(selectedAdress);
+    //   this.storage.remove('tempSelectedAdress'); 
+    // }
     var facturationAdressChanged = await this.utils.getKey('tempFacturationAdress');
     if(facturationAdressChanged!=null && facturationAdressChanged=='true'){
       var UserId = await this.utils.getKey('userId');

@@ -67,6 +67,9 @@ export class MyAccountPage {
   readCommandList(){
     this.navCtrl.push('ReadOrderListPage');
   }
+  viewAllOrder(){
+    this.navCtrl.push('ReadOrderListPage');
+  }
   
   translation(){
     let modal = this.modalCtrl.create('TranslationPage');

@@ -58,7 +58,8 @@ export class SelectShippingAdressPage extends BaseUI{
 
   saveShippingAdress(){
     var selectedShippingAdress = this.getSelectedAdress();
-    this.storage.set('tempSelectedAdress',JSON.stringify(selectedShippingAdress));
+    //this.storage.set('tempSelectedAdress',JSON.stringify(selectedShippingAdress));
+    this.navCtrl.getPrevious().data.tempSelectedAdress = selectedShippingAdress;// pass data to previous page
     this.navCtrl.pop();
   }
   getSelectedAdress(){
