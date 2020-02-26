@@ -75,6 +75,8 @@ export class RestProvider {
   private apiUrlCreateOrUpdateAdress = this.host +"api/Adress/CreateOrUpdateAdress";
 
   private apiUrlSaveOrder = this.host + "api/Order/SaveOrder";
+  private apiUrlGetOrdersListByUserId = this.host + "api/Order/GetOrdersListByUserId";
+  
 
   Registre(RegistrerInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
@@ -134,6 +136,12 @@ export class RestProvider {
       { References: References, ShippingAdressId: ShippingAdressId, FacturationAdressId:FacturationAdressId,
         UserId:UserId});
   }
+  GetOrdersListByUserId(UserId: number): Observable<any>{
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturn(this.apiUrlGetOrdersListByUserId + 
+      "?UserId="+UserId+"&Lang="+lang);
+  }
+
 
 
   GetUserFacturationAdress(UserId): Observable<any> {

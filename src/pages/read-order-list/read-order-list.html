@@ -7,30 +7,32 @@
 
 
 <ion-content>
+  <div *ngIf="loading" class="spinner">
+    <ion-spinner center></ion-spinner>
+    <p text-center font-size-small>Loading...</p>
+  </div>
   <ion-list>
-    <ion-card>
+    <ion-card *ngFor="let item of orderList"> 
       <ion-card-header class="cardHeader">
-       {{'readorderlist.CommandeNmber' | translate}}: N°12345678
-        <ion-badge float-right color="secondary">{{'success' | translate}}</ion-badge>
+       {{'readorderlist.CommandeNmber' | translate}}: N° {{item.Id}}
+        <ion-badge float-right [color]="getStatusClass(item.StatusCode)" style="color: white;"> {{item.StatusLabel}}</ion-badge>
       </ion-card-header>
       <ion-card-content>
         <h6 class="descriptionFont">
-          <b> {{'readorderlist.PurchasingDate' | translate}}</b>: 11/11/2001
+          <b> {{'readorderlist.PurchasingDate' | translate}}</b>: {{item.CreatedOn}}
         </h6>
         <h6 class="descriptionFont">
-          <b> {{'readorderlist.Total' | translate}}</b>: 111€
+          <b> {{'readorderlist.Total' | translate}}</b>: {{item.TotalPrice}}€
         </h6>
         <h6 class="descriptionFont">
-          <b>
-          {{'readorderlist.Address' | translate}}
-          </b>
+          <b>{{'readorderlist.Address' | translate}}</b>
         </h6>
         <p class="descriptionFont">
-          58 rue du Goulet
+          {{item.ShippingAdress.FirstLineAddress}}
           <br>
-          93300 Aubervilliers
+          {{item.ShippingAdress.ZipCode}} {{item.ShippingAdress.City}}
         </p>
-        <h6 class="descriptionFont detailInfo" (click)="commandeDetail()">{{'readorderlist.Detail' | translate}}</h6>
+        <h6 class="descriptionFont detailInfo" (click)="commandeDetail(item)">{{'readorderlist.Detail' | translate}}</h6>
       </ion-card-content>
     </ion-card>
   </ion-list>
