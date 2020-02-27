@@ -62,6 +62,7 @@ export class NewproductPage extends BaseUI {
                 }
               },
               error => {
+                this.loading = false
                 super.showToast(this.toastCtrl, error.Msg);
               },
               () => this.loading = false);
@@ -78,6 +79,7 @@ export class NewproductPage extends BaseUI {
               },
               error => {
                 super.showToast(this.toastCtrl, error.Msg);
+                this.loading = false;
               },
               () => this.loading = false);
           break;

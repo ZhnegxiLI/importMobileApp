@@ -9,6 +9,8 @@ import { Events } from 'ionic-angular';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { TranslateService } from '@ngx-translate/core';
 
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http"; // Update new httpclient
+
 import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
 
@@ -16,15 +18,22 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class RestProvider {
-  constructor(public http: Http,
+  token:string;
+  constructor( public http1: HttpClient,//
+    public http: Http,
     public storage: Storage,
     public event: Events,
     public utils: UtilsProvider,
     public translate: TranslateService
   ) {
+     this.loadToken();
+  }
 
+  async loadToken(){
+    this.token  ='Bearer ' + await this.utils.getKey('token');
   }
   private host = ENV.SERVER_API_URL;
+  private waitingTime = ENV.HTTP_WAITING_TIME;
 
   // private apiUrlLogin = this.host + "api/Auth/Login"; 
 
@@ -76,6 +85,8 @@ export class RestProvider {
 
   private apiUrlSaveOrder = this.host + "api/Order/SaveOrder";
   private apiUrlGetOrdersListByUserId = this.host + "api/Order/GetOrdersListByUserId";
+  private apiUrlGetOrdersListByOrderId = this.host + "api/Order/GetOrdersListByOrderId";
+  
   
 
   Registre(RegistrerInfo: object): Observable<any> {
@@ -95,8 +106,7 @@ export class RestProvider {
 
   GetProductListByPublishDate(Begin: number, Step:number): Observable<any> {
     var lang = this.translate.defaultLang;
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductListByPublishDate + 
-       "?Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
+    return this.getUrlReturn1(this.apiUrlGetProductListByPublishDate,{Lang: lang, Begin: Begin, Step:Step});// todo change
   }
 
   GetProductListBySalesPerformance(Begin: number, Step:number): Observable<any> {
@@ -141,6 +151,12 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlGetOrdersListByUserId + 
       "?UserId="+UserId+"&Lang="+lang);
   }
+  
+  GetOrdersListByOrderId(OrderId: number): Observable<any>{
+    var lang = this.translate.defaultLang;
+    return this.getUrlReturn1(this.apiUrlGetOrdersListByOrderId,{OrderId: OrderId , Lang: lang});
+  }
+  
 
 
 
@@ -274,43 +290,21 @@ export class RestProvider {
     }));
   }
 
-  private getUrlReturn(url: string): Observable<any> {
-    return this.getToken().pipe(
-      mergeMap(token => this.http.get(url, {
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        })
-      })
-        .pipe(
-          timeout(20000)
-        )
-        .map(this.extractData)
-        .catch(this.handleError)
-      )
-    );
+  private  getUrlReturn1(url: string, criteria:any): Observable<any> {
+    const headers = new HttpHeaders().set("Authorization",this.token).set("Content-Type","application/json");
+    const params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(url,{headers:headers,params:params}).pipe(timeout(this.waitingTime)).catch(this.handleError); 
+  }
+
+  private  getUrlReturn(url: string): Observable<any> {
+    const headers = new HttpHeaders().set("Authorization",this.token).set("Content-Type","application/json");
+    //const params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(url,{headers:headers}).pipe(timeout(this.waitingTime),catchError(this.handleError));//.catch(this.handleError); 
   }
 
   private postUrlReturn(url: string, body: any): Observable<any> {
-    return this.getToken().pipe(
-      mergeMap(token => this.http.post(url, body, {
-        headers: new Headers({
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        })
-      }).pipe(
-        timeout(20000),
-        // catchError(e => {
-        //   return of({
-        //     'Success': false,
-        //     'Msg':'访问超时，请检查网络连接',
-        //     'error':'timeout'});
-        // })
-      )
-        .map(this.extractData)
-        .catch(this.handleError)
-      )
-    );
+    const headers = new HttpHeaders().set("Authorization",this.token).set("Content-Type","application/json");
+    return this.http1.post(url,body,{headers:headers}).pipe(timeout(this.waitingTime)).catch(this.handleError); 
   }
 
   private postUrlReturnWithOutAuth(url: string, body: any): Observable<any> {
@@ -329,24 +323,26 @@ export class RestProvider {
 
   private handleError(error: Response | any) {
     let errMsg: string;
-    // if (error instanceof Response) {
-    //   const body = error.json() || '';
-    //   const err = body.error || JSON.stringify(body);
-    //   errMsg = `${error.status}-${error.statusText || ''} ${err}`;
-    // }
-    // else {
-    //   errMsg = error.message ? error.message : error.tostring();
-    // }
-    // console.error(errMsg);
-    // return Observable.throw(errMsg);
+
+    //TODO change
+    console.log(error)
+    if (error.error instanceof ErrorEvent) {
+      console.error('Error: ', error.error.message);
+    } else {
+      console.error(`Error: ${error.status} - ${error.error}`)
+    }
+
     if (error.name != null && error.name == "TimeoutError") {
       //超时信息
-      return Observable.throw({ Msg: "连接超时请检查网络连接", Success: false });
+      return Observable.throw({ Msg: "Network timeout, please check your network connection", Success: false });
     }
     else {
-
-      console.error(JSON.parse(error._body));
-      return Observable.throw(JSON.parse(error._body));
+      console.error(JSON.parse(error.message));//_body
+      if(error.status =='401'){
+        // token invalide 
+      }else{
+        return Observable.throw(JSON.parse(error.message));
+      }
     }
   }
 }

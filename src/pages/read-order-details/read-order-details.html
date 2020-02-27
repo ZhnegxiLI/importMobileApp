@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ReadOrderDetailsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -13,17 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-  <h6>{{'read-order-details.OrderNumber' | translate}} n°2768674565</h6>
-  <p><b>{{'read-order-details.DateOfPurchase' | translate}}: </b>04 dec. 2019</p>
-  <p><b>{{'read-order-details.Status' | translate}}: </b>Expédiée</p>
+  <h6>{{'read-order-details.OrderNumber' | translate}} n°{{OrderInfo.Id}} </h6>
+  <p><b>{{'read-order-details.DateOfPurchase' | translate}}: </b>{{OrderInfo.CreatedOn}}</p>
+  <p><b>{{'read-order-details.Status' | translate}}: </b>{{Status.Label}}</p>
   <br>
   <p>{{'read-order-details.ForEditYourOrder' | translate}}
     <br>
     <a class="buttonLine">{{'read-order-details.ContactOurCustomerService' | translate}}</a>
   </p>
   <ion-list>
-    <ion-card class="productCard">
-      <ion-card-header>
+    <ion-card class="productCard" *ngFor="let item of ProductList; let i = index">
+      <ion-card-header *ngIf="i==0">
         <h3>{{'read-order-details.YourOrder' | translate}}</h3>
       </ion-card-header>
       <ion-card-content>
@@ -33,77 +27,13 @@
               <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
             </ion-col>
             <ion-col col-8>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">{{'read-order-details.Referene' | translate}}: 40673357</p>
+              <h6 class="productTitleFont">{{item.Reference.Label}}</h6>
+              <p class="descriptionFont">{{'read-order-details.Referene' | translate}}: {{item.Reference.Code}}</p>
               <p class="descriptionFont">{{'read-order-details.Size' | translate}}: 41*29.5*106cm</p>
               <p class="descriptionFont">{{'read-order-details.Material' | translate}}: en Bois</p>
               <p class="descriptionFont">{{'read-order-details.Color' | translate}}: Blanc</p>
               <br>
-              <div>{{'read-order-details.Quantity' | translate}} x2<p float-right class="sommeStyle">50$</p>
-              </div>
-
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="productCard">
-      <ion-card-content>
-        <div>
-          <ion-row>
-            <ion-col col-4>
-              <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-            </ion-col>
-            <ion-col col-8>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Réf : 40673357</p>
-              <p class="descriptionFont">Taille : 41*29.5*106cm</p>
-              <p class="descriptionFont">Matière : en Bois</p>
-              <p class="descriptionFont">Couleur :Blanc</p>
-              <br>
-              <div>Quantité x2<p float-right class="sommeStyle">50$</p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="productCard">
-      <ion-card-content>
-        <div>
-          <ion-row>
-            <ion-col col-4>
-              <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
-            </ion-col>
-            <ion-col col-8>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Réf : 40673357</p>
-              <p class="descriptionFont">Taille : 41*29.5*106cm</p>
-              <p class="descriptionFont">Matière : en Bois</p>
-              <p class="descriptionFont">Couleur :Blanc</p>
-              <br>
-              <div>Quantité x2<p float-right class="sommeStyle">50$</p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="productCard">
-      <ion-card-content>
-        <div>
-          <ion-row>
-            <ion-col col-4>
-              <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/4/5664-thickbox_default.jpg">
-            </ion-col>
-            <ion-col col-8>
-              <h6 class="productTitleFont">GAZ BRIQUET 250+50GR</h6>
-              <p class="descriptionFont">Réf : 40673357</p>
-              <p class="descriptionFont">Taille : 41*29.5*106cm</p>
-              <p class="descriptionFont">Matière : en Bois</p>
-              <p class="descriptionFont">Couleur :Blanc</p>
-              <br>
-              <div>Quantité x2<p float-right class="sommeStyle">50$</p>
+              <div>{{'read-order-details.Quantity' | translate}} x{{item.Quantity}}<p float-right class="sommeStyle">{{item.Price}}€</p>
               </div>
             </ion-col>
           </ion-row>
@@ -117,11 +47,12 @@
             <h3> <b>{{'read-order-details.ShippingAddress' | translate}}</b> </h3>
           </ion-card-header>
           <ion-card-content>
-              <p class="descriptionFont">
-                  58 rue du Goulet
-                  <br>
-                  93300 Aubervilliers
-                </p>
+                <p class="descriptionFont">{{ShippingAdress.ContactFirstName}} </p>
+                <p class="descriptionFont">{{ShippingAdress.ContactLastName}}</p>
+                <p class="descriptionFont">{{ShippingAdress.FirstLineAddress}}</p>
+                <p class="descriptionFont">{{ShippingAdress.SecondLineAddress}}</p>
+                <p class="descriptionFont">{{ShippingAdress.ZipCode}} {{ShippingAdress.City}} </p>
+                <p class="descriptionFont">{{ShippingAdress.ContactTelephone}}</p>
           </ion-card-content>
       </ion-card>
   </ion-list>
@@ -132,11 +63,12 @@
             <h3><b>{{'read-order-details.BillingAddress' | translate}}</b> </h3>
           </ion-card-header>
           <ion-card-content>
-              <p class="descriptionFont">
-                  58 rue du Goulet
-                  <br>
-                  93300 Aubervilliers
-                </p>
+            <p class="descriptionFont">{{FacturationAdress.ContactFirstName}} </p>
+            <p class="descriptionFont">{{FacturationAdress.ContactLastName}}</p>
+            <p class="descriptionFont">{{FacturationAdress.FirstLineAddress}}</p>
+            <p class="descriptionFont">{{FacturationAdress.SecondLineAddress}}</p>
+            <p class="descriptionFont">{{FacturationAdress.ZipCode}} {{FacturationAdress.City}} </p>
+            <p class="descriptionFont">{{FacturationAdress.ContactTelephone}}</p>
           </ion-card-content>
       </ion-card>
   </ion-list>
