@@ -9,7 +9,7 @@ import { Events } from 'ionic-angular';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { TranslateService } from '@ngx-translate/core';
 
-import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http"; // Update new httpclient
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from "@angular/common/http"; // Update new httpclient
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/Rx';
@@ -321,28 +321,49 @@ export class RestProvider {
     return body || {};
   }
 
-  private handleError(error: Response | any) {
-    let errMsg: string;
-
-    //TODO change
-    console.log(error)
+  private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
-      console.error('Error: ', error.error.message);
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
     } else {
-      console.error(`Error: ${error.status} - ${error.error}`)
-    }
-
-    if (error.name != null && error.name == "TimeoutError") {
-      //超时信息
-      return Observable.throw({ Msg: "Network timeout, please check your network connection", Success: false });
-    }
-    else {
-      console.error(JSON.parse(error.message));//_body
-      if(error.status =='401'){
-        // token invalide 
-      }else{
-        return Observable.throw(JSON.parse(error.message));
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+      switch(error.status){
+        case 401: // login
+          break;
+        case 403: // forbidden
+          break;
       }
     }
-  }
+    // return an observable with a user-facing error message
+    return Observable.throw(error.error);
+  };
+
+  // private handleError(error: Response | any) {
+  //   let errMsg: string;
+
+  //   //TODO change
+  //   console.log(error)
+  //   if (error.error instanceof ErrorEvent) {
+  //     console.error('Error: ', error.error.message);
+  //   } else {
+  //     console.error(`Error: ${error.status} - ${error.error}`)
+  //   }
+
+  //   if (error.name != null && error.name == "TimeoutError") {
+  //     //超时信息
+  //     return Observable.throw({ Msg: "Network timeout, please check your network connection", Success: false });
+  //   }
+  //   else {
+  //     console.error(JSON.parse(error.message));//_body
+  //     if(error.status =='401'){
+  //       // token invalide 
+  //     }else{
+  //       return Observable.throw(JSON.parse(error.message));
+  //     }
+  //   }
+  // }
 }
