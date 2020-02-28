@@ -38,26 +38,7 @@ export class RestProvider {
   // private apiUrlLogin = this.host + "api/Auth/Login"; 
 
 
-  private apiUrlGetCargoByName = this.host + 'api/cargo/GetCargo';
-  private apiUrlGetOrdersByUserId = this.host + 'api/SalesOrder/GetSalesOrderByUserId';
-  private apiUrlGetSalesOrderCategoriesByUserId = this.host + 'api/SalesOrder/GetSalesOrderCategoriesByUserId';
-  private apiUrlGetDeptByName = this.host + 'api/Client';
-  private apiUrlGetSalesOrderByOrderId = this.host + "api/SalesOrder/GetSalesOrderByOrderId";
-  private apiUrlInsertSalesOrderByOrderId = this.host + "api/SalesOrder/InsertSalesOrderByOrderId";
-  private apiUrlgetUserList = this.host + "api/Auth/getUserList";
 
-  private apiUrlUpdateSalesOrderStatut = this.host + "api/SalesOrder/UpdateSalesOrderStatut";
-  private apiUrlCheckAvailabilityOfToken = this.host + "api/Auth/CheckAvailabilityOfToken";
-  private apiUrlGetSalesOrderValidationContent = this.host + 'api/SalesOrder/GetSalesOrderValidationContent';
-  private apiUrlGetCompanyName = this.host + 'api/Version/GetCompanyName';
-  private apiUrlGetSalesOrderValidationList = this.host + 'api/SalesOrder/GetSalesOrderValidationList';
-  private apiUrlGetUnitList = this.host + 'api/cargo/GetUnitList';
-
-  private apiUrlGetPermissionList = this.host + 'api/Permission/GetPermissionList';
-  private apiUrlGetUserPermissionById = this.host + 'api/Permission/GetUserPermissionById';
-  private apiUrlSaveUserPermission = this.host + 'api/Permission/SaveUserPermission';
-
-  private apiUrlAdvancedSalesOrderSearch = this.host + "api/SalesOrder/AdvancedSalesOrderSearch";
   /*
   * With auth services 
   */
@@ -87,7 +68,7 @@ export class RestProvider {
   private apiUrlGetOrdersListByUserId = this.host + "api/Order/GetOrdersListByUserId";
   private apiUrlGetOrdersListByOrderId = this.host + "api/Order/GetOrdersListByOrderId";
   
-  
+  /* Auth zoom start */
 
   Registre(RegistrerInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
@@ -95,6 +76,9 @@ export class RestProvider {
   Login(LoginInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlLogin, LoginInfo);
   }
+  /* Auth zoom end */
+
+  /* Product zoom start */
   GetProductMainCategory(): Observable<any> {
     var lang = this.translate.defaultLang;
     return this.getUrlReturnWithOutAuth(this.apiUrlGetProductMainCategory + "?Lang=" + lang);
@@ -128,6 +112,15 @@ export class RestProvider {
       "?SecondCategoryReferenceId=" + SecondCategoryReferenceId + "&Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
   }
 
+  GetProductInfoByReferenceIds(ReferenceIds): Observable<any> {
+    var lang = this.translate.defaultLang; // TODO : change to with auth 
+    return this.postUrlReturnWithOutAuth(this.apiUrlGetProductInfoByReferenceIds, { ReferenceIds: ReferenceIds, Lang: lang });
+  }
+
+  /* Product zoom end */
+
+
+  /* Product comment zoom start */
   SaveProductComment(criteria): Observable<any>{
     // TODO : change to with auth 
     return this.postUrlReturnWithOutAuth(this.apiUrlSaveProductComment, criteria);
@@ -140,6 +133,9 @@ export class RestProvider {
       "?ProductId="+ProductId +"&Begin="+Begin+"&Step="+Step+"&Lang="+lang);
   }
 
+   /* Product comment zoom end */
+
+   /* Order zoom start */
   SaveOrder(References:any[] ,ShippingAdressId:number, FacturationAdressId:number, UserId:number): Observable<any> {
    // TODO : change to with auth 
     return this.postUrlReturnWithOutAuth(this.apiUrlSaveOrder, 
@@ -156,10 +152,11 @@ export class RestProvider {
     var lang = this.translate.defaultLang;
     return this.getUrlReturn1(this.apiUrlGetOrdersListByOrderId,{OrderId: OrderId , Lang: lang});
   }
+   /* Order zoom end */
   
 
 
-
+  /* Adress zoom start */
   GetUserFacturationAdress(UserId): Observable<any> {
     return this.getUrlReturn(this.apiUrlGetUserFacturationAdress + "?UserId="+UserId);
   }
@@ -175,101 +172,9 @@ export class RestProvider {
   CreateOrUpdateAdress(criteria): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlCreateOrUpdateAdress,criteria);
   }
+  /* Adress zoom end */
 
-
-  GetProductInfoByReferenceIds(ReferenceIds): Observable<any> {
-    var lang = this.translate.defaultLang; // TODO : change to with auth 
-    return this.postUrlReturnWithOutAuth(this.apiUrlGetProductInfoByReferenceIds, { ReferenceIds: ReferenceIds, Lang: lang });
-  }
-
-
-
-
-
-
-
-  SaveUserPermission(UserPermissionParam: object): Observable<any> {
-    return this.postUrlReturn(this.apiUrlSaveUserPermission, UserPermissionParam);
-  }
-  GetCargoByName(limit: number): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetCargoByName + "?limit=" + limit);
-  }
-
-  GetPermissionList(): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetPermissionList);
-  }
-  GetUserPermissionById(userId: string): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetUserPermissionById + '?userId=' + userId);
-  }
-
-  GetSalesOrderValidationList(categoryId: number, type: string): Observable<any> {
-    return this.postUrlReturn(this.apiUrlGetSalesOrderValidationList, { categoryId: categoryId, type: type });
-  }
-
-  AdvancedSalesOrderSearch(criteria: object): Observable<any> {
-    return this.postUrlReturn(this.apiUrlAdvancedSalesOrderSearch, criteria);
-  }
-
-  GetUnitList(): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetUnitList);
-  }
-
-  GetSalesOrderValidationContent(orderId: string): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetSalesOrderValidationContent + "?orderId=" + orderId);
-  }
-
-  GetOrdersByUserId(userId: string, categoryId: string, type: string, step: number, begin: number): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetOrdersByUserId + "?userId=" + userId + "&categoryId=" + categoryId + "&type=" + type + "&step=" + step + "&begin=" + begin);
-  }
-
-  GetSalesOrderCategoriesByUserId(userId: string, type: string): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetSalesOrderCategoriesByUserId + "?userId=" + userId + "&type=" + type);
-  }
-
-  GetDeptByName(limit: number): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetDeptByName + "?limit=" + limit);
-  }
-
-  GetSalesOrderByOrderId(orderId: string): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetSalesOrderByOrderId + "?orderId=" + orderId);
-  }
-
-  InsertSalesOrderByOrderId(orderInfo, products: Array<any>): Observable<any> {
-    return this.postUrlReturn(this.apiUrlInsertSalesOrderByOrderId, { orderInfo: orderInfo, products: products });
-  }
-  UpdateSalesOrderStatut(userId, orderId, applicationContent, statusCode): Observable<any> {
-    return this.postUrlReturn(this.apiUrlUpdateSalesOrderStatut, { userId: userId, applicationContent: applicationContent, orderId: orderId, statutCode: statusCode });
-  }
-
-  GetCompanyName(): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetCompanyName);
-  }
-
-  /**
-   * Without auth
-   * 
-   * @param {*} User
-   * @returns {Observable<any>}
-   * @memberof RestProvider
-   */
-  // Login(User):Observable<any>{
-  //   this.event.publish('user:created');
-  //   return this.postUrlReturnWithOutAuth(this.apiUrlLogin, User);
-  // }
-  /**
-   * Without auth
-   * Get userlist for the login page 
-   * @returns {Observable<any>}
-   * @memberof RestProvider
-   */
-  GetUserList(): Observable<any> {
-    return this.getUrlReturnWithOutAuth(this.apiUrlgetUserList);
-  }
-
-  CheckAvailabilityOfToken(token: string): Observable<any> {
-    return this.getUrlReturn(this.apiUrlCheckAvailabilityOfToken + "?token=" + token);
-  }
-
+ 
   // TODO: Login page remove all 
   private getUrlReturnWithOutAuth(url: string): Observable<any> {
     return this.http.get(url)
@@ -321,49 +226,29 @@ export class RestProvider {
     return body || {};
   }
 
-  private handleError(error: HttpErrorResponse) {
+
+
+  private handleError(error: Response | any) {
+    let errMsg: string;
+
+    //TODO change
+    console.log(error)
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+      // Font-end error
+      if (error.name != null && error.name == "TimeoutError") {
+        //超时信息
+        return Observable.throw({ Msg: "Network timeout, please check your network connection", Success: false });
+      }
+      console.error('Error: ', error.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-      switch(error.status){
-        case 401: // login
-          break;
-        case 403: // forbidden
-          break;
+      // Back-end error
+      console.error(error.error);
+      if(error.status =='401'){
+        // token invalide 
+      }else{
+        return Observable.throw(error.error);
       }
     }
-    // return an observable with a user-facing error message
-    return Observable.throw(error.error);
-  };
 
-  // private handleError(error: Response | any) {
-  //   let errMsg: string;
-
-  //   //TODO change
-  //   console.log(error)
-  //   if (error.error instanceof ErrorEvent) {
-  //     console.error('Error: ', error.error.message);
-  //   } else {
-  //     console.error(`Error: ${error.status} - ${error.error}`)
-  //   }
-
-  //   if (error.name != null && error.name == "TimeoutError") {
-  //     //超时信息
-  //     return Observable.throw({ Msg: "Network timeout, please check your network connection", Success: false });
-  //   }
-  //   else {
-  //     console.error(JSON.parse(error.message));//_body
-  //     if(error.status =='401'){
-  //       // token invalide 
-  //     }else{
-  //       return Observable.throw(JSON.parse(error.message));
-  //     }
-  //   }
-  // }
+  }
 }

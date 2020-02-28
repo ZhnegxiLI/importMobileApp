@@ -46,7 +46,9 @@ export class RegistrePage extends BaseUI{
       city:['',Validators.required],
       country:['',Validators.required],
       zipCode:['',Validators.required],
-      useSameAddress:['false']
+      useSameAddress:['false'],
+      phoneNumber:['',Validators.required],
+      fax:['']
     });
     
 
@@ -77,6 +79,7 @@ export class RegistrePage extends BaseUI{
         ZipCode: this.addressForm.value['zipCode'], 
         UseSameAddress: this.addressForm.value['useSameAddress'], 
         PhoneNumber : this.entrepriseForm.value['phoneNumber']
+    
       }
       if (this.network.type != 'none') {
         var loading = this.showLoading(this.loadingCtrl,"En cours...")
@@ -104,4 +107,9 @@ export class RegistrePage extends BaseUI{
       // validate all form fields
     }
   }
+
+
+  get basicInfoFormCtrl() { return this.basicInfoForm.controls; }
+  get entrepriseFormCtrl() { return this.entrepriseForm.controls; }
+  get addressFormCtrl() { return this.addressForm.controls; }
 }

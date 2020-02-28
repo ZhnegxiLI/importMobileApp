@@ -1,9 +1,3 @@
-<!--
-  Generated template for the RegistrePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -12,135 +6,111 @@
 
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <form [formGroup]="basicInfoForm">
-      <ion-item>
-        <ion-label stacked>{{'registre.Email' | translate}} <span class="requiredLabel"> *</span></ion-label>
-        <ion-input type="email" formControlName="email"></ion-input>
-      </ion-item>
 
-      <ion-item no-lines
-        *ngIf="!basicInfoForm.controls.email.valid  && (basicInfoForm.controls.email.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_PleaseEntreCorrectEmail' | translate}}</p>
-      </ion-item>
+<ion-content style="background-color: #f4f4f4!important;">
+  <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="basicInfoForm">
+      <form [formGroup]="basicInfoForm">
+        <ng-template matStepLabel>Compte</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.Email' | translate}}" formControlName="email" required>
+          <mat-error *ngIf="basicInfoFormCtrl.email.errors">
+            {{'registre.Warming_PleaseEntreCorrectEmail' | translate}}
+          </mat-error>
+        </mat-form-field>
 
-      <ion-item>
-        <ion-label stacked>{{'registre.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
-        <ion-input type="password" formControlName="password" ></ion-input>
-      </ion-item>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.Password' | translate}}" formControlName="password" required>
+          <mat-error *ngIf="basicInfoFormCtrl.password.errors">
+            {{'registre.Warming_AtLeast8Characters' | translate}}
+          </mat-error>
+        </mat-form-field>
 
-      <ion-item no-lines
-        *ngIf="!basicInfoForm.controls.password.valid  && (basicInfoForm.controls.password.dirty || submitAttempt)">
-        <p>{{'registre.Warming_PasswordsMustMatch' | translate}}</p>
-        <ul style="margin-bottom: 0px;">
-          <li>
-            <p>{{'registre.Warming_AtLeast8Characters' | translate}}</p>
-          </li>
-          <li>
-            <p>{{'registre.Warming_AtLeast1Number' | translate}}</p>
-          </li>
-          <li>
-            <p>{{'registre.Warming_AtLeast1Letter' | translate}}</p>
-          </li>
-          
-        </ul>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.Password' | translate}}" formControlName="confirmPassword" required>
+          <mat-error *ngIf="basicInfoFormCtrl.confirmPassword.errors">
+            {{'registre.Warming_PasswordsMustMatch' | translate}}
+          </mat-error>
+        </mat-form-field>
 
-      </ion-item>
+        <div>
+          <button mat-raised-button color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="entrepriseForm">
+      <form [formGroup]="entrepriseForm">
+        <ng-template matStepLabel>Entreprise</ng-template>
 
-      <ion-item>
-        <ion-label stacked>{{'registre.Password' | translate}}<span class="requiredLabel"> *</span></ion-label>
-        <ion-input type="password" formControlName="confirmPassword"></ion-input>
-      </ion-item>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.CompanyName' | translate}}" formControlName="entrepriseName"
+            required>
+        </mat-form-field>
 
-      <ion-item no-lines *ngIf="confirmPassword()">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle; margin-right:2px ;"></ion-icon>{{'registre.Warming_PasswordsMustMatch' | translate}}</p>
-      </ion-item>
-    </form>
-  </ion-list>
-  <h4 margin-left>{{'registre.CompanyInformation' | translate}}<span class="requiredLabel"> *</span></h4>
-  <ion-list>
-    <form [formGroup]="entrepriseForm">
-      <ion-item>
-        <ion-label stacked>{{'registre.CompanyName' | translate}} <span class="requiredLabel"> *</span></ion-label>
-        <ion-input type="text" formControlName="entrepriseName"></ion-input>
-      </ion-item>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.Siret' | translate}}" formControlName="siret" required>
+        </mat-form-field>
 
-      <ion-item no-lines
-        *ngIf="!entrepriseForm.controls.entrepriseName.valid  && (entrepriseForm.controls.entrepriseName.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_CompanyNameCannotEmpty' | translate}}</p>
-      </ion-item>
+        <mat-form-field>
+          <span matPrefix>+33 &nbsp;</span>
+          <input matInput required type="tel" matInput placeholder="{{'registre.PhoneNumber' | translate}}"
+            formControlName="phoneNumber">
+        </mat-form-field>
 
-      <ion-item>
-        <ion-label stacked>{{'registre.Siret' | translate}} <span class="requiredLabel"> *</span></ion-label>
-        <ion-input type="number" pattern="\\d*" formControlName="siret"></ion-input>
-      </ion-item>
+        <div>
+          <button mat-raised-button color="warn" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="addressForm">
+      <form [formGroup]="addressForm">
+        <ng-template matStepLabel>Adress</ng-template>
 
-      <ion-item no-lines
-        *ngIf="!entrepriseForm.controls.siret.valid  && (entrepriseForm.controls.siret.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_SiretCannotBeEmpty' | translate}}</p>
-      </ion-item>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.AddressLine1' | translate}}" formControlName="firstLineAddress"
+            required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.AddressLine2' | translate}}" formControlName="secondLineAddress">
+        </mat-form-field>
 
 
-      <ion-item>
-        <ion-label stacked>{{'registre.PhoneNumber' | translate}} <span class="requiredLabel"> *</span></ion-label>
-        <ion-input type="tel" formControlName="phoneNumber"></ion-input>
-      </ion-item>
 
-      <ion-item no-lines *ngIf="!entrepriseForm.controls.phoneNumber.valid  && (entrepriseForm.controls.phoneNumber.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_PhoneNumberCannotBeEmpty' | translate}}</p>
-      </ion-item>
-    </form>
-  </ion-list>
-  <h4 margin-left>{{'registre.Address' | translate}}<span class="requiredLabel"> *</span></h4>
-  <ion-list style="margin-bottom: 0px;">
-    <form [formGroup]="addressForm">
-      <ion-item>
-        <ion-input placeholder="{{'registre.AddressLine1' | translate}}" formControlName="firstLineAddress"></ion-input>
-      </ion-item>
+        <mat-form-field>
+          <input matInput placeholder="{{'registre.Country' | translate}}" formControlName="country" required>
+        </mat-form-field>
+     
+        <ion-row>
+          <ion-col col-6 >
+            <mat-form-field>
+              <input matInput placeholder="{{'registre.City' | translate}}" formControlName="city" required>
+            </mat-form-field>
+          </ion-col>
+          <ion-col col-6 >
+            <mat-form-field>
+              <input matInput placeholder="{{'registre.ZipCode' | translate}}" formControlName="zipCode" required>
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
 
-      <ion-item no-lines
-        *ngIf="!addressForm.controls.firstLineAddress.valid  && (addressForm.controls.firstLineAddress.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_MainAddressCannotBeEmpty' | translate}}</p>
-      </ion-item>
+        <mat-form-field>
+          <span matPrefix>+33 &nbsp;</span>
+          <input matInput required type="tel" matInput placeholder="{{'registre.PhoneNumber' | translate}}"
+            formControlName="phoneNumber">
+        </mat-form-field>
 
-      <ion-item>
-        <ion-input placeholder="{{'registre.AddressLine2' | translate}}" formControlName="secondLineAddress"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="{{'registre.City' | translate}}" formControlName="city"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines
-        *ngIf="!addressForm.controls.city.valid  && (addressForm.controls.city.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_CityCannotBeEmpty' | translate}}</p>
-      </ion-item>
-
-      <ion-item>
-        <ion-input placeholder="{{'registre.Country' | translate}}" formControlName="country"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines
-        *ngIf="!addressForm.controls.country.valid  && (addressForm.controls.country.dirty || submitAttempt)">
-        <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon>{{'registre.Warming_CountryCannotBeEmpty' | translate}}</p>
-      </ion-item>
-
-      <ion-item>
-        <ion-input placeholder="{{'registre.ZipCode' | translate}}" type="number" pattern="\\d*" formControlName="zipCode"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines
-        *ngIf="!addressForm.controls.zipCode.valid  && (addressForm.controls.zipCode.dirty || submitAttempt)">
-      <p><ion-icon name="close" style="color: red; vertical-align: middle;margin-right:2px ;"></ion-icon> {{'registre.Warming_ZipCodeCannotBeEmpty' | translate}}</p>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{'registre.UseTheSameAddressAsTheShippingAddress' | translate}}</ion-label>
-        <ion-checkbox formControlName="useSameAddress"></ion-checkbox>
-      </ion-item>
-    </form>
-  </ion-list>
-  <div padding>
-    <button ion-button color="primary" block (click)="registre()" [disabled]='addressForm.invalid||entrepriseForm.invalid||basicInfoForm.invalid||confirmPassword()'>{{'registre.Registre' | translate}}
-    </button> 
-  </div>
+        <mat-form-field>
+          <span matPrefix>+33 &nbsp;</span>
+          <input matInput  type="tel" matInput placeholder="{{'registre.Fax' | translate}}"
+            formControlName="fax">
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="warn" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" (click)='registre()'>{{'registre.Registre' | translate}}</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
 </ion-content>
