@@ -48,9 +48,22 @@ export class LoginPage extends BaseUI {
 
   
      // this.navCtrl.parent.select(0); // 跳转tabs
-      this.rest.Login(LoginInfo) // 填写url的参数
+      this.rest.getNewRefreshToken(LoginInfo) // 填写url的参数
         .subscribe(
           f => {
+
+            // test
+            localStorage.setItem('login  Status', '1');
+            localStorage.setItem('jwt', f.authToken.token);
+            localStorage.setItem('username', f.authToken.username);
+            localStorage.setItem('expiration', f.authToken.expiration);
+            localStorage.setItem('userRole', f.authToken.roles);
+            localStorage.setItem('refreshToken', f.authToken.refresh_token);
+
+            this.storage.set('email',this.email);
+            this.storage.set('token',f.authToken.token);
+            this.storage.set('userId',f.authToken.userId); 
+
             if (f.Success&&f.Data!=null&&f.Data.Token!=null&&f.Data.UserId!=null&&f.Data.UserId>0) {
               this.showToast(this.toastCtrl,"Login successfully"); // 翻译
               /* 重整成一个object */
@@ -58,10 +71,12 @@ export class LoginPage extends BaseUI {
               this.storage.set('token',f.Data.Token);
               this.storage.set('userId',f.Data.UserId); 
 
+           
+
               this.viewCtrl.dismiss();
              
             } else {
-              super.showToast(this.toastCtrl, f.Msg);
+              //super.showToast(this.toastCtrl, f.Msg);
             }
             loading.dismiss();
           },

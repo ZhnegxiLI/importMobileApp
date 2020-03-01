@@ -17,12 +17,14 @@ import { RestProvider } from '../providers/rest/rest';
 import { ComponentsModule } from '../components/components.module';
 import { StarRatingModule } from 'ionic3-star-rating';
 
-import { HttpClientModule,HttpClient} from '@angular/common/http';
+import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UtilsProvider } from '../providers/utils/utils';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatButtonModule, MatSelectModule,MatFormFieldModule,MatInputModule } from '@angular/material'
+import { JwtInterceptor } from '../providers/interceptor/JwtInterceptor';
+
 
 export function createTranslateLoader(http: HttpClient) {
   //此出的路径需要和第二步新建的文件夹保持一致
@@ -64,6 +66,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RestProvider,
     UtilsProvider,

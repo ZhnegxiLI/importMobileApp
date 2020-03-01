@@ -44,7 +44,7 @@ export class ReadOrderListPage extends BaseUI {
             }
           },
           error => {
-            super.showToast(this.toastCtrl, error.Msg);
+           // super.showToast(this.toastCtrl, error.Msg);
           }, () => this.loading = false);
     }
     else {

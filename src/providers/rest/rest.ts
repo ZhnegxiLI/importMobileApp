@@ -42,6 +42,7 @@ export class RestProvider {
   /*
   * With auth services 
   */
+ private apiUrlRefreshToken = this.host + "api/Token/Auth";
 
   private apiUrlRegistre = this.host + "api/Account/Register";
   private apiUrlLogin = this.host + "api/Auth/Login";
@@ -69,6 +70,29 @@ export class RestProvider {
   private apiUrlGetOrdersListByOrderId = this.host + "api/Order/GetOrdersListByOrderId";
   
   /* Auth zoom start */
+
+
+  getNewRefreshToken1(LoginInfo: any):Observable<any> {
+
+    LoginInfo.GrantType = "refresh_token"
+    LoginInfo.RefreshToken = localStorage.getItem('refreshToken');
+    LoginInfo.UserName = localStorage.getItem('username');
+
+    // todo add object
+    return this.postUrlReturnWithOutAuth(this.apiUrlRefreshToken,LoginInfo);
+  }
+
+  getNewRefreshToken(LoginInfo: any):Observable<any> {
+
+    LoginInfo.GrantType = "password"
+    LoginInfo.UserName = LoginInfo.Email;
+
+    // todo add object
+    return this.postUrlReturnWithOutAuth(this.apiUrlRefreshToken,LoginInfo);
+  }
+  logout(){
+    //todo
+  }
 
   Registre(RegistrerInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlRegistre, RegistrerInfo);
@@ -249,6 +273,5 @@ export class RestProvider {
         return Observable.throw(error.error);
       }
     }
-
   }
 }
