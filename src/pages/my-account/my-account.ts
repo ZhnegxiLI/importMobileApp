@@ -17,6 +17,7 @@ export class MyAccountPage {
 
   public notLogin: boolean = true;
   public logined: boolean = false;
+  private username : string = "";
 
   constructor(
     public navCtrl: NavController,
@@ -46,10 +47,10 @@ export class MyAccountPage {
     this.navCtrl.push('AboutUsPage');
   }
 
-  async loadUserPage() {
+  loadUserPage() {
 
-    var userId = await this.utils.getKey('userId');
-    var token = await this.utils.getKey('token');
+    var token = localStorage.getItem('jwt');
+    var userId = localStorage.getItem('userId');
     if(userId ==null || token == null){
       this.notLogin = true;
       this.logined = false;
@@ -57,11 +58,13 @@ export class MyAccountPage {
     else {
       this.notLogin = false;
       this.logined = true;
+
+      this.username = localStorage.getItem('username');
     }
   }
   logout(){
-    this.storage.remove('userId');
-    this.storage.remove('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
     this.loadUserPage();
   }
   readCommandList(){

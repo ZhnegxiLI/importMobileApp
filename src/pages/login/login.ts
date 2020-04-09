@@ -52,36 +52,33 @@ export class LoginPage extends BaseUI {
         .subscribe(
           f => {
 
-            // test
-            localStorage.setItem('login  Status', '1');
-            localStorage.setItem('jwt', f.authToken.token);
-            localStorage.setItem('username', f.authToken.username);
-            localStorage.setItem('expiration', f.authToken.expiration);
-            localStorage.setItem('userRole', f.authToken.roles);
-            localStorage.setItem('refreshToken', f.authToken.refresh_token);
 
-            this.storage.set('email',this.email);
-            this.storage.set('token',f.authToken.token);
-            this.storage.set('userId',f.authToken.userId); 
+            if(f!=null && f.authToken!=null){
+              localStorage.setItem('login  Status', '1');
+              localStorage.setItem('jwt', f.authToken.token);
+              localStorage.setItem('username', f.authToken.username);
+              localStorage.setItem('userId',f.authToken.userId);
+              localStorage.setItem('expiration', f.authToken.expiration);
+              localStorage.setItem('userRole', f.authToken.roles);
+              localStorage.setItem('refreshToken', f.authToken.refresh_token);
+              //this.router.navigate(['sample']);
 
-            if (f.Success&&f.Data!=null&&f.Data.Token!=null&&f.Data.UserId!=null&&f.Data.UserId>0) {
-              this.showToast(this.toastCtrl,"Login successfully"); // 翻译
-              /* 重整成一个object */
-              this.storage.set('email',this.email);
-              this.storage.set('token',f.Data.Token);
-              this.storage.set('userId',f.Data.UserId); 
 
-           
+              this.storage.set('userId',f.authToken.userId);
+              this.storage.set('jwt',f.authToken.token);
+              this.storage.set('refreshToken',f.authToken.refreshToken);
 
               this.viewCtrl.dismiss();
-             
-            } else {
-              //super.showToast(this.toastCtrl, f.Msg);
-            }
+          }
+
             loading.dismiss();
           },
           error => {
-            super.showToast(this.toastCtrl, error.Msg);
+            var message = JSON.parse(error);
+            if(message.LoginError!=null){
+              super.showToast(this.toastCtrl, message.LoginError);
+            }
+           
             loading.dismiss();
           });
     }

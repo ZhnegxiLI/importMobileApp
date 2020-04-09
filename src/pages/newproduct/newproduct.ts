@@ -6,6 +6,7 @@ import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
 import { Storage } from '@ionic/storage';
 import { UtilsProvider } from '../../providers/utils/utils';
+import { ENV } from '@app/env';
 
 @IonicPage()
 @Component({
@@ -21,6 +22,9 @@ export class NewproductPage extends BaseUI {
   counter: number = 0;
   PageType: string;
 
+  private host = ENV.SERVER_API_URL;
+  private logined: boolean = false;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public network: Network,
@@ -33,6 +37,8 @@ export class NewproductPage extends BaseUI {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewproductPage');
+
+    this.checkLogined();
   }
 
   ionViewDidEnter() {
@@ -46,6 +52,17 @@ export class NewproductPage extends BaseUI {
     this.navCtrl.push('ProductDetailPage',{
       productId: product.ProductId
     });
+  }
+
+  async checkLogined(){
+    var userId = await this.utilis.getKey('userId');
+    var token = await this.utilis.getKey('jwt');
+    if(userId!=null && token!=null){
+      this.logined = true;
+    }
+    else{
+      this.logined = false;
+    }
   }
 
   loadProductList() {
