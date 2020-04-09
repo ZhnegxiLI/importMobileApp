@@ -19,7 +19,9 @@
             </ion-checkbox>
           </ion-col>
           <ion-col col-3 class="colStyle">
-            <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
+            <img *ngIf="item.DefaultPhotoPath!=null" class="align-text-middle" [src]="host+item.DefaultPhotoPath">
+
+            <img *ngIf="item.DefaultPhotoPath==null"   src="assets/imgs/not-found.png">
           </ion-col>
           <ion-col col-8 class="colStyle">
             <div>
@@ -32,7 +34,7 @@
               <p class="descriptionFont">{{'cart.EachBox' | translate}}: {{item.QuantityPerBox}} </p>
               <p class="descriptionFont">{{'cart.MinimumPurchase' | translate}}:{{item.MinQuantity}}</p>
             </div>
-            <ion-meter float-right [buyNumber]="item.Quantity" maxQty='10000' minQty='0' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
+            <ion-meter float-right [buyNumber]="checkQuantityWithMinQuantity(item.MinQuantity,item.Quantity)" maxQty='10000' [minQty]='item.MinQuantity' [goods]="item.ReferenceId" (onUpdate)="onUpdate($event)">
             </ion-meter>
           </ion-col>
         </ion-row>

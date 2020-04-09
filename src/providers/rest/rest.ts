@@ -55,6 +55,7 @@ export class RestProvider {
   private apiUrlGetProductInfoByReferenceIds = this.host + "api/Product/GetProductInfoByReferenceIds";
   private apiUrlGetProductListByPublishDate = this.host + "api/Product/GetProductListByPublishDate";
   private apiUrlGetProductListBySalesPerformance = this.host + "api/Product/GetProductListBySalesPerformance";
+  private apiUrlGetProductById = this.host + "api/Product/GetProductById";
 
   private apiUrlSaveProductComment = this.host + "api/Product/SaveProductComment";
   private apiUrlGetProductCommentListByProductId = this.host + "api/Product/GetProductCommentListByProductId";
@@ -141,6 +142,11 @@ export class RestProvider {
     return this.postUrlReturnWithOutAuth(this.apiUrlGetProductInfoByReferenceIds, { ReferenceIds: ReferenceIds, Lang: lang });
   }
 
+
+  GetProductById(Id:number):  Observable<any> {
+    var lang = this.translate.defaultLang; // TODO : change to with auth 
+    return this.getUrlReturn(this.apiUrlGetProductById + "?ProductId=" + Id + "&Lang=" + lang);
+  }
   /* Product zoom end */
 
 

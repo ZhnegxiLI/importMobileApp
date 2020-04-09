@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
+import { ENV } from '@app/env';
 
 @IonicPage()
 @Component({
@@ -15,7 +16,8 @@ export class ProductEvaluationListPage extends BaseUI{
   counter: number = 0;
   productCommentList: any[] = [];
   loading:boolean = true;
-
+  private host = ENV.SERVER_API_URL;
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public toastCtrl: ToastController,

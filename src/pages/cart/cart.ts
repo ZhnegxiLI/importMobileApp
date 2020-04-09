@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../app/common/baseui';
-
+import { ENV } from '@app/env';
 
 
 @IonicPage()
@@ -18,6 +18,7 @@ export class CartPage extends BaseUI{
 
   private cartProductList: any[]=[];
   private checkAllProduct: boolean = false;
+  private host = ENV.SERVER_API_URL;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -35,6 +36,8 @@ export class CartPage extends BaseUI{
   }
  async ionViewDidEnter(){
    this.cartProductList = JSON.parse(await this.utils.getKey('cartProductList'));
+
+   console.log(this.cartProductList)
   }
   
   itemCheckBoxChange(item:any){
@@ -42,6 +45,18 @@ export class CartPage extends BaseUI{
       this.checkAllProduct = false;
     }
     this.SaveCart();
+  }
+
+  checkQuantityWithMinQuantity(minQuantity,Quantity){
+    if(minQuantity!=null && Quantity!=null){
+      if(Quantity>minQuantity){
+        return Quantity;
+      }
+      else{
+        return minQuantity;
+      }
+    }
+    return 0;
   }
 
   onUpdate(data) {

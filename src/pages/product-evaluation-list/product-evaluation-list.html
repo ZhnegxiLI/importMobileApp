@@ -17,12 +17,15 @@
           <ion-grid>
             <ion-row>
               <ion-col  col-4>
-                <img  src="assets/imgs/productDetailImg.png">
+
+                <img *ngIf="item.PhotoPath==null"   src="assets/imgs/not-found.png">
+
+                <img [src]="host+item.PhotoPath" *ngIf="item.PhotoPath">
               </ion-col>
 
               <ion-col col-8 style="font-size:14px;">
                 <ion-row><ion-col>{{item.User.EntrepriseName}} a laisse un avis</ion-col></ion-row>
-                <ion-row ><ion-col>{{item.Label}}</ion-col></ion-row>
+                <ion-row ><ion-col>{{item.Label | uppercase}}</ion-col></ion-row>
                 <ion-row>
                   <ion-col><ionic3-star-rating #rating
                     activeIcon = "ios-star"

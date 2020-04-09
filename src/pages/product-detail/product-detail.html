@@ -1,21 +1,26 @@
-<!--
-  Generated template for the ProductDetailPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CHAUFFAGE MAX 2000W</ion-title>
+    <ion-title>{{product.Label | uppercase }} </ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content>
   <div style="height: 35%;">
-      <img class="productDetailImg" src="assets/imgs/productDetailImg.png" />
-      <div class="surjet"></div>
-      <p class="surjetText">CHAUFFAGE MAX 2000W</p>
+      <!-- <img class="productDetailImg" src="assets/imgs/productDetailImg.png" /> -->
+
+      <ion-slides class="slidePagers" pager>
+        <ion-slide *ngFor="let item of product.ImagesPath">
+          <img class="productDetailImg" [src]="host+item.Path" *ngIf="item.Path" style="height: 250px;"/>
+    
+        </ion-slide>
+        <img *ngIf="product.ImagesPath==null||product.ImagesPath.length==0" class="productImg"  src="assets/imgs/not-found.png">
+      </ion-slides>
+
+   
+      <!-- <div class="surjet"></div>
+      <p class="surjetText">{{product.Label | uppercase }}</p> -->
+
   </div>
   <div>
     <ion-row class="buttonRow" text-center>
@@ -39,46 +44,9 @@
       </ion-col>
     </ion-row>
   </div>
-  <!-- <ion-buttons class="buttonZone" style="width: 100%;margin-bottom: 5px;" color='light'>
-      <ion-row>
-        <ion-col col-4 text-center>
-        <button class="productDetailImgNavButton" (click)="favorite()" ion-button clear>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-icon  class="iconButton" isActive="{{isFavorite}}" name="bookmark" ></ion-icon>
-            </ion-col>
-          </ion-row>
-          <ion-row *ngIf="!isFavorite"><ion-col class="iconText" text-center>Facorite</ion-col></ion-row>
-          <ion-row *ngIf="isFavorite"><ion-col class="iconText" text-center>Facorité</ion-col></ion-row>
-        </ion-grid>
-      </button>
-    </ion-col>
-    <ion-col col-4 text-center >
-      <button class="productDetailImgNavButton" ion-button clear>
-        <ion-grid>
-            <ion-row>
-              <ion-col><ion-icon class="iconButton" name="cart"></ion-icon></ion-col>
-            </ion-row>
-            <ion-row><ion-col class="iconText" text-center>Cart</ion-col></ion-row>
-          </ion-grid>
-      </button>
-    </ion-col>
-    <ion-col col-4 text-center >
-      <button class="productDetailImgNavButton" (click)="writeEvaluation()" ion-button clear>
-        <ion-grid>
-            <ion-row>
-              <ion-col><ion-icon  class="iconButton" name="create"></ion-icon></ion-col>
-            </ion-row>
-            <ion-row><ion-col class="iconText" text-center>Avis</ion-col></ion-row>
-          </ion-grid>
-      </button>
-    </ion-col>
-    </ion-row>
-    </ion-buttons> -->
   <ion-list>
     <ion-item>
-      <p style="font-size: unset;color:#222;">Référence : 947628</p>
+      <p style="font-size: unset;color:#222;">Référence : {{product.ReferenceCode}}</p>
     </ion-item>
     <button ion-item (click)="displayAvis()"> 
       <ion-row align-items-center>
@@ -87,30 +55,26 @@
           </ion-col>
           <ion-col col-6>
             <ionic3-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#534d7a"
-              defaultColor="cadetblue" readonly="true" rating="4" fontSize="24px">
+              defaultColor="cadetblue" readonly="true" [rating]="calculCommentAverageLevel()" fontSize="24px">
             </ionic3-star-rating>
           </ion-col>
-          <ion-col col-4><span float-right class="nombreAvis" (click)="displayAvis()">(3 avis)</span> </ion-col>
+          <ion-col col-4><span float-right class="nombreAvis" (click)="displayAvis()" *ngIf="product.Comments!=null&&product.Comments.length>0">({{product.Comments.length}} avis)</span> </ion-col>
         </ion-row>
     </button>
     <ion-item>
-      Quantité par colis : 1
+      Quantité minimal : {{product.MinQuantity}}
     </ion-item>
     <ion-item>
-      Couleur :Blanc
+      Quantité par colis : {{product.QuantityPerBox}}
     </ion-item>
-    <ion-item>Taille : 56.5×42cm</ion-item>
     <ion-item>
-      <ion-grid>
-        <ion-row>
-          <ion-col>3 niveaux de puissances</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>2 interruptoires(froid /chaud)</ion-col>
-        </ion-row>
-      </ion-grid>
+      Couleur: {{product.Color}}
     </ion-item>
-    <ion-item>Matière : en métal</ion-item>
-    <ion-item></ion-item>
+    <ion-item>Taille: {{product.Size}}</ion-item>
+    <ion-item>Material: {{product.Material}}</ion-item>
+    <ion-item>
+        <p style="color: black; font-size: 1em;">{{product.Description}} </p>
+    </ion-item>
+
   </ion-list>
 </ion-content>

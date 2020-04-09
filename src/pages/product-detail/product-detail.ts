@@ -1,16 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {WriteProductEvaluationPage} from '../write-product-evaluation/write-product-evaluation'
-import {ProductEvaluationListPage} from '../product-evaluation-list/product-evaluation-list'
+import { RestProvider } from '../../providers/rest/rest';
+import { ENV } from '@app/env';
 
-
-
-/**
- * Generated class for the ProductDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,8 +12,11 @@ import {ProductEvaluationListPage} from '../product-evaluation-list/product-eval
 export class ProductDetailPage {
   isFavorite : boolean = false;
   productId : number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
   }
+
+  private product: any = {};
+  private host = ENV.SERVER_API_URL;
 
   favorite(){
     this.isFavorite = !this.isFavorite;
@@ -36,10 +31,40 @@ export class ProductDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductDetailPage');
     this.productId = this.navParams.get('productId');
+
+    this.initLoadData();
+  }
+
+  calculCommentAverageLevel(){
+    var averageLevel = 5;
+    if(this.product!=null&& this.product.Comments!=null && this.product.Comments.length>0){
+      var totalLevel = 0;
+      this.product.Comments.forEach(p => {
+        totalLevel = p.Level + totalLevel;
+      });
+      averageLevel = totalLevel / this.product.Comments.length;
+    }
+    return averageLevel;
+  }
+
+  initLoadData (){
+    if(this.productId!=null&& this.productId!=0){
+      this.rest.GetProductById(this.productId).subscribe(result=>{
+        if(result!=null){
+          console.log(result);
+          this.product = result;
+        }
+      },
+      error=>{
+
+      })
+    }
   }
 
   displayAvis(){
-    this.navCtrl.push('ProductEvaluationListPage', {type:"GetCommentByProductId",productId: this.productId});
+    if(this.product.Comments!=null &&this.product.Comments.length>0 ){
+      this.navCtrl.push('ProductEvaluationListPage', {type:"GetCommentByProductId",productId: this.productId});
+    }
   }
 
 }
