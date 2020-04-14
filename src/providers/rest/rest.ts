@@ -76,6 +76,10 @@ export class RestProvider {
 
   private apiUrlCheckUserIsAlreadyExistAsync = this.host + "api/User/CheckUserIsAlreadyExistAsync";
 
+
+
+  private apiUrlSaveMessage = this.host + "api/Message/SaveMessage";
+
   getNewRefreshToken1(LoginInfo: any):Observable<any> {
 
     LoginInfo.GrantType = "refresh_token"
@@ -179,10 +183,10 @@ export class RestProvider {
       { References: References, ShippingAdressId: ShippingAdressId, FacturationAdressId:FacturationAdressId,
         UserId:UserId});
   }
-  GetOrdersListByUserId(UserId: number): Observable<any>{
+  GetOrdersListByUserId(UserId: number, OrderStatus: string ): Observable<any>{
     var lang = this.translate.defaultLang;
     return this.getUrlReturn(this.apiUrlGetOrdersListByUserId + 
-      "?UserId="+UserId+"&Lang="+lang);
+      "?UserId="+UserId+"&StatusCode="+OrderStatus +"&Lang="+lang);
   }
   
   GetOrdersListByOrderId(OrderId: number): Observable<any>{
@@ -211,6 +215,10 @@ export class RestProvider {
   }
   /* Adress zoom end */
 
+
+  SaveMessage (criteria): Observable<any>{
+    return this.postUrlReturnWithOutAuth(this.apiUrlSaveMessage,criteria);
+  }
  
 
   CheckUserIsAlreadyExistAsync(Username): Observable<any>  {

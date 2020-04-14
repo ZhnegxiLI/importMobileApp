@@ -14,7 +14,7 @@
         "Title":"My account",
         "ViewAll":"View all",
         "MyOrder":"My orders",
-        "UnpaidOrder":"Unpaid orders",
+        "CanceledOrder":"Canceled orders",
         "PrepareOrder":"Preparing orders",
         "OrderArrived":"Arrived orders",
         "Feedbacks":"Give us your feedbacks",

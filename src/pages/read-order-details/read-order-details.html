@@ -13,7 +13,7 @@
   <br>
   <p>{{'read-order-details.ForEditYourOrder' | translate}}
     <br>
-    <a class="buttonLine">{{'read-order-details.ContactOurCustomerService' | translate}}</a>
+    <a class="buttonLine" (click)="ContactUs()">{{'read-order-details.ContactOurCustomerService' | translate}}</a>
   </p>
   <ion-list>
     <ion-card class="productCard" *ngFor="let item of ProductList; let i = index">
@@ -24,14 +24,18 @@
         <div>
           <ion-row>
             <ion-col col-4>
-              <img class="align-text-middle" src="https://www.jlsimport.fr/img/p/5/6/6/0/5660-large_default.jpg">
+
+
+              <img *ngIf="item.DefaultPhotoPath!=null" class="align-text-middle"  [src]="host+item.DefaultPhotoPath">
+
+              <img class="align-text-middle" src="assets/imgs/not-found.png" *ngIf="item.DefaultPhotoPath==null">
             </ion-col>
             <ion-col col-8>
-              <h6 class="productTitleFont">{{item.Reference.Label}}</h6>
-              <p class="descriptionFont">{{'read-order-details.Referene' | translate}}: {{item.Reference.Code}}</p>
-              <p class="descriptionFont">{{'read-order-details.Size' | translate}}: 41*29.5*106cm</p>
-              <p class="descriptionFont">{{'read-order-details.Material' | translate}}: en Bois</p>
-              <p class="descriptionFont">{{'read-order-details.Color' | translate}}: Blanc</p>
+              <h6 class="productTitleFont">{{item.Label}}</h6>
+              <p class="descriptionFont">{{'read-order-details.Referene' | translate}}: {{item.Code}}</p>
+              <p class="descriptionFont">{{'read-order-details.Size' | translate}}: {{item.Size}}</p>
+              <p class="descriptionFont">{{'read-order-details.Material' | translate}}: {{item.Material}}</p>
+              <p class="descriptionFont">{{'read-order-details.Color' | translate}}: {{item.Color}}</p>
               <br>
               <div>{{'read-order-details.Quantity' | translate}} x{{item.Quantity}}<p float-right class="sommeStyle">{{item.Price}}€</p>
               </div>
@@ -76,10 +80,10 @@
   <ion-list>
       <ion-card class="productCard">
           <ion-card-content>
-              <p class="expenseFont">{{'read-order-details.SommeBeforeTaxe' | translate}}:<span float-right>100€</span></p>
-              <p class="expenseFont">{{'read-order-details.TVA' | translate}}:<span float-right>20€</span> </p>
+              <p class="expenseFont">{{'read-order-details.SommeBeforeTaxe' | translate}}:<span float-right>{{ calculBasicTotalPrice() | number : '1.2-2'}}€</span></p>
+              <p class="expenseFont">{{'read-order-details.TVA' | translate}}:<span float-right>{{TaxRate*0.01* calculBasicTotalPrice() | number : '1.2-2'}}€ </span> </p>
               <P class="expenseFont">{{'read-order-details.ShippingCost' | translate}}:<span float-right>20€</span></P>
-              <p class="totalCommande expenseFont">{{'read-order-details.AmountOfOrder' | translate}}:<span float-right>140€</span></p>
+              <p class="totalCommande expenseFont">{{'read-order-details.AmountOfOrder' | translate}}:<span float-right>{{ (calculBasicTotalPrice()*(1+TaxRate*0.01) | number : '1.2-2')}}€</span></p>
           </ion-card-content>
       </ion-card>
   </ion-list>

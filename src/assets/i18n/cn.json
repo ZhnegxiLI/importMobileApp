@@ -14,7 +14,7 @@
         "Title":"我的账户",
         "ViewAll":"观看全部",
         "MyOrder":"我的订单",
-        "UnpaidOrder":"未支付订单",
+        "CanceledOrder":"被取消的订单",
         "PrepareOrder":"正在准备的订单",
         "OrderArrived":"已到达订单",
         "Feedbacks":"对我们的意见",

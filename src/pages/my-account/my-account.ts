@@ -40,7 +40,7 @@ export class MyAccountPage {
   }
 
   contactUs(){
-    this.navCtrl.push('ContactUsPage');
+    this.navCtrl.push('ContactUsPage', {Page: 'MyAccountPage'});
   }
 
   aboutUs(){
@@ -67,13 +67,10 @@ export class MyAccountPage {
     localStorage.removeItem('token');
     this.loadUserPage();
   }
-  readCommandList(){
-    this.navCtrl.push('ReadOrderListPage');
+  readCommandList(orderType){
+    this.navCtrl.push('ReadOrderListPage',{orderType: orderType});
   }
-  viewAllOrder(){
-    this.navCtrl.push('ReadOrderListPage');
-  }
-  
+
   translation(){
     let modal = this.modalCtrl.create('TranslationPage');
     modal.onDidDismiss(()=>{

@@ -14,7 +14,7 @@
         "Title":"Mon compte",
         "ViewAll":"Tous",
         "MyOrder":"Vos commandes",
-        "UnpaidOrder":"Commandes impayées",
+        "CanceledOrder":"Commandes annulées",
         "PrepareOrder":"Commandes en cours de préparation",
         "OrderArrived":"Commandes livrées",
         "Feedbacks":"Avis clients",

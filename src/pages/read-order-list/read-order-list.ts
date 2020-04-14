@@ -30,10 +30,12 @@ export class ReadOrderListPage extends BaseUI {
   commandeDetail(order) {
     this.navCtrl.push('ReadOrderDetailsPage',{OrderId:order.Id});
   }
+  
   async loadOrderList() {
     if (this.network.type != 'none') {
       var UserId = parseInt(await this.utils.getKey('userId'));
-      this.rest.GetOrdersListByUserId(UserId) // 填写url的参数
+      var orderType = this.navParams.get('orderType');
+      this.rest.GetOrdersListByUserId(UserId,orderType) // 填写url的参数
         .subscribe(
           f => {
             if (f.Success && f.Data != null) {
@@ -51,6 +53,7 @@ export class ReadOrderListPage extends BaseUI {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
     }
   }
+
   getStatusClass(StatusCode) {
     var statusColor = "warning";
     switch (StatusCode) {
