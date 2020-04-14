@@ -70,7 +70,8 @@
     },
     "registre-succed":{
         "Confirm":"Your account is well registered, we will send a confirmation email to {email}, please confirm your email address to complete your registration",
-        "Return":"Return to home page"
+        "Return":"Return to home page",
+        "ForgetPasswordSendEmail": "Your demande of reinitialize the password is send to email: {email}"
     },
     "contact-us":{
         "Title":"Contact us",

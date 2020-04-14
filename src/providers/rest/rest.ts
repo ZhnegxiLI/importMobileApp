@@ -46,6 +46,8 @@ export class RestProvider {
 
   private apiUrlRegistre = this.host + "api/Account/Register";
   private apiUrlLogin = this.host + "api/Auth/Login";
+  private apiUrlSendPasswordResetLink = this.host + "api/Account/SendPasswordResetLink";
+  
   private apiUrlGetProductMainCategory = this.host + "api/Product/GetProductMainCategory";
   private apiUrlGetProductSecondCategory = this.host + "api/Product/GetProductSecondCategory";
 
@@ -101,6 +103,10 @@ export class RestProvider {
   }
   Login(LoginInfo: object): Observable<any> {
     return this.postUrlReturnWithOutAuth(this.apiUrlLogin, LoginInfo);
+  }
+
+  SendPasswordResetLink(Email:string) : Observable<any>{
+    return this.getUrlReturnWithOutAuth(this.apiUrlSendPasswordResetLink + '?username='+Email);
   }
   /* Auth zoom end */
 

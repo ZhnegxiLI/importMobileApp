@@ -21,7 +21,7 @@
       <ion-input type="password" [(ngModel)] = "password"></ion-input>
     </ion-item>
   </ion-list>
-  <a style="margin-left:10px;text-decoration: underline;">{{'signin.ForgetPassword' | translate}}</a>
+  <a style="margin-left:10px;text-decoration: underline;" (click)="findOutPassword()">{{'signin.ForgetPassword' | translate}}</a>
   <div padding>
     <button ion-button color = "primary" block (click)="login()" [disabled]="email==null||email==''||password==null||password==''">{{'signin.SignIn' | translate}}</button>
   </div>

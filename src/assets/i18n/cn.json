@@ -72,7 +72,8 @@
     },
     "registre-succed":{
         "Confirm":"您的帐户已成功注册，我们将向{email}发送确认电子邮件.请确认您的电子邮件地址以完成注册",
-        "Return":"返回至主页"
+        "Return":"返回至主页",
+        "ForgetPasswordSendEmail": "您的重置密码链接已发送至邮箱: {email}"
     },
     "contact-us":{
         "Title":"联系我们",

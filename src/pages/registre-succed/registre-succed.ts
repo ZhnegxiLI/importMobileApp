@@ -21,8 +21,13 @@ export class RegistreSuccedPage {
   async ionViewDidLoad() {
     console.log('ionViewDidLoad RegistreSuccedPage');
     this.email = this.navParams.get('email'); //await this.utils.getKey('email');
-
-    this.message = this.translateService.instant('registre-succed.Confirm')!=null ? this.translateService.instant('registre-succed.Confirm').replace('{email}', this.email): '';
+    if(this.navParams.get('page')!=null && this.navParams.get('page') == 'RegistrePage'){
+      this.message = this.translateService.instant('registre-succed.Confirm')!=null ? this.translateService.instant('registre-succed.Confirm').replace('{email}', this.email): '';
+    }
+    else if(this.navParams.get('page')!=null && this.navParams.get('page') == 'ForgetPasswordPage'){
+      this.message = this.translateService.instant('registre-succed.ForgetPasswordSendEmail')!=null ? this.translateService.instant('registre-succed.ForgetPasswordSendEmail').replace('{email}', this.email): '';
+    }
+  
   }
   returnToAccueil(){
     // Set the tab to the first choice 

@@ -112,7 +112,7 @@ export class RegistrePage extends BaseUI{
           .subscribe(
             f => {
               if (f.Success) {
-                this.navCtrl.setRoot('RegistreSuccedPage',{email:f.DataExt});
+                this.navCtrl.setRoot('RegistreSuccedPage',{email:f.DataExt, page: 'RegistrePage'});
               } else {
                 super.showToast(this.toastCtrl, f.Msg);
               }

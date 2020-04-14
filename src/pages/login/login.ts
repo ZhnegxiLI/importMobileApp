@@ -90,8 +90,13 @@ export class LoginPage extends BaseUI {
   registre(){
 
    // this.appCtrl.getRootNavs()[0].push('RegistrePage');
-   this.viewCtrl.dismiss();
-  this.appCtrl.getRootNav().push('RegistrePage');
+    this.viewCtrl.dismiss();
+    this.appCtrl.getRootNav().push('RegistrePage');
+  }
+
+  findOutPassword(){
+    this.viewCtrl.dismiss();
+    this.appCtrl.getRootNav().push('ForgetPasswordPage');
   }
 
   dismiss() {

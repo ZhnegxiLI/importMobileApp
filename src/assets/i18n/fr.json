@@ -71,7 +71,8 @@
     },
     "registre-succed":{
         "Confirm":"Votre compte est bien enregistré, nous allons envoyer un mail de confirmation à {email}, veuiller confirmer votre address mail pour compléter votre enregistrement",
-        "Return":"Revenez sur page d'acceuille"
+        "Return":"Revenez sur page d'acceuille",
+        "ForgetPasswordSendEmail": "Le mail pour réinitialiser le mot de passe est envoyé à l'address mail: {email}"
     },
     "contact-us":{
         "Title":"Contactez-nous",
