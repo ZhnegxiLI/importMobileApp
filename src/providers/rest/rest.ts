@@ -72,6 +72,7 @@ export class RestProvider {
   
   /* Auth zoom start */
 
+  private apiUrlCheckUserIsAlreadyExistAsync = this.host + "api/User/CheckUserIsAlreadyExistAsync";
 
   getNewRefreshToken1(LoginInfo: any):Observable<any> {
 
@@ -205,6 +206,11 @@ export class RestProvider {
   /* Adress zoom end */
 
  
+
+  CheckUserIsAlreadyExistAsync(Username): Observable<any>  {
+    return this.getUrlReturnWithOutAuth(this.apiUrlCheckUserIsAlreadyExistAsync+'?Username='+Username);
+    
+  }
   // TODO: Login page remove all 
   private getUrlReturnWithOutAuth(url: string): Observable<any> {
     return this.http.get(url)

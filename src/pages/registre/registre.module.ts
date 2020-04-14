@@ -15,7 +15,8 @@ import { MatButtonModule, MatSelectModule,MatFormFieldModule,MatInputModule,MatS
     MatStepperModule,
     MatButtonModule,
     MatIconModule,
-    TranslateModule
+    TranslateModule,
+    MatSelectModule
   ],
 })
 export class RegistrePageModule {}

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 import { UtilsProvider } from '../../providers/utils/utils'; 
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -11,14 +12,17 @@ import { UtilsProvider } from '../../providers/utils/utils';
   templateUrl: 'registre-succed.html',
 })
 export class RegistreSuccedPage {
-  email:string;
+  private email:string;
+  private message : string ;
 
-  constructor(private app:App,public navCtrl: NavController, public navParams: NavParams,public utils :UtilsProvider) {
+  constructor(private app:App,public navCtrl: NavController, public navParams: NavParams,public utils :UtilsProvider,public translateService: TranslateService) {
   }
 
   async ionViewDidLoad() {
     console.log('ionViewDidLoad RegistreSuccedPage');
     this.email = this.navParams.get('email'); //await this.utils.getKey('email');
+
+    this.message = this.translateService.instant('registre-succed.Confirm')!=null ? this.translateService.instant('registre-succed.Confirm').replace('{email}', this.email): '';
   }
   returnToAccueil(){
     // Set the tab to the first choice 
