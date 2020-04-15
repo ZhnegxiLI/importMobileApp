@@ -55,7 +55,7 @@
     </div>
     <div float-right class="footerComponent">
       <ion-label>{{'cart.Somme' | translate}}:{{CalculAccount()}}€</ion-label>
-      <button ion-button round small [disabled]="!checkProductListIsAvailable()" (click)="valideCart()">{{'cart.Confirm' | translate}}</button>
+      <button ion-button round small [disabled]="!checkProductListIsAvailable() || !checkSelectedProductListIsEmpty()" (click)="valideCart()">{{'cart.Confirm' | translate}}</button>
     </div>
   </ion-toolbar>
 </ion-footer>

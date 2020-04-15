@@ -37,7 +37,14 @@ export class CartPage extends BaseUI{
  async ionViewDidEnter(){
    this.cartProductList = JSON.parse(await this.utils.getKey('cartProductList'));
 
-   console.log(this.cartProductList)
+   console.log(this.cartProductList);
+
+   // Renew quantity check if quantiy < min quantity
+   this.cartProductList.map(f=>{
+     if(f.Quantity < f.MinQuantity){
+       f.Quantity = f.MinQuantity;
+     }
+   })
   }
   
   itemCheckBoxChange(item:any){
@@ -122,7 +129,14 @@ export class CartPage extends BaseUI{
     return totalAccount;
   }
   checkProductListIsAvailable(){
-    return this.cartProductList!=null && this.cartProductList.length>0;
+
+    return this.cartProductList!=null && this.cartProductList.length>0 ;
+  }
+
+  checkSelectedProductListIsEmpty(){
+    var selectedProductList = this.GetSelectedProduct();
+
+     return this.GetSelectedProduct().length>0
   }
 
 }
