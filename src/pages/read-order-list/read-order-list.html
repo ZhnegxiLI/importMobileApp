@@ -11,6 +11,7 @@
     <ion-spinner center></ion-spinner>
     <p text-center font-size-small>Loading...</p>
   </div>
+  <p *ngIf="!loading && (orderList==null || orderList.length<=0) " text-center>{{'NoDataToDisplay' | translate}}</p>
   <ion-list>
     <ion-card *ngFor="let item of orderList"> 
       <ion-card-header class="cardHeader">

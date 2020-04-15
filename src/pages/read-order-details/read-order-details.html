@@ -9,8 +9,7 @@
 <ion-content padding>
   <h6>{{'read-order-details.OrderNumber' | translate}} n°{{OrderInfo.Id}} </h6>
   <p><b>{{'read-order-details.DateOfPurchase' | translate}}: </b>{{OrderInfo.CreatedOn}}</p>
-  <p><b>{{'read-order-details.Status' | translate}}: </b>{{Status.Label}}</p>
-  <br>
+  <p><b>{{'read-order-details.Status' | translate}}: </b><ion-badge  [color]="getStatusClass(Status.Code)" style="color: white;"> {{Status.Label}}</ion-badge></p>
   <p>{{'read-order-details.ForEditYourOrder' | translate}}
     <br>
     <a class="buttonLine" (click)="ContactUs()">{{'read-order-details.ContactOurCustomerService' | translate}}</a>
@@ -77,12 +76,43 @@
       </ion-card>
   </ion-list>
 
+
+  <ion-list *ngIf="ClientRemark!=null">
+    <ion-card class="productCard">
+        <ion-card-header class="addressStyle">
+          <h3> <b>{{'read-order-details.CustomerRemark' | translate}}</b> </h3>
+        </ion-card-header>
+        <ion-card-content>
+              <p class="descriptionFont">{{ClientRemark.Text}} </p>
+              <p class="descriptionFont">{{ClientRemark.UpdatedOn}}</p>
+              
+        </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngIf="AdminRemark!=null" style="margin-bottom: 20px;">
+    <ion-card class="productCard">
+        <ion-card-header class="addressStyle">
+          <h3> <b>{{'read-order-details.AdminRemark' | translate}}</b> </h3>
+        </ion-card-header>
+        <ion-card-content>
+              <p class="descriptionFont">{{AdminRemark.Text}} </p>
+              <p class="descriptionFont">Date de mise à jour(translate): {{AdminRemark.UpdatedOn}}</p>
+        </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <div class="alert alert-success" role="alert">
+    {{ShippingMessage}}
+  </div>
   <ion-list>
       <ion-card class="productCard">
           <ion-card-content>
               <p class="expenseFont">{{'read-order-details.SommeBeforeTaxe' | translate}}:<span float-right>{{ calculBasicTotalPrice() | number : '1.2-2'}}€</span></p>
               <p class="expenseFont">{{'read-order-details.TVA' | translate}}:<span float-right>{{TaxRate*0.01* calculBasicTotalPrice() | number : '1.2-2'}}€ </span> </p>
-              <P class="expenseFont">{{'read-order-details.ShippingCost' | translate}}:<span float-right>20€</span></P>
+              <P class="expenseFont">{{'read-order-details.ShippingCost' | translate}}:
+                <span float-right> A estimer(translate)</span>
+              </P>
               <p class="totalCommande expenseFont">{{'read-order-details.AmountOfOrder' | translate}}:<span float-right>{{ (calculBasicTotalPrice()*(1+TaxRate*0.01) | number : '1.2-2')}}€</span></p>
           </ion-card-content>
       </ion-card>

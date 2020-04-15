@@ -6,6 +6,7 @@
     "success":"Success",
     "refuse":"Refuse",
     "preparing":"Preparing",
+    "NoDataToDisplay": "No Data to display",
     "translation":{
         "Title":"Languages",
         "InnerTitle":"Choose your language"

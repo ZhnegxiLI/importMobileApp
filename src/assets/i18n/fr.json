@@ -6,6 +6,7 @@
     "success":"Validé",
     "refuse":"Refusé",
     "preparing":"En cour de préparation",
+    "NoDataToDisplay": "Pas de donnée",
     "translation":{
         "Title":"Langues",
         "InnerTitle":"Choisissez votre langue"

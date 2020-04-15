@@ -18,6 +18,8 @@
     <ion-spinner center></ion-spinner>
     <p text-center font-size-small>Loading...</p>
   </div>
+
+  <p *ngIf="!loading && (productList==null || productList.length<=0) " text-center>{{'NoDataToDisplay' | translate}}</p>
   <ion-list>
     <ion-item ion-item detail-none (click)="productDetail(item)" *ngFor="let item of productList">
       <p style="float: right; margin-top: 25px;" *ngIf="logined">{{item.Price}} <span [hidden]="item.Price==null">€</span></p>

@@ -21,6 +21,10 @@ export class ReadOrderDetailsPage extends BaseUI {
   Status: any = {};
   ProductList: any = [];
 
+  private ClientRemark : any = null;
+  private AdminRemark: any = null;
+  private ShippingMessage: string = "France de port 1500€HT, 2000€HT pour le sud de la France et 2500€HT pour les étangers."; // TODO: place into an ri
+
   loading: boolean;
 
   private TaxRate: number = 0;
@@ -67,7 +71,16 @@ export class ReadOrderDetailsPage extends BaseUI {
               if (f.Data.TaxRate != null) {
                 this.TaxRate = f.Data.TaxRate.Value;
               }
+              if(f.Data.ClientRemark != null) {
+                this.ClientRemark = f.Data.ClientRemark;
+              }
 
+              if(f.Data.AdminRemark != null) {
+                this.AdminRemark = f.Data.AdminRemark;
+              }
+              if(f.Data.ShippingMessage != null) {
+                this.ShippingMessage = f.Data.ShippingMessage;
+              }
             } else {
               super.showToast(this.toastCtrl, f.Msg);
             }
@@ -103,13 +116,26 @@ export class ReadOrderDetailsPage extends BaseUI {
   }
 
   ContactUs(){
-    console.log(this.OrderInfo.Id);
-
     this.navCtrl.push('ContactUsPage',{
       OrderId : this.OrderInfo.Id,
       Page: 'ReadOrderDetailsPage'
     });
   }
-
+  
+  getStatusClass(StatusCode) {
+    var statusColor = "warning";
+    switch (StatusCode) {
+      case 'OrderStatus_Valid':
+        statusColor = "secondary"
+        break;
+      case 'OrderStatus_Refus':
+        statusColor = "danger"
+        break;
+      case 'OrderStatus_Progressing':
+        statusColor = "warning"
+        break;
+    }
+    return statusColor;
+  }
 
 }
