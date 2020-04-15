@@ -30,13 +30,13 @@ export class AddAdressPage extends BaseUI{
 
        this.adreeForm = this.formBuilder.group({
         Id:['0'],
-        EntrepriseName: ['Google', Validators.required],
+        EntrepriseName: ['', Validators.required],
         ContactFirstName: ['',Validators.required],
         ContactLastName: ['',Validators.required],
         FirstLineAddress:['',Validators.required],
         SecondLineAddress:[''],
         City:['',Validators.required],
-        Country:['',Validators.required],
+        CountryId:['',Validators.required],
         ZipCode: ['',Validators.required],
         ContactTelephone:['',Validators.required],
         ContactFax:['']
@@ -47,25 +47,59 @@ export class AddAdressPage extends BaseUI{
     console.log('ionViewDidLoad AddAdressPage');
     this.type = this.navParams.get('type');
     var adress =  this.navParams.get('adress');
+
     if(adress!=null){
       console.log(adress);
       
       this.adreeForm.setValue({
         Id:adress.Id,
-        EntrepriseName:'Google',
+        EntrepriseName:adress.EntrepriseName,
         ContactFirstName:adress.ContactFirstName,
         ContactLastName:adress.ContactLastName,
         FirstLineAddress:adress.FirstLineAddress,
         SecondLineAddress:adress.SecondLineAddress,
         City:adress.City,
-        Country:adress.Country,
+        CountryId:adress.CountryId!=null ?adress.CountryId:1 ,
         ZipCode:adress.ZipCode,
         ContactTelephone:adress.ContactTelephone,
         ContactFax:adress.ContactFax
       });
     }
- 
+    else{
+      this.loadUserInfo();
+    }
   }
+
+
+  async loadUserInfo(){
+    if (this.network.type != 'none') { 
+      console.log(this.adreeForm.value);
+
+      var loading = super.showLoading(this.loadingCtrl,'En cours...');// TODO translate
+      this.rest.GetUserById(await this.utils.getKey('userId')) // 填写url的参数
+        .subscribe(
+          result => {
+            if (result!=null) {
+              this.adreeForm.patchValue({
+                EntrepriseName: result.EntrepriseName!=null?result.EntrepriseName:'',
+                ContactTelephone:  result.PhoneNumber!=null?result.PhoneNumber:''
+              });
+            } else {
+              super.showToast(this.toastCtrl, "Some errors occur");// todo translate
+            }
+            loading.dismiss()
+          },
+          error => {
+            super.showToast(this.toastCtrl, error.Msg);
+            loading.dismiss()
+          });
+
+    }
+    else {
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+    }
+  }
+
   async saveAdress(){
     this.submitted = true;
 

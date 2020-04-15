@@ -23,7 +23,7 @@ export class ReadOrderDetailsPage extends BaseUI {
 
   private ClientRemark : any = null;
   private AdminRemark: any = null;
-  private ShippingMessage: string = "France de port 1500€HT, 2000€HT pour le sud de la France et 2500€HT pour les étangers."; // TODO: place into an ri
+  private ShippingMessage: string = "France de port 1500€HT, 2000€HT pour le sud de la France et 2500€HT pour les étangers."; 
 
   loading: boolean;
 

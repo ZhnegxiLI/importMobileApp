@@ -29,4 +29,11 @@ page-order-confirmation {
         padding-bottom: $toolbar-ios-padding!important;
         min-height: $toolbar-ios-height!important;
       }
+
+      .inputZoom{
+        border: solid 1px cadetblue;
+        border-radius: 5px;
+        margin-top: 5px;
+        padding: 0px 5px;
+    }
 }

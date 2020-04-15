@@ -72,10 +72,12 @@ export class RestProvider {
   private apiUrlGetOrdersListByUserId = this.host + "api/Order/GetOrdersListByUserId";
   private apiUrlGetOrdersListByOrderId = this.host + "api/Order/GetOrdersListByOrderId";
   
+
+  private apiUrlGetReferenceItemsByCategoryLabels = this.host + "api/Reference/GetReferenceItemsByCategoryLabels";
   /* Auth zoom start */
 
   private apiUrlCheckUserIsAlreadyExistAsync = this.host + "api/User/CheckUserIsAlreadyExistAsync";
-
+  private apiUrlGetUserById = this.host + "api/User/GetUserById";
 
 
   private apiUrlSaveMessage = this.host + "api/Message/SaveMessage";
@@ -100,6 +102,12 @@ export class RestProvider {
   }
   logout(){
     //todo
+  }
+
+
+  GetReferenceItemsByCategoryLabels(criteria): Observable<any> {
+    criteria.Lang = this.translate.defaultLang;
+    return this.postUrlReturnWithOutAuth(this.apiUrlGetReferenceItemsByCategoryLabels, criteria);
   }
 
   Registre(RegistrerInfo: object): Observable<any> {
@@ -177,11 +185,11 @@ export class RestProvider {
    /* Product comment zoom end */
 
    /* Order zoom start */
-  SaveOrder(References:any[] ,ShippingAdressId:number, FacturationAdressId:number, UserId:number): Observable<any> {
+  SaveOrder(References:any[] ,ShippingAdressId:number, FacturationAdressId:number, UserId:number, ClientRemark: string): Observable<any> {
    // TODO : change to with auth 
     return this.postUrlReturnWithOutAuth(this.apiUrlSaveOrder, 
       { References: References, ShippingAdressId: ShippingAdressId, FacturationAdressId:FacturationAdressId,
-        UserId:UserId});
+        UserId: UserId, ClientRemark: ClientRemark});
   }
   GetOrdersListByUserId(UserId: number, OrderStatus: string ): Observable<any>{
     var lang = this.translate.defaultLang;
@@ -225,6 +233,10 @@ export class RestProvider {
     return this.getUrlReturnWithOutAuth(this.apiUrlCheckUserIsAlreadyExistAsync+'?Username='+Username);
     
   }
+  GetUserById(UserId): Observable<any>  {
+    return this.getUrlReturnWithOutAuth(this.apiUrlGetUserById+'?UserId='+UserId);
+  }
+
   // TODO: Login page remove all 
   private getUrlReturnWithOutAuth(url: string): Observable<any> {
     return this.http.get(url)

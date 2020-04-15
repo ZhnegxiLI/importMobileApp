@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { Storage } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../app/common/baseui';
+import { ENV } from '@app/env';
 
 
 @IonicPage()
@@ -15,12 +16,19 @@ import { BaseUI } from '../../app/common/baseui';
 })
 export class OrderConfirmationPage extends BaseUI {
 
-  orderProductList: any[] = [];
-  facturationAdress: object = {};
-  shippingAdress : any[] = [];
-  defaultShippingAdress: object;
+  private host = ENV.SERVER_API_URL;
 
-  test:any;
+  public TaxRate: number = 0;
+  public ShippingMessage: string = "France de port 1500€HT, 2000€HT pour le sud de la France et 2500€HT pour les étangers."; 
+  orderProductList: any[] = [];
+  facturationAdress: any = {};
+  defaultShippingAdress: any = {};
+
+  public SavedOrder: boolean = false;
+  public ChangeAddress: boolean = false;
+
+  public remark: string = "";
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public utils: UtilsProvider,
@@ -28,19 +36,16 @@ export class OrderConfirmationPage extends BaseUI {
     public network: Network,
     public rest: RestProvider,
     public toastCtrl: ToastController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController) {
     super();
   }
   ionViewWillEnter() {
   }
   async ionViewDidEnter() {
     console.log('ionViewDidLoad OrderConfirmationPage');
-    this.defaultShippingAdress = this.navParams.get('tempSelectedAdress')|| null;
-    // var selectedAdress = await this.utils.getKey('tempSelectedAdress');
-    // if(selectedAdress!=null){
-    // //   this.defaultShippingAdress = JSON.parse(selectedAdress);
-    //   this.storage.remove('tempSelectedAdress'); 
-    // }
+    this.defaultShippingAdress = this.navParams.get('tempSelectedAdress')||  this.defaultShippingAdress;
+
     var facturationAdressChanged = await this.utils.getKey('tempFacturationAdress');
     if(facturationAdressChanged!=null && facturationAdressChanged=='true'){
       var UserId = await this.utils.getKey('userId');
@@ -52,11 +57,42 @@ export class OrderConfirmationPage extends BaseUI {
       this.storage.remove('tempFacturationAdress');
     }
   }
+  /* Leave current page: confimation */
+  async ionViewCanLeave() {
+    var shouldLeave;
+    if(!this.SavedOrder && !this.ChangeAddress){
+       shouldLeave = await this.confirmLeave();
+    }
+    return shouldLeave || this.SavedOrder || this.ChangeAddress;
+  }
 
-  async ionViewDidLoad() {
+  confirmLeave(): Promise<Boolean> {
+    let resolveLeaving;
+    const canLeave = new Promise<Boolean>(resolve => resolveLeaving = resolve);
+    const alert = this.alertCtrl.create({
+      title: 'Confirm leave',
+      message: 'Do you want to leave the page?',// todo translate
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => resolveLeaving(false)
+        },
+        {
+          text: 'Yes',
+          handler: () => resolveLeaving(true)
+        }
+      ]
+    });
+    alert.present();
+    return canLeave
+  }
+
+
+  ionViewDidLoad() {
     if (this.network.type != 'none') {
       var loading = super.showLoading(this.loadingCtrl,'En cours'); // TODO: translate
-      var UserId = await this.utils.getKey('userId');
+      var UserId =  localStorage.getItem('userId'); //await this.utils.getKey('userId');
 
       // Get selected product in cart 
       var selectedReferenceIds = [];
@@ -64,10 +100,10 @@ export class OrderConfirmationPage extends BaseUI {
     
       selectedReferences.map(p => selectedReferenceIds.push(p.ReferenceId));
   
-      Observable.forkJoin(this.rest.GetProductInfoByReferenceIds(selectedReferenceIds), this.rest.GetUserFacturationAdress(UserId), this.rest.GetUserDefaultShippingAdress(UserId))
+      Observable.forkJoin( this.rest.GetReferenceItemsByCategoryLabels({ShortLabels:['InAppMessage','TaxRate']}), this.rest.GetProductInfoByReferenceIds(selectedReferenceIds), this.rest.GetUserFacturationAdress(UserId), this.rest.GetUserDefaultShippingAdress(UserId))
         .subscribe(
-          ([SelectedProductInfo, FacturationAdress, ShippingAdress]) => {
-            if (SelectedProductInfo.Success && SelectedProductInfo.Data != null &&
+          ([ReferenceList,SelectedProductInfo, FacturationAdress, ShippingAdress]) => {
+            if (SelectedProductInfo!=null && SelectedProductInfo.length>0 &&
               FacturationAdress.Success && ShippingAdress.Success) {
                 /* Bind the product data */
                 this.formatProductData(SelectedProductInfo, selectedReferences);
@@ -76,13 +112,23 @@ export class OrderConfirmationPage extends BaseUI {
                 /* Bind the shipping adress data */
                
                 if(ShippingAdress.Data!=null){
-                  this.shippingAdress = ShippingAdress.Data;
+                 // this.shippingAdress = ShippingAdress.Data;
                   this.defaultShippingAdress = ShippingAdress.Data;
                 }
                
                 // if(this.shippingAdress.length>0&&this.shippingAdress[0]!=null){//todo: change by default
                 //   this.defaultShippingAdress = this.shippingAdress[0];
                 // }
+            }
+            if(ReferenceList!=null && ReferenceList.length>0){
+              ReferenceList.map(p=>{
+                if(p.Code == "ShippingMessage"){
+                  this.ShippingMessage = p.Label;
+                }
+                else if (p.ReferenceCategoryLabel == "TaxRate"){
+                  this.TaxRate = p.Value;
+                }
+              });
             }
           },
           error => {
@@ -95,19 +141,21 @@ export class OrderConfirmationPage extends BaseUI {
     else {
       super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
     }
-
   }
+
   modifyFacturationAdress(facturationAdress){
+    this.ChangeAddress = true;
     this.navCtrl.push('AddAdressPage',{
       type:'facturationAdress',
       adress:facturationAdress
     });
   }
 
+
   formatProductData(SelectedProductInfo, selectedReferences){
 
     /* Bind the data */
-    this.orderProductList = SelectedProductInfo.Data;
+    this.orderProductList = SelectedProductInfo;
     /* Attach the quantity */
     this.orderProductList.map(p => {
       var temp = selectedReferences.find(x => {return x.ReferenceId == p.ReferenceId;} );
@@ -125,10 +173,10 @@ export class OrderConfirmationPage extends BaseUI {
   }
 
   selectShippingAdress(){
-    this.navCtrl.push('SelectShippingAdressPage');
+    this.ChangeAddress = true;
+    this.navCtrl.push('SelectShippingAdressPage',{CurrentAddressId: this.defaultShippingAdress!=null?this.defaultShippingAdress.Id:null});
   }
 
-  
 
   async validOrder(){
     var productInfo =[];
@@ -150,7 +198,7 @@ export class OrderConfirmationPage extends BaseUI {
     if(productInfo.length>0&& shippingAdressId!=null){
       if (this.network.type != 'none') {
         var loading = super.showLoading(this.loadingCtrl,"En cours...");// TODO: translation
-        this.rest.SaveOrder(productInfo,shippingAdressId, facturationAdressId,UserId) // 填写url的参数
+        this.rest.SaveOrder(productInfo,shippingAdressId, facturationAdressId,UserId , this.remark) // 填写url的参数
           .subscribe(
             async f => {
               if (f.Success&&f.Data!=null) {
@@ -165,8 +213,9 @@ export class OrderConfirmationPage extends BaseUI {
                     newCartProductList.push(p);
                   }
                 });
+                this.SavedOrder = true;
                 this.storage.set('cartProductList',JSON.stringify(newCartProductList));
-                this.navCtrl.setRoot('OrderConfirmationSucceessPage');
+                this.navCtrl.setRoot('OrderConfirmationSucceessPage',{OrderId: f.Data});
               } else {
                 super.showToast(this.toastCtrl, f.Msg);
               }

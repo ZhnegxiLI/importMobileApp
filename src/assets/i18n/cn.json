@@ -6,6 +6,7 @@
     "success":"订单成功",
     "refuse":"订单取消",
     "preparing":"审核中",
+    "Add":"添加",
     "NoDataToDisplay": "暂无数据",
     "translation":{
         "Title":"语言",
