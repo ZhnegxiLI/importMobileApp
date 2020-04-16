@@ -111,7 +111,7 @@
               <p class="expenseFont">{{'read-order-details.SommeBeforeTaxe' | translate}}:<span float-right>{{ calculBasicTotalPrice() | number : '1.2-2'}}€</span></p>
               <p class="expenseFont">{{'read-order-details.TVA' | translate}}:<span float-right>{{TaxRate*0.01* calculBasicTotalPrice() | number : '1.2-2'}}€ </span> </p>
               <P class="expenseFont">{{'read-order-details.ShippingCost' | translate}}:
-                <span float-right> A estimer(translate)</span>
+                <span float-right> {{'read-order-details.Aestimer' | translate}}</span>
               </P>
               <p class="totalCommande expenseFont">{{'read-order-details.AmountOfOrder' | translate}}:<span float-right>{{ (calculBasicTotalPrice()*(1+TaxRate*0.01) | number : '1.2-2')}}€</span></p>
           </ion-card-content>

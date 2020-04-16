@@ -36,7 +36,7 @@
       <div>
         <p class="expenseFont">{{'order-confirmation.SommeBeforeTaxe' | translate}}:<span float-right>{{calculTotalPrice() | number : '1.2-2'}}€</span></p>
         <p class="expenseFont">{{'order-confirmation.TVA' | translate}}:<span float-right> {{calculTotalPrice()*TaxRate*0.01 | number : '1.2-2'}} €</span> </p>
-        <P class="expenseFont">{{'order-confirmation.ShippingCost' | translate}}:<span float-right>A Estimer(translate)</span></P>
+        <P class="expenseFont">{{'order-confirmation.ShippingCost' | translate}}:<span float-right>{{'order-confirmation.AEstimer' | translate}}</span></P>
         <p class="totalCommande expenseFont" style="font-weight: bold;">{{'order-confirmation.AmountOfOrder' | translate}}:<span
             float-right>{{(1+TaxRate*0.01) *calculTotalPrice() | number : '1.2-2'}}€</span></p>
       </div>
@@ -109,7 +109,7 @@
   <ion-toolbar>
     <div style="padding: 5px;">
       <p class="expenseFont">{{'order-confirmation.Amount' | translate}}:<span float-right style="font-weight: bold;">{{(1+TaxRate*0.01) *calculTotalPrice() | number : '1.2-2'}}€</span></p>
-      <p class="expenseFont">{{'order-confirmation.ShippingCost' | translate}}:<span float-right>A Estimer(translate)</span></p>
+      <p class="expenseFont">{{'order-confirmation.ShippingCost' | translate}}:<span float-right>{{'order-confirmation.AEstimer' | translate}}</span></p>
       <div text-center>
         <button ion-button small color="primary" style="width: 100%;" (click)="validOrder()">{{'order-confirmation.FinalizeTheOrder' | translate}}</button>
       </div>

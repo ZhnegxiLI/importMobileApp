@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>addAdress</ion-title>
+    <ion-title>{{'add-adress.addAdress' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,45 +12,40 @@
     <ion-card-content>
       <form class="example-form" [formGroup]="adreeForm">
         <mat-form-field class="example-full-width">
-          <input required matInput placeholder="Entreprise" formControlName="EntrepriseName">
-          <mat-error *ngIf="f.EntrepriseName.errors">
-            EntrepriseName is <strong>required</strong>
-          </mat-error>
+          <input required matInput placeholder="{{'add-adress.Entreprise' | translate}}" formControlName="EntrepriseName">
         </mat-form-field>
         <ion-row>
 
           <ion-col col-6>
             <mat-form-field class="example-full-width">
-              <input required matInput placeholder="Nom" formControlName="ContactFirstName">
+              <input required matInput placeholder="{{'add-adress.Nom' | translate}}" formControlName="ContactFirstName">
             </mat-form-field>
           </ion-col>
           <ion-col col-6>
             <mat-form-field class="example-full-width">
-              <input required matInput placeholder="Prénom" formControlName="ContactLastName">
+              <input required matInput placeholder="{{'add-adress.Prenom' | translate}}" formControlName="ContactLastName">
             </mat-form-field>
           </ion-col>
         </ion-row>
 
         <mat-form-field class="example-full-width">
-          <textarea required matInput placeholder="Address" formControlName="FirstLineAddress"></textarea>
-          <mat-error *ngIf="f.FirstLineAddress.errors">
-            FirstLineAddress is <strong>required</strong>
-          </mat-error>
+          <textarea required matInput placeholder="{{'add-adress.Address' | translate}}" formControlName="FirstLineAddress"></textarea>
+        
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <textarea matInput placeholder="Address 2" formControlName="SecondLineAddress"></textarea>
+          <textarea matInput placeholder="{{'add-adress.Address2' | translate}}" formControlName="SecondLineAddress"></textarea>
         </mat-form-field>
 
         <ion-row>
           <ion-col col-4>
             <mat-form-field class="example-full-width">
-              <input required matInput placeholder="City" formControlName="City">
+              <input required matInput placeholder="{{'add-adress.City' | translate}}" formControlName="City">
             </mat-form-field>
           </ion-col>
 
           <ion-col col-4>
             <mat-form-field>
-              <mat-select required placeholder="Paye" formControlName="CountryId">
+              <mat-select required placeholder="{{'add-adress.Country' | translate}}" formControlName="CountryId">
                 <mat-option [value]=1>
                   France
                 </mat-option>
@@ -66,27 +61,24 @@
 
           <ion-col col-4>
             <mat-form-field class="example-full-width" >
-              <input required matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="ZipCode">
+              <input required matInput #postalCode maxlength="5" placeholder="{{'add-adress.PostalCode' | translate}}" formControlName="ZipCode">
             </mat-form-field>
           </ion-col>
         </ion-row>
 
         <mat-form-field class="example-full-width" >
           <span matPrefix>+33 &nbsp;</span>
-          <input required type="tel" matInput placeholder="Téléphone" formControlName="ContactTelephone">
-          <mat-error *ngIf="f.ContactTelephone.errors">
-            ContactTelephone is <strong>required</strong>
-          </mat-error>
+          <input required type="tel" matInput placeholder="{{'add-adress.Telephone' | translate}}" formControlName="ContactTelephone">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <span matPrefix>+33 &nbsp;</span>
-          <input type="tel" matInput placeholder="Fax" formControlName="ContactFax">
+          <input type="tel" matInput placeholder="{{'add-adress.Fax' | translate}}" formControlName="ContactFax">
         </mat-form-field>
       </form>
     </ion-card-content>
   </ion-card>
   <div text-center>
-    <button ion-button color="primary"  style="width: 100%; height: 35px;" (click)="saveAdress()">Enregistrer votre address</button>
+    <button ion-button color="primary"  style="width: 100%; height: 35px;" (click)="saveAdress()">{{'add-adress.Enregistrer' | translate}}</button>
   </div>
 </ion-content>

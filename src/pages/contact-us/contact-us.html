@@ -13,7 +13,8 @@
 <ion-content>
   <ion-list no-lines>  
     <ion-item style="margin-bottom:25px;">
-      <h1>{{'contact-us.OpinionAndAdvice' | translate}}</h1>
+      <h1 *ngIf="criteria.OrderId==null">{{'contact-us.OpinionAndAdvice' | translate}}</h1>
+      <h1 *ngIf="criteria.OrderId!=null">{{'contact-us.Question' | translate}}</h1>
     </ion-item>
 
     <ion-item style="margin-bottom:25px;" *ngIf="criteria.OrderId==null">

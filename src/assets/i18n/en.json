@@ -9,6 +9,7 @@
     "Add":"Add",
     "NoDataToDisplay": "No Data to display",
     "Loading":"Loading",
+    "required":"required",
     "translation":{
         "Title":"Languages",
         "InnerTitle":"Choose your language"
@@ -88,6 +89,7 @@
         "Title":"Contact us",
         "Submit":"Submit",
         "OpinionAndAdvice":"Advice",
+        "Question": "Your question",
         "GiveUsYourAdvice":"You can leave us your precious opinions here so that we can provide better services for you, you can also leave your email so that we can contact you, thank you.",
         "Subject":"Subject",
         "Message":"Message:",
@@ -138,7 +140,9 @@
         "BillingAddress":"Billing address",
         "Amount":"Amount",
         "FinalizeTheOrder":"Finalize the order",
-        "NoAddressAvailable":"No address available"
+        "NoAddressAvailable":"No address available",
+        "AEstimer":"To be evaluated",
+        "ClientRemark":"Remark"
     },
     "OrderConfirmSucced":{
         "Confirm":"Confirm",
@@ -162,7 +166,8 @@
         "SommeBeforeTaxe":"Amount before Taxe",
         "TVA":"TVA",
         "ShippingCost":"Shipping Cost",
-        "AmountOfOrder":"Amount"
+        "AmountOfOrder":"Amount",
+        "Aestimer":"To be evaluated"
     },
     "home":{
         "Title":"Home",
@@ -203,6 +208,26 @@
         "Email":"Email",
         "forgetPassword":"Forget password",
         "AccountNotExists":"Account not exist"
+    },
+    "select-shipping-adress":{
+        "Livraison":"Delivery address",
+        "Ajouter":"Add",
+        "Confirmer":"Confirm",
+        "Modifier":"Edit"
+    },
+    "add-adress":{
+        "addAdress":"Add address",
+        "Entreprise":"Company name",
+        "Nom":"Lastname",
+        "Prenom":"Firstname",
+        "Address":"Address",
+        "Address2":"Supplementary address",
+        "City":"City",
+        "Country":"Country",
+        "PostalCode":"Zipcode",
+        "Telephone":"Telephone",
+        "Fax":"Fax",
+        "Enregistrer":"Save"
     }
  
 }

@@ -9,6 +9,7 @@
     "Add":"Ajouter",
     "NoDataToDisplay": "Pas de donnée",
     "Loading":"En cour",
+    "required":"obligatoire",
     "translation":{
         "Title":"Langues",
         "InnerTitle":"Choisissez votre langue"
@@ -89,6 +90,7 @@
         "Title":"Contactez-nous",
         "Submit":"Enregistré",
         "OpinionAndAdvice":"Avis et conseillé",
+        "Question": "Votre question",
         "GiveUsYourAdvice":"Vous pouvez nous laisser ici vos précieux avis afin que nous puissions vous offrir de meilleurs services, vous pouvez également laisser votre email afin que nous puissions vous contacter, merci.",
         "Subject":"Titre",
         "Message":"Message:",
@@ -140,7 +142,9 @@
         "BillingAddress":"Adresse de facturation",
         "Amount":"Total",
         "FinalizeTheOrder":"Finaliser la commande",
-        "NoAddressAvailable":"Adresse invalide"
+        "NoAddressAvailable":"Adresse invalide",
+        "AEstimer":"A estimer",
+        "ClientRemark":"Remarque"
     },
     "OrderConfirmSucced":{
         "Confirm":"Confirmer",
@@ -164,7 +168,8 @@
         "SommeBeforeTaxe":"Total avant taxe",
         "TVA":"TVA",
         "ShippingCost":"Frais de livraison",
-        "AmountOfOrder":"Total"
+        "AmountOfOrder":"Total",
+        "Aestimer":"A estimer"
     },
     "home":{
         "Title":"Accueil",
@@ -205,6 +210,26 @@
         "Email":"Email",
         "forgetPassword":"Mot de passe oublié",
         "AccountNotExists":"Le compte n'existe pas "
+    },
+    "select-shipping-adress":{
+        "Livraison":"Adresse de livraison",
+        "Ajouter":"Ajouter",
+        "Confirmer":"Confirmer",
+        "Modifier":"Modifier"
+    },
+    "add-adress":{
+        "addAdress":"Ajouter adresse",
+        "Entreprise":"Nom d'entreprise",
+        "Nom":"Nom",
+        "Prenom":"Prénom",
+        "Address":"Adresse",
+        "Address2":"Adresse supplémentaire",
+        "City":"Ville",
+        "Country":"Pays",
+        "PostalCode":"Code postale",
+        "Telephone":"Téléphone",
+        "Fax":"Fax",
+        "Enregistrer":"Enregistrer"
     }
  
 }

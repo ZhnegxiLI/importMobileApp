@@ -9,6 +9,7 @@
     "Add":"添加",
     "NoDataToDisplay": "暂无数据",
     "Loading":"加载中",
+    "required":"必填",
     "translation":{
         "Title":"语言",
         "InnerTitle":"选择你的语言"
@@ -91,6 +92,7 @@
     "contact-us":{
         "Title":"联系我们",
         "Submit":"提交",
+        "Question": "您的问题",
         "OpinionAndAdvice":"给我们的意见以及建议",
         "GiveUsYourAdvice":"您可以在此给我们留下您珍贵的意见以便我们为您提供更好的服务，您也可以留下您的邮箱以便于我们与您联系，谢谢您。",
         "Subject":"主题",
@@ -142,7 +144,9 @@
         "BillingAddress":"账单地址",
         "Amount":"总金额",
         "FinalizeTheOrder":"完成我的订单",
-        "NoAddressAvailable":"无可用发货地址"
+        "NoAddressAvailable":"无可用发货地址",
+        "AEstimer":"待评估",
+        "ClientRemark":"留言"
      },
      "OrderConfirmSucced":{
          "Confirm":"确认",
@@ -166,7 +170,8 @@
         "SommeBeforeTaxe":"税前价格",
         "TVA":"TVA",
         "ShippingCost":"运费",
-        "AmountOfOrder":"订单总金额"
+        "AmountOfOrder":"订单总金额",
+        "Aestimer":"待评估"
     },
     "home":{
         "Title":"首页",
@@ -207,6 +212,26 @@
         "Email":"注册邮箱",
         "forgetPassword":"忘记密码",
         "AccountNotExists":"此账号不存在"
+    },
+    "select-shipping-adress":{
+        "Livraison":"运送地址",
+        "Ajouter":"添加",
+        "Confirmer":"确认",
+        "Modifier":"修改"
+    },
+    "add-adress":{
+        "addAdress":"添加地址",
+        "Entreprise":"公司名称",
+        "Nom":"姓",
+        "Prenom":"名",
+        "Address":"地址",
+        "Address2":"补充地址",
+        "City":"城市",
+        "Country":"国家",
+        "PostalCode":"邮编",
+        "Telephone":"电话号码",
+        "Fax":"传真",
+        "Enregistrer":"保存"
     }
  
 }
