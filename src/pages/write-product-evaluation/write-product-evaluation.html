@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Soumettre un Avis</ion-title>
+    <ion-title>{{'write-product-evaluation.SoumettreUnAvis' | translate}}</ion-title>
     <ion-buttons end>
-      <button  ion-button (click)="saveProductComment()">Soumettre</button>
+      <button  ion-button (click)="saveProductComment()">{{'write-product-evaluation.Soumettre' | translate}}</button>
     </ion-buttons>
   </ion-navbar>
 
@@ -20,15 +20,15 @@
         readonly="false"
         fontSize = "32px">
       </ionic3-star-rating>
-      <p>Appuyez sur l'etoile pour noter</p>
+      <p>{{'write-product-evaluation.Appuyezsurletoilepournoter' | translate}}</p>
   </ion-item>
 
   <ion-item>
-    <ion-label style="margin-bottom: 10px;font-size: 15px;" stacked>Titre: </ion-label>
+    <ion-label style="margin-bottom: 10px;font-size: 15px;" stacked>{{'write-product-evaluation.Titre' | translate}}: </ion-label>
     <ion-textarea rows="1" [(ngModel)]="title"></ion-textarea>
 </ion-item>
   <ion-item>
-      <ion-label style="margin-bottom: 10px;font-size: 15px;" stacked>Votre commentaire (optionel) :</ion-label>
+      <ion-label style="margin-bottom: 10px;font-size: 15px;" stacked>{{'write-product-evaluation.Votrecommentaire(optionel)' | translate}} :</ion-label>
       <ion-textarea rows="5" [(ngModel)]="body"></ion-textarea>
   </ion-item>
   </ion-list>

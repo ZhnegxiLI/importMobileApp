@@ -6,6 +6,7 @@ import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
 import { RegistreSuccedPage } from '../registre-succed/registre-succed';
 import { distinctUntilChanged, debounceTime, switchMap, map, first } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -19,6 +20,7 @@ export class RegistrePage extends BaseUI{
   addressForm:any;
 
   constructor(public navCtrl: NavController, 
+    public translateService : TranslateService,
     public navParams: NavParams,
     public formBuilder:FormBuilder, 
     public rest : RestProvider,  
@@ -107,7 +109,7 @@ export class RegistrePage extends BaseUI{
         ShipmentAdress: this.addressForm.value
       }
       if (this.network.type != 'none') {
-        var loading = this.showLoading(this.loadingCtrl,"En cours...")
+        var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));
         this.rest.Registre(registreInfo) // 填写url的参数
           .subscribe(
             f => {

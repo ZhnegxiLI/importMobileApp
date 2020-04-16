@@ -11,7 +11,7 @@
   <mat-horizontal-stepper linear=true #stepper="matHorizontalStepper">
     <mat-step [stepControl]="basicInfoForm">
       <form [formGroup]="basicInfoForm">
-        <ng-template matStepLabel>Compte</ng-template>
+        <ng-template matStepLabel>{{'registre.Compte' | translate}}</ng-template>
         <mat-form-field>
           <input matInput placeholder="{{'registre.Email' | translate}}" formControlName="email" required>
           <mat-error *ngIf="isAlreadyExists()">
@@ -36,13 +36,13 @@
           {{'registre.Warming_PasswordsMustMatch' | translate}}
         </div>
         <div>
-          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button mat-raised-button color="primary" matStepperNext>{{'registre.Next' | translate}}</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="entrepriseForm">
       <form [formGroup]="entrepriseForm">
-        <ng-template matStepLabel>Entreprise</ng-template>
+        <ng-template matStepLabel>{{'registre.Entreprise' | translate}}</ng-template>
 
         <mat-form-field>
           <input matInput placeholder="{{'registre.CompanyName' | translate}}" formControlName="entrepriseName"
@@ -60,14 +60,14 @@
         </mat-form-field>
 
         <div>
-          <button mat-raised-button color="warn" matStepperPrevious>Back</button>
-          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button mat-raised-button color="warn" matStepperPrevious>{{'registre.Back' | translate}}</button>
+          <button mat-raised-button color="primary" matStepperNext>{{'registre.Next' | translate}}</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="addressForm">
       <form [formGroup]="addressForm">
-        <ng-template matStepLabel>Adress</ng-template>
+        <ng-template matStepLabel>{{'registre.Address' | translate}}</ng-template>
 
 
         <ion-row>
@@ -100,7 +100,7 @@
 
 
         <mat-form-field>
-          <mat-label>{{'address.Country' | translate}}</mat-label>
+          <mat-label>{{'registre.Country' | translate}}</mat-label>
           <mat-select required matNativeControl formControlName="CountryId">
               <mat-option [value]=1>
                   France
@@ -140,7 +140,7 @@
             formControlName="ContactFax">
         </mat-form-field>
         <div>
-          <button mat-raised-button color="warn" matStepperPrevious>Back</button>
+          <button mat-raised-button color="warn" matStepperPrevious>{{'registre.Back' | translate}}</button>
           <button mat-raised-button color="primary" (click)='registre()'>{{'registre.Registre' | translate}}</button>
         </div>
       </form>

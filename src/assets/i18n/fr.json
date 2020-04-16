@@ -8,6 +8,7 @@
     "preparing":"En cour de préparation",
     "Add":"Ajouter",
     "NoDataToDisplay": "Pas de donnée",
+    "Loading":"En cour",
     "translation":{
         "Title":"Langues",
         "InnerTitle":"Choisissez votre langue"
@@ -69,7 +70,15 @@
         "Warming_AtLeast1Number":"Au moins 1 chiffre",
         "Warming_AtLeast1Letter":"Au moins 1 minuscule",
         "UseTheSameAddressAsTheShippingAddress":"Utilisant cette adresse comme adresse de livraison",
-        "PhoneNumber":"Numéro de téléphone"
+        "PhoneNumber":"Numéro de téléphone",
+        "Compte":"Compte",
+        "Next":"Suivant",
+        "Entreprise":"Entreprise",
+        "Back":"Retour",
+        "Firstname":"Prénom",
+        "Lastname":"Nom",
+        "Fax":"Fax",
+        "Error_UserAlreadyExists":"L'utilisateur déjà existe"
     },
     "registre-succed":{
         "Confirm":"Votre compte est bien enregistré, nous allons envoyer un mail de confirmation à {email}, veuiller confirmer votre address mail pour compléter votre enregistrement",
@@ -165,5 +174,37 @@
         "Category":"Catégories",
         "MyList":"Mes listes",
         "Advice":"Avis"
+    },
+    "product-detail":{
+        "Favorite":"Préférée",
+        "Cart":"Panier",
+        "Avis":"Avis",
+        "Référence":"Référence",
+        "avis":"avis",
+        "QuantitéMinimal":"Quantité minimum",
+        "Quantitéparcolis":"Quantité par colis",
+        "Couleur":"Couleur",
+        "Taille":"Taille",
+        "Material":"Matérial"
+    },
+    "product-evaluation-list":{
+        "Loading":"En cour",
+        "alaisseunavis":"a laissé un avis",
+        "Avis":"Avis"
+    },
+    "write-product-evaluation":{
+        "SoumettreUnAvis":"Soumettre un avis",
+        "Soumettre":"Soumettre",
+        "Appuyezsurletoilepournoter":"Votre avis",
+        "Titre":"Title",
+        "Votrecommentaire(optionel)":"Votre commentaire(optionnel)"
+
+    },
+    "forget-password":{
+        "sendEmail":"Revoyer mot de passe",
+        "Email":"Email",
+        "forgetPassword":"Mot de passe oublié",
+        "AccountNotExists":"Le compte n'existe pas "
     }
+ 
 }

@@ -16,7 +16,7 @@
 <ion-content>
   <div *ngIf="loading" class="spinner">
     <ion-spinner center></ion-spinner>
-    <p text-center font-size-small>Loading...</p>
+    <p text-center font-size-small>{{'Loading' | translate}}...</p>
   </div>
 
   <p *ngIf="!loading && (productList==null || productList.length<=0) " text-center>{{'NoDataToDisplay' | translate}}</p>

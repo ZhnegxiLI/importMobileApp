@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { RestProvider } from '../../providers/rest/rest';
 import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -17,6 +18,7 @@ export class ForgetPasswordPage extends BaseUI{
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private rest : RestProvider, public network: Network,
     public toastCtrl: ToastController ,
+    public translateService : TranslateService,
     public loadingCtrl: LoadingController) {
       super();
   }
@@ -38,7 +40,7 @@ export class ForgetPasswordPage extends BaseUI{
                 this.navCtrl.setRoot('RegistreSuccedPage',{page:'ForgetPasswordPage',email:f.Data});
               }
               else {
-                super.showToast(this.toastCtrl, "AccountNotExists"); // todo translate
+                super.showToast(this.toastCtrl, this.translateService.instant('forget-password.AccountNotExists')); // todo translate
               }
   
               loading.dismiss();

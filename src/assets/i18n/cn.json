@@ -8,6 +8,7 @@
     "preparing":"审核中",
     "Add":"添加",
     "NoDataToDisplay": "暂无数据",
+    "Loading":"加载中",
     "translation":{
         "Title":"语言",
         "InnerTitle":"选择你的语言"
@@ -69,7 +70,17 @@
         "Warming_AtLeast1Number":"至少含有一个数字",
         "Warming_AtLeast1Letter":"至少含有一个字母",
         "UseTheSameAddressAsTheShippingAddress":"使用此地址作为收货地址",
-        "PhoneNumber":"手机号码"
+        "PhoneNumber":"手机号码",
+        "Compte":"账户信息",
+        "Next":"下一步",
+        "Entreprise":"公司信息",
+        "Back":"返回",
+        "Firstname":"名",
+        "Lastname":"姓",
+        "Fax":"传真",
+        "Error_UserAlreadyExists":"用户已存在"
+
+
         
     },
     "registre-succed":{
@@ -165,5 +176,37 @@
         "Category":"观看类别",
         "MyList":"我的清单",
         "Advice":"商品评价"
+    },
+    "product-detail":{
+        "Favorite":"愿望清单",
+        "Cart":"购物车",
+        "Avis":"评论",
+        "Référence":"编号",
+        "avis":"评价",
+        "QuantitéMinimal":"最少购买数量",
+        "Quantitéparcolis":"数量/箱",
+        "Couleur":"颜色",
+        "Taille":"规格",
+        "Material":"材质"
+    },
+    "product-evaluation-list":{
+        "alaisseunavis":"留下评论",
+        "Loading":"加载中",
+        "Avis":"评论"
+    },
+    "write-product-evaluation":{
+        "SoumettreUnAvis":"提交您的评价",
+        "Soumettre":"提交",
+        "Appuyezsurletoilepournoter":"您的评分",
+        "Titre":"标题",
+        "Votrecommentaire(optionel)":"您的评论（选填）"
+
+    },
+    "forget-password":{
+        "sendEmail":"发送验证码至此邮箱",
+        "Email":"注册邮箱",
+        "forgetPassword":"忘记密码",
+        "AccountNotExists":"此账号不存在"
     }
+ 
 }

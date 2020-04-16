@@ -8,6 +8,7 @@
     "preparing":"Preparing",
     "Add":"Add",
     "NoDataToDisplay": "No Data to display",
+    "Loading":"Loading",
     "translation":{
         "Title":"Languages",
         "InnerTitle":"Choose your language"
@@ -68,7 +69,15 @@
         "Warming_AtLeast1Number":"At least 1 number",
         "Warming_AtLeast1Letter":"At least 1 letter",
         "UseTheSameAddressAsTheShippingAddress":"Use the same address as the shipping address",
-        "PhoneNumber":"Phone number"
+        "PhoneNumber":"Phone number",
+        "Compte":"Account",
+        "Next":"Next",
+        "Entreprise":"Company",
+        "Back":"Back",
+        "Firstname":"Firstname",
+        "Lastname":"Lastname",
+        "Fax":"Fax",
+        "Error_UserAlreadyExists":"User already exist"
     },
     "registre-succed":{
         "Confirm":"Your account is well registered, we will send a confirmation email to {email}, please confirm your email address to complete your registration",
@@ -163,5 +172,37 @@
         "Category":"Category",
         "MyList":"My list",
         "Advice":"Advice"
+    },
+    "product-detail":{
+        "Favorite":"Favorite",
+        "Cart":"Cart",
+        "Avis":"Avis",
+        "Référence":"Reference",
+        "avis":"avis",
+        "QuantitéMinimal":"Quantity minimal",
+        "Quantitéparcolis":"Quantity per box",
+        "Couleur":"Colour",
+        "Taille":"Size",
+        "Material":"Material"
+    },
+    "product-evaluation-list":{
+        "Loading":"Loading",
+        "alaisseunavis":"leaved a comment",
+        "Avis":"Comment"
+    },
+    "write-product-evaluation":{
+        "SoumettreUnAvis":"Submit a advice",
+        "Soumettre":"Submit",
+        "Appuyezsurletoilepournoter":"Your evaluation",
+        "Titre":"Titre",
+        "Votrecommentaire(optionel)":"Your comment (optional)"
+
+    },
+    "forget-password":{
+        "sendEmail":"Resend password",
+        "Email":"Email",
+        "forgetPassword":"Forget password",
+        "AccountNotExists":"Account not exist"
     }
+ 
 }

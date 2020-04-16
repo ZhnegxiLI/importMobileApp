@@ -11,7 +11,7 @@
   <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
     <mat-step [stepControl]="basicInfoForm">
       <form [formGroup]="basicInfoForm">
-        <ng-template matStepLabel>Compte</ng-template>
+        <ng-template matStepLabel>{{'registre.Compte' | translate}}</ng-template>
         <mat-form-field>
           <input matInput placeholder="{{'registre.Email' | translate}}" formControlName="email" required>
           <mat-error *ngIf="basicInfoFormCtrl.email.errors">

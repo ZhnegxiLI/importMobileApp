@@ -28,25 +28,25 @@
         <button ion-button  icon-only >
           <ion-icon isActive="{{isFavorite}}" name='bookmark'></ion-icon>
         </button>
-        <p class="iconText">Favorite</p>
+        <p class="iconText">{{'product-detail.Favorite' | translate}}</p>
       </ion-col>
       <ion-col col-4 class="iconCol">
         <button ion-button icon-only >
           <ion-icon name='cart'></ion-icon>
         </button>
-        <p class="iconText">Cart</p>
+        <p class="iconText">{{'product-detail.Cart' | translate}}</p>
       </ion-col>
       <ion-col col-4 class="iconCol">
         <button ion-button icon-only (click)="writeEvaluation()">
           <ion-icon name='create'></ion-icon>
         </button>
-        <p class="iconText">Avis</p>
+        <p class="iconText">{{'product-detail.Avis' | translate}}</p>
       </ion-col>
     </ion-row>
   </div>
   <ion-list>
     <ion-item>
-      <p style="font-size: unset;color:#222;">Référence : {{product.ReferenceCode}}</p>
+      <p style="font-size: unset;color:#222;">{{'product-detail.Référence' | translate}} : {{product.ReferenceCode}}</p>
     </ion-item>
     <button ion-item (click)="displayAvis()"> 
       <ion-row align-items-center>
@@ -58,20 +58,20 @@
               defaultColor="cadetblue" readonly="true" [rating]="calculCommentAverageLevel()" fontSize="24px">
             </ionic3-star-rating>
           </ion-col>
-          <ion-col col-4><span float-right class="nombreAvis" (click)="displayAvis()" *ngIf="product.Comments!=null&&product.Comments.length>0">({{product.Comments.length}} avis)</span> </ion-col>
+          <ion-col col-4><span float-right class="nombreAvis" (click)="displayAvis()" *ngIf="product.Comments!=null&&product.Comments.length>0">({{product.Comments.length}} {{'product-detail.avis' | translate}})</span> </ion-col>
         </ion-row>
     </button>
     <ion-item>
-      Quantité minimal : {{product.MinQuantity}}
+      {{'product-detail.QuantitéMinimal' | translate}} : {{product.MinQuantity}}
     </ion-item>
     <ion-item>
-      Quantité par colis : {{product.QuantityPerBox}}
+      {{'product-detail.Quantitéparcolis' | translate}} : {{product.QuantityPerBox}}
     </ion-item>
     <ion-item>
-      Couleur: {{product.Color}}
+      {{'product-detail.Couleur' | translate}}: {{product.Color}}
     </ion-item>
-    <ion-item>Taille: {{product.Size}}</ion-item>
-    <ion-item>Material: {{product.Material}}</ion-item>
+    <ion-item>{{'product-detail.Taille' | translate}}: {{product.Size}}</ion-item>
+    <ion-item>{{'product-detail.Material' | translate}}: {{product.Material}}</ion-item>
     <ion-item>
         <p style="color: black; font-size: 1em;">{{product.Description}} </p>
     </ion-item>

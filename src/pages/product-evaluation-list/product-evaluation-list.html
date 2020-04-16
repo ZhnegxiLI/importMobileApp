@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title >Avis</ion-title>
+    <ion-title >{{'product-evaluation-list.Avis' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,7 +10,7 @@
 <ion-content>
   <div *ngIf="loading" class="spinner">
     <ion-spinner center></ion-spinner>
-    <p text-center font-size-small>Loading...</p>
+    <p text-center font-size-small>{{'product-evaluation-list.Loading' | translate}}... </p>
   </div>
     <ion-card *ngFor="let item of productCommentList">
         <ion-card-header>
@@ -24,7 +24,7 @@
               </ion-col>
 
               <ion-col col-8 style="font-size:14px;">
-                <ion-row><ion-col>{{item.User.EntrepriseName}} a laisse un avis</ion-col></ion-row>
+                <ion-row><ion-col>{{item.User.EntrepriseName}} {{'product-evaluation-list.alaisseunavis' | translate}}</ion-col></ion-row>
                 <ion-row ><ion-col>{{item.Label | uppercase}}</ion-col></ion-row>
                 <ion-row>
                   <ion-col><ionic3-star-rating #rating
