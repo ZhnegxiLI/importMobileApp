@@ -229,6 +229,9 @@
         "Fax":"Fax",
         "Enregistrer":"Save",
         "modifyAdress":"Modify Address"
+    },
+    "page-order-confirmation-succeess":{
+        "Message":"Thank you for your order. We will reconsider your order in the shortest time and your will receive an order confirmation email( {Email} )."
     }
  
 }

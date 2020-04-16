@@ -233,6 +233,9 @@
         "Fax":"传真",
         "Enregistrer":"保存",
         "modifyAdress":"修改地址"
+    },
+    "page-order-confirmation-succeess":{
+        "Message":"谢谢您的订单，我们会在最短的时间重新审核您的订单以及您将会收到收到确认邮件 ( {Email} )。"
     }
  
 }

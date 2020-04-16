@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { Storage } from '@ionic/storage';
@@ -37,7 +37,8 @@ export class OrderConfirmationPage extends BaseUI {
     public rest: RestProvider,
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController) {
     super();
   }
   ionViewWillEnter() {
@@ -215,7 +216,16 @@ export class OrderConfirmationPage extends BaseUI {
                 });
                 this.SavedOrder = true;
                 this.storage.set('cartProductList',JSON.stringify(newCartProductList));
-                this.navCtrl.setRoot('OrderConfirmationSucceessPage',{OrderId: f.Data});
+                //this.navCtrl.setRoot('OrderConfirmationSucceessPage',{OrderId: f.Data});
+                this.navCtrl.pop();
+                let modal = this.modalCtrl.create('OrderConfirmationSucceessPage',{
+                  Email: f.DataExt!= null ? f.DataExt:'',
+                  OrderId : f.Data
+                });
+                modal.onDidDismiss(()=>{
+       
+                });
+                modal.present();
               } else {
                 super.showToast(this.toastCtrl, f.Msg);
               }
@@ -236,5 +246,8 @@ export class OrderConfirmationPage extends BaseUI {
     }
    
   }
+
+
+
 
 }

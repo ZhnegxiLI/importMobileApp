@@ -231,6 +231,9 @@
         "Fax":"Fax",
         "Enregistrer":"Enregistrer",
         "modifyAdress":"Modifier Adresse"
+    },
+    "page-order-confirmation-succeess":{
+        "Message":"Merci pour votre commande, nous traitons votre commande dans le meilleur délai et vous recevra un email de confirmation ( {Email} )."
     }
  
 }
