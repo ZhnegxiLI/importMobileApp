@@ -47,7 +47,7 @@ export class HomePage {
   }
 
   displayAvis(){
-    this.navCtrl.push('ProductEvaluationListPage', {global:true});
+    this.navCtrl.push('ProductEvaluationListPage');// show all
   }
 
 }

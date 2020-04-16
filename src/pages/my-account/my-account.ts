@@ -79,4 +79,13 @@ export class MyAccountPage {
     modal.present();
   }
 
+
+  UserInfoPage(){
+    this.navCtrl.push('UserInfoPage');
+  }
+
+  myAvis(){
+    this.navCtrl.push('ProductEvaluationListPage'); // all
+  }
+
 }

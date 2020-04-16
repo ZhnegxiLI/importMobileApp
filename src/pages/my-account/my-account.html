@@ -23,7 +23,7 @@
 
   <div *ngIf="logined">
     <ion-list>
-      <button ion-item class="AccountDetail">
+      <button ion-item class="AccountDetail" (click)="UserInfoPage()">
         <ion-avatar item-start>
           <img src="assets/imgs/logo-512.png">
         </ion-avatar>
@@ -48,8 +48,8 @@
         {{'translation.Title' | translate}}
       </button>
 
-      <button ion-item>
-        <ion-icon class="iconStyle" name="at" item-start></ion-icon>
+      <button ion-item (click)="myAvis()">
+        <ion-icon class="iconStyle" name="at" item-start ></ion-icon>
         {{'myAccount.Feedbacks' | translate}}
       </button>
       <button ion-item (click)="contactUs()">

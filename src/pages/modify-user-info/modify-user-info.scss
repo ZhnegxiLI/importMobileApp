@@ -1,0 +1,32 @@
+page-modify-user-info {
+    .articleNumber{
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin: 4px;
+    }
+
+    .productCard{
+        width: fit-content;
+        margin-left: 0px;
+        margin-right: 0px;
+        box-shadow: none !important;
+        border-bottom: 0.5px solid #dedede;
+    }
+
+    .productTitle{
+        font-weight: 500;
+        background-color: #f4f4f4;
+        padding: 3px;
+        color: black;
+    }
+
+    .descriptionFont{
+        font-size: 10px;
+        margin: 2px 0px;
+        color: black;
+    }
+
+    .mat-form-field{
+        display: inline;
+    }
+}

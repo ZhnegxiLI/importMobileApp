@@ -32,65 +32,97 @@ export class ProductEvaluationListPage extends BaseUI{
     this.loadProductComment();
   }
   loadProductComment(){
+    var criteria = null;
     switch(this.type){
       case 'GetCommentByProductId':
         var productId = this.navParams.get('productId');
-        this.rest.GetProductCommentListByProductId(productId, this.counter, this.step) //TODO: change
-        .subscribe(
-          (f: any) => {
-            if (f.Success) {
-              console.log(f["Data"].ProductCommentListData)//todo: remove
-                this.productCommentList = f["Data"].ProductCommentListData;
-            } else {
-              super.showToast(this.toastCtrl, f.Msg);
-            }
-          },
-          error => {
-            super.showToast(this.toastCtrl, error.Msg);
-          },
-          ()=>{
-            this.loading= false;
-          }
-        );
+        criteria = {
+          ProductId: productId,
+          Begin: this.counter,
+          Step: this.step
+        }
         break;
+      case 'GetCommentByUserId':
+        var userId = localStorage.getItem('userId');
+        criteria = {
+          UserId: userId,
+          Begin: this.counter,
+          Step: this.step
+        }
       default:
+        criteria = {
+          Begin: this.counter,
+          Step: this.step
+        }
         break;
     }
+    this.rest.GetProductCommentListByCriteria(criteria) //TODO: change
+    .subscribe(
+      (f: any) => {
+        if (f.Success) {
+          console.log(f["Data"].ProductCommentListData)//todo: remove
+            this.productCommentList = f["Data"].ProductCommentListData;
+        } else {
+          super.showToast(this.toastCtrl, f.Msg);
+        }
+      },
+      error => {
+       // super.showToast(this.toastCtrl, error.Msg);
+      },
+      ()=>{
+        this.loading= false;
+      }
+    );
   }
 
   doInfinite(infiniteScroll) {
     if (this.network.type != 'none') {
+      var criteria = null;
       this.counter = this.counter + 1;
       switch (this.type) {
         case 'ProductEvaluationListPage':
           var productId = this.navParams.get('productId');
-          this.rest.GetProductCommentListByProductId(productId, this.counter, this.step) //TODO: change
-          .subscribe(
-            (f: any) => {
-              if (f.Success) {
-                if (f["Data"].TotalCount <= this.step * this.counter) {
-                  infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
-                }
-                else {
-                  this.productCommentList = this.productCommentList.concat(f["Data"].ProductCommentListData != null ? f["Data"].ProductCommentListData : []);
-                  infiniteScroll.complete();
-                }
-              } else {
-                super.showToast(this.toastCtrl, f.Msg);
-              }
-            },
-            error => {
-              super.showToast(this.toastCtrl, error.Msg);
+          criteria = {
+            ProductId: productId,
+            Begin: this.counter,
+            Step: this.step
+          }
+          break;
+          case 'GetCommentByUserId':
+            var userId = localStorage.getItem('userId');
+            criteria = {
+              UserId: userId,
+              Begin: this.counter,
+              Step: this.step
             }
-          );
-          break;
-        case 'NewProduct'://todo: change
-
-          break;
-        case 'BestSalesProduct':// todo change
-        
-          break;
+          default:
+            criteria = {
+              Begin: this.counter,
+              Step: this.step
+            }
+            break;
       }
+      
+
+      this.rest.GetProductCommentListByCriteria(criteria) //TODO: change
+      .subscribe(
+        (f: any) => {
+          if (f.Success) {
+            if (f["Data"].TotalCount <= this.step * this.counter) {
+              infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+            }
+            else {
+              this.productCommentList = this.productCommentList.concat(f["Data"].ProductCommentListData != null ? f["Data"].ProductCommentListData : []);
+              infiniteScroll.complete();
+            }
+          } else {
+            super.showToast(this.toastCtrl, f.Msg);
+          }
+        },
+        error => {
+        //  super.showToast(this.toastCtrl, error.Msg);
+        }
+      );
      
     }
     else {

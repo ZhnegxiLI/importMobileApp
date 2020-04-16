@@ -44,6 +44,8 @@ export class RestProvider {
   */
  private apiUrlRefreshToken = this.host + "api/Token/Auth";
 
+  private apiUrlUpdateUserInfo = this.host + "api/User/UpdateUserInfo";
+
   private apiUrlRegistre = this.host + "api/Account/Register";
   private apiUrlLogin = this.host + "api/Auth/Login";
   private apiUrlSendPasswordResetLink = this.host + "api/Account/SendPasswordResetLink";
@@ -60,7 +62,7 @@ export class RestProvider {
   private apiUrlGetProductById = this.host + "api/Product/GetProductById";
 
   private apiUrlSaveProductComment = this.host + "api/Product/SaveProductComment";
-  private apiUrlGetProductCommentListByProductId = this.host + "api/Product/GetProductCommentListByProductId";
+  private apiUrlGetProductCommentListByCriteria = this.host + "api/Product/GetProductCommentListByCriteria";
 
   
   private apiUrlGetUserShippingAdress = this.host + "api/Adress/GetUserShippingAdress";
@@ -81,6 +83,11 @@ export class RestProvider {
 
 
   private apiUrlSaveMessage = this.host + "api/Message/SaveMessage";
+  
+  UpdateUserInfo(criteria: any): Observable<any> {
+    return this.postUrlReturn(this.apiUrlUpdateUserInfo, criteria);
+  }
+
 
   getNewRefreshToken1(LoginInfo: any):Observable<any> {
 
@@ -175,11 +182,12 @@ export class RestProvider {
     return this.postUrlReturnWithOutAuth(this.apiUrlSaveProductComment, criteria);
   }
 
-  GetProductCommentListByProductId(ProductId: number, Begin: number, Step:number): Observable<any>{
+  GetProductCommentListByCriteria(criteria:any): Observable<any>{
     // TODO : change to with auth 
     var lang = this.translate.defaultLang;
-    return this.getUrlReturn(this.apiUrlGetProductCommentListByProductId + 
-      "?ProductId="+ProductId +"&Begin="+Begin+"&Step="+Step+"&Lang="+lang);
+
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlGetProductCommentListByCriteria,{params});
   }
 
    /* Product comment zoom end */

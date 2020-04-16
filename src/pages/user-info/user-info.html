@@ -1,0 +1,72 @@
+<!--
+  Generated template for the UserInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>UserInfo</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="modifyPersonInfo()" [disabled]="UserInfo=={}">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  style="background-color: white!important;">
+  <div class="content-header">
+    <ion-list>
+      <ion-item style="border: 0px;">
+        <ion-thumbnail item-left>
+          <img src="assets/imgs/logo-512.png">
+        </ion-thumbnail>
+        <h2>{{UserInfo.Email}}</h2>
+        <p>{{UserInfo.EntrepriseName}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="content-middle">
+    <ion-row class="buttonRow row" text-center>
+      <ion-col col-4 class="col">
+        <div style="font-size: 1.5em;">
+          0
+        </div>
+        <p>Commandes</p>
+      </ion-col>
+
+      <ion-col col-4  class="col">
+        <div style="font-size: 1.5em;">
+          0
+        </div>
+        <p>Avis</p>
+      </ion-col>
+
+      <ion-col col-4  class="col">
+        <div style="font-size: 1.5em;">
+          0
+        </div>
+        <p>Favoris</p>
+      </ion-col>
+
+    </ion-row>
+  </div>
+  <div class="content-footer">
+    <ion-list>
+      <button ion-item (click)="myAvis()">
+        <ion-icon name="star" style="margin-right: 5px;" item-start class="iconStyle"></ion-icon>
+        Aivs soumis
+      </button>
+      <button ion-item>
+        <ion-icon name="bookmark" style="margin-right: 5px;" item-start class="iconStyle"></ion-icon>
+        Produits Favoris
+      </button>
+    </ion-list>
+  </div>
+
+</ion-content>

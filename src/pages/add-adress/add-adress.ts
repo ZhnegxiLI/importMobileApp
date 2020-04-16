@@ -125,6 +125,8 @@ export class AddAdressPage extends BaseUI{
             if (f.Success&&f.Data!=null) {
               if(this.type){
                 this.storage.set('tempFacturationAdress','true');
+
+                this.navCtrl.getPrevious().data.facturationAdress = this.adreeForm.value;
               }
                 this.navCtrl.pop();
             } else {
