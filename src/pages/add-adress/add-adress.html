@@ -1,7 +1,9 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{'add-adress.addAdress' | translate}}</ion-title>
+    <ion-title *ngIf="adreeForm.controls['Id'].value==0">{{'add-adress.addAdress' | translate}}</ion-title>
+
+    <ion-title *ngIf="adreeForm.controls['Id'].value!=0">{{'add-adress.modifyAdress' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>

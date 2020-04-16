@@ -231,7 +231,8 @@
         "PostalCode":"邮编",
         "Telephone":"电话号码",
         "Fax":"传真",
-        "Enregistrer":"保存"
+        "Enregistrer":"保存",
+        "modifyAdress":"修改地址"
     }
  
 }

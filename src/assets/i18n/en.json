@@ -227,7 +227,8 @@
         "PostalCode":"Zipcode",
         "Telephone":"Telephone",
         "Fax":"Fax",
-        "Enregistrer":"Save"
+        "Enregistrer":"Save",
+        "modifyAdress":"Modify Address"
     }
  
 }

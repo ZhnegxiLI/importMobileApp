@@ -229,7 +229,8 @@
         "PostalCode":"Code postale",
         "Telephone":"Téléphone",
         "Fax":"Fax",
-        "Enregistrer":"Enregistrer"
+        "Enregistrer":"Enregistrer",
+        "modifyAdress":"Modifier Adresse"
     }
  
 }
