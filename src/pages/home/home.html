@@ -1,6 +1,12 @@
 <ion-header>
   <ion-navbar>
     <ion-title text-center>{{'home.Title' | translate}}</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only small (click)="translation()">
+        <ion-icon name="md-globe"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-buttons end>
       <button ion-button icon-only small (click)="search()">
         <ion-icon name="search" class="searchButtonColor"></ion-icon>

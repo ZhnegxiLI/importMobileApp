@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, ModalController } from 'ionic-angular';
 import {NewproductPage} from '../newproduct/newproduct';
 import {SearchPage} from '../search/search'
 import { CategoryListPage} from '../category-list/category-list'
@@ -15,7 +15,9 @@ import { Events } from 'ionic-angular';
 export class HomePage {
 
   currentLang: string ='cn';
-  constructor(public navCtrl: NavController,public translate: TranslateService, public event : Events) {
+  constructor(public navCtrl: NavController,
+    public modalCtrl: ModalController,
+    public translate: TranslateService, public event : Events) {
     //translate.setDefaultLang('cn');
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
@@ -48,6 +50,15 @@ export class HomePage {
 
   displayAvis(){
     this.navCtrl.push('ProductEvaluationListPage');// show all
+  }
+
+
+  translation(){
+    let modal = this.modalCtrl.create('TranslationPage');
+    modal.onDidDismiss(()=>{
+       
+    });
+    modal.present();
   }
 
 }

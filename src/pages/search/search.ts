@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -7,8 +8,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  items : string[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  public SearchText: string;
+
+  items: string[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
     this.initializeItems();
   }
   initializeItems() {
@@ -20,21 +24,41 @@ export class SearchPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
+
+    this.loadSearchTextList();
   }
-  
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
 
-    // set val to the value of the searchbar
-    const val = ev.target.value;
+  loadSearchTextList() {
+    this.storage.get('SearchTextList').then(result => {
+      if (result != null && JSON.parse(result) != null && JSON.parse(result).length > 0) {
+        this.items = JSON.parse(result);
+      }
+      else {
+        this.items = [];
+      }
+    })
+  };
 
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+  search() {
+    if (this.items.find(p => p == this.SearchText) == null) {
+      this.items.splice(0, 0, this.SearchText);
+      if(this.items.length>10){
+        this.items.pop();
+      }
+      this.storage.set('SearchTextList', JSON.stringify(this.items));
+
+      this.startSearch(this.SearchText);
     }
   }
+
+  startSearch(item){
+    this.navCtrl.push('NewproductPage',{PageType:'SimpleProductSearch', Title:item} );
+  }
+
+  clearSearchHistroy(){
+    this.items = [];
+    this.storage.remove('SearchTextList');
+  }
+
 
 }

@@ -40,11 +40,13 @@ export class CartPage extends BaseUI{
    console.log(this.cartProductList);
 
    // Renew quantity check if quantiy < min quantity
-   this.cartProductList.map(f=>{
-     if(f.Quantity < f.MinQuantity){
-       f.Quantity = f.MinQuantity;
-     }
-   })
+   if(this.cartProductList!=null&& this.cartProductList.length>0){
+    this.cartProductList.map(f=>{
+      if(f.Quantity < f.MinQuantity){
+        f.Quantity = f.MinQuantity;
+      }
+    });
+   }
   }
   
   itemCheckBoxChange(item:any){
