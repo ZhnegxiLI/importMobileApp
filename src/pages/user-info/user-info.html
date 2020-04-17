@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>UserInfo</ion-title>
+    <ion-title>{{'user-info.UserInfo' | translate}}</ion-title>
     <ion-buttons end>
       <button ion-button (click)="modifyPersonInfo()" [disabled]="UserInfo=={}">
         <ion-icon name="md-create"></ion-icon>
@@ -37,21 +37,21 @@
         <div style="font-size: 1.5em;">
           0
         </div>
-        <p>Commandes</p>
+        <p>{{'user-info.Commandes' | translate}}</p>
       </ion-col>
 
       <ion-col col-4  class="col">
         <div style="font-size: 1.5em;">
           0
         </div>
-        <p>Avis</p>
+        <p>{{'user-info.Avis' | translate}}</p>
       </ion-col>
 
       <ion-col col-4  class="col">
         <div style="font-size: 1.5em;">
           0
         </div>
-        <p>Favoris</p>
+        <p>{{'user-info.Favoris' | translate}}</p>
       </ion-col>
 
     </ion-row>
@@ -60,11 +60,11 @@
     <ion-list>
       <button ion-item (click)="myAvis()">
         <ion-icon name="star" style="margin-right: 5px;" item-start class="iconStyle"></ion-icon>
-        Aivs soumis
+        {{'user-info.Aivssoumis' | translate}}
       </button>
       <button ion-item>
         <ion-icon name="bookmark" style="margin-right: 5px;" item-start class="iconStyle"></ion-icon>
-        Produits Favoris
+        {{'user-info.ProduitsFavoris' | translate}}
       </button>
     </ion-list>
   </div>

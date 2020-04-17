@@ -232,6 +232,18 @@
     },
     "page-order-confirmation-succeess":{
         "Message":"Thank you for your order. We will reconsider your order in the shortest time and your will receive an order confirmation email( {Email} )."
+    },
+    "modify-user-info":{
+        "modifyUserInfo":"Modify user information",
+        "Siret":"Siret"
+    },
+    "user-info":{
+        "UserInfo":"User information",
+        "Avis":"Avis",
+        "Commandes":"My orders",
+        "Favoris":"Favorites",
+        "Aivssoumis":"Notice submitted ",
+        "ProduitsFavoris":"Wish-list"
     }
  
 }
