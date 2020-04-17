@@ -12,6 +12,8 @@
     <ion-spinner center></ion-spinner>
     <p text-center font-size-small>{{'product-evaluation-list.Loading' | translate}}... </p>
   </div>
+
+  <p *ngIf="!loading && (productCommentList==null || productCommentList.length<=0) " text-center>{{'NoDataToDisplay' | translate}}</p>
     <ion-card *ngFor="let item of productCommentList">
         <ion-card-header>
           <ion-grid>

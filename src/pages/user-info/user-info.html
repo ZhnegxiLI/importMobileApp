@@ -35,21 +35,21 @@
     <ion-row class="buttonRow row" text-center>
       <ion-col col-4 class="col">
         <div style="font-size: 1.5em;">
-          0
+         {{UserInfo.OrderCount}}
         </div>
         <p>{{'user-info.Commandes' | translate}}</p>
       </ion-col>
 
       <ion-col col-4  class="col">
         <div style="font-size: 1.5em;">
-          0
+          {{UserInfo.CommentCount}}
         </div>
         <p>{{'user-info.Avis' | translate}}</p>
       </ion-col>
 
       <ion-col col-4  class="col">
         <div style="font-size: 1.5em;">
-          0
+          {{UserInfo.FavoriteCount}}
         </div>
         <p>{{'user-info.Favoris' | translate}}</p>
       </ion-col>
@@ -62,7 +62,7 @@
         <ion-icon name="star" style="margin-right: 5px;" item-start class="iconStyle"></ion-icon>
         {{'user-info.Aivssoumis' | translate}}
       </button>
-      <button ion-item>
+      <button ion-item (click)="myFavorite()">
         <ion-icon name="bookmark" style="margin-right: 5px;" item-start class="iconStyle"></ion-icon>
         {{'user-info.ProduitsFavoris' | translate}}
       </button>

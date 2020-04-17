@@ -49,12 +49,13 @@ export class ProductEvaluationListPage extends BaseUI{
           Begin: this.counter,
           Step: this.step
         }
+        break;
       default:
         criteria = {
           Begin: this.counter,
           Step: this.step
         }
-        break;
+      break;
     }
     this.rest.GetProductCommentListByCriteria(criteria) //TODO: change
     .subscribe(

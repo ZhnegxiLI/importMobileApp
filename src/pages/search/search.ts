@@ -42,17 +42,16 @@ export class SearchPage {
   search() {
     if (this.items.find(p => p == this.SearchText) == null) {
       this.items.splice(0, 0, this.SearchText);
-      if(this.items.length>10){
+      if(this.items.length>20){
         this.items.pop();
       }
       this.storage.set('SearchTextList', JSON.stringify(this.items));
-
-      this.startSearch(this.SearchText);
     }
+    this.startSearch(this.SearchText);
   }
 
   startSearch(item){
-    this.navCtrl.push('NewproductPage',{PageType:'SimpleProductSearch', Title:item} );
+    this.navCtrl.push('NewproductPage',{PageType:'SimpleProductSearch', Title:item, SearchText: item} );
   }
 
   clearSearchHistroy(){

@@ -40,6 +40,14 @@ export class HomePage {
     });
   }
 
+  myList(){
+    this.navCtrl.push('NewproductPage',
+    {
+      Title:'Favorite product List', // TODO: translate
+      PageType:'FavoriteList'
+    });
+  }
+
   search(){
     this.navCtrl.push('SearchPage');
   }

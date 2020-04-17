@@ -83,9 +83,32 @@ export class RestProvider {
 
 
   private apiUrlSaveMessage = this.host + "api/Message/SaveMessage";
+
+  private apiUrlGetFavoriteListByUserId = this.host +"api/Product/GetFavoriteListByUserId";
+
+  
+  private apiUrlAddIntoProductFavoriteList = this.host +"api/Product/AddIntoProductFavoriteList";
+
+  private apiUrlSimpleProductSearch = this.host + "api/Product/SimpleProductSearch";
   
   UpdateUserInfo(criteria: any): Observable<any> {
     return this.postUrlReturn(this.apiUrlUpdateUserInfo, criteria);
+  }
+
+  SimpleProductSearch(criteria: any): Observable<any> {
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlSimpleProductSearch, {params});
+  }
+
+
+  GetFavoriteListByUserId(criteria: any): Observable<any> {
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlGetFavoriteListByUserId,{params})
+  }
+
+  AddIntoProductFavoriteList(criteria: any): Observable<any> {
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlAddIntoProductFavoriteList,{params})
   }
 
 

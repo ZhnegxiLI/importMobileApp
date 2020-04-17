@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { ENV } from '@app/env';
+import { BaseUI } from '../../app/common/baseui';
+import { Network } from '@ionic-native/network';
 
 
 @IonicPage()
@@ -9,17 +11,46 @@ import { ENV } from '@app/env';
   selector: 'page-product-detail',
   templateUrl: 'product-detail.html',
 })
-export class ProductDetailPage {
+export class ProductDetailPage extends BaseUI{
   isFavorite : boolean = false;
   productId : number;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public network: Network, public toastCtrl: ToastController) {
+    super();
   }
 
   private product: any = {};
   private host = ENV.SERVER_API_URL;
 
-  favorite(){
+  addProductIntoFavoriteList(){
     this.isFavorite = !this.isFavorite;
+    if (this.network.type != 'none') {
+
+      this.rest.AddIntoProductFavoriteList({
+        UserId: localStorage.getItem('userId'),
+        ProductId: this.product.ProductId,
+        IsFavorite: this.isFavorite
+      }) //TODO: change
+      .subscribe(
+        (f: any) => {
+          if(f!=null && f>0){
+            if(this.isFavorite==false){
+              super.showToast(this.toastCtrl,"Product successfully remove in your favorite list"); // todo translate
+            }
+            else{
+              super.showToast(this.toastCtrl,"Product successfully added into the favorite list"); // todo translate
+            }
+           
+          }
+        },
+        error => {
+          super.showToast(this.toastCtrl, error.Msg);
+        }
+      );
+
+
+    } else {
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+    }
   }
 
   writeEvaluation(){
@@ -53,6 +84,7 @@ export class ProductDetailPage {
         if(result!=null){
           console.log(result);
           this.product = result;
+          this.isFavorite = result.IsFavorite;
         }
       },
       error=>{

@@ -63,4 +63,12 @@ export class UserInfoPage extends BaseUI {
     this.navCtrl.push('ProductEvaluationListPage', {type:"GetCommentByUserId"}); // by userId
   }
 
+  myFavorite(){
+    this.navCtrl.push('NewproductPage',
+    {
+      Title:'Favorite product List', // TODO: translate
+      PageType:'FavoriteList'
+    });
+  }
+
 }

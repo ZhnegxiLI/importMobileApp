@@ -7,6 +7,7 @@ import { BaseUI } from '../../app/common/baseui';
 import { Storage } from '@ionic/storage';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { ENV } from '@app/env';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -31,7 +32,8 @@ export class NewproductPage extends BaseUI {
     public rest: RestProvider,
     public toastCtrl: ToastController,
     public storage: Storage,
-    public utilis: UtilsProvider) {
+    public utilis: UtilsProvider,
+    public translate: TranslateService) {
     super();
   }
 
@@ -115,6 +117,50 @@ export class NewproductPage extends BaseUI {
               },
               () => this.loading = false);
           break;
+
+          case 'FavoriteList':
+            this.rest.GetFavoriteListByUserId({
+              UserId: localStorage.getItem('userId'),
+              Lang:this.translate.defaultLang,
+              Begin:this.counter,
+              Step:this.step
+            }) // 填写url的参数
+              .subscribe(
+                result => {
+                  if (result!= null && result.TotalCount!= null && result.List!=null) {
+                    this.productList =result.List;
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
+                  }
+                  this.loading = false
+                },
+                error => {
+                  //super.showToast(this.toastCtrl, error.Msg);
+                  this.loading = false
+                });
+            break;
+
+          case 'SimpleProductSearch':
+            this.rest.SimpleProductSearch({
+              SearchText: this.navParams.get('SearchText'),
+              Lang:this.translate.defaultLang,
+              Begin:this.counter,
+              Step:this.step
+            }) // 填写url的参数
+              .subscribe(
+                result => {
+                  if (result!= null && result.TotalCount!= null && result.List!=null) {
+                    this.productList =result.List;
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
+                  }
+                  this.loading = false
+                },
+                error => {
+                  //super.showToast(this.toastCtrl, error.Msg);
+                  this.loading = false
+                });
+            break;
       }
     }
     else {
@@ -189,6 +235,60 @@ export class NewproductPage extends BaseUI {
             }
           );
           break;
+          case 'FavoriteList':
+            this.rest.GetFavoriteListByUserId({
+              UserId: localStorage.getItem('userId'),
+              Lang:this.translate.defaultLang,
+              Begin:this.counter,
+              Step:this.step
+            }) //TODO: change
+            .subscribe(
+              (result: any) => {
+                if (result!= null && result.TotalCount!= null && result.List!=null) {
+                  if (result.TotalCount <= this.step * this.counter) {
+                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                  }
+                  else {
+                    this.productList = this.productList.concat(result.List != null ?result.List : []);
+                    infiniteScroll.complete();
+                  }
+                } else {
+                  //super.showToast(this.toastCtrl, f.Msg);
+                }
+              },
+              error => {
+                super.showToast(this.toastCtrl, error.Msg);
+              }
+            );
+            break;
+
+            case 'SimpleProductSearch':
+              this.rest.SimpleProductSearch({
+                SearchText: this.navParams.get('SearchText'),
+                Lang:this.translate.defaultLang,
+                Begin:this.counter,
+                Step:this.step
+              }) //TODO: change
+              .subscribe(
+                (result: any) => {
+                  if (result!= null && result.TotalCount!= null && result.List!=null) {
+                    if (result.TotalCount <= this.step * this.counter) {
+                      infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                    }
+                    else {
+                      this.productList = this.productList.concat(result.List != null ?result.List : []);
+                      infiniteScroll.complete();
+                    }
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
+                  }
+                },
+                error => {
+                  super.showToast(this.toastCtrl, error.Msg);
+                }
+              );
+              break;
+
       }
      
     }
