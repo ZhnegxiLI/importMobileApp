@@ -1,0 +1,86 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>advancedSearch</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background-color: #fff!important;">
+  <div class="headerZoom" style="margin-left:10px; margin-right: 2px;">
+    <h3>Critères de recherche</h3>
+  </div>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-label stacked>Votre recherche</ion-label>
+      <ion-input [(ngModel)]="criteria.SearchText" class="inputZoom" placeholder="Mot clé"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Catégories</ion-label>
+      <ion-select [(ngModel)]="criteria.MainCategory">
+        <ion-option [value]="item.Id" *ngFor="let item of MainCategoryList">{{item.Label}}</ion-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sous Catégories</ion-label>
+      <ion-select [(ngModel)]="criteria.SecondCategory">
+        <ion-option [value]="item.Id" *ngFor="let item of getSecondCategoryList()">{{item.Label}} </ion-option>
+
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label start>Min quantité d'achat: {{criteria.MinQuantity}}</ion-label>
+      <ion-range [(ngModel)]="criteria.MinQuantity" min="0" max="200" step="10">
+        <ion-icon range-left small name="cube"></ion-icon>
+        <ion-icon range-right name="cube"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label start>Prix: {{criteria.PriceInterval.lower}} - {{criteria.PriceInterval.upper}} €</ion-label>
+      <ion-range [(ngModel)]="criteria.PriceInterval" min="0" max="200" step="10" dualKnobs="true" pin="true">
+        <ion-icon range-left name="remove"></ion-icon>
+        <ion-icon range-right name="add"></ion-icon>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+  <div class="headerZoom" style="margin-left:10px; margin-right: 2px;">
+    <h3>Trier par</h3>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label>Prix</ion-label>
+      <ion-select [(ngModel)]="criteria.OrderBy_Price">
+        <ion-option [value]="item" *ngFor="let item of OrderByPrice">{{item}} </ion-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Nouveauté</ion-label>
+      <ion-select [(ngModel)]="criteria.OrderBy_PublishDate">
+        <ion-option [value]="item" *ngFor="let item of OrderByPublishDate">{{item}} </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Popularité</ion-label>
+      <ion-select [(ngModel)]="criteria.OrderBy_SalesPerformance">
+        <ion-option [value]="item" *ngFor="let item of OrderByPorpularity">{{item}} </ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div text-center>
+    <button ion-button color="primary"  style="width: 100%; height: 35px;" (click)="search()">{{'add-adress.Search' | translate}}</button>
+  </div>
+
+</ion-content>

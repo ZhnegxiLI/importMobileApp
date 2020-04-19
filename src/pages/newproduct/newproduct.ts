@@ -51,18 +51,18 @@ export class NewproductPage extends BaseUI {
   }
 
   productDetail(product) {
-    this.navCtrl.push('ProductDetailPage',{
+    this.navCtrl.push('ProductDetailPage', {
       productId: product.ProductId
     });
   }
 
-  async checkLogined(){
+  async checkLogined() {
     var userId = await this.utilis.getKey('userId');
     var token = await this.utilis.getKey('jwt');
-    if(userId!=null && token!=null){
+    if (userId != null && token != null) {
       this.logined = true;
     }
-    else{
+    else {
       this.logined = false;
     }
   }
@@ -118,49 +118,71 @@ export class NewproductPage extends BaseUI {
               () => this.loading = false);
           break;
 
-          case 'FavoriteList':
-            this.rest.GetFavoriteListByUserId({
-              UserId: localStorage.getItem('userId'),
-              Lang:this.translate.defaultLang,
-              Begin:this.counter,
-              Step:this.step
-            }) // 填写url的参数
-              .subscribe(
-                result => {
-                  if (result!= null && result.TotalCount!= null && result.List!=null) {
-                    this.productList =result.List;
-                  } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
-                  }
-                  this.loading = false
-                },
-                error => {
-                  //super.showToast(this.toastCtrl, error.Msg);
-                  this.loading = false
-                });
-            break;
+        case 'FavoriteList':
+          this.rest.GetFavoriteListByUserId({
+            UserId: localStorage.getItem('userId'),
+            Lang: this.translate.defaultLang,
+            Begin: this.counter,
+            Step: this.step
+          }) // 填写url的参数
+            .subscribe(
+              result => {
+                if (result != null && result.TotalCount != null && result.List != null) {
+                  this.productList = result.List;
+                } else {
+                  //super.showToast(this.toastCtrl, f.Msg);
+                }
+                this.loading = false
+              },
+              error => {
+                //super.showToast(this.toastCtrl, error.Msg);
+                this.loading = false
+              });
+          break;
 
-          case 'SimpleProductSearch':
-            this.rest.SimpleProductSearch({
-              SearchText: this.navParams.get('SearchText'),
-              Lang:this.translate.defaultLang,
-              Begin:this.counter,
-              Step:this.step
-            }) // 填写url的参数
-              .subscribe(
-                result => {
-                  if (result!= null && result.TotalCount!= null && result.List!=null) {
-                    this.productList =result.List;
-                  } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
-                  }
-                  this.loading = false
-                },
-                error => {
-                  //super.showToast(this.toastCtrl, error.Msg);
-                  this.loading = false
-                });
-            break;
+        case 'SimpleProductSearch':
+          this.rest.SimpleProductSearch({
+            SearchText: this.navParams.get('SearchText'),
+            Lang: this.translate.defaultLang,
+            Begin: this.counter,
+            Step: this.step
+          }) // 填写url的参数
+            .subscribe(
+              result => {
+                if (result != null && result.TotalCount != null && result.List != null) {
+                  this.productList = result.List;
+                } else {
+                  //super.showToast(this.toastCtrl, f.Msg);
+                }
+                this.loading = false
+              },
+              error => {
+                //super.showToast(this.toastCtrl, error.Msg);
+                this.loading = false
+              });
+          break;
+
+        case 'AdvancedProductSearch':
+          this.rest.SimpleProductSearch({
+            SearchText: this.navParams.get('SearchText'),
+            Lang: this.translate.defaultLang,
+            Begin: this.counter,
+            Step: this.step
+          }) // 填写url的参数
+            .subscribe(
+              result => {
+                if (result != null && result.TotalCount != null && result.List != null) {
+                  this.productList = result.List;
+                } else {
+                  //super.showToast(this.toastCtrl, f.Msg);
+                }
+                this.loading = false
+              },
+              error => {
+                //super.showToast(this.toastCtrl, error.Msg);
+                this.loading = false
+              });
+          break;
       }
     }
     else {
@@ -174,82 +196,82 @@ export class NewproductPage extends BaseUI {
       switch (this.PageType) {
         case 'BySecondCategory':
           this.rest.GetProductListBySecondCategory(this.SecondReferenceId, this.counter, this.step) //TODO: change
-          .subscribe(
-            (f: any) => {
-              if (f.Success) {
-                if (f["Data"].TotalCount <= this.step * this.counter) {
-                  infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+            .subscribe(
+              (f: any) => {
+                if (f.Success) {
+                  if (f["Data"].TotalCount <= this.step * this.counter) {
+                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                  }
+                  else {
+                    this.productList = this.productList.concat(f["Data"].ProductListData != null ? f["Data"].ProductListData : []);
+                    infiniteScroll.complete();
+                  }
+                } else {
+                  super.showToast(this.toastCtrl, f.Msg);
                 }
-                else {
-                  this.productList = this.productList.concat(f["Data"].ProductListData != null ? f["Data"].ProductListData : []);
-                  infiniteScroll.complete();
-                }
-              } else {
-                super.showToast(this.toastCtrl, f.Msg);
+              },
+              error => {
+                super.showToast(this.toastCtrl, error.Msg);
               }
-            },
-            error => {
-              super.showToast(this.toastCtrl, error.Msg);
-            }
-          );
+            );
           break;
         case 'NewProduct':
           this.rest.GetProductListByPublishDate(this.counter, this.step) //TODO: change
-          .subscribe(
-            (f: any) => {
-              if (f.Success) {
-                if (f["Data"].TotalCount <= this.step * this.counter) {
-                  infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+            .subscribe(
+              (f: any) => {
+                if (f.Success) {
+                  if (f["Data"].TotalCount <= this.step * this.counter) {
+                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                  }
+                  else {
+                    this.productList = this.productList.concat(f["Data"].ProductListData != null ? f["Data"].ProductListData : []);
+                    infiniteScroll.complete();
+                  }
+                } else {
+                  super.showToast(this.toastCtrl, f.Msg);
                 }
-                else {
-                  this.productList = this.productList.concat(f["Data"].ProductListData != null ? f["Data"].ProductListData : []);
-                  infiniteScroll.complete();
-                }
-              } else {
-                super.showToast(this.toastCtrl, f.Msg);
+              },
+              error => {
+                super.showToast(this.toastCtrl, error.Msg);
               }
-            },
-            error => {
-              super.showToast(this.toastCtrl, error.Msg);
-            }
-          );
+            );
           break;
         case 'BestSalesProduct':
           this.rest.GetProductListBySalesPerformance(this.counter, this.step) //TODO: change
-          .subscribe(
-            (f: any) => {
-              if (f.Success) {
-                if (f["Data"].TotalCount <= this.step * this.counter) {
-                  infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+            .subscribe(
+              (f: any) => {
+                if (f.Success) {
+                  if (f["Data"].TotalCount <= this.step * this.counter) {
+                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                  }
+                  else {
+                    this.productList = this.productList.concat(f["Data"].ProductListData != null ? f["Data"].ProductListData : []);
+                    infiniteScroll.complete();
+                  }
+                } else {
+                  super.showToast(this.toastCtrl, f.Msg);
                 }
-                else {
-                  this.productList = this.productList.concat(f["Data"].ProductListData != null ? f["Data"].ProductListData : []);
-                  infiniteScroll.complete();
-                }
-              } else {
-                super.showToast(this.toastCtrl, f.Msg);
+              },
+              error => {
+                super.showToast(this.toastCtrl, error.Msg);
               }
-            },
-            error => {
-              super.showToast(this.toastCtrl, error.Msg);
-            }
-          );
+            );
           break;
-          case 'FavoriteList':
-            this.rest.GetFavoriteListByUserId({
-              UserId: localStorage.getItem('userId'),
-              Lang:this.translate.defaultLang,
-              Begin:this.counter,
-              Step:this.step
-            }) //TODO: change
+        case 'FavoriteList':
+          this.rest.GetFavoriteListByUserId({
+            UserId: localStorage.getItem('userId'),
+            Lang: this.translate.defaultLang,
+            Begin: this.counter,
+            Step: this.step
+          }) //TODO: change
             .subscribe(
               (result: any) => {
-                if (result!= null && result.TotalCount!= null && result.List!=null) {
+                if (result != null && result.TotalCount != null && result.List != null) {
                   if (result.TotalCount <= this.step * this.counter) {
                     infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
                   }
                   else {
-                    this.productList = this.productList.concat(result.List != null ?result.List : []);
+                    this.productList = this.productList.concat(result.List != null ? result.List : []);
                     infiniteScroll.complete();
                   }
                 } else {
@@ -260,37 +282,65 @@ export class NewproductPage extends BaseUI {
                 super.showToast(this.toastCtrl, error.Msg);
               }
             );
-            break;
+          break;
 
-            case 'SimpleProductSearch':
-              this.rest.SimpleProductSearch({
-                SearchText: this.navParams.get('SearchText'),
-                Lang:this.translate.defaultLang,
-                Begin:this.counter,
-                Step:this.step
-              }) //TODO: change
-              .subscribe(
-                (result: any) => {
-                  if (result!= null && result.TotalCount!= null && result.List!=null) {
-                    if (result.TotalCount <= this.step * this.counter) {
-                      infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
-                    }
-                    else {
-                      this.productList = this.productList.concat(result.List != null ?result.List : []);
-                      infiniteScroll.complete();
-                    }
-                  } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
+        case 'SimpleProductSearch':
+          this.rest.SimpleProductSearch({
+            SearchText: this.navParams.get('SearchText'),
+            Lang: this.translate.defaultLang,
+            Begin: this.counter,
+            Step: this.step
+          }) //TODO: change
+            .subscribe(
+              (result: any) => {
+                if (result != null && result.TotalCount != null && result.List != null) {
+                  if (result.TotalCount <= this.step * this.counter) {
+                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
                   }
-                },
-                error => {
-                  super.showToast(this.toastCtrl, error.Msg);
+                  else {
+                    this.productList = this.productList.concat(result.List != null ? result.List : []);
+                    infiniteScroll.complete();
+                  }
+                } else {
+                  //super.showToast(this.toastCtrl, f.Msg);
                 }
-              );
-              break;
+              },
+              error => {
+                super.showToast(this.toastCtrl, error.Msg);
+              }
+            );
+          break;
 
+          
+        case 'AdvancedProductSearch':
+          this.rest.SimpleProductSearch({
+            SearchText: this.navParams.get('SearchText'),
+            Lang: this.translate.defaultLang,
+            Begin: this.counter,
+            Step: this.step
+          }) //TODO: change
+            .subscribe(
+              (result: any) => {
+                if (result != null && result.TotalCount != null && result.List != null) {
+                  if (result.TotalCount <= this.step * this.counter) {
+                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                  }
+                  else {
+                    this.productList = this.productList.concat(result.List != null ? result.List : []);
+                    infiniteScroll.complete();
+                  }
+                } else {
+                  //super.showToast(this.toastCtrl, f.Msg);
+                }
+              },
+              error => {
+                super.showToast(this.toastCtrl, error.Msg);
+              }
+            );
+          break;
+          
       }
-     
+
     }
     else {
       super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! ");

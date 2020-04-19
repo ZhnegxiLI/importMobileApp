@@ -47,7 +47,9 @@ export class HomePage {
       PageType:'FavoriteList'
     });
   }
-
+  advancedSearch(){
+    this.navCtrl.push('AdvancedSearchPage');
+  }
   search(){
     this.navCtrl.push('SearchPage');
   }
