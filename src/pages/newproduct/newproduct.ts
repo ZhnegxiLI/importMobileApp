@@ -174,6 +174,24 @@ export class NewproductPage extends BaseUI {
               });
           break;
 
+          case 'LowerPriceProduct':
+            this.rest.GetProductByPrice({
+              Lang: this.translate.defaultLang
+            }) // 填写url的参数
+              .subscribe(
+                result => {
+                  if (result != null && result.TotalCount != null && result.List != null) {
+                    this.productList = result.List;
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
+                  }
+                  this.loading = false
+                },
+                error => {
+                  //super.showToast(this.toastCtrl, error.Msg);
+                  this.loading = false
+                });
+            break;
         case 'AdvancedProductSearch':
           this.loading = true;
           if(this.advancedSearchCriteria != null){
@@ -181,6 +199,8 @@ export class NewproductPage extends BaseUI {
             criteria.Begin = this.counter;
             criteria.Step = this.step;
             criteria.Lang = this.translate.defaultLang;
+            criteria.PriceIntervalLower = this.advancedSearchCriteria.PriceInterval.lower;
+            criteria.PriceIntervalUpper = this.advancedSearchCriteria.PriceInterval.upper;
             this.rest.AdvancedProductSearchClient(criteria) // 填写url的参数
               .subscribe(
                 result => {
@@ -301,6 +321,30 @@ export class NewproductPage extends BaseUI {
             );
           break;
 
+          case 'LowerPriceProduct':
+            this.rest.GetProductByPrice({
+              Lang: this.translate.defaultLang
+            }) //TODO: change
+              .subscribe(
+                (result: any) => {
+                  if (result != null && result.TotalCount != null && result.List != null) {
+                    if (result.TotalCount <= this.step * this.counter) {
+                      infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                    }
+                    else {
+                      this.productList = this.productList.concat(result.List != null ? result.List : []);
+                      infiniteScroll.complete();
+                    }
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
+                  }
+                },
+                error => {
+                  super.showToast(this.toastCtrl, error.Msg);
+                }
+              );
+            break;
+          
         case 'SimpleProductSearch':
           this.rest.SimpleProductSearch({
             SearchText: this.navParams.get('SearchText'),

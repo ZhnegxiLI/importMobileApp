@@ -65,6 +65,10 @@ export class AdvancedSearchPage extends BaseUI {
     }
   }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
   getSecondCategoryList () {
     if(this.criteria.MainCategory!=null){
       return this.ReferenceList.filter(p=>p.ParentId == this.criteria.MainCategory);

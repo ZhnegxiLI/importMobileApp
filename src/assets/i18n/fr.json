@@ -20,7 +20,7 @@
         "MyOrder":"Vos commandes",
         "CanceledOrder":"Commandes annulées",
         "PrepareOrder":"Commandes en cours de préparation",
-        "OrderArrived":"Commandes livrées",
+        "OrderArrived":"Commandes validées",
         "Feedbacks":"Avis clients",
         "ContactUs":"Contactez-nous",
         "AboutUs":"A propos de nous",
@@ -267,6 +267,9 @@
         "Popularite":"Popularité",
         "Search":"Recherche",
         "Motcle":"Mots clés"
+    },
+    "search":{
+        "search":"Recherche"
     }
  
  

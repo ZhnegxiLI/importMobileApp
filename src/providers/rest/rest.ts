@@ -91,10 +91,17 @@ export class RestProvider {
 
   private apiUrlSimpleProductSearch = this.host + "api/Product/SimpleProductSearch";
 
-  private apiUrlAdvancedProductSearchClient = this.host + "api/Product/AdvancedProductSearchClient"
+  private apiUrlAdvancedProductSearchClient = this.host + "api/Product/AdvancedProductSearchClient";
+
+  private apiUrlGetProductByPrice = this.host + "api/Product/GetProductByPrice";
   
   UpdateUserInfo(criteria: any): Observable<any> {
     return this.postUrlReturn(this.apiUrlUpdateUserInfo, criteria);
+  }
+
+  GetProductByPrice(criteria: any): Observable<any> {
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlGetProductByPrice,{params});
   }
 
   AdvancedProductSearchClient(criteria: any): Observable<any> {

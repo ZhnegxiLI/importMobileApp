@@ -30,7 +30,7 @@
         </button>
         <p class="iconText">{{'product-detail.Favorite' | translate}}</p>
       </ion-col>
-      <ion-col col-4 class="iconCol">
+      <ion-col col-4 class="iconCol" (click)="addInCart($event,product)">
         <button ion-button icon-only >
           <ion-icon name='cart'></ion-icon>
         </button>

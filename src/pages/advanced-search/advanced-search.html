@@ -2,6 +2,12 @@
 
   <ion-navbar>
     <ion-title>{{'advanced-search.advancedSearch' | translate}}</ion-title>
+    <ion-buttons>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">{{'signin.Return' | translate}}</span>
+        <ion-icon name="md-close" showWhen="android"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

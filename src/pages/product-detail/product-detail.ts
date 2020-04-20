@@ -4,6 +4,8 @@ import { RestProvider } from '../../providers/rest/rest';
 import { ENV } from '@app/env';
 import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
+import { UtilsProvider } from '../../providers/utils/utils';
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()
@@ -14,7 +16,7 @@ import { Network } from '@ionic-native/network';
 export class ProductDetailPage extends BaseUI{
   isFavorite : boolean = false;
   productId : number;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestProvider, public network: Network, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public storage:Storage, public utilis: UtilsProvider, public navParams: NavParams, public rest: RestProvider, public network: Network, public toastCtrl: ToastController) {
     super();
   }
 
@@ -99,4 +101,31 @@ export class ProductDetailPage extends BaseUI{
     }
   }
 
+  async addInCart(event: Event, item: any) {
+    event.stopPropagation();
+    var cartProductList = JSON.parse(await this.utilis.getKey('cartProductList'));
+    if (cartProductList == null) {
+      cartProductList = [];
+    }
+    var temp = cartProductList.find(p => p.ReferenceId == item.ReferenceId);
+    if (temp == null) {
+      if (item.Quantity == null) {
+        item.Quantity = 0;
+      }
+      cartProductList.push(item);
+    }
+    cartProductList.forEach(p => {
+      if (p.ReferenceId == item.ReferenceId) {
+        p.Quantity = p.Quantity + 1;
+      }
+      if (p.Selected == null) {
+        p.Selected = false;
+      }
+    });
+
+    
+    this.storage.set('cartProductList', JSON.stringify(cartProductList));
+
+    super.showToast(this.toastCtrl, 'add successfully!')
+  }
 }

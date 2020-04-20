@@ -20,7 +20,7 @@
         "MyOrder":"我的订单",
         "CanceledOrder":"被取消的订单",
         "PrepareOrder":"正在准备的订单",
-        "OrderArrived":"已到达订单",
+        "OrderArrived":"已通过的订单",
         "Feedbacks":"对我们的意见",
         "ContactUs":"联系我们",
         "AboutUs":"关于我们",
@@ -269,6 +269,9 @@
         "Popularite":"最受欢迎",
         "Search":"搜索",
         "Motcle":"关键词"
+    },
+    "search":{
+        "search":"查找"
     }
  
 }

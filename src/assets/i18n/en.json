@@ -20,7 +20,7 @@
         "MyOrder":"My orders",
         "CanceledOrder":"Canceled orders",
         "PrepareOrder":"Preparing orders",
-        "OrderArrived":"Arrived orders",
+        "OrderArrived":"Validated orders",
         "Feedbacks":"Give us your feedbacks",
         "ContactUs":"Contact us",
         "AboutUs":"About us",
@@ -265,6 +265,9 @@
         "Popularite":"Popularity",
         "Search":"Search",
         "Motcle":"Key words"
+    },
+    "search":{
+        "search":"Search"
     }
  
 }
