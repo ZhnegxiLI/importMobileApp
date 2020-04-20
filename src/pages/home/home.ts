@@ -1,29 +1,27 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, ModalController } from 'ionic-angular';
-import {NewproductPage} from '../newproduct/newproduct';
-import {SearchPage} from '../search/search'
-import { CategoryListPage} from '../category-list/category-list'
-import {ProductEvaluationListPage} from '../product-evaluation-list/product-evaluation-list'
+import { NavController, IonicPage, ModalController, ToastController } from 'ionic-angular';
 import {TranslateService} from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
+import { UtilsProvider } from '../../providers/utils/utils';
+import { BaseUI } from '../../app/common/baseui';
 
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
-
-  currentLang: string ='cn';
+export class HomePage extends BaseUI {
+  public logined: boolean = false;
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
-    public translate: TranslateService, public event : Events) {
-    //translate.setDefaultLang('cn');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-  // translate.use('cn');
+    public translate: TranslateService, public event : Events, public utils: UtilsProvider, public toastCtrl: ToastController) {
+      super();
   }
 
+  async checkLogined() {
+
+    this.logined =  await this.utils.checkIsLogined();
+  }
 
   displaynewProductPage(){
     this.navCtrl.push('NewproductPage',
@@ -32,6 +30,15 @@ export class HomePage {
       PageType:'NewProduct'
     });
   }
+
+  displayByLowerSales(){
+    this.navCtrl.push('NewproductPage',
+    {
+      Title:'New products', // TODO: translate
+      PageType:'LowerPriceProduct'
+    });
+  }
+
   displayBestSalesProductPage(){
     this.navCtrl.push('NewproductPage',
     {
@@ -41,11 +48,17 @@ export class HomePage {
   }
 
   myList(){
-    this.navCtrl.push('NewproductPage',
-    {
-      Title:'Favorite product List', // TODO: translate
-      PageType:'FavoriteList'
-    });
+    if(this.logined){
+      this.navCtrl.push('NewproductPage',
+      {
+        Title:'Favorite product List', // TODO: translate
+        PageType:'FavoriteList'
+      });
+    }
+    else{
+      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action");
+    }
+ 
   }
   advancedSearch(){
 

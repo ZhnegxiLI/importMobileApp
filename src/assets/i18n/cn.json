@@ -196,7 +196,8 @@
         "Quantitéparcolis":"数量/箱",
         "Couleur":"颜色",
         "Taille":"规格",
-        "Material":"材质"
+        "Material":"材质",
+        "Price": "价格"
     },
     "product-evaluation-list":{
         "alaisseunavis":"留下评论",

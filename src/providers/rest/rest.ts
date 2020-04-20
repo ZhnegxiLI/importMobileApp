@@ -207,7 +207,8 @@ export class RestProvider {
 
   GetProductById(Id:number):  Observable<any> {
     var lang = this.translate.defaultLang; // TODO : change to with auth 
-    return this.getUrlReturn(this.apiUrlGetProductById + "?ProductId=" + Id + "&Lang=" + lang);
+    var userId = localStorage.getItem('userId') || 0;
+    return this.getUrlReturn(this.apiUrlGetProductById + "?ProductId=" + Id + "&Lang=" + lang + "&UserId="+ userId);
   }
   /* Product zoom end */
 

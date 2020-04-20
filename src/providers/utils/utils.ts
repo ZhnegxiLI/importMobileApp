@@ -11,4 +11,11 @@ export class UtilsProvider {
     return await this.storage.get(key);
   }
 
+  async checkIsLogined():Promise<boolean>  {
+    
+    var jwt = await this.getKey('jwt');
+    var userId =await this.getKey('userId');
+    return jwt!=null && userId!=null;
+  }
+
 }

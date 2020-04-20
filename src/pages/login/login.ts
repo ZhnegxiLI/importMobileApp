@@ -66,7 +66,7 @@ export class LoginPage extends BaseUI {
 
               this.storage.set('userId',f.authToken.userId);
               this.storage.set('jwt',f.authToken.token);
-              this.storage.set('refreshToken',f.authToken.refreshToken);
+              this.storage.set('refreshToken',f.authToken.refresh_token);
 
               this.viewCtrl.dismiss();
           }

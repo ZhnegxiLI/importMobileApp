@@ -194,7 +194,8 @@
         "Quantitéparcolis":"Quantité par colis",
         "Couleur":"Couleur",
         "Taille":"Taille",
-        "Material":"Matérial"
+        "Material":"Matérial",
+        "Price":"Prix"
     },
     "product-evaluation-list":{
         "Loading":"En cour",

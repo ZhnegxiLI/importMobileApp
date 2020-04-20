@@ -51,7 +51,7 @@ export class NewproductPage extends BaseUI {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewproductPage');
-
+    
     this.checkLogined();
   }
 
@@ -69,14 +69,8 @@ export class NewproductPage extends BaseUI {
   }
 
   async checkLogined() {
-    var userId = await this.utilis.getKey('userId');
-    var token = await this.utilis.getKey('jwt');
-    if (userId != null && token != null) {
-      this.logined = true;
-    }
-    else {
-      this.logined = false;
-    }
+
+    this.logined =  await this.utilis.checkIsLogined();
   }
 
   loadProductList() {
@@ -176,7 +170,9 @@ export class NewproductPage extends BaseUI {
 
           case 'LowerPriceProduct':
             this.rest.GetProductByPrice({
-              Lang: this.translate.defaultLang
+              Lang: this.translate.defaultLang,
+              Step: this.step,
+              Begin: this.counter
             }) // 填写url的参数
               .subscribe(
                 result => {
@@ -323,7 +319,9 @@ export class NewproductPage extends BaseUI {
 
           case 'LowerPriceProduct':
             this.rest.GetProductByPrice({
-              Lang: this.translate.defaultLang
+              Lang: this.translate.defaultLang,
+              Step: this.step,
+              Begin: this.counter
             }) //TODO: change
               .subscribe(
                 (result: any) => {
