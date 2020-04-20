@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
 import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
@@ -16,9 +16,8 @@ export class AdvancedSearchPage extends BaseUI {
     SearchText: null,
     MainCategory: null,
     SecondCategory: null,
-    FromPublishDate: null,
     PriceInterval: { lower: 0, upper: 200 },
-    MinQuantity: 0,
+    MinQuantity: 200,
     OrderBy_PublishDate: null,
     OrderBy_SalesPerformance: null,
     OrderBy_Price:null
@@ -39,12 +38,13 @@ export class AdvancedSearchPage extends BaseUI {
     'Popularity',
     'None'
   ]
-  constructor(public navCtrl: NavController, public translateService: TranslateService, public navParams: NavParams, public rest:RestProvider, public network: Network, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,public viewCtrl:ViewController, public translateService: TranslateService, public navParams: NavParams, public rest:RestProvider, public network: Network, public toastCtrl: ToastController) {
     super();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdvancedSearchPage');
+    this.criteria = this.navParams.get('criteria') || this.criteria;
     this.loadMainCategoryAndSecondCategory();
   }
 
@@ -75,7 +75,7 @@ export class AdvancedSearchPage extends BaseUI {
   }
 
   search(){
-    
+    this.viewCtrl.dismiss(this.criteria);
   }
 
 }

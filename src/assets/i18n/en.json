@@ -167,7 +167,9 @@
         "TVA":"TVA",
         "ShippingCost":"Shipping Cost",
         "AmountOfOrder":"Amount",
-        "Aestimer":"To be evaluated"
+        "Aestimer":"To be evaluated",
+        "MiseAJour":"Date of update",
+        "AdminRemark":"Seller Message"
     },
     "home":{
         "Title":"Home",
@@ -175,8 +177,10 @@
         "Promotion":"Promotion",
         "New":"New",
         "Category":"Category",
-        "MyList":"My list",
-        "Advice":"Advice"
+        "MyList":"Favorites",
+        "Advice":"Advice",
+        "AdvancedSearch":"Advanced search",
+        "ContactUs":"Contact us"
     },
     "product-detail":{
         "Favorite":"Favorite",
@@ -244,6 +248,23 @@
         "Favoris":"Favorites",
         "Aivssoumis":"Notice submitted ",
         "ProduitsFavoris":"Wish-list"
+    },
+    "about-us":{
+        "AProposdeNous":"About us"
+    },
+    "advanced-search":{
+        "advancedSearch":"Advanced search",
+        "Votrerecherche":"Your search",
+        "Criteresderecherche":"Search condition",
+        "Categories":"Category",
+        "SousCategories":"Second category",
+        "Minquantitédachat":"Minimum quantity purchase",
+        "Prix":"Price",
+        "Trierpar":"sort by",
+        "Nouveaute":"Newest arrivals",
+        "Popularite":"Popularity",
+        "Search":"Search",
+        "Motcle":"Key words"
     }
  
 }

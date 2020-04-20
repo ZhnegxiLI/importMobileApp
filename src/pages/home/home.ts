@@ -48,10 +48,20 @@ export class HomePage {
     });
   }
   advancedSearch(){
-    this.navCtrl.push('AdvancedSearchPage');
+
+    this.navCtrl.push('NewproductPage',
+    {
+      Title:'Advanced product search', // TODO: translate
+      PageType:'AdvancedProductSearch'
+    });
+    //this.navCtrl.push('AdvancedSearchPage');
   }
   search(){
     this.navCtrl.push('SearchPage');
+  }
+
+  contactUs(){
+    this.navCtrl.push('ContactUsPage');
   }
 
   displayCategoryListPage(){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { RestProvider } from '../../providers/rest/rest';
 import { Network } from '@ionic-native/network';
@@ -23,6 +23,17 @@ export class NewproductPage extends BaseUI {
   counter: number = 0;
   PageType: string;
 
+  public advancedSearchCriteria: any= {
+    SearchText: null,
+    MainCategory: null,
+    SecondCategory: null,
+    PriceInterval: { lower: 0, upper: 200 },
+    MinQuantity: 200,
+    OrderBy_PublishDate: null,
+    OrderBy_SalesPerformance: null,
+    OrderBy_Price:null
+  };
+
   private host = ENV.SERVER_API_URL;
   private logined: boolean = false;
 
@@ -33,6 +44,7 @@ export class NewproductPage extends BaseUI {
     public toastCtrl: ToastController,
     public storage: Storage,
     public utilis: UtilsProvider,
+    public modalCtrl: ModalController,
     public translate: TranslateService) {
     super();
   }
@@ -163,25 +175,30 @@ export class NewproductPage extends BaseUI {
           break;
 
         case 'AdvancedProductSearch':
-          this.rest.SimpleProductSearch({
-            SearchText: this.navParams.get('SearchText'),
-            Lang: this.translate.defaultLang,
-            Begin: this.counter,
-            Step: this.step
-          }) // 填写url的参数
-            .subscribe(
-              result => {
-                if (result != null && result.TotalCount != null && result.List != null) {
-                  this.productList = result.List;
-                } else {
-                  //super.showToast(this.toastCtrl, f.Msg);
-                }
-                this.loading = false
-              },
-              error => {
-                //super.showToast(this.toastCtrl, error.Msg);
-                this.loading = false
-              });
+          this.loading = true;
+          if(this.advancedSearchCriteria != null){
+            var criteria = this.advancedSearchCriteria;
+            criteria.Begin = this.counter;
+            criteria.Step = this.step;
+            criteria.Lang = this.translate.defaultLang;
+            this.rest.AdvancedProductSearchClient(criteria) // 填写url的参数
+              .subscribe(
+                result => {
+                  if (result != null && result.TotalCount != null && result.List != null) {
+                    this.productList = result.List;
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
+                  }
+                  this.loading = false
+                },
+                error => {
+                  //super.showToast(this.toastCtrl, error.Msg);
+                  this.loading = false
+                });
+          }
+          else{
+            this.loading = false;
+          }
           break;
       }
     }
@@ -313,30 +330,31 @@ export class NewproductPage extends BaseUI {
 
           
         case 'AdvancedProductSearch':
-          this.rest.SimpleProductSearch({
-            SearchText: this.navParams.get('SearchText'),
-            Lang: this.translate.defaultLang,
-            Begin: this.counter,
-            Step: this.step
-          }) //TODO: change
-            .subscribe(
-              (result: any) => {
-                if (result != null && result.TotalCount != null && result.List != null) {
-                  if (result.TotalCount <= this.step * this.counter) {
-                    infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+          if(this.advancedSearchCriteria!=null){
+            var criteria = this.advancedSearchCriteria;
+            criteria.Begin = this.counter;
+            criteria.Step = this.step;
+            criteria.Lang = this.translate.defaultLang;
+            this.rest.AdvancedProductSearchClient(criteria) //TODO: change
+              .subscribe(
+                (result: any) => {
+                  if (result != null && result.TotalCount != null && result.List != null) {
+                    if (result.TotalCount <= this.step * this.counter) {
+                      infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+                    }
+                    else {
+                      this.productList = this.productList.concat(result.List != null ? result.List : []);
+                      infiniteScroll.complete();
+                    }
+                  } else {
+                    //super.showToast(this.toastCtrl, f.Msg);
                   }
-                  else {
-                    this.productList = this.productList.concat(result.List != null ? result.List : []);
-                    infiniteScroll.complete();
-                  }
-                } else {
-                  //super.showToast(this.toastCtrl, f.Msg);
+                },
+                error => {
+                  super.showToast(this.toastCtrl, error.Msg);
                 }
-              },
-              error => {
-                super.showToast(this.toastCtrl, error.Msg);
-              }
-            );
+              );
+          }
           break;
           
       }
@@ -345,6 +363,17 @@ export class NewproductPage extends BaseUI {
     else {
       super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! ");
     }
+  }
+
+  advancedSearchPage(){
+    let searchCriteriaModal = this.modalCtrl.create('AdvancedSearchPage',{criteria: this.advancedSearchCriteria});
+    searchCriteriaModal.present();
+    searchCriteriaModal.onDidDismiss(result=>{
+      if(result!=null){
+        this.advancedSearchCriteria = result;
+        this.loadProductList();
+      }
+    });
   }
 
   async addInCart(event: Event, item: any) {

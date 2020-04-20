@@ -69,13 +69,13 @@
         <button ion-button class="xxxColor  myButton" icon-only (click)="advancedSearch()">
           <ion-icon name='search'></ion-icon>
         </button>
-        <p>AdvancedSearch</p>
+        <p>{{'home.AdvancedSearch' | translate}}</p>
       </ion-col>
       <ion-col col-3>
-        <button ion-button class="linkColor  myButton" icon-only>
+        <button ion-button class="linkColor  myButton" icon-only (click)="contactUs()">
           <ion-icon name='link'></ion-icon>
         </button>
-        <p>Evénements</p>
+        <p>{{'home.ContactUs' | translate}}</p>
       </ion-col>
       <ion-col col-3>
         <button ion-button (click)="displayAvis()" class="avisColor  myButton" icon-only>

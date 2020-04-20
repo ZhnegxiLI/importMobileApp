@@ -171,7 +171,9 @@
         "TVA":"TVA",
         "ShippingCost":"运费",
         "AmountOfOrder":"订单总金额",
-        "Aestimer":"待评估"
+        "Aestimer":"待评估",
+        "MiseAJour":"更新时间",
+        "AdminRemark":"商家留言"
     },
     "home":{
         "Title":"首页",
@@ -179,8 +181,10 @@
         "Promotion":"折扣商品",
         "New":"新品",
         "Category":"观看类别",
-        "MyList":"我的清单",
-        "Advice":"商品评价"
+        "MyList":"愿望清单",
+        "Advice":"商品评价",
+        "AdvancedSearch":"精确搜索",
+        "ContactUs":"联系我们"
     },
     "product-detail":{
         "Favorite":"愿望清单",
@@ -248,6 +252,23 @@
         "Favoris":"愿望清单",
         "Aivssoumis":"已发送的评论",
         "ProduitsFavoris":"愿望清单"
+    },
+    "about-us":{
+        "AProposdeNous":"关于我们"
+    },
+    "advanced-search":{
+        "advancedSearch":"精确搜索",
+        "Votrerecherche":"您的搜索",
+        "Criteresderecherche":"搜索条件",
+        "Categories":"类别",
+        "SousCategories":"次分类",
+        "Minquantitedachat":"最小购买量",
+        "Prix":"价格",
+        "Trierpar":"排序依据",
+        "Nouveaute":"最新",
+        "Popularite":"最受欢迎",
+        "Search":"搜索",
+        "Motcle":"关键词"
     }
  
 }

@@ -42,7 +42,7 @@ export class RestProvider {
   /*
   * With auth services 
   */
- private apiUrlRefreshToken = this.host + "api/Token/Auth";
+  private apiUrlRefreshToken = this.host + "api/Token/Auth";
 
   private apiUrlUpdateUserInfo = this.host + "api/User/UpdateUserInfo";
 
@@ -90,9 +90,15 @@ export class RestProvider {
   private apiUrlAddIntoProductFavoriteList = this.host +"api/Product/AddIntoProductFavoriteList";
 
   private apiUrlSimpleProductSearch = this.host + "api/Product/SimpleProductSearch";
+
+  private apiUrlAdvancedProductSearchClient = this.host + "api/Product/AdvancedProductSearchClient"
   
   UpdateUserInfo(criteria: any): Observable<any> {
     return this.postUrlReturn(this.apiUrlUpdateUserInfo, criteria);
+  }
+
+  AdvancedProductSearchClient(criteria: any): Observable<any> {
+    return this.postUrlReturn(this.apiUrlAdvancedProductSearchClient, criteria);
   }
 
   SimpleProductSearch(criteria: any): Observable<any> {
