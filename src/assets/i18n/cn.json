@@ -10,6 +10,10 @@
     "NoDataToDisplay": "暂无数据",
     "Loading":"加载中",
     "required":"必填",
+    "BestSalesProduit":"热销产品",
+    "NewProduit":"新产品",
+    "Promotionproduit":"折扣商品",
+    "Meslistes":"愿望清单",
     "translation":{
         "Title":"语言",
         "InnerTitle":"选择你的语言"

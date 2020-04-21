@@ -10,6 +10,10 @@
     "NoDataToDisplay": "Pas de donnée",
     "Loading":"En cours",
     "required":"obligatoire",
+    "BestSalesProduit":"Meilleur vente",
+    "NewProduit":"Nouveauté",
+    "Promotionproduit":"Promotion",
+    "Meslistes":"Favoris",
     "translation":{
         "Title":"Langues",
         "InnerTitle":"Choisissez votre langue"
@@ -181,7 +185,7 @@
         "Category":"Catégories",
         "MyList":"Favoris",
         "Advice":"Avis",
-        "AdvancedSearch":"Recherche précise",
+        "AdvancedSearch":"Recherche avancée",
         "ContactUs":"Contactez-nous"
     },
     "product-detail":{
@@ -270,8 +274,8 @@
         "Motcle":"Mots clés",
         "Price_Increase": "Prix croissant",
         "Price_Decrease":"Prix décroissant",
-        "PublishDate_Recent":"Nouveaux products",
-        "Porpularity_More":"Meilleures ventes"
+        "PublishDate_Recent":"Nouveauté",
+        "Porpularity_More":"Popularité"
     },
     "search":{
         "search":"Recherche"

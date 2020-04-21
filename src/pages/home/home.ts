@@ -23,10 +23,15 @@ export class HomePage extends BaseUI {
     this.logined =  await this.utils.checkIsLogined();
   }
 
+  ionViewDidLoad() {
+
+    this.checkLogined();
+  }
+
   displaynewProductPage(){
     this.navCtrl.push('NewproductPage',
     {
-      Title:'New products', // TODO: translate
+      Title:this.translate.instant("NewProduit"), 
       PageType:'NewProduct'
     });
   }
@@ -34,7 +39,7 @@ export class HomePage extends BaseUI {
   displayByLowerSales(){
     this.navCtrl.push('NewproductPage',
     {
-      Title:'New products', // TODO: translate
+      Title:this.translate.instant("Promotionproduit"), 
       PageType:'LowerPriceProduct'
     });
   }
@@ -42,7 +47,7 @@ export class HomePage extends BaseUI {
   displayBestSalesProductPage(){
     this.navCtrl.push('NewproductPage',
     {
-      Title:'Best sales products', // TODO: translate
+      Title: this.translate.instant("BestSalesProduit"), 
       PageType:'BestSalesProduct'
     });
   }
@@ -51,7 +56,7 @@ export class HomePage extends BaseUI {
     if(this.logined){
       this.navCtrl.push('NewproductPage',
       {
-        Title:'Favorite product List', // TODO: translate
+        Title: this.translate.instant("Meslistes"), 
         PageType:'FavoriteList'
       });
     }
@@ -64,7 +69,7 @@ export class HomePage extends BaseUI {
 
     this.navCtrl.push('NewproductPage',
     {
-      Title:'Advanced product search', // TODO: translate
+      Title:this.translate.instant("home.AdvancedSearch"), 
       PageType:'AdvancedProductSearch'
     });
     //this.navCtrl.push('AdvancedSearchPage');
