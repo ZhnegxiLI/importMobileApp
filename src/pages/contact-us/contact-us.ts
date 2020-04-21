@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ export class ContactUsPage extends BaseUI{
   }
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public toastCtrl: ToastController,
+    public translateService: TranslateService,
     public rest: RestProvider,public network: Network,public loadingCtrl: LoadingController) {
     super();
   }
@@ -35,7 +37,7 @@ export class ContactUsPage extends BaseUI{
 
     
     if (this.network.type != 'none') {
-      var loading = this.showLoading(this.loadingCtrl,"En cours..."); // todo: 翻译
+      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading')); // todo: 翻译
       
       var MessageInfo:any = {};
 

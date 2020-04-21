@@ -30,7 +30,7 @@ export class ForgetPasswordPage extends BaseUI{
   sendEmail(){
     if(this.email !=null && this.email!= ''){
       if (this.network.type != 'none') {
-        var loading = this.showLoading(this.loadingCtrl,"En cours..."); // todo: 翻译
+        var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading')); // todo: 翻译
 
        // this.navCtrl.parent.select(0); // 跳转tabs
         this.rest.SendPasswordResetLink(this.email) // 填写url的参数

@@ -6,6 +6,7 @@ import {UtilsProvider} from '../../providers/utils/utils'
 import { BaseUI } from '../../app/common/baseui';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -18,6 +19,7 @@ export class AddAdressPage extends BaseUI{
   adreeForm: FormGroup;
   type : string;
   constructor(public navCtrl: NavController,
+     public translateService : TranslateService,
      public navParams: NavParams,
      public network : Network,
      public formBuilder:FormBuilder, 
@@ -75,7 +77,7 @@ export class AddAdressPage extends BaseUI{
     if (this.network.type != 'none') { 
       console.log(this.adreeForm.value);
 
-      var loading = super.showLoading(this.loadingCtrl,'En cours...');// TODO translate
+      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));
       this.rest.GetUserById(await this.utils.getKey('userId')) // 填写url的参数
         .subscribe(
           result => {
@@ -118,7 +120,7 @@ export class AddAdressPage extends BaseUI{
         userId : await this.utils.getKey('userId'), // todo change
         type : this.type
       }
-      var loading = super.showLoading(this.loadingCtrl,'En cours...');// TODO translate
+      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));// TODO translate
       this.rest.CreateOrUpdateAdress(criteria) // 填写url的参数
         .subscribe(
           f => {
@@ -139,7 +141,7 @@ export class AddAdressPage extends BaseUI{
 
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");// todo translate
     }
   }
 

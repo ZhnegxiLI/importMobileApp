@@ -401,7 +401,7 @@ export class NewproductPage extends BaseUI {
 
     }
     else {
-      super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! ");
+      super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! "); // todo translate
     }
   }
 
@@ -441,7 +441,7 @@ export class NewproductPage extends BaseUI {
 
     this.storage.set('cartProductList', JSON.stringify(cartProductList));
 
-    super.showToast(this.toastCtrl, 'add successfully!')
+    super.showToast(this.toastCtrl, 'add successfully!'); // todo translate
   }
 
 }

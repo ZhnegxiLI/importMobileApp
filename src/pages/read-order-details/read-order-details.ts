@@ -4,6 +4,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
 import { ENV } from '@app/env';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -34,7 +35,8 @@ export class ReadOrderDetailsPage extends BaseUI {
     public rest: RestProvider,
     public network: Network,
     public toastCtrl: ToastController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public translateService: TranslateService) {
     super();
   }
 
@@ -47,7 +49,7 @@ export class ReadOrderDetailsPage extends BaseUI {
   loadOrderDetail() {
     if (this.network.type != 'none') {
 
-      var loading = this.showLoading(this.loadingCtrl,"En cours..."); // todo translate
+      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant("Loading")); // todo translate
       this.rest.GetOrdersListByOrderId(this.OrderId) // 填写url的参数
         .subscribe(
           f => {
@@ -94,7 +96,7 @@ export class ReadOrderDetailsPage extends BaseUI {
           }, () => this.loading = false);
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
     }
   }
 

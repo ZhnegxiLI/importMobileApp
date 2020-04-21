@@ -47,7 +47,7 @@ export class SubCategoryListPage extends BaseUI {
           },()=>this.loading=false);
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
     }
   }
 

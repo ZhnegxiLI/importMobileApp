@@ -98,7 +98,7 @@ export class CartPage extends BaseUI {
       this.navCtrl.push('OrderConfirmationPage', { References: selectedReferenceIds });
     }
     else{
-      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action");
+      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action"); // Todo translate
     }
   }
 

@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
 import {RestProvider} from '../../providers/rest/rest'
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -23,7 +24,8 @@ export class ModifyUserInfoPage extends BaseUI {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public network: Network,
-    public rest: RestProvider
+    public rest: RestProvider,
+    public translateService: TranslateService
     ) {
       super();
 
@@ -95,13 +97,13 @@ export class ModifyUserInfoPage extends BaseUI {
       criteria.UserId = localStorage.getItem('userId');
    
 
-      var loading = super.showLoading(this.loadingCtrl,'En cours...');// TODO translate
+      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));// TODO translate
       this.rest.UpdateUserInfo(criteria) // 填写url的参数
         .subscribe(
           f => {
             if(f!=null && f>0){
               this.navCtrl.getPrevious().data.UserInfo = this.userForm.value;
-              super.showToast(this.toastCtrl,'Save successfully');
+              super.showToast(this.toastCtrl,'Save successfully'); // todo translate
             }
             loading.dismiss()
           },

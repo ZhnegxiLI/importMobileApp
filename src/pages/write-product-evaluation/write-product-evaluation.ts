@@ -4,6 +4,7 @@ import{ UtilsProvider } from '../../providers/utils/utils'
 import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
+import { TranslateService } from '@ngx-translate/core';
 @IonicPage()
 @Component({
   selector: 'page-write-product-evaluation',
@@ -19,6 +20,7 @@ export class WriteProductEvaluationPage extends BaseUI{
     public network:Network,
     public toastCtrl:ToastController,
     public loadingCtrl:LoadingController,
+    public translateService: TranslateService,
     public rest:RestProvider) {
       super();
   }
@@ -38,7 +40,7 @@ export class WriteProductEvaluationPage extends BaseUI{
         ProductId: this.navParams.get('productId')
       }
       if (this.network.type != 'none') {
-        var loading = super.showLoading(this.loadingCtrl,"En cours");//TODO: translate
+        var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading') );
         this.rest.SaveProductComment(criteria) 
           .subscribe(
             f => {

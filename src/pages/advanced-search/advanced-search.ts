@@ -57,7 +57,7 @@ export class AdvancedSearchPage extends BaseUI {
       });
     }
     else{
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");// todo translate
     }
   }
 

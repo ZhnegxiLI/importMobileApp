@@ -204,7 +204,7 @@ export class OrderConfirmationPage extends BaseUI {
             async f => {
               if (f.Success&&f.Data!=null) {
                 /*Step1: Show the successful message */
-                super.showToast(this.toastCtrl, "Votre commande est bien passé, nous allons vous contacter dans un meilleur délais");
+                super.showToast(this.toastCtrl, "Votre commande est bien passé, nous allons vous contacter dans un meilleur délais"); // todo translate
                 
                 /*Step2: Remove the already pass product */
                 var cartProductList = JSON.parse( await this.utils.getKey('cartProductList'));

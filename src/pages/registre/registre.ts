@@ -126,7 +126,7 @@ export class RegistrePage extends BaseUI{
             });
       }
       else {
-        super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+        super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
       }
     } else {
       console.log('some information is not valide')

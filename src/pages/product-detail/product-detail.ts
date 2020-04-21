@@ -151,6 +151,6 @@ export class ProductDetailPage extends BaseUI{
     
     this.storage.set('cartProductList', JSON.stringify(cartProductList));
 
-    super.showToast(this.toastCtrl, 'add successfully!')
+    super.showToast(this.toastCtrl, 'add successfully!'); // todo translate
   }
 }
