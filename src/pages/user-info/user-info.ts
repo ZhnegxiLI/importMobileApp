@@ -66,7 +66,7 @@ export class UserInfoPage extends BaseUI {
   myFavorite(){
     this.navCtrl.push('NewproductPage',
     {
-      Title:'Favorite product List', // TODO: translate
+      Title: this.translateService.instant("Meslistes"), 
       PageType:'FavoriteList'
     });
   }
