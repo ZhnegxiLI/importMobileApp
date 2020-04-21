@@ -18,26 +18,19 @@ export class AdvancedSearchPage extends BaseUI {
     SecondCategory: null,
     PriceInterval: { lower: 0, upper: 200 },
     MinQuantity: 200,
-    OrderBy_PublishDate: null,
-    OrderBy_SalesPerformance: null,
-    OrderBy_Price:null
+    OrderBy: null
   };
   public ReferenceList : any[] = [];
   public MainCategoryList : any[] = [];
 
   // todo translate
-  public OrderByPrice: any[] = [
-    'Increase',
-    'Decrease'
+  public OrderByList: any[] = [
+    'Price_Increase',
+    'Price_Decrease',
+    'PublishDate_Recent',
+    'Porpularity_More'
   ];
-  public OrderByPublishDate: any[] = [
-    'Recent',
-    'None'
-  ];
-  public OrderByPorpularity: any[] = [
-    'Popularity',
-    'None'
-  ]
+
   constructor(public navCtrl: NavController,public viewCtrl:ViewController, public translateService: TranslateService, public navParams: NavParams, public rest:RestProvider, public network: Network, public toastCtrl: ToastController) {
     super();
   }
@@ -48,6 +41,9 @@ export class AdvancedSearchPage extends BaseUI {
     this.loadMainCategoryAndSecondCategory();
   }
 
+  translateOrderByItem(item){
+    return this.translateService.instant('advanced-search.'+item);
+  }
   loadMainCategoryAndSecondCategory(){
     if (this.network.type != 'none') {
       this.rest.GetReferenceItemsByCategoryLabels({ShortLabels:['MainCategory','SecondCategory'],Lang:this.translateService.defaultLang}).subscribe(result=>{

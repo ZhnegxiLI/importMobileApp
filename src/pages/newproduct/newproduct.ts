@@ -29,9 +29,7 @@ export class NewproductPage extends BaseUI {
     SecondCategory: null,
     PriceInterval: { lower: 0, upper: 200 },
     MinQuantity: 200,
-    OrderBy_PublishDate: null,
-    OrderBy_SalesPerformance: null,
-    OrderBy_Price:null
+    OrderBy: null
   };
 
   private host = ENV.SERVER_API_URL;

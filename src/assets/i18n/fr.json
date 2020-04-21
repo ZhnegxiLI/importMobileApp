@@ -267,7 +267,11 @@
         "Nouveaute":"Nouveauté",
         "Popularite":"Popularité",
         "Search":"Recherche",
-        "Motcle":"Mots clés"
+        "Motcle":"Mots clés",
+        "Price_Increase": "Prix croissant",
+        "Price_Decrease":"Prix décroissant",
+        "PublishDate_Recent":"Nouveaux products",
+        "Porpularity_More":"Meilleures ventes"
     },
     "search":{
         "search":"Recherche"

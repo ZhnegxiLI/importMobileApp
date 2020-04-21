@@ -261,11 +261,15 @@
         "SousCategories":"Second category",
         "Minquantitédachat":"Minimum quantity purchase",
         "Prix":"Price",
-        "Trierpar":"sort by",
+        "Trierpar":"Sort by",
         "Nouveaute":"Newest arrivals",
         "Popularite":"Popularity",
         "Search":"Search",
-        "Motcle":"Key words"
+        "Motcle":"Key words",
+        "Price_Increase": "Price increase",
+        "Price_Decrease":"Price decrease",
+        "PublishDate_Recent":"New product",
+        "Porpularity_More":"Hot sales product"
     },
     "search":{
         "search":"Search"

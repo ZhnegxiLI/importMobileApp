@@ -22,7 +22,8 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>{{'advanced-search.Votrerecherche' | translate}}</ion-label>
-      <ion-input [(ngModel)]="criteria.SearchText" class="inputZoom" placeholder="{{'advanced-search.Motcle' | translate}}"></ion-input>
+      <ion-input [(ngModel)]="criteria.SearchText" class="inputZoom"
+        placeholder="{{'advanced-search.Motcle' | translate}}"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -51,7 +52,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label start>{{'advanced-search.Prix' | translate}}: {{criteria.PriceInterval.lower}} - {{criteria.PriceInterval.upper}} €</ion-label>
+      <ion-label start>{{'advanced-search.Prix' | translate}}: {{criteria.PriceInterval.lower}} -
+        {{criteria.PriceInterval.upper}} €</ion-label>
       <ion-range [(ngModel)]="criteria.PriceInterval" min="0" max="200" step="10" dualKnobs="true" pin="true">
         <ion-icon range-left name="remove"></ion-icon>
         <ion-icon range-right name="add"></ion-icon>
@@ -59,34 +61,19 @@
     </ion-item>
   </ion-list>
   <div class="headerZoom" style="margin-left:10px; margin-right: 2px;">
-    <h3>{{'advanced-search.Trierpar' | translate}}</h3>
+    <h3>{{'advanced-search.Prix' | translate}}, {{'advanced-search.Nouveaute' | translate}} , {{'advanced-search.Popularite' | translate}} </h3>
   </div>
   <ion-list>
     <ion-item>
-      <ion-label>{{'advanced-search.Prix' | translate}}</ion-label>
-      <ion-select [(ngModel)]="criteria.OrderBy_Price">
-        <ion-option [value]="item" *ngFor="let item of OrderByPrice">{{item}} </ion-option>
-
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>{{'advanced-search.Nouveaute' | translate}}</ion-label>
-      <ion-select [(ngModel)]="criteria.OrderBy_PublishDate">
-        <ion-option [value]="item" *ngFor="let item of OrderByPublishDate">{{item}} </ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>{{'advanced-search.Popularite' | translate}}</ion-label>
-      <ion-select [(ngModel)]="criteria.OrderBy_SalesPerformance">
-        <ion-option [value]="item" *ngFor="let item of OrderByPorpularity">{{item}} </ion-option>
+      <ion-label>{{'advanced-search.Trierpar' | translate}}  </ion-label>
+      <ion-select [(ngModel)]="criteria.OrderBy">
+        <ion-option [value]="item" *ngFor="let item of OrderByList">{{ translateOrderByItem(item)}} </ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
-
   <div text-center>
-    <button ion-button color="primary"  style="width: 100%; height: 35px;" (click)="search()">{{'advanced-search.Search' | translate}}</button>
+    <button ion-button color="primary" style="width: 100%; height: 35px;"
+      (click)="search()">{{'advanced-search.Search' | translate}}</button>
   </div>
 
 </ion-content>

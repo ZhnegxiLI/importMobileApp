@@ -7,8 +7,8 @@ import { IonicPage } from 'ionic-angular';
 })
 export class TabsPage {
 
-  tabHome = 'HomePage';
-  tabDiscovery = 'ReadOrderListPage';
+  tabHome = 'HomePage';  
+  tabDiscovery = 'CategoryListPage';
   tabCart = 'CartPage';
   tabNotification = 'ForgetPasswordPage';
   tabMyAccount = 'MyAccountPage';

@@ -269,7 +269,11 @@
         "Nouveaute":"最新",
         "Popularite":"最受欢迎",
         "Search":"搜索",
-        "Motcle":"关键词"
+        "Motcle":"关键词",
+        "Price_Increase": "价格上升",
+        "Price_Decrease":"价格下降",
+        "PublishDate_Recent":"最新产品",
+        "Porpularity_More":"热门产品"
     },
     "search":{
         "search":"查找"
