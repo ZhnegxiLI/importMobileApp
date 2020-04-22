@@ -7,6 +7,8 @@ import { ReadOrderListPage } from '../read-order-list/read-order-list';
 import {AboutUsPage} from '../about-us/about-us'; 
 import {TranslationPage} from '../translation/translation'
 import { UtilsProvider } from '../../providers/utils/utils'; 
+import { RestProvider } from '../../providers/rest/rest';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -24,7 +26,9 @@ export class MyAccountPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public storage: Storage,
-    public utils :UtilsProvider) {
+    public utils :UtilsProvider,
+    public rest: RestProvider,
+    public event: Events) {
   }
 
   showModal() {
@@ -61,6 +65,10 @@ export class MyAccountPage {
 
       this.username = localStorage.getItem('username');
     }
+
+    if(this.logined){
+      this.loadNotReadMessage();
+    }
   }
   logout(){
     localStorage.removeItem('userId');
@@ -71,6 +79,15 @@ export class MyAccountPage {
 
     this.loadUserPage();
   }
+
+  loadNotReadMessage(){
+    this.rest.GetNoReadMessageCount({UserId:localStorage.getItem('userId')}).subscribe(result=>{
+      if(result!=null){
+        this.event.publish('message:new', result);
+      }
+    })
+  }
+
   readCommandList(orderType){
     this.navCtrl.push('ReadOrderListPage',{orderType: orderType});
   }

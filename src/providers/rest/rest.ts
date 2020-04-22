@@ -94,9 +94,30 @@ export class RestProvider {
   private apiUrlAdvancedProductSearchClient = this.host + "api/Product/AdvancedProductSearchClient";
 
   private apiUrlGetProductByPrice = this.host + "api/Product/GetProductByPrice";
+
+  private apiUrlGetMessageByUserAndStatus  = this.host +"api/Message/GetMessageByUserAndStatus";
   
+  private apiUrlUpdateMessageStatus = this.host  + "api/Message/UpdateMessageStatus";
+
+  private apiUrlGetNoReadMessageCount = this.host +"api/Message/GetNoReadMessageCount";
+
+
+  GetNoReadMessageCount(criteria: any): Observable<any> {
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlGetNoReadMessageCount,{params});
+  }
+
   UpdateUserInfo(criteria: any): Observable<any> {
     return this.postUrlReturn(this.apiUrlUpdateUserInfo, criteria);
+  }
+
+  UpdateMessageStatus(criteria: any): Observable<any> {
+    return this.postUrlReturn(this.apiUrlUpdateMessageStatus, criteria);
+  }
+
+  GetMessageByUserAndStatus(criteria: any): Observable<any> {
+    let params = new HttpParams({ fromObject: criteria });
+    return this.http1.get(this.apiUrlGetMessageByUserAndStatus,{params});
   }
 
   GetProductByPrice(criteria: any): Observable<any> {

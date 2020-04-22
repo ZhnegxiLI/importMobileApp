@@ -2,6 +2,6 @@
   <ion-tab [root]="tabHome" tabTitle=" {{'tabs.Home' | translate}}" tabIcon="home"></ion-tab>
   <ion-tab [root]="tabDiscovery" tabTitle=" {{'tabs.Discover' | translate}}" tabIcon="stats"></ion-tab>
   <ion-tab [root]="tabCart" tabTitle=" {{'tabs.Cart' | translate}}" tabIcon="cart"></ion-tab>
-  <ion-tab [root]="tabNotification" tabTitle=" {{'tabs.Notice' | translate}}" tabIcon="notifications"></ion-tab>
+  <ion-tab [root]="tabNotification" [tabBadge] ="MessageCount" tabTitle=" {{'tabs.Notice' | translate}}" tabIcon="notifications" ></ion-tab>
   <ion-tab [root]="tabMyAccount" tabTitle=" {{'tabs.Account' | translate}}" tabIcon="contact"></ion-tab>
 </ion-tabs>

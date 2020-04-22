@@ -1,53 +1,72 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, EventEmitter } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { TranslateService } from '@ngx-translate/core';
+import { BaseUI } from '../../app/common/baseui';
+import { RestProvider } from '../../providers/rest/rest';
+import { Network } from '@ionic-native/network';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
   selector: 'page-notification',
   templateUrl: 'notification.html',
 })
-export class NotificationPage {
-  isLinear:boolean = false;
+export class NotificationPage extends BaseUI {
 
+  public messageList: any[] = [];
+  public loading: boolean = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public translateService: TranslateService,
+    public toastCtrl: ToastController, public rest: RestProvider, public network: Network, public modalCtrl: ModalController,public event: Events) {
+    super();
+  }
 
-  basicInfoForm: any;
-  entrepriseForm: any;
-  addressForm:any;
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NotificationPage');
 
+    this.loadMesage();
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder:FormBuilder) {
-  
+  loadMesage() {
+    if (this.network.type != 'none') {
+      var criteria = {
+        UserId: localStorage.getItem('userId'),
+      }
+      this.loading = true
+      this.rest.GetMessageByUserAndStatus(criteria) // 填写url的参数
+        .subscribe(
+          result => {
+            if (result.List != null && result.List.length > 0) {
+              this.messageList = result.List;
+              
+              var count = this.messageList.filter(p=>p.IsReaded==false);
+              this.event.publish('message:new', count);
+            }
 
-    /* Registre forms */
-    this.basicInfoForm = this.formBuilder.group({
-      email: ['',Validators.compose([Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'), Validators.required])],
-      password: ['',Validators.compose([ Validators.required,Validators.pattern('(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,}')])],
-      confirmPassword: ['',Validators.required]
+            this.loading = false;
+          },
+          error => {
+            this.loading = false;
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
+          });
+    }
+    else {
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
+    }
+  }
+
+  readDetailInfo(message) {
+
+    var modal = this.modalCtrl.create('ContactUsPage', {
+      SystemMessage: message
     });
-
-    this.entrepriseForm = this.formBuilder.group({
-      entrepriseName: ['',Validators.required],
-      siret:['',Validators.required],
-      phoneNumber : ['',Validators.required]
-    });
-
-    this.addressForm = this.formBuilder.group({
-      firstLineAddress: ['',Validators.required],
-      secondLineAddress:[''],
-      city:['',Validators.required],
-      country:['',Validators.required],
-      zipCode:['',Validators.required],
-      useSameAddress:['false'],
-      phoneNumber:['',Validators.required],
-      fax:['']
-    });
+    modal.present();
+    modal.onDidDismiss(f => {
+      this.loadMesage();
+    })
 
   }
 
-  get basicInfoFormCtrl() { return this.basicInfoForm.controls; }
-  get entrepriseFormCtrl() { return this.entrepriseForm.controls; }
-  get addressFormCtrl() { return this.addressForm.controls; }
+
 }
 

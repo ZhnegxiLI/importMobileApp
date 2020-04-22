@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
-  tabHome = 'HomePage';  
+  public MessageCount: number = 0;
+  tabHome = 'HomePage';
   tabDiscovery = 'CategoryListPage';
   tabCart = 'CartPage';
-  tabNotification = 'ForgetPasswordPage';
+  tabNotification = 'NotificationPage';
   tabMyAccount = 'MyAccountPage';
 
-  constructor() {
-
+  constructor(public events: Events) {
+    events.subscribe('message:new', (count) => {
+      this.MessageCount = count || 0;
+    });
   }
 }

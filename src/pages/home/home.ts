@@ -4,6 +4,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { Events } from 'ionic-angular';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { BaseUI } from '../../app/common/baseui';
+import { RestProvider } from '../../providers/rest/rest';
 
 @IonicPage()
 @Component({
@@ -14,13 +15,17 @@ export class HomePage extends BaseUI {
   public logined: boolean = false;
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
-    public translate: TranslateService, public event : Events, public utils: UtilsProvider, public toastCtrl: ToastController) {
+    public translate: TranslateService, public event : Events, public utils: UtilsProvider, public toastCtrl: ToastController, public rest: RestProvider) {
       super();
   }
 
   async checkLogined() {
 
     this.logined =  await this.utils.checkIsLogined();
+
+    if(this.logined==true){
+      this.loadNotReadMessage();
+    }
   }
 
   ionViewDidLoad() {
@@ -42,6 +47,14 @@ export class HomePage extends BaseUI {
       Title:this.translate.instant("Promotionproduit"), 
       PageType:'LowerPriceProduct'
     });
+  }
+
+  loadNotReadMessage(){
+    this.rest.GetNoReadMessageCount({UserId:localStorage.getItem('userId')}).subscribe(result=>{
+      if(result!=null){
+        this.event.publish('message:new', result);
+      }
+    })
   }
 
   displayBestSalesProductPage(){
