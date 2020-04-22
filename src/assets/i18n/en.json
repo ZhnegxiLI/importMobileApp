@@ -253,8 +253,12 @@
         "Aivssoumis": "Notice submitted ",
         "ProduitsFavoris": "Wish-list"
     },
-    "about-us": {
-        "AProposdeNous": "About us"
+    "about-us":{
+        "AProposdeNous":"About us",
+        "Version":"Version",
+        "visiternotresite":"Visit our website",
+        "Email":"Email",
+        "Adresse":"Address"
     },
     "advanced-search": {
         "advancedSearch": "Advanced search",

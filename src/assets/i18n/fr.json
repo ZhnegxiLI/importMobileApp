@@ -257,7 +257,11 @@
         "ProduitsFavoris":"Produits Favoris"
     },
     "about-us":{
-        "AProposdeNous":"A propos de nous"
+        "AProposdeNous":"A propos de nous",
+        "Version":"Version",
+        "visiternotresite":"Visiter notre site",
+        "Email":"Email",
+        "Adresse":"Adresse"
     },
     "advanced-search":{
         "advancedSearch":"Recherche précise",

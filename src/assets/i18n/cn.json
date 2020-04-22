@@ -259,7 +259,11 @@
         "ProduitsFavoris":"愿望清单"
     },
     "about-us":{
-        "AProposdeNous":"关于我们"
+        "AProposdeNous":"关于我们",
+        "Version":"版本",
+        "visiternotresite":"参观我们的网站",
+        "Email":"邮箱",
+        "Adresse":"地址"
     },
     "advanced-search":{
         "advancedSearch":"精确搜索",
