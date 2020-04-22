@@ -4,6 +4,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { Network } from '@ionic-native/network';
 import { BaseUI } from '../../app/common/baseui';
 import { NewproductPage } from '../newproduct/newproduct';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,7 @@ export class SubCategoryListPage extends BaseUI {
   MainReferenceId:number = 0;
   categoryList: any[]=[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public rest:RestProvider,
-    public network:Network, public loadingCtrl:LoadingController,
+    public network:Network, public loadingCtrl:LoadingController, public translateService: TranslateService,
     public toastCtrl:ToastController) {
       super();
   }
@@ -39,15 +40,15 @@ export class SubCategoryListPage extends BaseUI {
             if (f.Success&&f.Data!=null) {
                 this.categoryList = f.Data;
             } else {
-              super.showToast(this.toastCtrl, f.Msg);
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
             }
           },
           error => {
-            super.showToast(this.toastCtrl, error.Msg);
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
           },()=>this.loading=false);
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline")); 
     }
   }
 

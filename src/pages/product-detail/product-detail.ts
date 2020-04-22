@@ -6,6 +6,7 @@ import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -19,7 +20,7 @@ export class ProductDetailPage extends BaseUI{
   productId : number;
 
   public logined: boolean = false;
-  constructor(public navCtrl: NavController, public storage:Storage, public utilis: UtilsProvider, public navParams: NavParams, public rest: RestProvider, public network: Network, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public translateService: TranslateService, public storage:Storage, public utilis: UtilsProvider, public navParams: NavParams, public rest: RestProvider, public network: Network, public toastCtrl: ToastController) {
     super();
   }
 
@@ -40,12 +41,11 @@ export class ProductDetailPage extends BaseUI{
           (f: any) => {
             if(f!=null && f>0){
               if(this.isFavorite==false){
-                super.showToast(this.toastCtrl,"Product successfully remove in your favorite list"); // todo translate
+                super.showToast(this.toastCtrl, this.translateService.instant("Msg_RemoveIntoFavoriteList")); 
               }
               else{
-                super.showToast(this.toastCtrl,"Product successfully added into the favorite list"); // todo translate
+                super.showToast(this.toastCtrl, this.translateService.instant("Msg_AddFavoriteList")); 
               }
-             
             }
           },
           error => {
@@ -55,11 +55,11 @@ export class ProductDetailPage extends BaseUI{
   
   
       } else {
-        super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+        super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
       }
     }
     else{
-      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action"); // todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_NotConnected"));
     }
   }
 
@@ -71,11 +71,11 @@ export class ProductDetailPage extends BaseUI{
         });
       }
       else{
-        super.showToast(this.toastCtrl,"You have not yet bought this product, please write down your evaluation after bought it"); // todo translate
+        super.showToast(this.toastCtrl,this.translateService.instant("Msg_CantComment")); 
       }
     }
     else{
-      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action"); // todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_NotConnected"));
     }
   }
 
@@ -151,6 +151,6 @@ export class ProductDetailPage extends BaseUI{
     
     this.storage.set('cartProductList', JSON.stringify(cartProductList));
 
-    super.showToast(this.toastCtrl, 'add successfully!'); // todo translate
+    super.showToast(this.toastCtrl, this.translateService.instant("Msg_AddInCart"));
   }
 }

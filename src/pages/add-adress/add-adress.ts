@@ -87,18 +87,18 @@ export class AddAdressPage extends BaseUI{
                 ContactTelephone:  result.PhoneNumber!=null?result.PhoneNumber:''
               });
             } else {
-              super.showToast(this.toastCtrl, "Some errors occur");// todo translate
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error") );
             }
             loading.dismiss()
           },
           error => {
-            super.showToast(this.toastCtrl, error.Msg);
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error") );
             loading.dismiss()
           });
 
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline") );
     }
   }
 
@@ -120,7 +120,7 @@ export class AddAdressPage extends BaseUI{
         userId : await this.utils.getKey('userId'), // todo change
         type : this.type
       }
-      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));// TODO translate
+      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));
       this.rest.CreateOrUpdateAdress(criteria) // 填写url的参数
         .subscribe(
           f => {
@@ -132,16 +132,16 @@ export class AddAdressPage extends BaseUI{
               }
                 this.navCtrl.pop();
             } else {
-              super.showToast(this.toastCtrl, f.Msg);
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error") );
             }
           },
           error => {
-            super.showToast(this.toastCtrl, error.Msg);
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error") );
           },()=> loading.dismiss());
 
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");// todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline") );
     }
   }
 

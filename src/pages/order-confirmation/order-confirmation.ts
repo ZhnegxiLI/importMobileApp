@@ -7,6 +7,7 @@ import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../app/common/baseui';
 import { ENV } from '@app/env';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -38,7 +39,8 @@ export class OrderConfirmationPage extends BaseUI {
     public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    public translateService: TranslateService) {
     super();
   }
   ionViewWillEnter() {
@@ -71,16 +73,16 @@ export class OrderConfirmationPage extends BaseUI {
     let resolveLeaving;
     const canLeave = new Promise<Boolean>(resolve => resolveLeaving = resolve);
     const alert = this.alertCtrl.create({
-      title: 'Confirm leave',
-      message: 'Do you want to leave the page?',// todo translate
+      title: this.translateService.instant('Leave'),
+      message: this.translateService.instant('Msg_ConfirmLeave') ,
       buttons: [
         {
-          text: 'No',
+          text: this.translateService.instant('No'),
           role: 'cancel',
           handler: () => resolveLeaving(false)
         },
         {
-          text: 'Yes',
+          text: this.translateService.instant('Yes'),
           handler: () => resolveLeaving(true)
         }
       ]
@@ -92,7 +94,7 @@ export class OrderConfirmationPage extends BaseUI {
 
   ionViewDidLoad() {
     if (this.network.type != 'none') {
-      var loading = super.showLoading(this.loadingCtrl,'En cours'); // TODO: translate
+      var loading = super.showLoading(this.loadingCtrl, this.translateService.instant("Loading")); 
       var UserId =  localStorage.getItem('userId'); //await this.utils.getKey('userId');
 
       // Get selected product in cart 
@@ -134,13 +136,13 @@ export class OrderConfirmationPage extends BaseUI {
           },
           error => {
             this.navCtrl.pop();
-            super.showToast(this.toastCtrl,"Internal error please try again");// TODO: translate
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
           },
           ()=>loading.dismiss());
 
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
     }
   }
 
@@ -190,7 +192,7 @@ export class OrderConfirmationPage extends BaseUI {
        shippingAdressId = this.defaultShippingAdress["Id"];
     }
     if(shippingAdressId==null){
-      super.showToast(this.toastCtrl,'Please select a shipping adress');// TODO translate
+      super.showToast(this.toastCtrl,this.translateService.instant("Msg_SelectShippingAddress"));
       return;
     }
   
@@ -198,13 +200,13 @@ export class OrderConfirmationPage extends BaseUI {
     var UserId = Number.parseInt(await this.utils.getKey('userId'));
     if(productInfo.length>0&& shippingAdressId!=null){
       if (this.network.type != 'none') {
-        var loading = super.showLoading(this.loadingCtrl,"En cours...");// TODO: translation
+        var loading = super.showLoading(this.loadingCtrl,this.translateService.instant("Loading"));
         this.rest.SaveOrder(productInfo,shippingAdressId, facturationAdressId,UserId , this.remark) // 填写url的参数
           .subscribe(
             async f => {
               if (f.Success&&f.Data!=null) {
                 /*Step1: Show the successful message */
-                super.showToast(this.toastCtrl, "Votre commande est bien passé, nous allons vous contacter dans un meilleur délais"); // todo translate
+                super.showToast(this.toastCtrl, this.translateService.instant("Msg_OrdePassedSuccess"));
                 
                 /*Step2: Remove the already pass product */
                 var cartProductList = JSON.parse( await this.utils.getKey('cartProductList'));
@@ -227,22 +229,22 @@ export class OrderConfirmationPage extends BaseUI {
                 });
                 modal.present();
               } else {
-                super.showToast(this.toastCtrl, f.Msg);
+                super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
               }
             },
             error => {
-              super.showToast(this.toastCtrl, error.Msg);
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
             },
             ()=>{
               loading.dismiss();
             });
       }
       else  {
-        super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+        super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
       }
     }
     else {
-      super.showToast(this.toastCtrl,"Internal error, cannot valid your order for the moment"); // TODO: translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
     }
    
   }

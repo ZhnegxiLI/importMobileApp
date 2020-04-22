@@ -7,6 +7,7 @@ import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
 import { BaseUI } from '../../app/common/baseui';
 import { ENV } from '@app/env';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -28,7 +29,8 @@ export class CartPage extends BaseUI {
     public storage: Storage,
     public network: Network,
     public rest: RestProvider,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public translateService: TranslateService) {
     super();
   }
 
@@ -98,7 +100,7 @@ export class CartPage extends BaseUI {
       this.navCtrl.push('OrderConfirmationPage', { References: selectedReferenceIds });
     }
     else{
-      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action"); // Todo translate
+      super.showToast(this.toastCtrl,this.translateService.instant("Msg_NotConnected")); 
     }
   }
 

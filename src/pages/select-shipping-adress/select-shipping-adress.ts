@@ -5,6 +5,7 @@ import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
 import { UtilsProvider } from '../../providers/utils/utils'
 import { Storage } from '@ionic/storage';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @IonicPage()
@@ -23,7 +24,8 @@ export class SelectShippingAdressPage extends BaseUI{
     public rest : RestProvider,
     public utils : UtilsProvider,
     public loadingCtrl: LoadingController,
-    public storage : Storage) {
+    public storage : Storage,
+    public translateService: TranslateService) {
       super();
   }
 
@@ -31,7 +33,7 @@ export class SelectShippingAdressPage extends BaseUI{
   async ionViewDidLoad() {
     console.log('ionViewDidLoad SelectShippingAdressPage');
     if (this.network.type != 'none') {
-      var loading = super.showLoading(this.loadingCtrl,'En cours...');// TODO translate
+      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant("Loading"));
       var userId = await this.utils.getKey('userId');
       this.rest.GetUserShippingAdress(userId) // 填写url的参数
       .subscribe(
@@ -43,18 +45,18 @@ export class SelectShippingAdressPage extends BaseUI{
               }
               console.log(f.Data); // todo remove
           } else {
-            super.showToast(this.toastCtrl, f.Msg);
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
           }
 
           loading.dismiss();
         },
         error => {
+          super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
           loading.dismiss();
-          super.showToast(this.toastCtrl, error.Msg);
         });
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline")); 
     }
   }
 

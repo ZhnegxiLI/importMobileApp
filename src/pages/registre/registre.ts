@@ -116,21 +116,20 @@ export class RegistrePage extends BaseUI{
               if (f.Success) {
                 this.navCtrl.setRoot('RegistreSuccedPage',{email:f.DataExt, page: 'RegistrePage'});
               } else {
-                super.showToast(this.toastCtrl, f.Msg);
+                super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
               }
               loading.dismiss();
             },
             error => {
-              super.showToast(this.toastCtrl, error.Msg);
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
               loading.dismiss();
             });
       }
       else {
-        super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
+        super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline")); 
       }
     } else {
-      console.log('some information is not valide')
-      // validate all form fields
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_SomeErrorInForm")); 
     }
   }
 

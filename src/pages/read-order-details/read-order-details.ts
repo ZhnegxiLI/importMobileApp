@@ -96,7 +96,7 @@ export class ReadOrderDetailsPage extends BaseUI {
           }, () => this.loading = false);
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline")); 
     }
   }
 

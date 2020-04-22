@@ -30,7 +30,7 @@ export class ForgetPasswordPage extends BaseUI{
   sendEmail(){
     if(this.email !=null && this.email!= ''){
       if (this.network.type != 'none') {
-        var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading')); // todo: 翻译
+        var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading')); 
 
        // this.navCtrl.parent.select(0); // 跳转tabs
         this.rest.SendPasswordResetLink(this.email) // 填写url的参数
@@ -40,17 +40,18 @@ export class ForgetPasswordPage extends BaseUI{
                 this.navCtrl.setRoot('RegistreSuccedPage',{page:'ForgetPasswordPage',email:f.Data});
               }
               else {
-                super.showToast(this.toastCtrl, this.translateService.instant('forget-password.AccountNotExists')); // todo translate
+                super.showToast(this.toastCtrl, this.translateService.instant('forget-password.AccountNotExists')); 
               }
   
               loading.dismiss();
             },
             error => {
-              super.showToast(this.toastCtrl, "SomeErrorIsOccur"); // todo translate
+              super.showToast(this.toastCtrl, this.translateService.instant('Msg_Error')); 
+              
             });
       }
       else {
-        super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+        super.showToast(this.toastCtrl, this.translateService.instant('Msg_Offline')); 
       }
     }
   }

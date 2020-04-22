@@ -37,7 +37,7 @@ export class ContactUsPage extends BaseUI{
 
     
     if (this.network.type != 'none') {
-      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading')); // todo: 翻译
+      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant('Loading')); 
       
       var MessageInfo:any = {};
 
@@ -49,21 +49,22 @@ export class ContactUsPage extends BaseUI{
         .subscribe(
           f => {
             if(f>0){
-              super.showToast(this.toastCtrl, "Saved successfully"); // todo translate
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_SaveSuccess"));
 
               this.navCtrl.pop();
             }
-
+            else{
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
+            }
             loading.dismiss();
           },
           error => {
-        
-           // todo error
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
             loading.dismiss();
           });
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
     }
   }
 

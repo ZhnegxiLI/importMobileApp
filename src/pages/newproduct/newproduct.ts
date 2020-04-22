@@ -81,12 +81,12 @@ export class NewproductPage extends BaseUI {
                 if (f.Success && f.Data != null) {
                   this.productList = f.Data.ProductListData;
                 } else {
-                  super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
                 this.loading = false
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               },
               () => this.loading = false);
           break;
@@ -97,11 +97,11 @@ export class NewproductPage extends BaseUI {
                 if (f.Success && f.Data != null) {
                   this.productList = f.Data.ProductListData;
                 } else {
-                  super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 this.loading = false;
               },
               () => this.loading = false);
@@ -113,11 +113,11 @@ export class NewproductPage extends BaseUI {
                 if (f.Success && f.Data != null) {
                   this.productList = f.Data.ProductListData;
                 } else {
-                  super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               },
               () => this.loading = false);
           break;
@@ -134,12 +134,12 @@ export class NewproductPage extends BaseUI {
                 if (result != null && result.TotalCount != null && result.List != null) {
                   this.productList = result.List;
                 } else {
-                  //super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
                 this.loading = false
               },
               error => {
-                //super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 this.loading = false
               });
           break;
@@ -156,12 +156,12 @@ export class NewproductPage extends BaseUI {
                 if (result != null && result.TotalCount != null && result.List != null) {
                   this.productList = result.List;
                 } else {
-                  //super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
                 this.loading = false
               },
               error => {
-                //super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 this.loading = false
               });
           break;
@@ -177,12 +177,12 @@ export class NewproductPage extends BaseUI {
                   if (result != null && result.TotalCount != null && result.List != null) {
                     this.productList = result.List;
                   } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
+                    super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                   }
                   this.loading = false
                 },
                 error => {
-                  //super.showToast(this.toastCtrl, error.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                   this.loading = false
                 });
             break;
@@ -201,12 +201,12 @@ export class NewproductPage extends BaseUI {
                   if (result != null && result.TotalCount != null && result.List != null) {
                     this.productList = result.List;
                   } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
+                    super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                   }
                   this.loading = false
                 },
                 error => {
-                  //super.showToast(this.toastCtrl, error.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                   this.loading = false
                 });
           }
@@ -217,7 +217,7 @@ export class NewproductPage extends BaseUI {
       }
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");//TODO: translate
+      super.showToast(this.toastCtrl, this.translate.instant("Msg_Offline")); 
     }
   }
 
@@ -238,11 +238,11 @@ export class NewproductPage extends BaseUI {
                     infiniteScroll.complete();
                   }
                 } else {
-                  super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               }
             );
           break;
@@ -259,11 +259,11 @@ export class NewproductPage extends BaseUI {
                     infiniteScroll.complete();
                   }
                 } else {
-                  super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               }
             );
           break;
@@ -280,11 +280,11 @@ export class NewproductPage extends BaseUI {
                     infiniteScroll.complete();
                   }
                 } else {
-                  super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               }
             );
           break;
@@ -306,11 +306,11 @@ export class NewproductPage extends BaseUI {
                     infiniteScroll.complete();
                   }
                 } else {
-                  //super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               }
             );
           break;
@@ -332,11 +332,11 @@ export class NewproductPage extends BaseUI {
                       infiniteScroll.complete();
                     }
                   } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
+                    super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                   }
                 },
                 error => {
-                  super.showToast(this.toastCtrl, error.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               );
             break;
@@ -359,11 +359,11 @@ export class NewproductPage extends BaseUI {
                     infiniteScroll.complete();
                   }
                 } else {
-                  //super.showToast(this.toastCtrl, f.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               },
               error => {
-                super.showToast(this.toastCtrl, error.Msg);
+                super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
               }
             );
           break;
@@ -387,21 +387,20 @@ export class NewproductPage extends BaseUI {
                       infiniteScroll.complete();
                     }
                   } else {
-                    //super.showToast(this.toastCtrl, f.Msg);
+                    super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                   }
                 },
                 error => {
-                  super.showToast(this.toastCtrl, error.Msg);
+                  super.showToast(this.toastCtrl, this.translate.instant("Msg_Error")); 
                 }
               );
           }
           break;
           
       }
-
     }
     else {
-      super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! "); // todo translate
+      super.showToast(this.toastCtrl, this.translate.instant("Msg_Offline")); 
     }
   }
 
@@ -441,7 +440,7 @@ export class NewproductPage extends BaseUI {
 
     this.storage.set('cartProductList', JSON.stringify(cartProductList));
 
-    super.showToast(this.toastCtrl, 'add successfully!'); // todo translate
+    super.showToast(this.toastCtrl, this.translate.instant("Msg_AddInCart")); 
   }
 
 }

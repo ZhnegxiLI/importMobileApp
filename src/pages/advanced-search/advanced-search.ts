@@ -53,11 +53,11 @@ export class AdvancedSearchPage extends BaseUI {
         }
       },
       error=>{
-
+        super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
       });
     }
     else{
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");// todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
     }
   }
 

@@ -14,6 +14,22 @@
     "NewProduit": "New",
     "Promotionproduit": "Promotion",
     "Meslistes": "Favorite",
+    "Msg_Offline":"Currently offlin",
+    "Msg_Error":"There is an error, please try again later.",
+    "Msg_NotConnected":"Not logged in yet, please log in for more feature",
+    "Msg_SaveSuccess":"Saved successfully",
+    "Msg_ConfirmLeave":"Are you should to leave this page?",
+    "Msg_OrdePassedSuccess": "Your order is going well, we will contact you as soon as possible",
+    "Msg_AddInCart": "Successfully added to cart",
+    "Msg_SelectShippingAddress":"Please select a shipping address",
+    "Msg_AddFavoriteList":"Successfully added to favorite list",
+    "Msg_RemoveIntoFavoriteList":"Successfully deleted from favorite list",
+    "Msg_CantComment":"If you want to comment this product, you need to buy it first",
+    "Msg_SomeErrorInForm":"There is some errors in the information you filled in, please refill",
+
+    "Leave":"Leave?",
+    "Yes": "Yes",
+    "No":"No",
     "translation": {
         "Title": "Languages",
         "InnerTitle": "Choose your language"

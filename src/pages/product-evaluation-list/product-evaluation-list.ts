@@ -4,6 +4,7 @@ import { BaseUI } from '../../app/common/baseui';
 import { Network } from '@ionic-native/network';
 import { RestProvider } from '../../providers/rest/rest';
 import { ENV } from '@app/env';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -22,7 +23,8 @@ export class ProductEvaluationListPage extends BaseUI{
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public network : Network,
-    public rest: RestProvider) {
+    public rest: RestProvider,
+    public translateServce: TranslateService) {
     super();
   }
 
@@ -64,11 +66,11 @@ export class ProductEvaluationListPage extends BaseUI{
           console.log(f["Data"].ProductCommentListData)//todo: remove
             this.productCommentList = f["Data"].ProductCommentListData;
         } else {
-          super.showToast(this.toastCtrl, f.Msg);
+          super.showToast(this.toastCtrl, this.translateServce.instant("Msg_Error")); 
         }
       },
       error => {
-       // super.showToast(this.toastCtrl, error.Msg);
+        super.showToast(this.toastCtrl, this.translateServce.instant("Msg_Error")); 
       },
       ()=>{
         this.loading= false;
@@ -117,17 +119,17 @@ export class ProductEvaluationListPage extends BaseUI{
               infiniteScroll.complete();
             }
           } else {
-            super.showToast(this.toastCtrl, f.Msg);
+            super.showToast(this.toastCtrl, this.translateServce.instant("Msg_Error")); 
           }
         },
         error => {
-        //  super.showToast(this.toastCtrl, error.Msg);
+          super.showToast(this.toastCtrl, this.translateServce.instant("Msg_Error")); 
         }
       );
      
     }
     else {
-      super.showToast(this.toastCtrl, "您处于离线状态，请连接网络! "); //TODO:translate
+      super.showToast(this.toastCtrl, this.translateServce.instant("Msg_Offline")); 
     }
   }
 

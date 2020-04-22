@@ -33,23 +33,25 @@ export class UserInfoPage extends BaseUI {
 
   loadUserinfo(){
     if (this.network.type != 'none') {
-      var loading = super.showLoading(this.loadingCtrl, this.translateService.instant('Loading'));//TODO: translate
+      var loading = super.showLoading(this.loadingCtrl, this.translateService.instant('Loading'));
       this.rest.GetUserById(localStorage.getItem('userId')) 
         .subscribe(
           f => {
             if (f!=null) {
                 this.UserInfo = f;
+            }
+            else{
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
             } 
-            ()=>loading.dismiss()
+            loading.dismiss()
           },
           error => {
-            ()=>loading.dismiss()
-            // todo change 
-            //super.showToast(this.toastCtrl, error.Msg);
+            loading.dismiss()
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
           });
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline")); 
     }
   }
 

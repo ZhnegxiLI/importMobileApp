@@ -14,6 +14,23 @@
     "NewProduit":"Nouveauté",
     "Promotionproduit":"Promotion",
     "Meslistes":"Favoris",
+    "Msg_Offline":"Votre réseau n'est pas stable",
+    "Msg_Error":"Une error s'est produit, veuillez réessayer plus tard",
+    "Msg_NotConnected":"Non connecté, connectez-vous pour découvrir.",
+    "Msg_SaveSuccess":"Enregistré avec succès",
+    "Msg_ConfirmLeave":"Est-ce que vous êtes sûr de quitter ce page?",
+    "Msg_OrdePassedSuccess": "Votre commande est bien enregistré, nous allons vous contacter dans un meilleur délai",
+    "Msg_AddInCart": "Ajouté au panier avec succès",
+    "Msg_SelectShippingAddress":"Veuillez sélectionner une adresse de livraison",
+
+    "Msg_AddFavoriteList":"Ajouté à la liste de favoris avec succès",
+    "Msg_RemoveIntoFavoriteList":"Bien supprimé sur votre liste de favoris",
+    "Msg_CantComment":"Si vous souhaitez commenter ce produit, vous devez d'abord l'acheter",
+    "Msg_SomeErrorInForm":"Il y a des erreurs dans les informations que vous avez remplies, veuillez remplir à nouveau",
+
+    "Leave":"Quitter?",
+    "Yes": "Oui",
+    "No":"Non",
     "translation":{
         "Title":"Langues",
         "InnerTitle":"Choisissez votre langue"

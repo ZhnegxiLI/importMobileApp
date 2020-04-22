@@ -7,6 +7,7 @@ import {Storage } from '@ionic/storage';
 import {RegistrePage} from '../registre/registre';
 import { Network } from '@ionic-native/network';
 import { HomePage } from '../home/home';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -28,7 +29,8 @@ export class LoginPage extends BaseUI {
     public storage: Storage,
     public modalCtrl : ModalController,
     public network: Network,
-    public appCtrl: App) {
+    public appCtrl: App,
+    public translateService: TranslateService) {
     super();
   }
 
@@ -40,7 +42,7 @@ export class LoginPage extends BaseUI {
    // this.viewCtrl.dismiss();
  
     if (this.network.type != 'none') {
-      var loading = this.showLoading(this.loadingCtrl,"En cours..."); // todo: 翻译
+      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant("Loading")); 
       var LoginInfo = {
         Email: this.email,
         Password: this.password 
@@ -83,7 +85,7 @@ export class LoginPage extends BaseUI {
           });
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement "); // todo translate
+      this.loadingCtrl,this.translateService.instant("Msg_Offline")
     }
   }
 

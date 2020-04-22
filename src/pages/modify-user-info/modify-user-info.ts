@@ -97,26 +97,25 @@ export class ModifyUserInfoPage extends BaseUI {
       criteria.UserId = localStorage.getItem('userId');
    
 
-      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));// TODO translate
+      var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));
       this.rest.UpdateUserInfo(criteria) // 填写url的参数
         .subscribe(
           f => {
             if(f!=null && f>0){
               this.navCtrl.getPrevious().data.UserInfo = this.userForm.value;
-              super.showToast(this.toastCtrl,'Save successfully'); // todo translate
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_SaveSuccess"));
             }
             loading.dismiss()
           },
           error => {
-
+            super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
             loading.dismiss()
-            //todo change
-           // super.showToast(this.toastCtrl, error.Msg);
+
           });
 
     }
     else {
-      super.showToast(this.toastCtrl, "Vous êtes hors connexion, veuillez essayer ultérieusement ");
+      super.showToast(this.toastCtrl, this.translateService.instant("Msg_Offline"));
     }
 
   }

@@ -61,7 +61,7 @@ export class HomePage extends BaseUI {
       });
     }
     else{
-      super.showToast(this.toastCtrl,"You have not yet connected, connecte to process the futher action"); // todo translate
+      super.showToast(this.toastCtrl,this.translate.instant("Msg_NotConnected")); 
     }
  
   }
