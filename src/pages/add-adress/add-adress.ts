@@ -128,16 +128,20 @@ export class AddAdressPage extends BaseUI{
               if(this.type){
                 this.storage.set('tempFacturationAdress','true');
 
+                this.navCtrl.getPrevious().data.type = this.type;
                 this.navCtrl.getPrevious().data.facturationAdress = this.adreeForm.value;
               }
+              loading.dismiss()
                 this.navCtrl.pop();
             } else {
+              loading.dismiss()
               super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error") );
             }
           },
           error => {
+            loading.dismiss();
             super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error") );
-          },()=> loading.dismiss());
+          });
 
     }
     else {

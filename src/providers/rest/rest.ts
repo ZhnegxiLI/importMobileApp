@@ -327,19 +327,6 @@ export class RestProvider {
     return this.http1.get(this.apiUrlGetUserById,{params});
   }
 
-  // TODO: Login page remove all 
-  private getUrlReturnWithOutAuth(url: string): Observable<any> {
-    return this.http.get(url)
-      .pipe(
-        timeout(20000),
-        //       catchError(e => {
-        //         return of({'error':'timeout'});
-        //       })
-      )
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
   private getToken(): Observable<any> {
     return Observable.fromPromise(this.storage.get('token').then(token => {
       //maybe some processing logic like JSON.parse(token)

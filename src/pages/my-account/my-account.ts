@@ -71,8 +71,9 @@ export class MyAccountPage {
     }
   }
   logout(){
-    localStorage.removeItem('userId');
-    localStorage.removeItem('token');
+   
+    localStorage.clear();
+
     this.storage.remove('userId');
     this.storage.remove('jwt');
     this.storage.remove('refreshToken');
