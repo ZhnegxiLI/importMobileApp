@@ -20,9 +20,14 @@
         <img src="assets/imgs/SystemMessage.jpg">
       </ion-avatar>
       <h2>System message <ion-icon name="eye" style="float: right;" *ngIf="item.IsReaded==null ||item.IsReaded==false"></ion-icon></h2>
-      <p>{{item.Title}} <span style="float: right;"> {{item.CreatedOn | date}} </span> </p>
+      <p>{{item.Title}} <span style="float: right;"> {{item.CreatedOn}} </span> </p>
       
     </button>
   </ion-list>
-
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
