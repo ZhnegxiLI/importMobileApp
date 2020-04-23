@@ -23,7 +23,6 @@ export class AdvancedSearchPage extends BaseUI {
   public ReferenceList : any[] = [];
   public MainCategoryList : any[] = [];
 
-  // todo translate
   public OrderByList: any[] = [
     'Price_Increase',
     'Price_Decrease',

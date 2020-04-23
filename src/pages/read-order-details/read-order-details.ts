@@ -49,7 +49,7 @@ export class ReadOrderDetailsPage extends BaseUI {
   loadOrderDetail() {
     if (this.network.type != 'none') {
 
-      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant("Loading")); // todo translate
+      var loading = this.showLoading(this.loadingCtrl,this.translateService.instant("Loading")); 
       this.rest.GetOrdersListByOrderId(this.OrderId) // 填写url的参数
         .subscribe(
           f => {
