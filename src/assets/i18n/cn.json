@@ -300,6 +300,10 @@
     },
     "search":{
         "search":"查找"
+    },
+    "notification":{
+        "notification":"通知",
+        "Systemmessage":"系统信息"
     }
  
 }

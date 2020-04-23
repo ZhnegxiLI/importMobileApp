@@ -282,7 +282,7 @@
         "Criteresderecherche": "Search condition",
         "Categories": "Category",
         "SousCategories": "Second category",
-        "Minquantitédachat": "Minimum quantity purchase",
+        "Minquantitedachat": "Minimum quantity purchase",
         "Prix": "Price",
         "Trierpar": "Sort by",
         "Nouveaute": "Newest arrivals",
@@ -296,5 +296,9 @@
     },
     "search": {
         "search": "Search"
+    },
+    "notification":{
+        "notification":"Notification",
+        "Systemmessage":"System message"
     }
 }

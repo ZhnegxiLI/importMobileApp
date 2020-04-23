@@ -28,8 +28,8 @@
               <p style="float: right; margin-right: 4px; margin-bottom: 0px;">{{item.Price}}<span *ngIf="item.Price!=null">€</span></p>
               <h6 class="productTitleFont"> {{item.Label}} </h6>
               <p class="descriptionFont">{{'cart.Reference' | translate}}: {{item.Code}} </p>
-              <button ion-button icon-only float-right  style="font-size:0.6em; clear: both;" (click)="removeItem(item)">
-                <ion-icon name="trash-outline"></ion-icon>
+              <button ion-button icon-only float-right  style="font-size:0.6em; clear: both; height: 3em;" (click)="removeItem(item)">
+                <ion-icon name="close"></ion-icon>
               </button>
               <p class="descriptionFont">{{'cart.EachBox' | translate}}: {{item.QuantityPerBox}} </p>
               <p class="descriptionFont">{{'cart.MinimumPurchase' | translate}}:{{item.MinQuantity}}</p>

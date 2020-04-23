@@ -286,7 +286,7 @@
         "Criteresderecherche":"Critères de recherche",
         "Categories":"Catégories",
         "SousCategories":"Sous catégories",
-        "Minquantitédachat":"Minimum quantité d'achat",
+        "Minquantitedachat":"Minimum quantité d'achat",
         "Prix":"Prix",
         "Trierpar":"Trier par",
         "Nouveaute":"Nouveauté",
@@ -300,6 +300,10 @@
     },
     "search":{
         "search":"Recherche"
+    },
+    "notification":{
+        "notification":"Notification",
+        "Systemmessage":"Système message"
     }
  
  

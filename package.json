@@ -9,7 +9,11 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "prepare-ios-test": "set npm_config_mode=test&& ionic cordova prepare ios ",
+    "prepare-ios-prod": "set npm_config_mode=prod&& ionic  cordova prepare ios ",
+    "prepare-android-test": "set npm_config_mode=test&& ionic cordova prepare android ",
+    "prepare-android-prod": "set npm_config_mode=prod&& ionic cordova prepare android "
   },
   "config": {
     "ionic_copy": "./config/copy.config.js",

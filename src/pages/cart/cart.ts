@@ -36,7 +36,7 @@ export class CartPage extends BaseUI {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
-    this.checkLogined();
+
   }
 
   async checkLogined() {
@@ -45,6 +45,7 @@ export class CartPage extends BaseUI {
   }
 
   async ionViewDidEnter() {
+    await this.checkLogined();
     this.cartProductList = JSON.parse(await this.utils.getKey('cartProductList'));
 
     console.log(this.cartProductList);

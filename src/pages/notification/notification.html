@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>notification</ion-title>
+    <ion-title>{{'notification.notification' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -19,7 +19,7 @@
       <ion-avatar item-left>
         <img src="assets/imgs/SystemMessage.jpg">
       </ion-avatar>
-      <h2>System message <ion-icon name="eye" style="float: right;" *ngIf="item.IsReaded==null ||item.IsReaded==false"></ion-icon></h2>
+      <h2>{{'notification.Systemmessage' | translate}} <ion-icon name="eye" style="float: right;" *ngIf="item.IsReaded==null ||item.IsReaded==false"></ion-icon></h2>
       <p>{{item.Title}} <span style="float: right;"> {{item.CreatedOn}} </span> </p>
       
     </button>

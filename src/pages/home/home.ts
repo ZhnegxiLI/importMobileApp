@@ -28,9 +28,9 @@ export class HomePage extends BaseUI {
     }
   }
 
-  ionViewDidLoad() {
+  async ionViewDidEnter() {
 
-    this.checkLogined();
+    await this.checkLogined();
   }
 
   displaynewProductPage(){
@@ -50,6 +50,7 @@ export class HomePage extends BaseUI {
   }
 
   loadNotReadMessage(){
+
     this.rest.GetNoReadMessageCount({UserId:localStorage.getItem('userId')}).subscribe(result=>{
       if(result!=null){
         this.event.publish('message:new', result);
