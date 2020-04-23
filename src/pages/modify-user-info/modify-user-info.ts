@@ -102,7 +102,12 @@ export class ModifyUserInfoPage extends BaseUI {
         .subscribe(
           f => {
             if(f!=null && f>0){
-              this.navCtrl.getPrevious().data.UserInfo = this.userForm.value;
+
+              this.UserInfo.EntrepriseName = this.userForm.value.EntrepriseName;
+              this.UserInfo.Siret = this.userForm.value.Siret;
+              this.UserInfo.PhoneNumber = this.userForm.value.PhoneNumber;
+              this.UserInfo.FacturationAdress = this.facturationAdress;
+              this.navCtrl.getPrevious().data.UserInfo = this.UserInfo;
               super.showToast(this.toastCtrl, this.translateService.instant("Msg_SaveSuccess"));
             }
             loading.dismiss()

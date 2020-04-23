@@ -306,13 +306,13 @@ export class RestProvider {
   }
 
   CreateOrUpdateAdress(criteria): Observable<any> {
-    return this.postUrlReturnWithOutAuth(this.apiUrlCreateOrUpdateAdress,criteria);
+    return this.postUrlReturn(this.apiUrlCreateOrUpdateAdress,criteria);
   }
   /* Adress zoom end */
 
 
   SaveMessage (criteria): Observable<any>{
-    return this.postUrlReturnWithOutAuth(this.apiUrlSaveMessage,criteria);
+    return this.postUrlReturn(this.apiUrlSaveMessage,criteria);
   }
  
 

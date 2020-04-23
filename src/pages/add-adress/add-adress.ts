@@ -53,14 +53,14 @@ export class AddAdressPage extends BaseUI{
     if(adress!=null){
       console.log(adress);
       
-      this.adreeForm.setValue({
-        Id:adress.Id,
-        EntrepriseName:adress.EntrepriseName,
-        ContactFirstName:adress.ContactFirstName,
-        ContactLastName:adress.ContactLastName,
+      this.adreeForm.patchValue({
+        Id:adress.Id || 0,
+        EntrepriseName:adress.EntrepriseName ,
+        ContactFirstName:adress.ContactFirstName ,
+        ContactLastName:adress.ContactLastName ,
         FirstLineAddress:adress.FirstLineAddress,
         SecondLineAddress:adress.SecondLineAddress,
-        City:adress.City,
+        City:adress.City ,
         CountryId:adress.CountryId!=null ?adress.CountryId:1 ,
         ZipCode:adress.ZipCode,
         ContactTelephone:adress.ContactTelephone,

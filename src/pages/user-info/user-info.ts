@@ -43,7 +43,7 @@ export class UserInfoPage extends BaseUI {
             else{
               super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error")); 
             } 
-            loading.dismiss()
+            loading.dismiss();
           },
           error => {
             loading.dismiss()
