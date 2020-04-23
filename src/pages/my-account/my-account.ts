@@ -1,6 +1,6 @@
 import { ContactUsPage } from './../contact-us/contact-us';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { LoginPage } from '../login/login'
 import { Storage } from '@ionic/storage';
 import { ReadOrderListPage } from '../read-order-list/read-order-list';
@@ -9,13 +9,14 @@ import {TranslationPage} from '../translation/translation'
 import { UtilsProvider } from '../../providers/utils/utils'; 
 import { RestProvider } from '../../providers/rest/rest';
 import { Events } from 'ionic-angular';
+import { BaseUI } from '../../app/common/baseui';
 
 @IonicPage()
 @Component({
   selector: 'page-my-account',
   templateUrl: 'my-account.html',
 })
-export class MyAccountPage {
+export class MyAccountPage extends BaseUI{
 
   public notLogin: boolean = true;
   public logined: boolean = false;
@@ -28,8 +29,17 @@ export class MyAccountPage {
     public storage: Storage,
     public utils :UtilsProvider,
     public rest: RestProvider,
-    public event: Events) {
+    public event: Events,
+    public toastCtrl: ToastController) {
+      super();
+
+      event.subscribe('logout:logout', () => {
+        super.showToast(this.toastCtrl,"You have been log out, try to log in again");
+        this.navCtrl.popToRoot();
+      });
   }
+
+
 
   showModal() {
     let modal = this.modalCtrl.create('LoginPage');

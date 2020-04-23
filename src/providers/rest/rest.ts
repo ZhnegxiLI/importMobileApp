@@ -166,6 +166,14 @@ export class RestProvider {
   }
   logout(){
     //todo
+    localStorage.clear();
+
+    this.storage.remove('userId');
+    this.storage.remove('jwt');
+    this.storage.remove('refreshToken');
+    console.log("log out");
+
+    this.event.publish('logout:logout');
   }
 
 
@@ -231,12 +239,6 @@ export class RestProvider {
       Step:Step.toString(),
     } });
     return this.http1.get(this.apiUrlGetProductListBySecondCategory,{params});
-  }
-
-  GetProductListBySecondCategoryWithAuth(SecondCategoryReferenceId: number, Begin: number, Step:number): Observable<any> {
-    var lang = this.translate.defaultLang;
-    return this.getUrlReturn(this.apiUrlGetProductListBySecondCategoryWithAuth + 
-      "?SecondCategoryReferenceId=" + SecondCategoryReferenceId + "&Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
   }
 
   GetProductInfoByReferenceIds(ReferenceIds): Observable<any> {

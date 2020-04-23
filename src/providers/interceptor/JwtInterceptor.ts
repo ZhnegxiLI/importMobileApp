@@ -113,7 +113,8 @@ export class JwtInterceptor implements HttpInterceptor {
                 }),
                 catchError(err => {
                    // this.acct.logout();
-                    return this.handleError(err);
+                   return <any>this.rest.logout();
+                    //return this.handleError(err);
                 }),
                 finalize(() => {
                   this.isTokenRefreshing = false;
@@ -133,9 +134,6 @@ export class JwtInterceptor implements HttpInterceptor {
 
 
     }
-
-
-    
 
     private attachTokenToRequest(request: HttpRequest<any>) 
     {
