@@ -182,18 +182,28 @@ export class RestProvider {
   }
 
   SendPasswordResetLink(Email:string) : Observable<any>{
-    return this.getUrlReturnWithOutAuth(this.apiUrlSendPasswordResetLink + '?username='+Email);
+    let params = new HttpParams({ fromObject: {
+      username: Email
+    } });
+    return this.http1.get(this.apiUrlSendPasswordResetLink,{params});
   }
   /* Auth zoom end */
 
   /* Product zoom start */
   GetProductMainCategory(): Observable<any> {
     var lang = this.translate.defaultLang;
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductMainCategory + "?Lang=" + lang);
+    let params = new HttpParams({ fromObject: {
+      Lang: lang
+    } });
+    return this.http1.get(this.apiUrlGetProductMainCategory,{params});
   }
   GetProductSecondCategory(MainCategoryReferenceId: number): Observable<any> {
     var lang = this.translate.defaultLang;
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductSecondCategory + "?MainCategoryReferenceId=" + MainCategoryReferenceId + "&Lang=" + lang);
+    let params = new HttpParams({ fromObject: {
+        MainCategoryReferenceId: MainCategoryReferenceId.toString(),
+        Lang: lang
+    } });
+    return this.http1.get(this.apiUrlGetProductSecondCategory,{params});
   }
 
   GetProductListByPublishDate(Begin: number, Step:number): Observable<any> {
@@ -203,15 +213,24 @@ export class RestProvider {
 
   GetProductListBySalesPerformance(Begin: number, Step:number): Observable<any> {
     var lang = this.translate.defaultLang;
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductListBySalesPerformance + 
-       "?Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
+    let params = new HttpParams({ fromObject: {
+      Lang: lang,
+      Begin:Begin.toString(),
+      Step:Step.toString(),
+    } });
+    return this.http1.get(this.apiUrlGetProductListBySalesPerformance,{params});
   }
 
 
   GetProductListBySecondCategory(SecondCategoryReferenceId: number, Begin: number, Step:number): Observable<any> {
     var lang = this.translate.defaultLang;
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetProductListBySecondCategory + 
-      "?SecondCategoryReferenceId=" + SecondCategoryReferenceId + "&Lang=" + lang+"&Begin="+Begin+"&Step="+Step);
+    let params = new HttpParams({ fromObject: {
+      SecondCategoryReferenceId: SecondCategoryReferenceId.toString(),
+      Lang:lang,
+      Begin:Begin.toString(),
+      Step:Step.toString(),
+    } });
+    return this.http1.get(this.apiUrlGetProductListBySecondCategory,{params});
   }
 
   GetProductListBySecondCategoryWithAuth(SecondCategoryReferenceId: number, Begin: number, Step:number): Observable<any> {
@@ -296,11 +315,16 @@ export class RestProvider {
  
 
   CheckUserIsAlreadyExistAsync(Username): Observable<any>  {
-    return this.getUrlReturnWithOutAuth(this.apiUrlCheckUserIsAlreadyExistAsync+'?Username='+Username);
-    
+    let params = new HttpParams({ fromObject: {
+      Username: Username
+    } });
+    return this.http1.get(this.apiUrlCheckUserIsAlreadyExistAsync,{params});  
   }
   GetUserById(UserId): Observable<any>  {
-    return this.getUrlReturnWithOutAuth(this.apiUrlGetUserById+'?UserId='+UserId);
+    let params = new HttpParams({ fromObject: {
+      UserId: UserId
+    } });
+    return this.http1.get(this.apiUrlGetUserById,{params});
   }
 
   // TODO: Login page remove all 
