@@ -25,7 +25,7 @@
           </ion-col>
           <ion-col col-8 class="colStyle">
             <div>
-              <p style="float: right; margin-right: 4px; margin-bottom: 0px;">{{item.Price}}<span *ngIf="item.Price!=null">€</span></p>
+              <p style="float: right; margin-right: 4px; margin-bottom: 0px;" *ngIf="logined">{{item.Price}}<span *ngIf="item.Price!=null">€</span></p>
               <h6 class="productTitleFont"> {{item.Label}} </h6>
               <p class="descriptionFont">{{'cart.Reference' | translate}}: {{item.Code}} </p>
               <button ion-button icon-only float-right  style="font-size:0.6em; clear: both; height: 3em;" (click)="removeItem(item)">
@@ -54,7 +54,7 @@
       <ion-label style="margin-left: 3px;">{{'cart.All' | translate}}</ion-label>
     </div>
     <div float-right class="footerComponent">
-      <ion-label>{{'cart.Somme' | translate}}:{{CalculAccount()}}€</ion-label>
+      <ion-label *ngIf="logined">{{'cart.Somme' | translate}}:{{CalculAccount()}}€</ion-label>
       <button ion-button round small [disabled]="!checkProductListIsAvailable() || !checkSelectedProductListIsEmpty()" (click)="valideCart()">{{'cart.Confirm' | translate}}</button>
     </div>
   </ion-toolbar>
