@@ -27,6 +27,12 @@
     "Msg_RemoveIntoFavoriteList":"Bien supprimé sur votre liste de favoris",
     "Msg_CantComment":"Si vous souhaitez commenter ce produit, vous devez d'abord l'acheter",
     "Msg_SomeErrorInForm":"Il y a des erreurs dans les informations que vous avez remplies, veuillez remplir à nouveau",
+   
+    "Msg_Avisenregistre":"Votre avis a été enregistré",
+    "Msg_AccountBloque":"Compte bloqué",
+    "Msg_EmailNotValide":"L'email n'a pas été activé",
+    "Msg_PasswordNotCorrect":"Le compte d’utilisateur ou le mot de passe est incorrect",
+    "Msg_ReLogin":"Vous êtes déconnecté, essayez de vous reconnecter",
 
     "Leave":"Quitter?",
     "Yes": "Oui",
@@ -141,7 +147,7 @@
     },
     "tabs":{
         "Home":"Accueil",
-        "Discover":"Découvrir",
+        "Discover":"Catégorie",
         "Cart":"Panier",
         "Notice":"Notice",
         "Account":"Compte"
@@ -192,7 +198,8 @@
         "AmountOfOrder":"Total",
         "Aestimer":"A estimer",
         "MiseAJour":"Date de mise à jour",
-        "AdminRemark":"Message du vendeur"
+        "AdminRemark":"Message du vendeur",
+        "CustomerRemark":"Message du client"
     },
     "home":{
         "Title":"Accueil",

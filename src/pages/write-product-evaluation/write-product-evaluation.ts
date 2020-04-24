@@ -45,7 +45,7 @@ export class WriteProductEvaluationPage extends BaseUI{
           .subscribe(
             f => {
               if (f.Success&&f.Data!=null) {
-                  super.showToast(this.toastCtrl,'votre avis est bien enregistré');// TODO:translate
+                  super.showToast(this.toastCtrl,this.translateService.instant('Msg_Avisenregistre'));// TODO:translate
                   this.navCtrl.pop();
               } else {
                 super.showToast(this.toastCtrl, f.Msg);

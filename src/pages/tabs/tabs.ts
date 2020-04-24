@@ -15,7 +15,14 @@ export class TabsPage {
 
   constructor(public events: Events) {
     events.subscribe('message:new', (count) => {
-      this.MessageCount = count || 0;
+      var ParsedInt = parseInt(count);
+      if(typeof ParsedInt == "number"){
+        this.MessageCount =  ParsedInt || 0;
+      }
+      else{
+        this.MessageCount = 0;
+      }
+    
     });
   }
 }

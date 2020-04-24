@@ -258,7 +258,7 @@ export class RestProvider {
   /* Product comment zoom start */
   SaveProductComment(criteria): Observable<any>{
     // TODO : change to with auth 
-    return this.postUrlReturnWithOutAuth(this.apiUrlSaveProductComment, criteria);
+    return this.postUrlReturn(this.apiUrlSaveProductComment, criteria);
   }
 
   GetProductCommentListByCriteria(criteria:any): Observable<any>{
@@ -274,7 +274,7 @@ export class RestProvider {
    /* Order zoom start */
   SaveOrder(References:any[] ,ShippingAdressId:number, FacturationAdressId:number, UserId:number, ClientRemark: string): Observable<any> {
    // TODO : change to with auth 
-    return this.postUrlReturnWithOutAuth(this.apiUrlSaveOrder, 
+    return this.postUrlReturn(this.apiUrlSaveOrder, 
       { References: References, ShippingAdressId: ShippingAdressId, FacturationAdressId:FacturationAdressId,
         UserId: UserId, ClientRemark: ClientRemark});
   }

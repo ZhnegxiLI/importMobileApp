@@ -10,6 +10,7 @@ import { UtilsProvider } from '../../providers/utils/utils';
 import { RestProvider } from '../../providers/rest/rest';
 import { Events } from 'ionic-angular';
 import { BaseUI } from '../../app/common/baseui';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -30,11 +31,12 @@ export class MyAccountPage extends BaseUI{
     public utils :UtilsProvider,
     public rest: RestProvider,
     public event: Events,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public translateService: TranslateService) {
       super();
 
       event.subscribe('logout:logout', () => {
-        super.showToast(this.toastCtrl,"You have been log out, try to log in again");
+        super.showToast(this.toastCtrl, this.translateService.instant('Msg_ReLogin')); 
         this.navCtrl.popToRoot();
       });
   }

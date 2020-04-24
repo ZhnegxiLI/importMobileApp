@@ -29,6 +29,12 @@
     "Msg_RemoveIntoFavoriteList":"已成功从愿望清单中删除",
     "Msg_CantComment":"您需要购买过此商品才能评论",
     "Msg_SomeErrorInForm":"您所填写的信息存在部分错误，请重新填写",
+    "Msg_Avisenregistre":"您的评论已保存",
+    "Msg_AccountBloque":"账户已锁定",
+    "Msg_EmailNotValide":"邮箱尚未验证",
+    "Msg_PasswordNotCorrect":"用户密码不正确",
+    "Msg_ReLogin":"您已退出登录，请尝试重新登录",
+    
     "translation":{
         "Title":"语言",
         "InnerTitle":"选择你的语言"
@@ -141,7 +147,7 @@
     },
     "tabs":{
         "Home":"主页",
-        "Discover":"发现",
+        "Discover":"分类",
         "Cart":"购物车",
         "Notice":"通知",
         "Account":"我的账户"
@@ -192,7 +198,8 @@
         "AmountOfOrder":"订单总金额",
         "Aestimer":"待评估",
         "MiseAJour":"更新时间",
-        "AdminRemark":"商家留言"
+        "AdminRemark":"商家留言",
+        "CustomerRemark":"顾客留言"
     },
     "home":{
         "Title":"首页",
