@@ -29,15 +29,11 @@ export class RestProvider {
      this.loadToken();
   }
 
-  async loadToken(){
-    this.token  ='Bearer ' + await this.utils.getKey('token');
+ loadToken(){
+    this.token  ='Bearer ' + localStorage.getItem('jwt');
   }
   private host = ENV.SERVER_API_URL;
   private waitingTime = ENV.HTTP_WAITING_TIME;
-
-  // private apiUrlLogin = this.host + "api/Auth/Login"; 
-
-
 
   /*
   * With auth services 
@@ -55,7 +51,6 @@ export class RestProvider {
 
 
   private apiUrlGetProductListBySecondCategory = this.host + "api/Product/GetProductListBySecondCategory";
-  private apiUrlGetProductListBySecondCategoryWithAuth = this.host + "api/Product/GetProductListBySecondCategoryWithAuth";
   private apiUrlGetProductInfoByReferenceIds = this.host + "api/Product/GetProductInfoByReferenceIds";
   private apiUrlGetProductListByPublishDate = this.host + "api/Product/GetProductListByPublishDate";
   private apiUrlGetProductListBySalesPerformance = this.host + "api/Product/GetProductListBySalesPerformance";
@@ -250,7 +245,12 @@ export class RestProvider {
   GetProductById(Id:number):  Observable<any> {
     var lang = this.translate.defaultLang; // TODO : change to with auth 
     var userId = localStorage.getItem('userId') || 0;
-    return this.getUrlReturn(this.apiUrlGetProductById + "?ProductId=" + Id + "&Lang=" + lang + "&UserId="+ userId);
+    let params = new HttpParams({ fromObject: {
+      ProductId: Id.toString(),
+      Lang:lang,
+      UserId:userId.toString(),
+    } });
+    return this.http1.get(this.apiUrlGetProductById,{params});
   }
   /* Product zoom end */
 
@@ -280,8 +280,12 @@ export class RestProvider {
   }
   GetOrdersListByUserId(UserId: number, OrderStatus: string ): Observable<any>{
     var lang = this.translate.defaultLang;
-    return this.getUrlReturn(this.apiUrlGetOrdersListByUserId + 
-      "?UserId="+UserId+"&StatusCode="+OrderStatus +"&Lang="+lang);
+    let params = new HttpParams({ fromObject: {
+      UserId: UserId.toString(),
+      Lang:lang,
+      StatusCode:OrderStatus
+    } });
+    return this.http1.get(this.apiUrlGetOrdersListByUserId,{params});
   }
   
   GetOrdersListByOrderId(OrderId: number): Observable<any>{
@@ -294,15 +298,24 @@ export class RestProvider {
 
   /* Adress zoom start */
   GetUserFacturationAdress(UserId): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetUserFacturationAdress + "?UserId="+UserId);
+    let params = new HttpParams({ fromObject: {
+      UserId: UserId.toString(),
+    } });
+    return this.http1.get(this.apiUrlGetUserFacturationAdress,{params});
   }
 
   GetUserDefaultShippingAdress(UserId): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetUserDefaultShippingAdress + "?UserId="+UserId);
+    let params = new HttpParams({ fromObject: {
+      UserId: UserId.toString(),
+    } });
+    return this.http1.get(this.apiUrlGetUserDefaultShippingAdress,{params});
   }
 
   GetUserShippingAdress(UserId): Observable<any> {
-    return this.getUrlReturn(this.apiUrlGetUserShippingAdress + "?UserId="+UserId);
+    let params = new HttpParams({ fromObject: {
+      UserId: UserId.toString(),
+    } });
+    return this.http1.get(this.apiUrlGetUserShippingAdress,{params});
   }
 
   CreateOrUpdateAdress(criteria): Observable<any> {
@@ -329,23 +342,12 @@ export class RestProvider {
     return this.http1.get(this.apiUrlGetUserById,{params});
   }
 
-  private getToken(): Observable<any> {
-    return Observable.fromPromise(this.storage.get('token').then(token => {
-      //maybe some processing logic like JSON.parse(token)
-      return token;
-    }));
-  }
+ 
 
   private  getUrlReturn1(url: string, criteria:any): Observable<any> {
     const headers = new HttpHeaders().set("Authorization",this.token).set("Content-Type","application/json");
     const params = new HttpParams({ fromObject: criteria });
     return this.http1.get(url,{headers:headers,params:params}).pipe(timeout(this.waitingTime)).catch(this.handleError); 
-  }
-
-  private  getUrlReturn(url: string): Observable<any> {
-    const headers = new HttpHeaders().set("Authorization",this.token).set("Content-Type","application/json");
-    //const params = new HttpParams({ fromObject: criteria });
-    return this.http1.get(url,{headers:headers}).pipe(timeout(this.waitingTime),catchError(this.handleError));//.catch(this.handleError); 
   }
 
   private postUrlReturn(url: string, body: any): Observable<any> {
