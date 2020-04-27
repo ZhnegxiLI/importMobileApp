@@ -78,7 +78,10 @@ export class LoginPage extends BaseUI {
           error => {
             var message = JSON.parse(error);
             if(message.LoginError!=null){
-              super.showToast(this.toastCtrl, message.LoginError);
+              super.showToast(this.toastCtrl, this.translateService.instant(message.LoginError));
+            }
+            else{
+              super.showToast(this.toastCtrl, this.translateService.instant("Msg_Error"));
             }
            
             loading.dismiss();
