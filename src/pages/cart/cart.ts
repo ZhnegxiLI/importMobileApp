@@ -48,8 +48,6 @@ export class CartPage extends BaseUI {
     await this.checkLogined();
     this.cartProductList = JSON.parse(await this.utils.getKey('cartProductList'));
 
-    console.log(this.cartProductList);
-
     // Renew quantity check if quantiy < min quantity
     if (this.cartProductList != null && this.cartProductList.length > 0) {
       this.cartProductList.map(f => {
@@ -79,11 +77,11 @@ export class CartPage extends BaseUI {
     return 0;
   }
 
-  onUpdate(data) {
+  onUpdate(data, minQuantity) {
     if (typeof data.number === 'number') {
       this.cartProductList.forEach(p => {
-        if (p.ReferenceId == data.goods) {
-          p.Quantity = data.number;
+        if (p.ReferenceId == data.goods) {     
+          p.Quantity = data.number> minQuantity? data.number : minQuantity;
         }
       });
       this.SaveCart();

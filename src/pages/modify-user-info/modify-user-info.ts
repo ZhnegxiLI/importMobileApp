@@ -82,7 +82,7 @@ export class ModifyUserInfoPage extends BaseUI {
   }
 
   saveUserInfo(){
-    
+    console.log(this.defaultShippingAdress)
     /* Step1: make all ctrl in the group been touched */
     for(let i in this.userForm.controls){
       this.userForm.controls[i].markAsTouched();
@@ -95,7 +95,7 @@ export class ModifyUserInfoPage extends BaseUI {
       console.log(this.userForm.value);
       var criteria = this.userForm.value;
       criteria.UserId = localStorage.getItem('userId');
-   
+      criteria.DefaultShippingAddressId = this.defaultShippingAdress!=null ? this.defaultShippingAdress.Id :0;
 
       var loading = super.showLoading(this.loadingCtrl,this.translateService.instant('Loading'));
       this.rest.UpdateUserInfo(criteria) // 填写url的参数
