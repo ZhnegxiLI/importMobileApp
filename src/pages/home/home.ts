@@ -12,11 +12,18 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'home.html'
 })
 export class HomePage extends BaseUI {
+  public sldes: any[] = [];
   public logined: boolean = false;
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
     public translate: TranslateService, public event : Events, public utils: UtilsProvider, public toastCtrl: ToastController, public rest: RestProvider) {
       super();
+
+      this.rest.GetWbesiteslides(null).subscribe(result=>{
+        if(result!=null && result.length>0){
+          this.sldes = result;
+        }
+      });
   }
 
   async checkLogined() {

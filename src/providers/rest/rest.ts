@@ -96,6 +96,8 @@ export class RestProvider {
 
   private apiUrlGetNoReadMessageCount = this.host +"api/Message/GetNoReadMessageCount";
 
+  private apiUrlGetWbesiteslides = this.host + "api/Reference/GetWbesiteslides"
+
 
   GetNoReadMessageCount(criteria: any): Observable<any> {
     let params = new HttpParams({ fromObject: criteria });
@@ -175,6 +177,11 @@ export class RestProvider {
   GetReferenceItemsByCategoryLabels(criteria): Observable<any> {
     criteria.Lang = this.translate.defaultLang;
     return this.postUrlReturnWithOutAuth(this.apiUrlGetReferenceItemsByCategoryLabels, criteria);
+  }
+
+  GetWbesiteslides(criteria): Observable<any> {
+   // criteria.Lang = this.translate.defaultLang;
+    return this.http1.get(this.apiUrlGetWbesiteslides);
   }
 
   Registre(RegistrerInfo: object): Observable<any> {

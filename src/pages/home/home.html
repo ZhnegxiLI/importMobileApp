@@ -17,17 +17,8 @@
 
 <ion-content text-center no-bounce>
   <ion-slides class="slidePagers" pager>
-    <ion-slide class="slidePhoto">
-      <img  src="http://www.jlsimport.fr/themes/leo_exist/img/modules/leosliderlayer/slider%202.jpg" />
-
-    </ion-slide>
-
-    <ion-slide class="slidePhoto">
-      <img  src="http://www.jlsimport.fr/themes/leo_exist/img/modules/leosliderlayer/slider3.jpg" />
-    </ion-slide>
-
-    <ion-slide class="slidePhoto">
-      <img  src="http://www.jlsimport.fr/themes/leo_exist/img/modules/leosliderlayer/870x522  slider 1.jpg" />
+    <ion-slide class="slidePhoto" *ngFor="let item of sldes" >
+      <img  [src]="item.PhotoPath" />
     </ion-slide>
   </ion-slides>
   

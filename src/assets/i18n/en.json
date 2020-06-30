@@ -279,7 +279,8 @@
         "Version":"Version",
         "visiternotresite":"Visit our website",
         "Email":"Email",
-        "Adresse":"Address"
+        "Adresse":"Address",
+        "liveChat":"Live chat"
     },
     "advanced-search": {
         "advancedSearch": "Advanced search",
