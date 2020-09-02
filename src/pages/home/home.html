@@ -18,7 +18,7 @@
 <ion-content text-center no-bounce>
   <ion-slides class="slidePagers" pager>
     <ion-slide class="slidePhoto" *ngFor="let item of sldes" >
-      <img  [src]="item.PhotoPath" />
+      <img  [src]="host+item.PhotoPath" />
     </ion-slide>
   </ion-slides>
   

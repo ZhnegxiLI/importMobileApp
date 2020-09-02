@@ -5,6 +5,7 @@ import { Events } from 'ionic-angular';
 import { UtilsProvider } from '../../providers/utils/utils';
 import { BaseUI } from '../../app/common/baseui';
 import { RestProvider } from '../../providers/rest/rest';
+import { ENV } from '@app/env';
 
 @IonicPage()
 @Component({
@@ -12,6 +13,8 @@ import { RestProvider } from '../../providers/rest/rest';
   templateUrl: 'home.html'
 })
 export class HomePage extends BaseUI {
+  public host = ENV.SERVER_API_URL;
+
   public sldes: any[] = [];
   public logined: boolean = false;
   constructor(public navCtrl: NavController,
