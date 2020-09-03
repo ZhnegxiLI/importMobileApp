@@ -51,13 +51,15 @@ export class NewproductPage extends BaseUI {
     console.log('ionViewDidLoad NewproductPage');
     
     this.checkLogined();
-  }
 
-  ionViewDidEnter() {
     this.PageType = this.navParams.get('PageType');
     this.SecondReferenceId = this.navParams.get('ReferenceId');
     this.Title = this.navParams.get('Title');
     this.loadProductList();
+  }
+
+  ionViewDidEnter() {
+   
   }
 
   productDetail(product) {
